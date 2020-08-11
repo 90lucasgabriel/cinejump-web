@@ -3,19 +3,25 @@ import React from 'react';
 
 // import AppProvider from './hooks';
 // import Routes from './routes';
-import { Layout, Wrapper, Container } from 'components/Layout';
+import { ColumnLayout, Wrapper, Container } from 'components/Layout';
 import GlobalStyle from './styles/global';
 
 const App: React.FC = () => {
   return (
     <>
-      <Layout>
+      <ColumnLayout>
         <Wrapper>
           <Container>
             <h1>Hello World</h1>
           </Container>
         </Wrapper>
-      </Layout>
+        <Wrapper>
+          <Container>
+            <h1>Hello World</h1>
+          </Container>
+        </Wrapper>
+
+      </ColumnLayout>
 
       <GlobalStyle />
     </>
