@@ -1,9 +1,22 @@
 import styled from 'styled-components';
 import { shade } from 'polished';
 
-export const Container = styled.div`
+export const LoginContainer = styled.div`
   display: flex;
-  height: 100vh;
+  flex: 1 1 650px;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+`;
+
+export const SignupContainer = styled.div`
+  display: flex;
+  flex: 1 1 350px;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  background: red;
+  color: #fff;
 `;
 
 export const Content = styled.div`

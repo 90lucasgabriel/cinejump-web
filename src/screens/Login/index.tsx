@@ -1,9 +1,9 @@
 import React, { useCallback, useState, useContext } from 'react';
-import { FiLogIn } from 'react-icons/fi';
 
 import { useAuth } from 'domains/Auth/hooks';
-import { ColumnLayout } from 'components/Layout';
-import { Container, Content } from './styles';
+
+import { RowLayout } from 'components/Layout';
+import { LoginContainer, SignupContainer } from './styles';
 
 const Login: React.FC = () => {
   const [email, setEmail] = useState('90lucasgabriel@gmail.com');
@@ -20,8 +20,8 @@ const Login: React.FC = () => {
   );
 
   return (
-    <ColumnLayout>
-      <Content>
+    <RowLayout>
+      <LoginContainer>
         <form>
           <h1>Login</h1>
 
@@ -41,8 +41,9 @@ const Login: React.FC = () => {
             Entrar
           </button>
         </form>
-      </Content>
-    </ColumnLayout>
+      </LoginContainer>
+      <SignupContainer></SignupContainer>
+    </RowLayout>
   );
 };
 
