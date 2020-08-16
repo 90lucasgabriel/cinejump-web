@@ -6,6 +6,7 @@ import {
 } from 'react-router-dom';
 
 import { useAuth } from 'domains/Auth/hooks';
+import RouteEnum from 'routes/enums/Route';
 
 interface RouteProps extends ReactDOMRouteProps {
   isPrivate?: boolean;
@@ -29,7 +30,7 @@ const Route: React.FC<RouteProps> = ({
           return (
             <Redirect
               to={{
-                pathname: '/login',
+                pathname: RouteEnum.LOGIN,
                 state: { from: location },
               }}
             />
@@ -40,7 +41,7 @@ const Route: React.FC<RouteProps> = ({
           return (
             <Redirect
               to={{
-                pathname: '/profile',
+                pathname: RouteEnum.PROFILE,
                 state: { from: location },
               }}
             />
