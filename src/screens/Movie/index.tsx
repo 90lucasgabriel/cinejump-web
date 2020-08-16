@@ -2,16 +2,16 @@ import React from 'react';
 
 import { ColumnLayout, Wrapper, Container } from 'components/Layout';
 
-const Home: React.FC = () => {
+const Movie: React.FC = () => {
   return (
     <ColumnLayout>
       <Wrapper>
         <Container>
-          <h1>Home Screen</h1>
+          <h1>Movie Screen</h1>
         </Container>
       </Wrapper>
     </ColumnLayout>
   );
 };
 
-export default Home;
+export default Movie;
