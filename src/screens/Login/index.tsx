@@ -54,9 +54,9 @@ const Login: React.FC = () => {
 
         setError('');
         history.push(Route.BASE);
-      } catch (error) {
-        if (error instanceof Yup.ValidationError) {
-          const errors = getValidationErrors(error);
+      } catch (err) {
+        if (err instanceof Yup.ValidationError) {
+          const errors = getValidationErrors(err);
           formRef.current?.setErrors(errors);
           return;
         }
