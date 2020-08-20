@@ -24,15 +24,15 @@ export const postAuth = async ({
   return parseResponse(response);
 };
 
-const parseResponse = (response: RawResponse): Response => {
+const parseResponse = ({ token, user }: RawResponse): Response => {
   const parsedResponse = {
-    token: response.token,
+    token,
     user: {
-      id: response.user.id,
-      name: response.user.name,
-      email: response.user.email,
-      createdAt: response.user.created_at,
-      updatedAt: response.user.updated_at,
+      id: user.id,
+      name: user.name,
+      email: user.email,
+      createdAt: user.created_at,
+      updatedAt: user.updated_at,
     },
   } as Response;
 

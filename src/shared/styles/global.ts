@@ -1,4 +1,5 @@
 import { createGlobalStyle } from 'styled-components';
+import { Color } from 'shared/enums';
 
 export default createGlobalStyle`
   * {
@@ -9,16 +10,24 @@ export default createGlobalStyle`
   }
   html {
     min-height: 100%;
-    background: #F9F9F9;
+    background: ${Color.Fill};
+    font-size: 62.5%;
   }
+
+  @media (max-width: 900px) {
+    html {
+      font-size: 50.668%;
+    }
+  }
+
   body {
-    background: #F9F9F9;
-    color: #999999;
+    background: ${Color.Fill};
+    color: ${Color.Text};
     -webkit-font-smoothing: antialiased;
   }
   body, input, button {
-    font-family: 'Roboto', -apple-system, system-ui, sans-serif;
-    font-size: 16px;
+    font-family: 'Ubuntu', -apple-system, system-ui, sans-serif;
+    font-weight: 400;
   }
   h1, h2, h3, h4, h5, h6, strong {
     font-weight: 400,
