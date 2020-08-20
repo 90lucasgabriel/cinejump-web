@@ -30,4 +30,10 @@ export const Container = styled.button<ButtonProps>`
   &:hover {
     background: ${shade(0.1, Color.Primary)};
   }
+
+  svg {
+    height: 100%;
+    fill: ${props =>
+      props.variant === 'outlined' ? Color.Primary : Color.Fill};
+  }
 `;
