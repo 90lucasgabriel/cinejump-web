@@ -26,7 +26,6 @@ export const LoginForm = styled(Form)`
   width: min(380px, 100%);
   align-items: center;
   justify-content: center;
-  margin-top: -${Size.Biggest};
 `;
 
 export const LoginHeader = styled.h1`
