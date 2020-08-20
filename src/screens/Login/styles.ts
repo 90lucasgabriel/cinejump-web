@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 import { Form } from '@unform/web';
-import { shade } from 'polished';
+import { Color, Size } from 'shared/enums';
 
 export const LoginContainer = styled.div`
   display: flex;
@@ -8,14 +8,14 @@ export const LoginContainer = styled.div`
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  padding: 1.6rem;
+  padding: ${Size.Medium};
 `;
 
 export const LogoContainer = styled.div`
-  margin-top: 4.8rem;
+  margin-top: ${Size.Big};
 
   svg {
-    width: 13.6rem;
+    width: 1 ${Size.Big};
   }
 `;
 
@@ -26,20 +26,20 @@ export const LoginForm = styled(Form)`
   width: min(380px, 100%);
   align-items: center;
   justify-content: center;
-  margin-top: -4.8rem;
+  margin-top: -${Size.Biggest};
 `;
 
 export const LoginHeader = styled.h1`
-  margin-bottom: 3.6rem;
-  font-size: 3.6rem;
+  margin-bottom: ${Size.Big};
+  font-size: ${Size.Big};
   font-weight: 400;
-  color: #e83f5b;
+  color: ${Color.Primary};
 `;
 
 export const ErrorMessage = styled.p`
-  margin: 16px 0;
-  color: #e83f5b;
-  font-size: 1.2rem;
+  margin: ${Size.Medium} 0;
+  color: ${Color.Primary};
+  font-size: ${Size.Small};
 `;
 
 export const SignupContainer = styled.div`
@@ -48,22 +48,22 @@ export const SignupContainer = styled.div`
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  background: #e83f5b;
-  color: #fff;
+  background: ${Color.Primary};
+  color: ${Color.Fill};
   text-align: center;
-  padding: 1.6rem;
+  padding: ${Size.Medium};
 `;
 
 export const SignupHeader = styled.h1`
-  margin-bottom: 3.6rem;
-  font-size: 3.6rem;
+  margin-bottom: ${Size.Big};
+  font-size: ${Size.Big};
   font-weight: 400;
-  color: #fff;
+  color: ${Color.Fill};
 `;
 
 export const SignupDescription = styled.p`
-  margin-bottom: 3.6rem;
-  font-size: 1.8rem;
+  margin-bottom: ${Size.Big};
+  font-size: ${Size.Medium};
   font-weight: 100;
-  color: #fff;
+  color: ${Color.Fill};
 `;

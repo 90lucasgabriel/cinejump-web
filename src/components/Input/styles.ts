@@ -1,4 +1,5 @@
 import styled, { css } from 'styled-components';
+import { Color, Size } from 'shared/enums';
 import Tooltip from 'components/Tooltip';
 
 interface ContainerProps {
@@ -8,48 +9,48 @@ interface ContainerProps {
 }
 
 export const Container = styled.div<ContainerProps>`
-  background: #EFEFEF;
+  background: ${Color.FillSecondary};
   border-radius: 10px;
-  padding: 1.6rem;
+  padding: ${Size.Medium};
   width: 100%;
-  color: #999999;
-  border: 2px solid #EFEFEF;
+  color: ${Color.Text};
+  border: 2px solid ${Color.FillSecondary};
   display: flex;
   align-items: center;
   & + div {
-    margin-top: 1.6rem;
+    margin-top: ${Size.Medium};
   }
   ${props =>
     props.isErrored &&
     css`
-      border-color: #c53030;
+      border-color: ${Color.Error};
     `}
   ${props =>
     props.isFocused &&
     css`
-      color: #999;
-      border-color: #999;
+      color: ${Color.Text};
+      border-color: ${Color.Text};
     `}
   ${props =>
     props.isFilled &&
     css`
-      color: #999;
+      color: ${Color.Text};
     `}
 
   input {
     background: transparent;
     flex: 1;
     border: 0;
-    font-size: 1.6rem;
-    color: #999999;
+    font-size: ${Size.Medium};
+    color: ${Color.Text};
     &::placeholder {
-      color: #999999;
+      color: ${Color.Text};
     }
   }
   svg {
-    margin-right: 1.6rem;
-    width: 1.6rem;
-    height: 1.6rem;
+    margin-right: ${Size.Medium};
+    width: ${Size.Medium};
+    height: ${Size.Medium};
   }
 `;
 
@@ -60,10 +61,10 @@ export const Error = styled(Tooltip)`
     margin: 0;
   }
   span {
-    background: #c53030;
-    color: #fff;
+    background: ${Color.Error};
+    color: ${Color.Fill};
     &::before {
-      border-color: #c53030 transparent;
+      border-color: ${Color.Error} transparent;
     }
   }
 `;

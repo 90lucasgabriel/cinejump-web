@@ -9,6 +9,7 @@ import Route from 'routes/enums/Route';
 import LoginFormData from 'screens/Login/dtos/LoginFormData';
 import getValidationErrors from 'shared/utils/getValidationErrors';
 
+import { Color } from 'shared/enums';
 import { RowLayout } from 'components/Layout';
 import { ReactComponent as Logo } from 'assets/logo.svg';
 import Input from 'components/Input';
@@ -71,7 +72,7 @@ const Login: React.FC = () => {
     <RowLayout>
       <LoginContainer>
         <LogoContainer>
-          <Logo fill="#E83F5B" />
+          <Logo fill={Color.Primary} />
         </LogoContainer>
         <LoginForm ref={formRef} onSubmit={handleSubmit}>
           <LoginHeader>Login</LoginHeader>

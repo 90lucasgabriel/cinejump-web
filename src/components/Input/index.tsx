@@ -9,6 +9,7 @@ import { IconBaseProps } from 'react-icons';
 import { FiAlertTriangle } from 'react-icons/fi';
 import { useField } from '@unform/core';
 
+import { Color } from 'shared/enums';
 import { Container, Error } from './styles';
 
 interface InputProps extends InputHTMLAttributes<HTMLInputElement> {
@@ -65,7 +66,7 @@ const Input: React.FC<InputProps> = ({
 
       {error && (
         <Error title={error}>
-          <FiAlertTriangle color="#c53030" size={20} />
+          <FiAlertTriangle color={Color.Error} size={20} />
         </Error>
       )}
     </Container>

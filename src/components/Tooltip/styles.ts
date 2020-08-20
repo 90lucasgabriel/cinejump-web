@@ -1,14 +1,15 @@
 import styled from 'styled-components';
+import { Color, Size } from 'shared/enums';
 
 export const Container = styled.div`
   position: relative;
   span {
-    background: #e83f5b;
-    padding: 8px;
+    background: ${Color.Primary};
+    padding: ${Size.Smallest};
     border-radius: 4px;
-    font-size: 14px;
+    font-size: ${Size.Medium};
     font-weight: 500;
-    color: #312e38;
+    color: ${Color.Text};
     width: 200px;
     opacity: 0;
     transition: opacity 0.4s;
@@ -20,7 +21,7 @@ export const Container = styled.div`
     &::before {
       content: '';
       border-style: solid;
-      border-color: #e83f5b transparent;
+      border-color: ${Color.Primary} transparent;
       border-width: 6px 6px 0 6px;
       top: 100%;
       position: absolute;

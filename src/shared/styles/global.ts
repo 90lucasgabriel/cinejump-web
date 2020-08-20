@@ -1,4 +1,5 @@
 import { createGlobalStyle } from 'styled-components';
+import Color from 'shared/enums/Color';
 
 export default createGlobalStyle`
   * {
@@ -9,7 +10,7 @@ export default createGlobalStyle`
   }
   html {
     min-height: 100%;
-    background: #F9F9F9;
+    background: ${Color.Fill};
     font-size: 62.5%;
   }
 
@@ -20,14 +21,13 @@ export default createGlobalStyle`
   }
 
   body {
-    background: #F9F9F9;
-    color: #999999;
+    background: ${Color.Fill};
+    color: ${Color.Text};
     -webkit-font-smoothing: antialiased;
   }
   body, input, button {
     font-family: 'Ubuntu', -apple-system, system-ui, sans-serif;
     font-weight: 400;
-    /* font-size: 1.6rem; */
   }
   h1, h2, h3, h4, h5, h6, strong {
     font-weight: 400,
