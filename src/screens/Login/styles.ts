@@ -36,6 +36,12 @@ export const LoginHeader = styled.h1`
   color: #e83f5b;
 `;
 
+export const ErrorMessage = styled.p`
+  margin: 16px 0;
+  color: #e83f5b;
+  font-size: 1.2rem;
+`;
+
 export const SignupContainer = styled.div`
   display: flex;
   flex: 1 1 300px;

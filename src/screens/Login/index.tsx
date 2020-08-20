@@ -1,4 +1,4 @@
-import React, { useCallback, useRef } from 'react';
+import React, { useCallback, useRef, useState } from 'react';
 import { useHistory } from 'react-router-dom';
 import { FiLock, FiMail } from 'react-icons/fi';
 import { FormHandles } from '@unform/core';
@@ -16,8 +16,9 @@ import Button from 'components/Button';
 import {
   LoginContainer,
   LogoContainer,
-  LoginForm,
   LoginHeader,
+  LoginForm,
+  ErrorMessage,
   SignupContainer,
   SignupHeader,
   SignupDescription,
@@ -28,9 +29,13 @@ const Login: React.FC = () => {
   const history = useHistory();
   const { login } = useAuth();
 
+  const [loginLoading, setLoginLoading] = useState(false);
+  const [error, setError] = useState('');
+
   const handleSubmit = useCallback(
     async (data: LoginFormData) => {
       try {
+        setLoginLoading(true);
         formRef.current?.setErrors({});
 
         const schema = Yup.object().shape({
@@ -46,12 +51,17 @@ const Login: React.FC = () => {
 
         await login({ email: data.email, password: data.password });
 
+        setError('');
         history.push(Route.BASE);
       } catch (error) {
         if (error instanceof Yup.ValidationError) {
           const errors = getValidationErrors(error);
           formRef.current?.setErrors(errors);
+          return;
         }
+        setError('Ocorreu um erro ao fazer login. Verifique as credenciais.');
+      } finally {
+        setLoginLoading(false);
       }
     },
     [login, history],
@@ -73,8 +83,10 @@ const Login: React.FC = () => {
             type="password"
             placeholder="Senha"
           />
-
-          <Button type="submit">Entrar</Button>
+          <ErrorMessage>{error}</ErrorMessage>
+          <Button type="submit" loading={loginLoading}>
+            Entrar
+          </Button>
         </LoginForm>
       </LoginContainer>
 
