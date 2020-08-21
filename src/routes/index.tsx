@@ -4,7 +4,7 @@ import { Switch } from 'react-router-dom';
 import Route from 'routes/Route';
 import RouteEnum from 'routes/enums/Route';
 
-import { Home, Movie, Login, Profile, Favorites } from 'screens';
+import { Home, Movie, Login, Signup, Profile, Favorites } from 'screens';
 
 const Routes: React.FC = () => (
   <Switch>
@@ -12,6 +12,7 @@ const Routes: React.FC = () => (
     <Route path={RouteEnum.MOVIE} component={Movie} />
 
     <Route path={RouteEnum.LOGIN} component={Login} notLoggedIn />
+    <Route path={RouteEnum.SIGNUP} component={Signup} notLoggedIn />
 
     <Route path={RouteEnum.PROFILE} component={Profile} isPrivate />
     <Route path={RouteEnum.FAVORITES} component={Favorites} isPrivate />
