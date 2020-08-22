@@ -8,14 +8,14 @@ export const LoginContainer = styled.div`
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  padding: ${Size.Medium};
+  padding: ${Size.Default};
 `;
 
 export const LogoContainer = styled.div`
-  margin-top: ${Size.Big};
+  margin-top: ${Size.Large};
 
   svg {
-    width: 1 ${Size.Big};
+    width: 1 ${Size.Large};
   }
 `;
 
@@ -29,14 +29,14 @@ export const LoginForm = styled(Form)`
 `;
 
 export const LoginHeader = styled.h1`
-  margin-bottom: ${Size.Big};
-  font-size: ${Size.Big};
+  margin-bottom: ${Size.Large};
+  font-size: ${Size.Large};
   font-weight: 400;
   color: ${Color.Primary};
 `;
 
 export const ErrorMessage = styled.p`
-  margin: ${Size.Medium} 0;
+  margin: ${Size.Default} 0;
   color: ${Color.Primary};
   font-size: ${Size.Small};
 `;
@@ -50,19 +50,19 @@ export const SignupContainer = styled.div`
   background: ${Color.Primary};
   color: ${Color.Fill};
   text-align: center;
-  padding: ${Size.Medium};
+  padding: ${Size.Default};
 `;
 
 export const SignupHeader = styled.h1`
-  margin-bottom: ${Size.Big};
-  font-size: ${Size.Big};
+  margin-bottom: ${Size.Large};
+  font-size: ${Size.Large};
   font-weight: 400;
   color: ${Color.Fill};
 `;
 
 export const SignupDescription = styled.p`
-  margin-bottom: ${Size.Big};
-  font-size: ${Size.Medium};
+  margin-bottom: ${Size.Large};
+  font-size: ${Size.Default};
   font-weight: 100;
   color: ${Color.Fill};
 `;

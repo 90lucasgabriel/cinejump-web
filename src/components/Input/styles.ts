@@ -11,14 +11,14 @@ interface ContainerProps {
 export const Container = styled.div<ContainerProps>`
   background: ${Color.FillSecondary};
   border-radius: 10px;
-  padding: ${Size.Medium};
+  padding: ${Size.Default};
   width: 100%;
   color: ${Color.Text};
   border: 2px solid ${Color.FillSecondary};
   display: flex;
   align-items: center;
   & + div {
-    margin-top: ${Size.Medium};
+    margin-top: ${Size.Default};
   }
   ${props =>
     props.isErrored &&
@@ -41,16 +41,16 @@ export const Container = styled.div<ContainerProps>`
     background: transparent;
     flex: 1;
     border: 0;
-    font-size: ${Size.Medium};
+    font-size: ${Size.Default};
     color: ${Color.Text};
     &::placeholder {
       color: ${Color.Text};
     }
   }
   svg {
-    margin-right: ${Size.Medium};
-    width: ${Size.Medium};
-    height: ${Size.Medium};
+    margin-right: ${Size.Default};
+    width: ${Size.Default};
+    height: ${Size.Default};
   }
 `;
 

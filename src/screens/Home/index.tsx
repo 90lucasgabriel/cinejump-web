@@ -1,15 +1,14 @@
 import React from 'react';
 
-import { ColumnLayout, Wrapper, Container } from 'components/Layout';
+import { ColumnLayout } from 'components/Layout';
+import Header from 'containers/Header';
+import { HeaderBackground } from './styles';
 
 const Home: React.FC = () => {
   return (
     <ColumnLayout>
-      <Wrapper>
-        <Container>
-          <h1>Home Screen</h1>
-        </Container>
-      </Wrapper>
+      <Header />
+      <HeaderBackground />
     </ColumnLayout>
   );
 };
