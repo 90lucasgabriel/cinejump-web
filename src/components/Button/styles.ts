@@ -3,21 +3,25 @@ import { shade } from 'polished';
 import { Color, Size } from 'shared/enums';
 
 interface ButtonProps {
-  variant?: 'basic' | 'raised' | 'outlined';
+  variant?: 'basic' | 'raised' | 'outlined' | 'icon';
 }
 
 export const Container = styled.button<ButtonProps>`
-  background: ${Color.Primary};
-  height: ${Size.Biggest};
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0 16px;
   border-radius: 45px;
   border: 0;
-  padding: 0 16px;
-  color: ${Color.Fill};
-  width: min(300px, 100%);
   font-weight: 100;
-  font-size: ${Size.Medium};
   text-transform: uppercase;
   transition: background-color 0.2s;
+  width: min(300px, 100%);
+
+  background: ${Color.Primary};
+  height: ${Size.Largest};
+  color: ${Color.Fill};
+  font-size: ${Size.Default};
 
   ${props =>
     props.variant === 'outlined' &&
@@ -28,12 +32,39 @@ export const Container = styled.button<ButtonProps>`
     `}
 
   &:hover {
-    background: ${shade(0.1, Color.Primary)};
+    ${props =>
+      props.variant !== 'basic' &&
+      css`
+        background: ${shade(0.1, Color.Primary)};
+      `}
   }
+
+  ${props =>
+    props.variant === 'icon' &&
+    css`
+      width: auto;
+      height: auto;
+      padding: ${Size.Small};
+      border-radius: 50%;
+      background: transparent;
+    `}
 
   svg {
     height: 100%;
-    fill: ${props =>
-      props.variant === 'outlined' ? Color.Primary : Color.Fill};
+
+    /* fill: ${Color.Fill}; */
+
+    ${props =>
+      props.variant === 'outlined' &&
+      css`
+        stroke: ${Color.Fill};
+      `}
+
+    ${props =>
+      props.variant === 'icon' &&
+      css`
+        width: ${Size.Medium};
+        height: ${Size.Medium};
+      `}
   }
 `;

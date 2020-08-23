@@ -7,7 +7,7 @@ export const Container = styled.div`
     background: ${Color.Primary};
     padding: ${Size.Smallest};
     border-radius: 4px;
-    font-size: ${Size.Medium};
+    font-size: ${Size.Default};
     font-weight: 500;
     color: ${Color.Text};
     width: 200px;

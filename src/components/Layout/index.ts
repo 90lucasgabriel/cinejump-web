@@ -1,6 +1,36 @@
-import styled from 'styled-components';
+import { Color } from 'shared/enums';
+import styled, { css } from 'styled-components';
 
-export const ColumnLayout = styled.div`
+interface Props {
+  background?: string;
+  color?: string;
+  theme?: string;
+}
+
+const BasicLayout = styled.div<Props>`
+  background: ${props => props.background || 'inherit'};
+  color: ${props => props.color || 'inherit'};
+
+  ${props => {
+    if (props.theme === 'primary') {
+      return css`
+        background: ${Color.Primary};
+        color: ${Color.Fill};
+      `;
+    }
+
+    if (props.theme === 'secondary') {
+      return css`
+        background: ${Color.Secondary};
+        color: ${Color.Fill};
+      `;
+    }
+
+    return ``;
+  }}
+`;
+
+export const ColumnLayout = styled(BasicLayout)`
   position: absolute;
   min-height: 100%;
   min-width: 100%;
@@ -8,7 +38,7 @@ export const ColumnLayout = styled.div`
   flex-direction: column;
 `;
 
-export const RowLayout = styled.div`
+export const RowLayout = styled(BasicLayout)`
   position: absolute;
   min-height: 100%;
   min-width: 100%;
@@ -17,12 +47,11 @@ export const RowLayout = styled.div`
   flex-wrap: wrap;
 `;
 
-export const Wrapper = styled.div`
+export const Wrapper = styled(BasicLayout)`
   width: 100%;
-  border: 1px solid black;
 `;
 
-export const Container = styled.div`
+export const Container = styled(BasicLayout)`
   max-width: 1280px;
   margin: 0 auto;
 `;
