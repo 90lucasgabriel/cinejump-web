@@ -12,12 +12,6 @@ const Footer: React.FC = () => {
   return (
     <Wrapper theme="primary">
       <Container>
-        <LogoContainer>
-          <Link to={RouteEnum.BASE}>
-            <Logo fill={Color.Fill} />
-          </Link>
-        </LogoContainer>
-
         <LinksContainer>
           <a href="https://github.com/90lucasgabriel">
             Desenvolvido por Lucas Gabriel
@@ -31,6 +25,12 @@ const Footer: React.FC = () => {
             Documentação
           </a>
         </LinksContainer>
+
+        <LogoContainer>
+          <Link to={RouteEnum.BASE}>
+            <Logo fill={Color.Fill} />
+          </Link>
+        </LogoContainer>
       </Container>
     </Wrapper>
   );
