@@ -102,7 +102,7 @@ const Signup: React.FC = () => {
           variant="outlined"
           onClick={() => history.push(Route.LOGIN)}
         >
-          ENTRAR
+          LOGIN
         </Button>
       </LoginContainer>
     </RowLayout>

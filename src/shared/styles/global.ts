@@ -1,5 +1,5 @@
 import { createGlobalStyle } from 'styled-components';
-import { Color } from 'shared/enums';
+import { Color, Size } from 'shared/enums';
 
 export default createGlobalStyle`
   * {
@@ -23,16 +23,25 @@ export default createGlobalStyle`
   body {
     background: ${Color.Fill};
     color: ${Color.Text};
+    font-size: ${Size.Default};
     -webkit-font-smoothing: antialiased;
   }
   body, input, button {
     font-family: 'Ubuntu', -apple-system, system-ui, sans-serif;
-    font-weight: 400;
+    font-weight: 100;
   }
   h1, h2, h3, h4, h5, h6, strong {
     font-weight: 400,
   }
   button {
     cursor: pointer;
+  }
+
+  input,
+  textarea,
+  button,
+  select,
+  a {
+    -webkit-tap-highlight-color: rgba(0,0,0,0);
   }
 `;
