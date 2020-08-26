@@ -1,5 +1,5 @@
 enum Size {
-  Smallest = '0.8rem',
+  Smallest = '1rem',
   Small = '1.4rem',
   Default = '1.8rem',
   Medium = '2.4rem',

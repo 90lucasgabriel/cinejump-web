@@ -5,7 +5,7 @@ import { FiSearch } from 'react-icons/fi';
 import { ReactComponent as Logo } from 'assets/logo.svg';
 
 import { Color } from 'shared/enums';
-import RouteEnum from 'routes/enums/Route';
+import RouteEnum from 'routes/enums';
 import { Wrapper } from 'components/Layout';
 import Button from 'components/Button';
 import { Container, MenuContainer, Link, ActionMenuContainer } from './styles';

@@ -2,7 +2,7 @@ import React from 'react';
 import { Switch } from 'react-router-dom';
 
 import Route from 'routes/Route';
-import RouteEnum from 'routes/enums/Route';
+import RouteEnum from 'routes/enums';
 
 import { Home, Movie, Login, Signup, Profile, Favorites } from 'screens';
 
