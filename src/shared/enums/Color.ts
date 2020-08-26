@@ -5,6 +5,7 @@ enum Color {
   FillSecondary = '#EFEFEF',
   Text = '#777',
   Error = '#c53030',
+  Empty = '#0F0F0F',
 }
 
 export default Color;

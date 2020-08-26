@@ -30,9 +30,14 @@ export default createGlobalStyle`
     font-family: 'Ubuntu', -apple-system, system-ui, sans-serif;
     font-weight: 100;
   }
-  h1, h2, h3, h4, h5, h6, strong {
+  h1, strong {
     font-weight: 400,
   }
+
+  h2, h3, h4, h5, h6 {
+    font-weight: 100;
+  }
+
   button {
     cursor: pointer;
   }

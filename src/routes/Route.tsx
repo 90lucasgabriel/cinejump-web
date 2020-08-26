@@ -6,7 +6,7 @@ import {
 } from 'react-router-dom';
 
 import { useAuth } from 'domains/Auth/hooks';
-import RouteEnum from 'routes/enums/Route';
+import RouteEnum from 'routes/enums';
 
 interface RouteProps extends ReactDOMRouteProps {
   isPrivate?: boolean;

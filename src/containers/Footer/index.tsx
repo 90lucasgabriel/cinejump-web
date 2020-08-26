@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 
 import { ReactComponent as Logo } from 'assets/logo.svg';
 import { Color } from 'shared/enums';
-import RouteEnum from 'routes/enums/Route';
+import RouteEnum from 'routes/enums';
 
 import { Wrapper } from 'components/Layout';
 import { Container, LogoContainer, LinksContainer } from './styles';
