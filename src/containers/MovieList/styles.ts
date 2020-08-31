@@ -32,7 +32,6 @@ export const ListContainer = styled.div`
 
 export const ListContent = styled.div`
   display: inline-flex;
-  overflow: hidden;
   margin-left: ${Size.Medium};
 
   & > div {

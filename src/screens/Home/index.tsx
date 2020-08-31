@@ -7,7 +7,7 @@ import { ColumnLayout } from 'components/Layout';
 import Header from 'containers/Header';
 import MovieList from 'containers/MovieList';
 import Footer from 'containers/Footer';
-import { HeaderBackground } from './styles';
+import { HeaderBackground, ContentContainer } from './styles';
 
 const Home: React.FC = () => {
   const [popularList, setPopularList] = useState([] as MovieResponse[]);
@@ -21,8 +21,10 @@ const Home: React.FC = () => {
   return (
     <ColumnLayout>
       <Header />
-      <MovieList theme="light" title="Populares" data={popularList} />
-      <MovieList theme="light" title="Lançamentos" data={nowPlayingList} />
+      <ContentContainer>
+        <MovieList theme="light" title="Populares" data={popularList} />
+        <MovieList theme="light" title="Lançamentos" data={nowPlayingList} />
+      </ContentContainer>
       <Footer />
       <HeaderBackground />
     </ColumnLayout>
