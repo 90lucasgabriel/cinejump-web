@@ -1,7 +1,7 @@
 import styled from 'styled-components';
 
 import { Container as DefaultContainer } from 'components/Layout';
-import { Size } from 'shared/enums';
+import { PosterHeight, Size } from 'shared/enums';
 
 export const Container = styled(DefaultContainer)`
   padding: ${Size.Medium} 0;
@@ -15,11 +15,8 @@ export const Title = styled.h2`
 `;
 
 export const ListContainer = styled.div`
-  /* overflow-x: hidden;
-
-  &:hover { */
+  height: ${PosterHeight.Default};
   overflow-x: auto;
-  /* } */
 
   scroll-snap-type: x mandatory;
   -webkit-overflow-scrolling: touch;
@@ -35,6 +32,7 @@ export const ListContainer = styled.div`
 
 export const ListContent = styled.div`
   display: inline-flex;
+  overflow: hidden;
   margin-left: ${Size.Medium};
 
   & > div {
