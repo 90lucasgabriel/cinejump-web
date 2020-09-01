@@ -11,3 +11,7 @@ export const HeaderBackground = styled.div`
   height: 376px;
   background: ${Color.Primary};
 `;
+
+export const ContentContainer = styled.div`
+  flex: 1;
+`;

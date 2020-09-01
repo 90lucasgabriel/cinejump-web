@@ -1,31 +1,30 @@
 import React, { useEffect, useState } from 'react';
 
-import Popular from 'domains/Movie/api/Popular';
+import { NowPlaying, Popular } from 'domains/Movie/api';
 import MovieResponse from 'domains/Movie/api/Popular/Response';
-import { Color } from 'shared/enums';
 
 import { ColumnLayout } from 'components/Layout';
 import Header from 'containers/Header';
 import MovieList from 'containers/MovieList';
 import Footer from 'containers/Footer';
-import { HeaderBackground } from './styles';
+import { HeaderBackground, ContentContainer } from './styles';
 
 const Home: React.FC = () => {
-  const [movieList, setMovieList] = useState([] as MovieResponse[]);
+  const [popularList, setPopularList] = useState([] as MovieResponse[]);
+  const [nowPlayingList, setNowPlayingList] = useState([] as MovieResponse[]);
+
   useEffect(() => {
-    Popular().then(response => {
-      setMovieList(response);
-    });
+    NowPlaying().then(response => setNowPlayingList(response));
+    Popular().then(response => setPopularList(response));
   }, []);
 
   return (
     <ColumnLayout>
       <Header />
-      {/* <div style={{ flex: 1 }}> */}
-      <MovieList theme="light" title="Populares" data={movieList} />
-      <MovieList theme="primary" title="Favoritos" data={movieList} />
-      <MovieList theme="secondary" title="Lançamentos" data={movieList} />
-      {/* </div> */}
+      <ContentContainer>
+        <MovieList theme="light" title="Populares" data={popularList} />
+        <MovieList theme="light" title="Lançamentos" data={nowPlayingList} />
+      </ContentContainer>
       <Footer />
       <HeaderBackground />
     </ColumnLayout>

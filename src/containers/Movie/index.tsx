@@ -16,13 +16,17 @@ const Movie: React.FC<Props> = ({ ...movie }) => {
     setIsFavorite(!isFavorite);
   }, [isFavorite]);
 
+  if (!movie.poster && !movie.backdrop) {
+    return null;
+  }
+
   return (
     <Container>
       <IconButton onClick={handleFavorite}>
         <BsHeartFill fill={isFavorite ? Color.Primary : Color.Empty} />
       </IconButton>
       <Poster
-        src={movie.poster}
+        src={movie.poster || movie.backdrop}
         onClick={() => history.push(`${Route.MOVIE}/${movie.id}`)}
       />
     </Container>

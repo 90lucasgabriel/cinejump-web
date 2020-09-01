@@ -7,6 +7,19 @@ export const Container = styled.div`
   height: ${PosterHeight.Default};
   border-radius: ${Size.Smallest};
   overflow: hidden;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  &:hover {
+    cursor: pointer;
+
+    img {
+      width: 110%;
+      height: 110%;
+    }
+  }
 `;
 
 export const IconButton = styled.button`
@@ -26,4 +39,5 @@ export const Poster = styled.img`
   width: 100%;
   height: 100%;
   object-fit: cover;
+  transition: width 0.2s, height 0.2s;
 `;
