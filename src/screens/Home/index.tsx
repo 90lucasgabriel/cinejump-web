@@ -4,9 +4,7 @@ import { NowPlaying, Popular } from 'domains/Movie/api';
 import MovieResponse from 'domains/Movie/api/Popular/Response';
 
 import { ColumnLayout } from 'components/Layout';
-import Header from 'containers/Header';
-import MovieList from 'containers/MovieList';
-import Footer from 'containers/Footer';
+import { Footer, Header, Highlights, MovieList } from 'containers';
 import { HeaderBackground, ContentContainer } from './styles';
 
 const Home: React.FC = () => {
@@ -22,6 +20,7 @@ const Home: React.FC = () => {
     <ColumnLayout>
       <Header />
       <ContentContainer>
+        <Highlights movies={popularList} />
         <MovieList theme="light" title="Populares" data={popularList} />
         <MovieList theme="light" title="Lançamentos" data={nowPlayingList} />
       </ContentContainer>
