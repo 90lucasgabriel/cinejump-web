@@ -11,11 +11,15 @@ export const Container = styled(DefaultContainer)`
 
 export const Title = styled.h2`
   margin-bottom: ${Size.Small};
-  margin-left: ${Size.Medium};
+
+  @media (max-width: 915px) {
+    margin-left: ${Size.Medium};
+  }
 `;
 
 export const ListContainer = styled.div`
   height: ${PosterHeight.Default};
+  overflow-y: hidden;
   overflow-x: auto;
 
   scroll-snap-type: x mandatory;
@@ -32,7 +36,11 @@ export const ListContainer = styled.div`
 
 export const ListContent = styled.div`
   display: inline-flex;
-  margin-left: ${Size.Medium};
+
+  @media (max-width: 915px) {
+    margin-left: ${Size.Medium};
+    margin-right: ${Size.Smallest};
+  }
 
   & > div {
     flex: 1 0 auto;
