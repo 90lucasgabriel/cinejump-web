@@ -20,7 +20,7 @@ const Home: React.FC = () => {
     <ColumnLayout>
       <Header />
       <ContentContainer>
-        <Highlights data={popularList} />
+        <Highlights movies={popularList} />
         <MovieList theme="light" title="Populares" data={popularList} />
         <MovieList theme="light" title="Lançamentos" data={nowPlayingList} />
       </ContentContainer>

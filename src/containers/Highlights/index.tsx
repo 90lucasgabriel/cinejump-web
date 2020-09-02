@@ -1,44 +1,29 @@
 import React from 'react';
 
 import { Wrapper } from 'components/Layout';
-import {
-  Container,
-  MajorContainer,
-  Backdrop,
-  Caption,
-  Title,
-  Overview,
-  MinorContainer,
-  Minor,
-} from './styles';
+import { MovieHighlight } from 'components';
+import { Container, MajorContainer, MinorContainer } from './styles';
 
 import Props from './dtos';
 
-const Highlights: React.FC<Props> = ({ theme, background, color, data }) => {
+const Highlights: React.FC<Props> = ({ theme, background, color, movies }) => {
+  if (!movies || movies.length === 0) {
+    return null;
+  }
+
   return (
     <Wrapper theme={theme} background={background} color={color}>
       <Container>
         <MajorContainer>
-          <Backdrop src={data[0]?.backdrop} alt={data[0]?.title} />
-          <Caption>
-            <Title>{data[0]?.title}</Title>
-            <Overview>{data[0]?.overview}</Overview>
-          </Caption>
+          <MovieHighlight {...movies[0]} />
         </MajorContainer>
-        <MinorContainer>
-          <Minor>
-            <Backdrop src={data[1]?.backdrop} alt={data[1]?.title} />
-            <Caption>
-              <Title>{data[1]?.title}</Title>
-            </Caption>
-          </Minor>
-          <Minor>
-            <Backdrop src={data[2]?.backdrop} alt={data[2]?.title} />
-            <Caption>
-              <Title>{data[2]?.title}</Title>
-            </Caption>
-          </Minor>
-        </MinorContainer>
+
+        {movies.length > 2 && (
+          <MinorContainer>
+            <MovieHighlight showOverview={false} {...movies[1]} />
+            <MovieHighlight showOverview={false} {...movies[2]} />
+          </MinorContainer>
+        )}
       </Container>
     </Wrapper>
   );
