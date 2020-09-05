@@ -1,7 +1,7 @@
 import React from 'react';
 
 import { Wrapper } from 'components/Layout';
-import Movie from 'containers/Movie';
+import Movie from 'components/Movie';
 import { Container, Title, ListContainer, ListContent } from './styles';
 
 import Props from './dtos';
