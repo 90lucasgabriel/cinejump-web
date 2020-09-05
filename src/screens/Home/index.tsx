@@ -30,6 +30,7 @@ const Home: React.FC = () => {
         <Highlights movies={popularList} />
         <MovieList theme="light" title="Populares" data={popularList} />
         <MovieList theme="light" title="Lançamentos" data={nowPlayingList} />
+        <MovieList theme="light" title="Favoritos" data={favoriteList} />
       </ContentContainer>
       <Footer />
       <HeaderBackground />
