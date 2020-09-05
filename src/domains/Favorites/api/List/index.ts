@@ -19,27 +19,21 @@ export const rawFavorites = async (): Promise<RawResponse[]> => {
 const parseResponse = async (
   rawResponse: RawResponse[],
 ): Promise<Response[]> => {
-  let response = [] as any[];
+  const response = rawResponse.map(async (favorite: RawResponse) => {
+    // Get favorites details from TMDB API and merge
+    const details = await Details(favorite.movie_id);
 
-  // Parse API user favorites
-  rawResponse.forEach(favorite => {
-    const parsedFavorite = {
+    // Merge API and TMDB results
+    return {
+      ...details,
       id: favorite.id,
       userId: favorite.user_id,
       movieId: favorite.movie_id,
     };
-
-    response = [...response, parsedFavorite];
   });
 
-  // Get favorites details from TMDB API and merge
-  const parsedResponse = response.map(async (favorite: Response) => {
-    const details = await Details(favorite.movieId);
-
-    return { ...details, ...favorite, id: favorite.id };
-  });
-
-  const resolvedResponse = await Promise.all(parsedResponse);
+  // Resolve async requests and promises
+  const resolvedResponse = Promise.all(response);
 
   return resolvedResponse;
 };

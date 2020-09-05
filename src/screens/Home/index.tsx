@@ -18,7 +18,6 @@ const Home: React.FC = () => {
     NowPlaying().then(response => setNowPlayingList(response));
     Popular().then(response => setPopularList(response));
     Favorites().then(response => {
-      console.log('response', response);
       setFavoriteList(response);
     });
   }, []);
