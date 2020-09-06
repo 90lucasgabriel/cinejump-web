@@ -17,9 +17,7 @@ const Home: React.FC = () => {
   useEffect(() => {
     NowPlaying().then(response => setNowPlayingList(response));
     Popular().then(response => setPopularList(response));
-    Favorites().then((response: any) => {
-      console.log('Home:React.FC -> response', response);
-    });
+    Favorites();
   }, [Favorites]);
 
   return (

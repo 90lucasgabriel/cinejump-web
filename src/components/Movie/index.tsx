@@ -11,17 +11,17 @@ import Props from './dtos';
 
 const Movie: React.FC<Props> = ({ ...movie }) => {
   const history = useHistory();
-  const { favoriteList } = useFavorite();
+  const { favoriteList, UpdateFavorite } = useFavorite();
   const [isFavorite, setIsFavorite] = useState(movie.favorite);
 
-  const handleFavorite = useCallback(() => {
-    setIsFavorite(!isFavorite);
-  }, [isFavorite]);
+  const handleFavorite = useCallback(async () => {
+    await UpdateFavorite(movie.id);
+  }, [UpdateFavorite, movie.id]);
 
   // Check if movie is in favorite list and change status
   useEffect(() => {
     const response = favoriteList.find(
-      favorite => favorite.movieId === movie.id,
+      favorite => +favorite.movieId === +movie.id,
     );
 
     setIsFavorite(!!response);
