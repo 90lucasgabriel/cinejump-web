@@ -1,7 +1,8 @@
-import React, { useCallback, useState } from 'react';
+import React, { useCallback, useEffect, useState } from 'react';
 import { useHistory } from 'react-router-dom';
 import { BsHeartFill } from 'react-icons/bs';
 
+import { useFavorite } from 'domains/Favorites/hooks';
 import Route from 'routes/enums';
 import { Color } from 'shared/enums';
 import { Container, IconButton, Poster } from './styles';
@@ -10,11 +11,21 @@ import Props from './dtos';
 
 const Movie: React.FC<Props> = ({ ...movie }) => {
   const history = useHistory();
-  const [isFavorite, setIsFavorite] = useState(false);
+  const { favoriteList } = useFavorite();
+  const [isFavorite, setIsFavorite] = useState(movie.favorite);
 
   const handleFavorite = useCallback(() => {
     setIsFavorite(!isFavorite);
   }, [isFavorite]);
+
+  // Check if movie is in favorite list and change status
+  useEffect(() => {
+    const response = favoriteList.find(
+      favorite => favorite.movieId === movie.id,
+    );
+
+    setIsFavorite(!!response);
+  }, [favoriteList, movie.id]);
 
   if (!movie.poster && !movie.backdrop) {
     return null;

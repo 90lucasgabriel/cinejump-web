@@ -16,4 +16,5 @@ export default interface Response {
   popularity: number;
   voteCount: number;
   voteAverage: number;
+  favorite: boolean;
 }
