@@ -1,6 +1,11 @@
 import React, { createContext, useCallback, useContext, useState } from 'react';
 
-import { Favorites as FavoritesApi } from 'domains/Favorites/api';
+import ListResponse from 'domains/Favorites/api/List/Response';
+import UpdateResponse from 'domains/Favorites/api/Update/Response';
+import {
+  Favorites as FavoritesApi,
+  UpdateFavorite as UpdateFavoriteApi,
+} from 'domains/Favorites/api';
 import ContextData from '../dtos/ContextData';
 
 const FavoriteContext = createContext<ContextData>({} as ContextData);
@@ -8,7 +13,7 @@ const FavoriteContext = createContext<ContextData>({} as ContextData);
 const FavoriteProvider: React.FC = ({ children }) => {
   const [favoriteList, setFavoriteList] = useState([] as any[]);
 
-  const Favorites = useCallback(async () => {
+  const Favorites = useCallback(async (): Promise<ListResponse[]> => {
     const response = await FavoritesApi();
     const updatedResponse = response.map(movie => ({
       ...movie,
@@ -20,12 +25,35 @@ const FavoriteProvider: React.FC = ({ children }) => {
     return updatedResponse;
   }, []);
 
+  const UpdateFavorite = useCallback(
+    async (movieId: number): Promise<UpdateResponse | null> => {
+      const response = await UpdateFavoriteApi(movieId);
+
+      // Remove favorite
+      if (!response) {
+        const updatedFavoriteList = favoriteList.filter(
+          favorite => +favorite.movieId !== +movieId,
+        );
+        setFavoriteList(updatedFavoriteList);
+
+        return null;
+      }
+
+      // Add favorite
+      setFavoriteList([...favoriteList, response]);
+
+      return response;
+    },
+    [favoriteList],
+  );
+
   return (
     <FavoriteContext.Provider
       value={{
         favoriteList,
         setFavoriteList,
         Favorites,
+        UpdateFavorite,
       }}
     >
       {children}

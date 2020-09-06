@@ -2,6 +2,7 @@ import React, { useCallback, useEffect, useState } from 'react';
 import { useHistory } from 'react-router-dom';
 import { BsHeartFill } from 'react-icons/bs';
 
+import { useAuth } from 'domains/Auth/hooks';
 import { useFavorite } from 'domains/Favorites/hooks';
 import Route from 'routes/enums';
 import { Color } from 'shared/enums';
@@ -11,17 +12,27 @@ import Props from './dtos';
 
 const Movie: React.FC<Props> = ({ ...movie }) => {
   const history = useHistory();
-  const { favoriteList } = useFavorite();
+  const { user } = useAuth();
+  const { favoriteList, UpdateFavorite } = useFavorite();
   const [isFavorite, setIsFavorite] = useState(movie.favorite);
 
-  const handleFavorite = useCallback(() => {
-    setIsFavorite(!isFavorite);
-  }, [isFavorite]);
+  const handleFavorite = useCallback(async () => {
+    try {
+      if (!user) {
+        alert('Entre com sua conta para adicionar aos favoritos.');
+        return;
+      }
+
+      await UpdateFavorite(movie.id);
+    } catch (error) {
+      console.log('handleFavorite -> error', error);
+    }
+  }, [user, UpdateFavorite, movie.id]);
 
   // Check if movie is in favorite list and change status
   useEffect(() => {
     const response = favoriteList.find(
-      favorite => favorite.movieId === movie.id,
+      favorite => +favorite.movieId === +movie.id,
     );
 
     setIsFavorite(!!response);
