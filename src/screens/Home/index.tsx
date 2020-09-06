@@ -1,9 +1,8 @@
 import React, { useEffect, useState } from 'react';
 
+import { useFavorite } from 'domains/Favorites/hooks';
 import { NowPlaying, Popular } from 'domains/Movie/api';
-import { Favorites } from 'domains/Favorites/api';
 import MovieResponse from 'domains/Movie/api/Popular/Response';
-import FavoriteResponse from 'domains/Favorites/api/List/Response';
 
 import { ColumnLayout } from 'components/Layout';
 import { Footer, Header, Highlights, MovieList } from 'containers';
@@ -12,15 +11,16 @@ import { HeaderBackground, ContentContainer } from './styles';
 const Home: React.FC = () => {
   const [popularList, setPopularList] = useState([] as MovieResponse[]);
   const [nowPlayingList, setNowPlayingList] = useState([] as MovieResponse[]);
-  const [favoriteList, setFavoriteList] = useState([] as FavoriteResponse[]);
+
+  const { Favorites, favoriteList } = useFavorite();
 
   useEffect(() => {
     NowPlaying().then(response => setNowPlayingList(response));
     Popular().then(response => setPopularList(response));
-    Favorites().then(response => {
-      setFavoriteList(response);
+    Favorites().then((response: any) => {
+      console.log('Home:React.FC -> response', response);
     });
-  }, []);
+  }, [Favorites]);
 
   return (
     <ColumnLayout>

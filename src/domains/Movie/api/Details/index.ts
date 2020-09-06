@@ -32,6 +32,7 @@ const parseResponse = (movie: RawResponse): Response => {
     releaseDate: formatDate({ value: movie.release_date }),
     poster: formatTmdbImage({ value: movie.poster_path }),
     backdrop: formatTmdbImage({ value: movie.backdrop_path }),
+    favorite: false,
   } as Response;
 
   return parsedMovie;

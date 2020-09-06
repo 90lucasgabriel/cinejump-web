@@ -26,9 +26,9 @@ const parseResponse = async (
     // Merge API and TMDB results
     return {
       ...details,
-      id: favorite.id,
+      favoriteId: favorite.id,
       userId: favorite.user_id,
-      movieId: favorite.movie_id,
+      movieId: +favorite.movie_id,
     };
   });
 
