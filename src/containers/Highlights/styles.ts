@@ -5,6 +5,10 @@ import { Size } from 'shared/enums';
 export const Container = styled(DefaultContainer)`
   display: flex;
   flex-wrap: wrap;
+
+  @media (max-width: 1280px) {
+    margin: 0 ${Size.Medium};
+  }
 `;
 
 export const MajorContainer = styled.div`
@@ -15,13 +19,12 @@ export const MajorContainer = styled.div`
   border-radius: ${Size.Small};
 
   & + div {
-
-  margin-left: ${Size.Default};
+    margin-left: ${Size.Default};
   }
 
-  @media (max-width: 900px) {
+  /* @media (max-width: 900px) {
     margin: 0 ${Size.Default};
-  }
+  } */
 `;
 
 export const MinorContainer = styled.div`
