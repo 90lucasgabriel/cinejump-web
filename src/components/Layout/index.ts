@@ -7,8 +7,14 @@ const BasicLayout = styled.div<DefaultProps>`
   background: ${props => props.background || 'transparent'};
   color: ${props => props.color || Color.Primary};
 
-  h2 {
-    color: ${props => props.color};
+  svg,
+  p,
+  h1,
+  h2,
+  h3,
+  a {
+    color: ${props => props.color} !important;
+    fill: ${props => props.color} !important;
   }
 
   ${props => {
@@ -16,8 +22,14 @@ const BasicLayout = styled.div<DefaultProps>`
       return css`
         background: ${Color.Fill};
         color: ${Color.Primary};
-        h2 {
-          color: ${Color.Primary};
+        svg,
+        p,
+        h1,
+        h2,
+        h3,
+        a {
+          color: ${Color.Primary} !important;
+          fill: ${Color.Primary} !important;
         }
       `;
     }
@@ -26,8 +38,14 @@ const BasicLayout = styled.div<DefaultProps>`
       return css`
         background: ${Color.Primary};
         color: ${Color.Fill};
-        h2 {
-          color: ${Color.Fill};
+        svg,
+        p,
+        h1,
+        h2,
+        h3,
+        a {
+          color: ${Color.Fill} !important;
+          fill: ${Color.Fill} !important;
         }
       `;
     }
@@ -36,8 +54,14 @@ const BasicLayout = styled.div<DefaultProps>`
       return css`
         background: ${Color.Secondary};
         color: ${Color.Fill};
-        h2 {
-          color: ${Color.Fill};
+        svg,
+        p,
+        h1,
+        h2,
+        h3,
+        a {
+          color: ${Color.Fill} !important;
+          fill: ${Color.Fill} !important;
         }
       `;
     }
