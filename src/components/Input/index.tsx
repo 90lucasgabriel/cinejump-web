@@ -1,24 +1,12 @@
-import React, {
-  InputHTMLAttributes,
-  useEffect,
-  useRef,
-  useState,
-  useCallback,
-} from 'react';
-import { IconBaseProps } from 'react-icons';
+import React, { useEffect, useRef, useState, useCallback } from 'react';
 import { FiAlertTriangle } from 'react-icons/fi';
 import { useField } from '@unform/core';
 
 import { Color } from 'shared/enums';
+import Props from './dtos';
 import { Container, Error } from './styles';
 
-interface InputProps extends InputHTMLAttributes<HTMLInputElement> {
-  name: string;
-  containerStyle?: object;
-  icon?: React.ComponentType<IconBaseProps>;
-}
-
-const Input: React.FC<InputProps> = ({
+const Input: React.FC<Props> = ({
   name,
   containerStyle = {},
   icon: Icon,
