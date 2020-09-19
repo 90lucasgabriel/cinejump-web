@@ -7,7 +7,7 @@ import MovieList from '.';
 
 // Config and Controls
 export default {
-  title: 'Components/MovieList',
+  title: 'Containers/MovieList',
   component: MovieList,
   argTypes: {
     isLoading: { control: 'boolean' },
