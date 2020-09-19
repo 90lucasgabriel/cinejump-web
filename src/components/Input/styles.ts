@@ -9,10 +9,14 @@ interface ContainerProps {
 }
 
 export const Container = styled.div<ContainerProps>`
+  * {
+    outline: 0;
+  }
+
   background: ${Color.FillSecondary};
   border-radius: 10px;
   padding: ${Size.Default};
-  width: 100%;
+  width: min(400px, 100%);
   color: ${Color.Text};
   border: 2px solid ${Color.FillSecondary};
   display: flex;
