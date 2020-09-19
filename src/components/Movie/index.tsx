@@ -13,7 +13,7 @@ import Props from './dtos';
 const Movie: React.FC<Props> = ({ ...movie }) => {
   const history = useHistory();
   const { user } = useAuth();
-  const { favoriteList, UpdateFavorite } = useFavorite();
+  const { favoriteList = [], UpdateFavorite } = useFavorite();
   const [isFavorite, setIsFavorite] = useState(movie.favorite);
 
   const handleFavorite = useCallback(async () => {
