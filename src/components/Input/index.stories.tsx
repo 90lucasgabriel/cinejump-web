@@ -11,6 +11,19 @@ import Input from '.';
 export default {
   title: 'Components/Input',
   component: Input,
+  args: {
+    name: 'inputName',
+    containerStyle: { fontSize: 'auto' },
+    placeholder: 'Input placeholder',
+  },
+  argTypes: {
+    icon: {
+      control: {
+        type: 'select',
+        options: [FaRegUserCircle, null],
+      },
+    },
+  },
 } as Meta;
 
 // Component
@@ -26,17 +39,9 @@ const Template: Story<Props> = args => {
 
 // Stories
 export const Default = Template.bind({});
-Default.args = {
-  name: 'email',
-  icon: FaRegUserCircle,
-  containerStyle: { fontSize: 'auto' },
-};
 
-Default.argTypes = {
-  icon: {
-    control: {
-      type: 'select',
-      options: [FaRegUserCircle, null],
-    },
-  },
+// With icon
+export const WithIcon = Template.bind({});
+WithIcon.args = {
+  icon: FaRegUserCircle,
 };
