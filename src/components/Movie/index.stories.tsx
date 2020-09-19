@@ -10,7 +10,7 @@ export default {
   component: Movie,
   args: {
     id: 495764,
-    favorite: false,
+    favorite: true,
     poster: 'https://image.tmdb.org/t/p/w780/A50Ngq9lh9aCTGHC6kttrppHNoF.jpg',
   },
 } as Meta;

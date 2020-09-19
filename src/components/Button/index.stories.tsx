@@ -14,7 +14,7 @@ export default {
     variant: {
       control: {
         type: 'inline-radio',
-        options: ['basic', 'outlined', 'icon'],
+        options: ['', 'basic', 'outlined', 'icon'],
       },
     },
     loading: { control: 'boolean' },

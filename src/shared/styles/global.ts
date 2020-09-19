@@ -7,6 +7,7 @@ export default createGlobalStyle`
     padding: 0;
     box-sizing: border-box;
     outline: 0;
+    font-family: 'Ubuntu', -apple-system, system-ui, sans-serif;
   }
   html {
     min-height: 100%;
@@ -27,7 +28,6 @@ export default createGlobalStyle`
     -webkit-font-smoothing: antialiased;
   }
   body, input, button {
-    font-family: 'Ubuntu', -apple-system, system-ui, sans-serif;
     font-weight: 100;
   }
   h1, strong {
