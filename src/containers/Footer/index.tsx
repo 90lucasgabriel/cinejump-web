@@ -1,6 +1,8 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 
+import DefaultProps from 'shared/dtos';
+
 import { ReactComponent as Logo } from 'assets/logo.svg';
 import { Color } from 'shared/enums';
 import RouteEnum from 'routes/enums';
@@ -8,9 +10,13 @@ import RouteEnum from 'routes/enums';
 import { Wrapper } from 'components/Layout';
 import { Container, LogoContainer, LinksContainer } from './styles';
 
-const Footer: React.FC = () => {
+const Footer: React.FC<DefaultProps> = ({
+  theme = 'primary',
+  background,
+  color,
+}) => {
   return (
-    <Wrapper theme="primary">
+    <Wrapper theme={theme} background={background} color={color}>
       <Container>
         <LinksContainer>
           <a href="https://github.com/90lucasgabriel">
