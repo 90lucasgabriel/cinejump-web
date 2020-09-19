@@ -1,3 +1,11 @@
+import React from 'react';
+import { BrowserRouter as Router } from 'react-router-dom';
+
+// import GlobalStyle from 'shared/styles/global';
+import { EnvironmentProvider } from 'domains/Environment/hooks';
+import { AuthProvider } from 'domains/Auth/hooks';
+import { FavoriteProvider } from 'domains/Favorites/hooks';
+
 import { Color } from 'shared/enums';
 import './reset.css';
 
@@ -12,3 +20,19 @@ export const parameters = {
     ],
   },
 };
+
+export const decorators = [
+  Story => (
+    <Router>
+      <EnvironmentProvider>
+        <AuthProvider>
+          <FavoriteProvider>
+            <Story />
+
+            {/* <GlobalStyle /> */}
+          </FavoriteProvider>
+        </AuthProvider>
+      </EnvironmentProvider>
+    </Router>
+  ),
+];
