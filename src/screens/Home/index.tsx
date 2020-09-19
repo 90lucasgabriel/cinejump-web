@@ -40,7 +40,7 @@ const Home: React.FC = () => {
           isLoading={popularList.length === 0}
         />
         <MovieList
-          theme="light"
+
           title="Lançamentos"
           data={nowPlayingList}
           isLoading={nowPlayingList.length === 0}

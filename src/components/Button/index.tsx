@@ -1,15 +1,11 @@
-import React, { ButtonHTMLAttributes } from 'react';
+import React from 'react';
 
 import { ReactComponent as Loading } from 'assets/loading.svg';
 import { Color } from 'shared/enums';
+import Props from './dtos';
 import { Container } from './styles';
 
-type ButtonProps = ButtonHTMLAttributes<HTMLButtonElement> & {
-  loading?: boolean;
-  variant?: 'basic' | 'raised' | 'outlined' | 'icon';
-};
-
-const Button: React.FC<ButtonProps> = ({ children, loading, ...rest }) => (
+const Button: React.FC<Props> = ({ children, loading, ...rest }) => (
   <Container type="button" {...rest}>
     {loading ? <Loading fill={Color.Fill} /> : children}
   </Container>

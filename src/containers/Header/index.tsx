@@ -1,25 +1,28 @@
 import React from 'react';
+import { useHistory } from 'react-router-dom';
 
 import { FaRegUserCircle } from 'react-icons/fa';
 import { FiSearch } from 'react-icons/fi';
 import { ReactComponent as Logo } from 'assets/logo.svg';
 
 import { Color } from 'shared/enums';
-import RouteEnum from 'routes/enums';
+import Route from 'routes/enums';
 import { Wrapper } from 'components/Layout';
 import Button from 'components/Button';
 import { Container, MenuContainer, Link, ActionMenuContainer } from './styles';
 
 const Header: React.FC = () => {
+  const history = useHistory();
+
   return (
     <Wrapper theme="primary">
       <Container>
         <MenuContainer>
-          <Link to={RouteEnum.BASE}>Filmes</Link>
-          <Link to={RouteEnum.BASE}>Séries</Link>
+          <Link to={Route.BASE}>Filmes</Link>
+          <Link to={Route.BASE}>Séries</Link>
         </MenuContainer>
 
-        <Link to={RouteEnum.BASE}>
+        <Link to={Route.BASE}>
           <Logo fill={Color.Fill} />
         </Link>
 
@@ -27,7 +30,7 @@ const Header: React.FC = () => {
           <Button variant="icon">
             <FiSearch />
           </Button>
-          <Button variant="icon">
+          <Button variant="icon" onClick={() => history.push(Route.LOGIN)}>
             <FaRegUserCircle />
           </Button>
         </ActionMenuContainer>
