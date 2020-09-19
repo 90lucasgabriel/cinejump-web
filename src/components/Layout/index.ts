@@ -4,14 +4,21 @@ import { Color } from 'shared/enums';
 import DefaultProps from 'shared/dtos';
 
 const BasicLayout = styled.div<DefaultProps>`
-  background: ${props => props.background || 'inherit'};
-  color: ${props => props.color || 'inherit'};
+  background: ${props => props.background || 'transparent'};
+  color: ${props => props.color || Color.Primary};
+
+  h2 {
+    color: ${props => props.color};
+  }
 
   ${props => {
     if (props.theme === 'light') {
       return css`
         background: ${Color.Fill};
         color: ${Color.Primary};
+        h2 {
+          color: ${Color.Primary};
+        }
       `;
     }
 
@@ -19,6 +26,9 @@ const BasicLayout = styled.div<DefaultProps>`
       return css`
         background: ${Color.Primary};
         color: ${Color.Fill};
+        h2 {
+          color: ${Color.Fill};
+        }
       `;
     }
 
@@ -26,6 +36,9 @@ const BasicLayout = styled.div<DefaultProps>`
       return css`
         background: ${Color.Secondary};
         color: ${Color.Fill};
+        h2 {
+          color: ${Color.Fill};
+        }
       `;
     }
 

@@ -34,13 +34,11 @@ const Home: React.FC = () => {
       <ContentContainer>
         <Highlights movies={popularList} />
         <MovieList
-          theme="light"
           title="Populares"
           data={popularList}
           isLoading={popularList.length === 0}
         />
         <MovieList
-
           title="Lançamentos"
           data={nowPlayingList}
           isLoading={nowPlayingList.length === 0}
@@ -48,7 +46,6 @@ const Home: React.FC = () => {
 
         {user && (
           <MovieList
-            theme="light"
             title="Favoritos"
             data={favoriteList}
             isLoading={isFavoriteLoading}

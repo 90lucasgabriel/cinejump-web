@@ -31,12 +31,14 @@ const Movie: React.FC<Props> = ({ ...movie }) => {
 
   // Check if movie is in favorite list and change status
   useEffect(() => {
-    const response = favoriteList.find(
-      favorite => +favorite.movieId === +movie.id,
-    );
+    if (user) {
+      const response = favoriteList.find(
+        favorite => +favorite.movieId === +movie.id,
+      );
 
-    setIsFavorite(!!response);
-  }, [favoriteList, movie.id]);
+      setIsFavorite(!!response);
+    }
+  }, [user, favoriteList, movie.id]);
 
   if (!movie.poster && !movie.backdrop) {
     return null;

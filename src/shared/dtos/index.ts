@@ -1,5 +1,7 @@
+import { Color } from 'shared/enums';
+
 export default interface Props {
-  theme?: string;
-  background?: string;
-  color?: string;
+  theme?: 'primary' | 'secondary' | 'light';
+  background?: Color;
+  color?: Color;
 }
