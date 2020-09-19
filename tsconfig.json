@@ -15,6 +15,10 @@
     "noEmit": true,
     "jsx": "react",
     "baseUrl": "src",
+    "declaration": true,
+    "declarationMap": true,
+    "outDir": "./dist",
+    "rootDirs": ["./src", "./dist"],
   },
   "include": ["src"]
 }

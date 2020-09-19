@@ -17,6 +17,8 @@ export const Container = styled.button<ButtonProps>`
   text-transform: uppercase;
   transition: background-color 0.2s;
   width: min(300px, 100%);
+  cursor: pointer;
+  outline: 0;
 
   background: ${Color.Primary};
   height: ${Size.Largest};
@@ -33,10 +35,13 @@ export const Container = styled.button<ButtonProps>`
 
   &:hover {
     ${props =>
-      props.variant !== 'basic' &&
-      css`
-        background: ${shade(0.1, Color.Primary)};
-      `}
+      !props.variant || props.variant === 'basic'
+        ? css`
+            background-color: ${shade(0.1, Color.Primary)};
+          `
+        : css`
+            background-color: rgba(0, 0, 0, 0.1)};
+          `}
   }
 
   ${props =>
