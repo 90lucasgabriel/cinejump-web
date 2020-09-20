@@ -53,7 +53,7 @@ const Input: React.FC<Props> = ({
       />
 
       {error && (
-        <Error title={error}>
+        <Error value={error}>
           <FiAlertTriangle color={Color.Error} size={20} />
         </Error>
       )}

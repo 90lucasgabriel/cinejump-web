@@ -64,11 +64,4 @@ export const Error = styled(Tooltip)`
   svg {
     margin: 0;
   }
-  span {
-    background: ${Color.Error};
-    color: ${Color.Fill};
-    &::before {
-      border-color: ${Color.Error} transparent;
-    }
-  }
 `;
