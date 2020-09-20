@@ -1,7 +1,7 @@
 import React from 'react';
 import { Story, Meta } from '@storybook/react';
 
-import Footer from '.';
+import Footer from 'containers/Footer';
 
 // Config and Controls
 export default {
