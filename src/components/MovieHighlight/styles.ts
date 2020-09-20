@@ -8,6 +8,7 @@ export const Container = styled.div`
   align-items: center;
   justify-content: center;
   overflow: hidden;
+  border-radius: ${Size.Small};
 
   &:hover {
     cursor: pointer;
@@ -43,4 +44,10 @@ export const Title = styled.h3`
 export const Overview = styled.p`
   line-height: ${Size.Medium};
   margin-top: ${Size.Smallest};
+
+  display: -webkit-box;
+  -webkit-line-clamp: 3;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  text-overflow: ellipsis;
 `;

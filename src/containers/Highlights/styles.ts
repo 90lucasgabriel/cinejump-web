@@ -16,7 +16,6 @@ export const MajorContainer = styled.div`
   height: 36rem;
   flex: 2 0 280px;
   overflow: hidden;
-  border-radius: ${Size.Small};
 
   & + div {
     margin-left: ${Size.Default};
@@ -44,8 +43,6 @@ export const MinorContainer = styled.div`
     position: relative;
     flex: 1 0 300px;
     height: 17rem;
-    border-radius: ${Size.Small};
-
     overflow: hidden;
   }
 `;
