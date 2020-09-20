@@ -1,17 +1,15 @@
 import React from 'react';
 
-import { Container } from './styles';
+import TooltipProps from 'components/Tooltip/dtos';
+import { Container, Content } from './styles';
 
-interface TooltipProps {
-  title: string;
-  className?: string;
-}
-
-const Tooltip: React.FC<TooltipProps> = ({ title, className, children }) => {
+const Tooltip: React.FC<TooltipProps> = ({ value, children, ...rest }) => {
   return (
-    <Container className={className}>
-      {children}
-      <span>{title}</span>
+    <Container>
+      <Content {...rest}>
+        {children}
+        <span>{value}</span>
+      </Content>
     </Container>
   );
 };

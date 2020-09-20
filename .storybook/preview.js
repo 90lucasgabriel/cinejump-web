@@ -27,7 +27,16 @@ export const decorators = [
       <EnvironmentProvider>
         <AuthProvider>
           <FavoriteProvider>
-            <Story />
+            <div
+              style={{
+                display: 'flex',
+                alignItems: 'center',
+                justifyContent: 'center',
+                height: '100vh'
+              }}
+            >
+              <Story />
+            </div>
 
             {/* <GlobalStyle /> */}
           </FavoriteProvider>
