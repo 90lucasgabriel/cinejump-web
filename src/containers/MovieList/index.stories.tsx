@@ -1,7 +1,6 @@
 import React from 'react';
 import { Story, Meta } from '@storybook/react';
 
-import { Color } from 'shared/enums';
 import Props from './dtos';
 import MovieList from '.';
 

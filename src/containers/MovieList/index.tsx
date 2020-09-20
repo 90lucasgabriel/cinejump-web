@@ -1,6 +1,5 @@
 import React from 'react';
 
-import { Color } from 'shared/enums';
 import { ReactComponent as Loading } from 'assets/loading.svg';
 
 import { Wrapper } from 'components/Layout';
