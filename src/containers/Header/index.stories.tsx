@@ -1,12 +1,12 @@
 import React from 'react';
 import { Story, Meta } from '@storybook/react';
 
-import Footer from '.';
+import Header from '.';
 
 // Config and Controls
 export default {
-  title: 'Containers/Footer',
-  component: Footer,
+  title: 'Containers/Header',
+  component: Header,
   argTypes: {
     theme: {
       control: {
@@ -22,7 +22,7 @@ export default {
 
 // Component
 const Template: Story<any> = args => {
-  return <Footer {...args} />;
+  return <Header {...args} />;
 };
 
 // Stories

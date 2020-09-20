@@ -17,6 +17,14 @@ export default {
         options: ['', 'basic', 'outlined', 'icon'],
       },
     },
+    theme: {
+      control: {
+        type: 'inline-radio',
+        options: ['', 'primary', 'secondary', 'light'],
+      },
+    },
+    background: { control: 'color' },
+    color: { control: 'color' },
     loading: { control: 'boolean' },
     onClick: { action: 'clicked' },
   },
@@ -39,11 +47,6 @@ Outlined.args = {
   children: 'Outlined',
   variant: 'outlined',
   loading: false,
-};
-Outlined.parameters = {
-  backgrounds: {
-    default: 'Primary',
-  },
 };
 
 export const Icon = Template.bind({});

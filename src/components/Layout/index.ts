@@ -1,73 +1,12 @@
-import styled, { css } from 'styled-components';
+import styled from 'styled-components';
 
-import { Color } from 'shared/enums';
 import DefaultProps from 'shared/dtos';
+import { getBackground, getColor } from 'shared/utils';
 
 const BasicLayout = styled.div<DefaultProps>`
-  background: ${props => props.background || 'transparent'};
-  color: ${props => props.color || Color.Primary};
-
-  & > svg,
-  p,
-  h1,
-  h2,
-  h3,
-  a {
-    color: ${props => props.color};
-    fill: ${props => props.color};
-  }
-
-  ${props => {
-    if (props.theme === 'light') {
-      return css`
-        background: ${Color.Fill};
-        color: ${Color.Primary};
-        & > svg,
-        p,
-        h1,
-        h2,
-        h3,
-        a {
-          color: ${Color.Primary};
-          fill: ${Color.Primary};
-        }
-      `;
-    }
-
-    if (props.theme === 'primary') {
-      return css`
-        background: ${Color.Primary};
-        color: ${Color.Fill};
-        & > svg,
-        p,
-        h1,
-        h2,
-        h3,
-        a {
-          color: ${Color.Fill};
-          fill: ${Color.Fill};
-        }
-      `;
-    }
-
-    if (props.theme === 'secondary') {
-      return css`
-        background: ${Color.Secondary};
-        color: ${Color.Fill};
-        & > svg,
-        p,
-        h1,
-        h2,
-        h3,
-        a {
-          color: ${Color.Fill};
-          fill: ${Color.Fill};
-        }
-      `;
-    }
-
-    return ``;
-  }}
+  background: ${props => getBackground(props.theme, props.background)};
+  color: ${props => getColor(props.theme, props.color)};
+  fill: ${props => getColor(props.theme, props.color)};
 `;
 
 export const ColumnLayout = styled(BasicLayout)`
