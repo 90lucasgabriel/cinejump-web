@@ -5,6 +5,10 @@ import { Container as DefaultContainer } from 'components/Layout';
 import { Color, PosterHeight, Size } from 'shared/enums';
 import { getColor } from 'shared/utils';
 
+interface LoadingProps {
+  loaderColor?: string;
+}
+
 export const Container = styled(DefaultContainer)`
   padding: ${Size.Medium} 0;
   display: flex;
@@ -20,7 +24,7 @@ export const Title = styled.h2<DefaultProps>`
   }
 `;
 
-export const LoadingContainer = styled.div`
+export const LoadingContainer = styled.div<LoadingProps>`
   display: flex;
   align-items: center;
   justify-content: center;
@@ -29,6 +33,7 @@ export const LoadingContainer = styled.div`
   svg {
     height: ${Size.Largest};
     width: ${Size.Largest};
+    fill: ${props => getColor(props.theme, props.loaderColor)};
   }
 `;
 

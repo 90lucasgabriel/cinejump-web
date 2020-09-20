@@ -8,6 +8,12 @@ import Movie from '.';
 export default {
   title: 'Components/Movie',
   component: Movie,
+  argTypes: {
+    favorite: { control: 'boolean' },
+    poster: { control: 'text' },
+    backdrop: { control: 'text' },
+    id: { control: 'number' },
+  },
   args: {
     id: 495764,
     favorite: true,

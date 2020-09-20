@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useCallback, useEffect, useState } from 'react';
 
 import { useAuth } from 'domains/Auth/hooks';
 import { useFavorite } from 'domains/Favorites/hooks';
@@ -17,16 +17,36 @@ const Home: React.FC = () => {
   const { user } = useAuth();
   const { Favorites, favoriteList } = useFavorite();
 
+  const getNowPlaying = useCallback(async () => {
+    const response = await NowPlaying();
+    setNowPlayingList(response);
+
+    return response;
+  }, []);
+
+  const getPopular = useCallback(async () => {
+    const response = await Popular();
+    setPopularList(response);
+
+    return response;
+  }, []);
+
+  const getFavorites = useCallback(async () => {
+    setIsFavoriteLoading(true);
+    const response = await Favorites();
+    setIsFavoriteLoading(false);
+
+    return response;
+  }, [Favorites]);
+
   useEffect(() => {
-    NowPlaying().then(response => setNowPlayingList(response));
-    Popular().then(response => setPopularList(response));
+    getNowPlaying();
+    getPopular();
 
     if (user) {
-      Favorites().then(() => {
-        setIsFavoriteLoading(false);
-      });
+      getFavorites();
     }
-  }, [user, Favorites]);
+  }, [user, getNowPlaying, getPopular, getFavorites]);
 
   return (
     <ColumnLayout>

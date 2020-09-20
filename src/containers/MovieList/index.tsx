@@ -1,6 +1,5 @@
 import React from 'react';
 
-import { Color } from 'shared/enums';
 import { ReactComponent as Loading } from 'assets/loading.svg';
 
 import { Wrapper } from 'components/Layout';
@@ -23,7 +22,7 @@ const MovieList: React.FC<Props> = ({
   title,
   data,
   isLoading = false,
-  loaderColor = Color.Primary,
+  loaderColor,
   message = 'Não há resultados.',
 }) => {
   return (
@@ -36,8 +35,8 @@ const MovieList: React.FC<Props> = ({
         )}
 
         {isLoading && (
-          <LoadingContainer>
-            <Loading fill={loaderColor} />
+          <LoadingContainer theme={theme} loaderColor={loaderColor}>
+            <Loading />
           </LoadingContainer>
         )}
 
