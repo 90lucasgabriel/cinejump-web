@@ -1,8 +1,8 @@
 import React from 'react';
 import { Story, Meta } from '@storybook/react';
 
-import Props from './dtos';
-import MovieList from '.';
+import Props from 'containers/MovieList/dtos';
+import MovieList from 'containers/MovieList';
 
 // Config and Controls
 export default {

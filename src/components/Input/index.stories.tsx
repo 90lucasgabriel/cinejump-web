@@ -4,8 +4,8 @@ import { FormHandles } from '@unform/core';
 import { Form } from '@unform/web';
 import { FaRegUserCircle } from 'react-icons/fa';
 
-import Props from './dtos';
-import Input from '.';
+import Props from 'components/Input/dtos';
+import Input from 'components/Input';
 
 // Config and Controls
 export default {

@@ -2,8 +2,8 @@ import React from 'react';
 import { Story, Meta } from '@storybook/react';
 import { FaRegUserCircle } from 'react-icons/fa';
 
-import Props from './dtos';
-import Button from '.';
+import Props from 'components/Button/dtos';
+import Button from 'components/Button';
 
 // Config and Controls
 export default {
