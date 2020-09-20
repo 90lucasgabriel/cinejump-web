@@ -7,14 +7,14 @@ const BasicLayout = styled.div<DefaultProps>`
   background: ${props => props.background || 'transparent'};
   color: ${props => props.color || Color.Primary};
 
-  svg,
+  & > svg,
   p,
   h1,
   h2,
   h3,
   a {
-    color: ${props => props.color} !important;
-    fill: ${props => props.color} !important;
+    color: ${props => props.color};
+    fill: ${props => props.color};
   }
 
   ${props => {
@@ -22,14 +22,14 @@ const BasicLayout = styled.div<DefaultProps>`
       return css`
         background: ${Color.Fill};
         color: ${Color.Primary};
-        svg,
+        & > svg,
         p,
         h1,
         h2,
         h3,
         a {
-          color: ${Color.Primary} !important;
-          fill: ${Color.Primary} !important;
+          color: ${Color.Primary};
+          fill: ${Color.Primary};
         }
       `;
     }
@@ -38,14 +38,14 @@ const BasicLayout = styled.div<DefaultProps>`
       return css`
         background: ${Color.Primary};
         color: ${Color.Fill};
-        svg,
+        & > svg,
         p,
         h1,
         h2,
         h3,
         a {
-          color: ${Color.Fill} !important;
-          fill: ${Color.Fill} !important;
+          color: ${Color.Fill};
+          fill: ${Color.Fill};
         }
       `;
     }
@@ -54,14 +54,14 @@ const BasicLayout = styled.div<DefaultProps>`
       return css`
         background: ${Color.Secondary};
         color: ${Color.Fill};
-        svg,
+        & > svg,
         p,
         h1,
         h2,
         h3,
         a {
-          color: ${Color.Fill} !important;
-          fill: ${Color.Fill} !important;
+          color: ${Color.Fill};
+          fill: ${Color.Fill};
         }
       `;
     }
