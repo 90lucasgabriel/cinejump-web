@@ -48,11 +48,6 @@ Outlined.args = {
   variant: 'outlined',
   loading: false,
 };
-Outlined.parameters = {
-  backgrounds: {
-    default: 'Primary',
-  },
-};
 
 export const Icon = Template.bind({});
 Icon.args = {
