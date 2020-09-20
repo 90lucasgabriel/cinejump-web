@@ -17,6 +17,8 @@ export default {
     placeholder: 'Input placeholder',
   },
   argTypes: {
+    name: { control: 'text' },
+    placeholder: { control: 'text' },
     icon: {
       control: {
         type: 'select',

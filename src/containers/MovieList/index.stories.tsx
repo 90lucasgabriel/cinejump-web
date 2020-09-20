@@ -10,6 +10,9 @@ export default {
   title: 'Containers/MovieList',
   component: MovieList,
   argTypes: {
+    data: { control: 'object' },
+    title: { control: 'text' },
+    message: { control: 'text' },
     isLoading: { control: 'boolean' },
     loaderColor: { control: 'color' },
     theme: {
@@ -98,13 +101,9 @@ const Template: Story<Props> = args => {
 
 // Stories
 export const Default = Template.bind({});
-Default.args = {
-  loaderColor: Color.Primary,
-};
 
 export const Basic = Template.bind({});
 Basic.args = {
-  loaderColor: Color.Primary,
   theme: 'primary',
   title: 'Popular movies',
 };
@@ -112,7 +111,6 @@ Basic.args = {
 export const Empty = Template.bind({});
 Empty.args = {
   title: 'Empty data',
-  loaderColor: Color.Primary,
   data: [],
   message: 'Custom message',
 };
