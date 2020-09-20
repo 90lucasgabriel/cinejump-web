@@ -4,7 +4,6 @@ import { Link } from 'react-router-dom';
 import DefaultProps from 'shared/dtos';
 
 import { ReactComponent as Logo } from 'assets/logo.svg';
-import { Color } from 'shared/enums';
 import RouteEnum from 'routes/enums';
 
 import { Wrapper } from 'components/Layout';
