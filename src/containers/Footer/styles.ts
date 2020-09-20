@@ -1,5 +1,6 @@
-import styled from 'styled-components';
+import styled, { css } from 'styled-components';
 
+import DefaultProps from 'shared/dtos';
 import { Color, Size } from 'shared/enums';
 import { Container as DefaultContainer } from 'components/Layout';
 
@@ -10,18 +11,44 @@ export const Container = styled(DefaultContainer)`
   padding: ${Size.Default};
 `;
 
-export const LogoContainer = styled.div`
+export const LogoContainer = styled.div<DefaultProps>`
   display: flex;
   flex: 1 1 440px;
   align-items: center;
   justify-content: center;
+
+  svg {
+    fill: ${props => props.color || Color.Primary};
+
+    ${props => {
+      if (props.theme === 'light') {
+        return css`
+          fill: ${Color.Primary};
+        `;
+      }
+
+      if (props.theme === 'primary') {
+        return css`
+          fill: ${Color.Fill};
+        `;
+      }
+
+      if (props.theme === 'secondary') {
+        return css`
+          fill: ${Color.Fill};
+        `;
+      }
+
+      return ``;
+    }}
+  }
 
   @media (max-width: 915px) {
     margin-top: ${Size.Large};
   }
 `;
 
-export const LinksContainer = styled.div`
+export const LinksContainer = styled.div<DefaultProps>`
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -30,8 +57,31 @@ export const LinksContainer = styled.div`
 
   a {
     padding: ${Size.Smallest};
-    color: ${Color.Fill};
     text-decoration: none;
+
+    color: ${props => props.color || Color.Primary};
+
+    ${props => {
+      if (props.theme === 'light') {
+        return css`
+          color: ${Color.Primary};
+        `;
+      }
+
+      if (props.theme === 'primary') {
+        return css`
+          color: ${Color.Fill};
+        `;
+      }
+
+      if (props.theme === 'secondary') {
+        return css`
+          color: ${Color.Fill};
+        `;
+      }
+
+      return ``;
+    }}
   }
 
   a:hover {

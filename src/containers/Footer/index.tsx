@@ -18,7 +18,7 @@ const Footer: React.FC<DefaultProps> = ({
   return (
     <Wrapper theme={theme} background={background} color={color}>
       <Container>
-        <LinksContainer>
+        <LinksContainer theme={theme}>
           <a href="https://github.com/90lucasgabriel">
             Desenvolvido por Lucas Gabriel
           </a>
@@ -32,9 +32,9 @@ const Footer: React.FC<DefaultProps> = ({
           </a>
         </LinksContainer>
 
-        <LogoContainer>
+        <LogoContainer theme={theme}>
           <Link to={RouteEnum.BASE}>
-            <Logo fill={Color.Fill} />
+            <Logo fill={color} />
           </Link>
         </LogoContainer>
       </Container>
