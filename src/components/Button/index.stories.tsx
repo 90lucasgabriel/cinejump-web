@@ -17,6 +17,14 @@ export default {
         options: ['', 'basic', 'outlined', 'icon'],
       },
     },
+    theme: {
+      control: {
+        type: 'inline-radio',
+        options: ['', 'primary', 'secondary', 'light'],
+      },
+    },
+    background: { control: 'color' },
+    color: { control: 'color' },
     loading: { control: 'boolean' },
     onClick: { action: 'clicked' },
   },

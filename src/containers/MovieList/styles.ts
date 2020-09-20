@@ -1,7 +1,9 @@
 import styled from 'styled-components';
 
+import DefaultProps from 'shared/dtos';
 import { Container as DefaultContainer } from 'components/Layout';
 import { Color, PosterHeight, Size } from 'shared/enums';
+import { getColor } from 'shared/utils';
 
 export const Container = styled(DefaultContainer)`
   padding: ${Size.Medium} 0;
@@ -9,8 +11,9 @@ export const Container = styled(DefaultContainer)`
   flex-direction: column;
 `;
 
-export const Title = styled.h2`
+export const Title = styled.h2<DefaultProps>`
   margin-bottom: ${Size.Small};
+  color: ${props => getColor(props.theme, props.color)};
 
   @media (max-width: 1280px) {
     margin-left: ${Size.Medium};

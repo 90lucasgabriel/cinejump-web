@@ -1,8 +1,9 @@
-import styled, { css } from 'styled-components';
+import styled from 'styled-components';
 
 import DefaultProps from 'shared/dtos';
 import { Color, Size } from 'shared/enums';
 import { Container as DefaultContainer } from 'components/Layout';
+import { getColorByTheme } from 'shared/utils';
 
 export const Container = styled(DefaultContainer)`
   display: flex;
@@ -18,29 +19,8 @@ export const LogoContainer = styled.div<DefaultProps>`
   justify-content: center;
 
   svg {
-    fill: ${props => props.color || Color.Primary};
-
-    ${props => {
-      if (props.theme === 'light') {
-        return css`
-          fill: ${Color.Primary};
-        `;
-      }
-
-      if (props.theme === 'primary') {
-        return css`
-          fill: ${Color.Fill};
-        `;
-      }
-
-      if (props.theme === 'secondary') {
-        return css`
-          fill: ${Color.Fill};
-        `;
-      }
-
-      return ``;
-    }}
+    fill: ${props =>
+      props.color || getColorByTheme(props.theme) || Color.Primary};
   }
 
   @media (max-width: 915px) {
@@ -58,30 +38,8 @@ export const LinksContainer = styled.div<DefaultProps>`
   a {
     padding: ${Size.Smallest};
     text-decoration: none;
-
-    color: ${props => props.color || Color.Primary};
-
-    ${props => {
-      if (props.theme === 'light') {
-        return css`
-          color: ${Color.Primary};
-        `;
-      }
-
-      if (props.theme === 'primary') {
-        return css`
-          color: ${Color.Fill};
-        `;
-      }
-
-      if (props.theme === 'secondary') {
-        return css`
-          color: ${Color.Fill};
-        `;
-      }
-
-      return ``;
-    }}
+    color: ${props =>
+      props.color || getColorByTheme(props.theme) || Color.Primary};
   }
 
   a:hover {

@@ -100,6 +100,7 @@ const Signup: React.FC = () => {
         <Button
           type="button"
           variant="outlined"
+          theme="light"
           onClick={() => history.push(Route.LOGIN)}
         >
           LOGIN

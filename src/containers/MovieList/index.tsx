@@ -29,7 +29,11 @@ const MovieList: React.FC<Props> = ({
   return (
     <Wrapper theme={theme} background={background} color={color}>
       <Container>
-        {title && <Title>{title}</Title>}
+        {title && (
+          <Title theme={theme} color={color}>
+            {title}
+          </Title>
+        )}
 
         {isLoading && (
           <LoadingContainer>

@@ -1,9 +1,12 @@
 import styled, { css } from 'styled-components';
 import { shade } from 'polished';
+
+import DefaultProps from 'shared/dtos';
+import { getBackground, getColor } from 'shared/utils';
 import { Color, Size } from 'shared/enums';
 
-interface ButtonProps {
-  variant?: 'basic' | 'raised' | 'outlined' | 'icon';
+interface ButtonProps extends DefaultProps {
+  variant?: 'basic' | 'raised' | 'outlined' | 'icon' | 'icon-fill';
 }
 
 export const Container = styled.button<ButtonProps>`
@@ -20,32 +23,37 @@ export const Container = styled.button<ButtonProps>`
   cursor: pointer;
   outline: 0;
 
-  background: ${Color.Primary};
   height: ${Size.Largest};
-  color: ${Color.Fill};
   font-size: ${Size.Default};
+  color: ${props => getColor(props.theme, props.color, Color.Text)};
+  background: ${props =>
+    getBackground(props.theme, props.background, Color.Fill)};
+
+  &:hover {
+    background-color: ${props =>
+      shade(0.1, getBackground(props.theme, props.background, Color.Fill))};
+  }
 
   ${props =>
     props.variant === 'outlined' &&
     css`
-      border: 1px solid ${Color.Fill};
+      border: 1px solid ${getBackground(props.theme, props.color, Color.Fill)};
+      color: ${getBackground(props.theme, props.color, Color.Fill)};
       background: transparent;
-      color: ${Color.Fill};
+
+      &:hover {
+        background-color: ${`${getBackground(
+          props.theme,
+          props.color,
+          Color.Fill,
+        )}15`};
+      }
     `}
 
-  &:hover {
-    ${props =>
-      !props.variant || props.variant === 'basic'
-        ? css`
-            background-color: ${shade(0.1, Color.Primary)};
-          `
-        : css`
-            background-color: rgba(0, 0, 0, 0.1)};
-          `}
-  }
+
 
   ${props =>
-    props.variant === 'icon' &&
+    (props.variant === 'icon' || props.variant === 'icon-fill') &&
     css`
       width: auto;
       height: auto;
@@ -57,12 +65,10 @@ export const Container = styled.button<ButtonProps>`
   svg {
     height: 100%;
 
-    /* fill: ${Color.Fill}; */
-
     ${props =>
       props.variant === 'outlined' &&
       css`
-        stroke: ${Color.Fill};
+        stroke: ${getColor(props.theme, props.color)};
       `}
 
     ${props =>
@@ -70,6 +76,15 @@ export const Container = styled.button<ButtonProps>`
       css`
         width: ${Size.Medium};
         height: ${Size.Medium};
+        stroke: ${getColor(props.theme, props.color)};
+      `}
+
+    ${props =>
+      props.variant === 'icon-fill' &&
+      css`
+        width: ${Size.Medium};
+        height: ${Size.Medium};
+        fill: ${getColor(props.theme, props.color)};
       `}
   }
 `;
