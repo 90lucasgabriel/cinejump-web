@@ -33,7 +33,11 @@ const Template: Story<Props> = args => {
   const formRef = useRef<FormHandles>(null);
 
   return (
-    <Form ref={formRef} onSubmit={() => console.log('submitted')}>
+    <Form
+      ref={formRef}
+      onSubmit={() => console.log('submitted')}
+      style={{ width: '500px' }}
+    >
       <Input {...args} />
     </Form>
   );

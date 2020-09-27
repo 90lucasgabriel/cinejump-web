@@ -21,9 +21,11 @@ export const Container = styled.div<ContainerProps>`
   border: 2px solid ${Color.FillSecondary};
   display: flex;
   align-items: center;
+
   & + div {
     margin-top: ${Size.Default};
   }
+
   ${props =>
     props.isErrored &&
     css`
@@ -51,6 +53,7 @@ export const Container = styled.div<ContainerProps>`
       color: ${Color.Text};
     }
   }
+
   svg {
     margin-right: ${Size.Default};
     width: ${Size.Default};
@@ -61,6 +64,7 @@ export const Container = styled.div<ContainerProps>`
 export const Error = styled(Tooltip)`
   height: 20px;
   margin-left: 16px;
+
   svg {
     margin: 0;
   }
