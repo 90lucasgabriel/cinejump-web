@@ -15,7 +15,12 @@ const Footer: React.FC<DefaultProps> = ({
   color,
 }) => {
   return (
-    <Wrapper theme={theme} background={background} color={color}>
+    <Wrapper
+      theme={theme}
+      background={background}
+      color={color}
+      data-testid="footer-container"
+    >
       <Container>
         <LinksContainer theme={theme} background={background} color={color}>
           <a href="https://github.com/90lucasgabriel">
@@ -33,7 +38,7 @@ const Footer: React.FC<DefaultProps> = ({
 
         <LogoContainer theme={theme} background={background} color={color}>
           <Link to={RouteEnum.BASE}>
-            <Logo fill={color} />
+            <Logo fill={color} data-testid="footer-logo" />
           </Link>
         </LogoContainer>
       </Container>
