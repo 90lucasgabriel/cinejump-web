@@ -116,6 +116,24 @@ describe('Button Component', () => {
     expect(countChildren).toBe(1);
   });
 
+  it('not loading should show children.', async () => {
+    // Arrange
+    const { getByRole } = render(
+      <Button loading={false}>
+        <span>text</span>
+      </Button>,
+    );
+
+    // Act
+    const containerElement = getByRole('button');
+    const spanCount = containerElement.getElementsByTagName('span').length;
+    const svgCount = containerElement.getElementsByTagName('svg').length;
+
+    // Assert
+    expect(spanCount).toBe(1);
+    expect(svgCount).toBe(0);
+  });
+
   // it('should shade when mouse over.', async () => {
   //   // Arrange
   //   const rgb = parseToRgb(shade(0.1, Color.Primary));
