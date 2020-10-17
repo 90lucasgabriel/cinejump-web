@@ -1,4 +1,5 @@
 export { default as Button } from './Button';
+export { default as EnvironmentLabel } from './EnvironmentLabel';
 export { default as Input } from './Input';
 export { default as Movie } from './Movie';
 export { default as MovieHighlight } from './MovieHighlight';
