@@ -84,7 +84,7 @@ const Login: React.FC = () => {
             type="password"
             placeholder="Senha"
           />
-          <ErrorMessage>{error}</ErrorMessage>
+          <ErrorMessage data-testid="errorMessage">{error}</ErrorMessage>
           <Button type="submit" loading={loginLoading}>
             ENTRAR
           </Button>
