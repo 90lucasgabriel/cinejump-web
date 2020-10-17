@@ -29,6 +29,10 @@ const Movie: React.FC<Props> = ({ ...movie }) => {
     }
   }, [user, UpdateFavorite, movie.id]);
 
+  const handleRedirect = useCallback(() => {
+    history.push(`${Route.MOVIE}/${movie.id}`);
+  }, [history, movie.id]);
+
   // Check if movie is in favorite list and change status
   useEffect(() => {
     if (user) {
@@ -49,10 +53,7 @@ const Movie: React.FC<Props> = ({ ...movie }) => {
       <IconButton onClick={handleFavorite}>
         <BsHeartFill fill={isFavorite ? Color.Primary : Color.Empty} />
       </IconButton>
-      <Poster
-        src={movie.poster || movie.backdrop}
-        onClick={() => history.push(`${Route.MOVIE}/${movie.id}`)}
-      />
+      <Poster src={movie.poster || movie.backdrop} onClick={handleRedirect} />
     </Container>
   );
 };
