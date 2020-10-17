@@ -53,7 +53,7 @@ describe('Movie Component', () => {
   });
 
   // TODO: Assert useCallbacks
-  it('should redirect to movie when clicked.', async () => {
+  it('* should redirect to movie when clicked.', async () => {
     // Arrange
     const handleRedirect = jest.fn();
     const { getByRole } = render(
@@ -73,7 +73,7 @@ describe('Movie Component', () => {
   });
 
   // TODO: Mocks
-  it('should check favorite when logged in.', async () => {
+  it('* should check favorite when logged in.', async () => {
     // Arrange
     jest.mock('domains/Auth/hooks', () => {
       return {
@@ -106,7 +106,7 @@ describe('Movie Component', () => {
   });
 
   // TODO: Mocks
-  it('should check favorite.', async () => {
+  it('* should check favorite.', async () => {
     // Arrange
     jest.mock('domains/Auth/hooks', () => {
       return {
@@ -138,7 +138,7 @@ describe('Movie Component', () => {
   });
 
   // TODO: Assert useCallbacks
-  it('should fire handleFavorite when favorite icon clicked.', async () => {
+  it('* should fire handleFavorite when favorite icon clicked.', async () => {
     // Arrange
     jest.mock('domains/Auth/hooks', () => {
       return {
