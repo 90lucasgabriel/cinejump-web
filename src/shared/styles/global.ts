@@ -1,4 +1,4 @@
-import { createGlobalStyle } from 'styled-components';
+import { createGlobalStyle, css } from 'styled-components';
 import { Color, Size } from 'shared/enums';
 
 export default createGlobalStyle`
@@ -26,6 +26,13 @@ export default createGlobalStyle`
     color: ${Color.Text};
     font-size: ${Size.Default};
     -webkit-font-smoothing: antialiased;
+
+    ${
+      process.env.REACT_APP_IS_PRODUCTION === 'false' &&
+      css`
+        margin-top: ${Size.Large};
+      `
+    }
   }
   body, input, button {
     font-weight: 100;
