@@ -42,6 +42,7 @@ _Video demo._
 - [Storybook](https://storybook.js.org/) _[5]_
 - [Jest](https://jestjs.io/docs/en/tutorial-react) _[6]_
 - [Netlify](https://www.netlify.com/) _[7]_
+- [TMDB API](https://www.themoviedb.org/) _[8]_
 
 
 
@@ -101,3 +102,5 @@ localhost:3000
 [6] Jest - Available on https://jestjs.io/docs/en/tutorial-react;
 
 [7] Netlify - Available on https://www.netlify.com/;
+
+[8] TMDB API - Available on https://www.themoviedb.org/;
