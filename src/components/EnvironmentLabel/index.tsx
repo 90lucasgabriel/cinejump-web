@@ -7,7 +7,9 @@ const EnvironmentLabel: React.FC = () => {
     return null;
   }
 
-  return <Container>Ambiente: Desenvolvimento</Container>;
+  const version = process.env.REACT_APP_VERSION;
+
+  return <Container>Versão: {version} | Ambiente: Desenvolvimento</Container>;
 };
 
 export default EnvironmentLabel;
