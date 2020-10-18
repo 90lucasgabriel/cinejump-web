@@ -18,15 +18,15 @@ See lists and details of your favorite movies and series. It was developed for [
 
 <div align="center">
 
-https://youtu.be/aN1hqTngqWc
+https://youtu.be/NnUBjlUwcU0
 
-[![](http://img.youtube.com/vi/NnUBjlUwcU0/0.jpg)](https://www._youtube.com/watch?v=NnUBjlUwcU0 "Video demo.")
+[![](http://img.youtube.com/vi/NnUBjlUwcU0/0.jpg)](https://www.youtube.com/watch?v=NnUBjlUwcU0 "Video demo.")
 
 _Video demo._
 </div>
 
 ## 2. Live Preview
-- Production:[https://cinejump.lucasgabriel.com.br/](https://cinejump.lucasgabriel.com.br/)
+- Production: [https://cinejump.lucasgabriel.com.br/](https://cinejump.lucasgabriel.com.br/)
 - Development: [https://dev.cinejump.lucasgabriel.com.br/](https://dev.cinejump.lucasgabriel.com.br/)
 - Storybook: [https://storybook.cinejump.lucasgabriel.com.br/](https://storybook.cinejump.lucasgabriel.com.br/)
 
