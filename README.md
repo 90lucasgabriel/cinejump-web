@@ -1,44 +1,106 @@
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+<div align="center">
+    <img alt="Cinejump" title="#cinejump" src="./.github/logo.svg" width="150px" />
 
-## Available Scripts
+![Web](./.github/mockup.png)
+</div>
 
-In the project directory, you can run:
+## Summary
+  - [1. Introduction](#1-introduction)
+  - [2. Live Preview](#2-live-preview)
+  - [3. Technologies](#3-technologies)
+  - [4. Installing and Running](#4-installing-and-running)
+  - [5. References](#5-references)
 
-### `yarn start`
 
-Runs the app in the development mode.<br />
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
 
-The page will reload if you make edits.<br />
-You will also see any lint errors in the console.
+## 1. Introduction
+See lists and details of your favorite movies and series. It was developed for [Academia Webjump](https://webjump.com.br/), an internal educational program for new employees _[1]_.
 
-### `yarn test`
+<div align="center">
 
-Launches the test runner in the interactive watch mode.<br />
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+https://youtu.be/NnUBjlUwcU0
 
-### `yarn build`
+[![](http://img.youtube.com/vi/NnUBjlUwcU0/0.jpg)](https://www.youtube.com/watch?v=NnUBjlUwcU0 "Video demo.")
 
-Builds the app for production to the `build` folder.<br />
-It correctly bundles React in production mode and optimizes the build for the best performance.
+_Video demo._
+</div>
 
-The build is minified and the filenames include the hashes.<br />
-Your app is ready to be deployed!
+## 2. Live Preview
+- Production: [https://cinejump.lucasgabriel.com.br/](https://cinejump.lucasgabriel.com.br/)
+- Development: [https://dev.cinejump.lucasgabriel.com.br/](https://dev.cinejump.lucasgabriel.com.br/)
+- Storybook: [https://storybook.cinejump.lucasgabriel.com.br/](https://storybook.cinejump.lucasgabriel.com.br/)
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
 
-### `yarn eject`
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
 
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
+## 3. Technologies
+- [ReactJS](https://reactjs.org/) _[2]_
+- [Styled Components](https://styled-components.com/) _[3]_
+- [Typescript](https://www.typescriptlang.org/) _[4]_
+- [Storybook](https://storybook.js.org/) _[5]_
+- [Jest](https://jestjs.io/docs/en/tutorial-react) _[6]_
+- [Netlify](https://www.netlify.com/) _[7]_
+- [TMDB API](https://www.themoviedb.org/) _[8]_
 
-## Learn More
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+
+
+
+## 4. Installing and Running
+- Clone this repo:
+```
+git clone git@github.com:90lucasgabriel/cinejump-web.git
+```
+- Access directory:
+```
+cd cinejump-web
+```
+- Install dependencies:
+```
+yarn
+```
+- Create and setup environment files:
+```
+/.env
+REACT_APP_IS_PRODUCTION=true
+REACT_APP_API_URL=https://cinejump-api.herokuapp.com
+REACT_APP_TMDB_API_URL=https://api.themoviedb.org/3
+REACT_APP_TMDB_API_KEY=YOUR_OWN_TMDB_API_KEY
+REACT_APP_TMDB_IMAGE_URL=https://image.tmdb.org/t/p
+
+/.env.development
+REACT_APP_IS_PRODUCTION=false
+REACT_APP_API_URL=https://cinejump-api-dev.herokuapp.com
+REACT_APP_TMDB_API_URL=https://api.themoviedb.org/3
+REACT_APP_TMDB_API_KEY=YOUR_OWN_TMDB_API_KEY
+REACT_APP_TMDB_IMAGE_URL=https://image.tmdb.org/t/p
+```
+- Run
+```
+yarn start
+```
+- Access (Browser)
+```
+localhost:3000
+```
+
+
+## 5. References
+[1] Webjump - Avaiable on https://webjump.com.br/;
+
+[2] React - Avaiable on https://reactjs.org/;
+
+[3] Styled Components - Available on https://styled-components.com/;
+
+[4] Typescript - Available on https://www.typescriptlang.org/;
+
+[5] Storybook - Available on https://storybook.js.org/;
+
+[6] Jest - Available on https://jestjs.io/docs/en/tutorial-react;
+
+[7] Netlify - Available on https://www.netlify.com/;
+
+[8] TMDB API - Available on https://www.themoviedb.org/;
