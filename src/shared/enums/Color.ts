@@ -6,6 +6,7 @@ enum Color {
   Text = '#777',
   Error = '#c53030',
   Empty = '#0F0F0F',
+  Transparent = 'transparent',
 }
 
 export default Color;
