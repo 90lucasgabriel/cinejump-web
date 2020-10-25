@@ -1,16 +1,8 @@
-import Recommendations from 'domains/Movie/api/Recommendations/RawResponse';
-
 export default interface RawResponse {
   poster_path?: string;
-  budget: number;
   overview: string;
   release_date: string;
-  genres: [
-    {
-      id: number;
-      name: string;
-    },
-  ];
+  genres_ids: number[];
   id: number;
   original_title: string;
   original_language: string;
@@ -20,7 +12,4 @@ export default interface RawResponse {
   vote_count: number;
   video: boolean;
   vote_average: number;
-  recommendations?: {
-    results: Recommendations[];
-  };
 }

@@ -1,3 +1,5 @@
+import Recommendations from 'domains/Movie/api/Recommendations/Response';
+
 export default interface Response {
   poster?: string;
   backdrop?: string;
@@ -17,4 +19,6 @@ export default interface Response {
   voteCount: number;
   voteAverage: number;
   favorite: boolean;
+
+  recommendations?: Recommendations[];
 }

@@ -1,24 +1,31 @@
 import tmdb from 'services/api/tmdb';
 
+import Params from 'domains/Movie/api/Details/Params';
 import RawResponse from 'domains/Movie/api/Details/RawResponse';
 import Response from 'domains/Movie/api/Details/Response';
+import Recommendations from 'domains/Movie/api/Recommendations/Response';
 import formatDate from 'shared/utils/formatDate';
 import formatTmdbImage from 'shared/utils/formatTmdbImage';
 
-const Details = async (movieId: number): Promise<Response> => {
-  const response = await rawPopular(movieId);
+const Details = async (movieId: number, params?: Params): Promise<Response> => {
+  const response = await rawPopular(movieId, params);
 
   return parseResponse(response);
 };
 
-export const rawPopular = async (movieId: number): Promise<RawResponse> => {
-  const response = await tmdb.get(`/movie/${movieId}`);
+export const rawPopular = async (
+  movieId: number,
+  params?: Params,
+): Promise<RawResponse> => {
+  const response = await tmdb.get(`/movie/${movieId}`, {
+    params: { append_to_response: params?.appendToResponse },
+  });
 
   return response.data;
 };
 
 const parseResponse = (movie: RawResponse): Response => {
-  const parsedMovie = {
+  let parsedMovie = {
     overview: movie.overview,
     budget: movie.budget,
     genres: movie.genres,
@@ -34,6 +41,18 @@ const parseResponse = (movie: RawResponse): Response => {
     backdrop: formatTmdbImage({ value: movie.backdrop_path }),
     favorite: false,
   } as Response;
+
+  const recommendations = movie.recommendations?.results.map(
+    recommendation => ({
+      poster: formatTmdbImage({ value: recommendation.poster_path }),
+      backdrop: formatTmdbImage({ value: recommendation.poster_path }),
+      id: recommendation.id,
+      title: recommendation.title,
+      favorite: false,
+    }),
+  ) as Recommendations[];
+
+  parsedMovie = { ...parsedMovie, recommendations };
 
   return parsedMovie;
 };

@@ -9,7 +9,7 @@ import { Home, Movie, Login, Signup, Profile, Favorites } from 'screens';
 const Routes: React.FC = () => (
   <Switch>
     <Route path={RouteEnum.BASE} exact component={Home} />
-    <Route path={RouteEnum.MOVIE} component={Movie} />
+    <Route path={`${RouteEnum.MOVIE}/:id`} component={Movie} />
 
     <Route path={RouteEnum.LOGIN} component={Login} notLoggedIn />
     <Route path={RouteEnum.SIGNUP} component={Signup} notLoggedIn />

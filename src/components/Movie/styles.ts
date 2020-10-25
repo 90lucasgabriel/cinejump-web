@@ -1,10 +1,11 @@
 import styled from 'styled-components';
+import ContainerProps from './dtos/ContainerProps';
 import { PosterHeight, PosterWidth, Size } from 'shared/enums';
 
-export const Container = styled.div`
+export const Container = styled.div<ContainerProps>`
   position: relative;
-  width: ${PosterWidth.Default};
-  height: ${PosterHeight.Default};
+  width: ${props => (props.large ? PosterWidth.Large : PosterWidth.Default)};
+  height: ${props => (props.large ? PosterHeight.Large : PosterHeight.Default)};
   border-radius: ${Size.Smallest};
   overflow: hidden;
 
