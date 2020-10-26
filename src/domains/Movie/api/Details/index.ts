@@ -29,12 +29,20 @@ const parseResponse = (movie: RawResponse): Response => {
     overview: movie.overview,
     budget: movie.budget,
     genres: movie.genres,
+    genresNames: movie.genres.map(genre => genre.name),
     id: movie.id,
     originalTitle: movie.original_title,
     title: movie.title,
     popularity: movie.popularity,
     voteCount: movie.vote_count,
     voteAverage: movie.vote_average,
+    runtime: `${movie.runtime} min`,
+    tagline: movie.tagline,
+
+    credits: movie.credits,
+    directorName: movie.credits?.crew.find(
+      person => person.job.toUpperCase() === 'DIRECTOR',
+    )?.name,
 
     releaseDate: formatDate({ value: movie.release_date }),
     poster: formatTmdbImage({ value: movie.poster_path }),

@@ -30,6 +30,10 @@ _Video demo._
 - Development: [https://dev.cinejump.lucasgabriel.com.br/](https://dev.cinejump.lucasgabriel.com.br/)
 - Storybook: [https://storybook.cinejump.lucasgabriel.com.br/](https://storybook.cinejump.lucasgabriel.com.br/)
 
+>
+- Figma Layout: [https://www.figma.com/file/um4dcEJCOlEvB6kCe9KCOD](https://www.figma.com/file/um4dcEJCOlEvB6kCe9KCOD)
+- Figma Prototype: [https://www.figma.com/proto/um4dcEJCOlEvB6kCe9KCOD/Cinejump?node-id=7185%3A17&scaling=scale-down-width](https://www.figma.com/proto/um4dcEJCOlEvB6kCe9KCOD/Cinejump?node-id=7185%3A17&scaling=scale-down-width)
+
 
 
 

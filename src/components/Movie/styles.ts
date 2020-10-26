@@ -1,6 +1,7 @@
 import styled from 'styled-components';
-import ContainerProps from './dtos/ContainerProps';
+
 import { PosterHeight, PosterWidth, Size } from 'shared/enums';
+import ContainerProps from './dtos/ContainerProps';
 
 export const Container = styled.div<ContainerProps>`
   position: relative;

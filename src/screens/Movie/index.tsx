@@ -10,7 +10,20 @@ import { ColumnLayout, Container, Movie as Poster } from 'components';
 import { Footer, Header, MovieList } from 'containers';
 import {
   ContentContainer,
+  MovieContainer,
+  PosterContainer,
   MovieDetailsContainer,
+  TitleContainer,
+  Title,
+  Subtitle,
+  Tagline,
+  OverviewContainer,
+  OverviewTitle,
+  Overview,
+  VoteAverage,
+  VoteAverageTitle,
+  Director,
+  DirectorTitle,
   HeaderBackground,
 } from './styles';
 
@@ -23,7 +36,7 @@ const Movie: React.FC<any> = () => {
     try {
       setIsLoading(true);
       const params = {
-        appendToResponse: 'recommendations',
+        appendToResponse: 'recommendations,credits',
       };
 
       const response = await Details(+id, params);
@@ -47,22 +60,40 @@ const Movie: React.FC<any> = () => {
       <Header background={Color.Transparent} color={Color.Fill} />
       <ContentContainer>
         <Container>
-          <MovieDetailsContainer>
-            <Poster {...movie} large />
-          </MovieDetailsContainer>
+          <MovieContainer>
+            <PosterContainer>
+              <Poster {...movie} large />
+            </PosterContainer>
+            <MovieDetailsContainer>
+              <TitleContainer>
+                <Title>{movie.title}</Title>
+                <Subtitle>
+                  {movie.releaseDate} | {movie.genresNames} | {movie.runtime}
+                </Subtitle>
+              </TitleContainer>
+              {movie.tagline && <Tagline>{`"${movie.tagline}"`}</Tagline>}
+              <OverviewContainer>
+                <OverviewTitle>Sinopse</OverviewTitle>
+                <Overview>{movie.overview}</Overview>
+              </OverviewContainer>
+              <VoteAverage>
+                <VoteAverageTitle>Votação do público:</VoteAverageTitle>{' '}
+                {movie.voteAverage}
+              </VoteAverage>
+              <Director>
+                <DirectorTitle>Diretor: </DirectorTitle>
+                {movie.directorName}
+              </Director>
+            </MovieDetailsContainer>
+          </MovieContainer>
         </Container>
-        <Container>Outros conteúdos</Container>
-        {/* <MovieList
-          title="Populares"
-          data={popularList}
-          isLoading={popularList.length === 0}
-        />
+
         <MovieList
-          title="Lançamentos"
-          data={nowPlayingList}
-          isLoading={nowPlayingList.length === 0}
+          title="Elenco"
+          data={movie.recommendations || []}
+          isLoading={isLoading}
+          message="Você ainda não possui favoritos."
         />
-        */}
 
         <MovieList
           title="Recomendações"
