@@ -16,7 +16,7 @@ const Person: React.FC<Props> = ({ large = false, ...person }) => {
   const history = useHistory();
 
   const handleRedirect = useCallback(() => {
-    // history.push(`${Route.MOVIE}/${person.id}`);
+    history.push(`${Route.PERSON}/${person.id}`);
   }, [history, person.id]);
 
   return (

@@ -1,5 +1,5 @@
 import styled from 'styled-components';
-import { Color, PosterHeight, Size } from 'shared/enums';
+import { Color, Size } from 'shared/enums';
 
 export const Container = styled.div``;
 
@@ -28,17 +28,14 @@ export const ContentContainer = styled.div`
 `;
 
 export const MovieContainer = styled.div`
-  /* height: 50rem; */
   color: ${Color.Fill};
   display: flex;
   justify-content: center;
-  /* padding: ${Size.Large}; */
 
   @media (max-width: 1280px) {
     margin-left: ${Size.Medium};
     margin-right: ${Size.Medium};
   }
-
 
   @media (max-width: 715px) {
     flex-direction: column;

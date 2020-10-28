@@ -3,6 +3,7 @@ enum Route {
   LOGIN = '/login',
   SIGNUP = '/signup',
   MOVIE = '/movie',
+  PERSON = '/person',
   PROFILE = '/profile',
   FAVORITES = '/favorites',
 }

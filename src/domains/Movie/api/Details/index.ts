@@ -84,7 +84,7 @@ const parseResponse = (movie: RawResponse): Response => {
     profile: formatTmdbImage({ value: person.profile_path }),
   })) as Crew[];
 
-  const credits = { cast, crew };
+  const credits = { cast, crew } as Credits;
 
   parsedMovie = { ...parsedMovie, recommendations, credits };
 

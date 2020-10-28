@@ -58,6 +58,10 @@ const Movie: React.FC<any> = () => {
   return (
     <ColumnLayout>
       <Header background={Color.Transparent} color={Color.Fill} />
+      <HeaderBackground>
+        <img src={movie.backdrop} alt="backdrop" />
+      </HeaderBackground>
+
       <ContentContainer>
         <Container>
           <MovieContainer>
@@ -103,9 +107,6 @@ const Movie: React.FC<any> = () => {
         />
       </ContentContainer>
       <Footer />
-      <HeaderBackground>
-        <img src={movie.backdrop} alt="backdrop" />
-      </HeaderBackground>
     </ColumnLayout>
   );
 };

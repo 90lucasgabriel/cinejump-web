@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 
-import { PosterHeight, PosterWidth, Size } from 'shared/enums';
+import { Color, PosterHeight, PosterWidth, Size } from 'shared/enums';
 import ContainerProps from './dtos/ContainerProps';
 
 export const Container = styled.div<ContainerProps>`
@@ -10,6 +10,7 @@ export const Container = styled.div<ContainerProps>`
   border-radius: ${Size.Smallest};
   overflow: hidden;
 
+  border: ${props => (props.large ? 0 : `1px solid ${Color.FillSecondary}`)};
   display: flex;
   align-items: center;
   justify-content: center;
