@@ -4,7 +4,7 @@ import { Switch } from 'react-router-dom';
 import Route from 'routes/Route';
 import RouteEnum from 'routes/enums';
 
-import { Home, Movie, Login, Signup, Profile, Favorites } from 'screens';
+import { Home, Movie, Login, Signup, Profile, Favorites } from 'pages';
 
 const Routes: React.FC = () => (
   <Switch>

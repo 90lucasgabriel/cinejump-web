@@ -5,7 +5,7 @@ import { FormHandles } from '@unform/core';
 import * as Yup from 'yup';
 
 import Route from 'routes/enums';
-import SignupFormData from 'screens/Signup/dtos/SignupFormData';
+import SignupFormData from 'pages/Signup/dtos/SignupFormData';
 import getValidationErrors from 'shared/utils/getValidationErrors';
 import api from 'services/api';
 
