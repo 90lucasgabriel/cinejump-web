@@ -1,3 +1,4 @@
+export { default as arrayToString } from './arrayToString';
 export { default as formatDate } from './formatDate';
 export { default as formatTmdbImage } from './formatTmdbImage';
 export { default as getBackground } from './colors/getBackground';

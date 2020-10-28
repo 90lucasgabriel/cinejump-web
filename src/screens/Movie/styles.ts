@@ -80,6 +80,7 @@ export const TitleContainer = styled.div`
 export const Title = styled.h1`
   margin-bottom: ${Size.Small};
   font-weight: 500;
+  line-height: ${Size.Large};
 `;
 
 export const Subtitle = styled.p``;

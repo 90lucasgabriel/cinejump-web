@@ -7,7 +7,7 @@ import { Color } from 'shared/enums';
 import { Details } from 'domains/Movie/api';
 
 import { ColumnLayout, Container, Movie as Poster } from 'components';
-import { Footer, Header, MovieList } from 'containers';
+import { Header, PersonList, MovieList, Footer } from 'containers';
 import {
   ContentContainer,
   MovieContainer,
@@ -88,18 +88,18 @@ const Movie: React.FC<any> = () => {
           </MovieContainer>
         </Container>
 
-        <MovieList
+        <PersonList
           title="Elenco"
-          data={movie.recommendations || []}
+          data={movie.credits?.cast || []}
           isLoading={isLoading}
-          message="Você ainda não possui favoritos."
+          message="Sem informações de elenco."
         />
 
         <MovieList
           title="Recomendações"
           data={movie.recommendations || []}
           isLoading={isLoading}
-          message="Você ainda não possui favoritos."
+          message="Recomendações indisponíveis."
         />
       </ContentContainer>
       <Footer />

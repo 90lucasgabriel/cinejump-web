@@ -13,7 +13,7 @@ export default interface Response {
       name: string;
     },
   ];
-  genresNames: string[];
+  genresNames: string;
   homepage?: string;
   id: number;
   originalTitle: string;

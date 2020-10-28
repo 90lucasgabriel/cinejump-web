@@ -1,25 +1,7 @@
+import Cast from 'domains/Movie/api/Credits/dtos/Cast';
+import Crew from 'domains/Movie/api/Credits/dtos/Crew';
+
 export default interface Response {
-  cast: [
-    {
-      castId: number;
-      character: string;
-      creditId: string;
-      gender?: number;
-      id: number;
-      name: string;
-      order: number;
-      profilePath?: string;
-    },
-  ];
-  crew: [
-    {
-      creditId: string;
-      department: string;
-      gender?: number;
-      id: number;
-      job: string;
-      name: string;
-      profilePath?: string;
-    },
-  ];
+  cast: Cast[];
+  crew: Crew[];
 }
