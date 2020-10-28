@@ -9,8 +9,9 @@ export const Container = styled.div<ContainerProps>`
   height: ${props => (props.large ? PosterHeight.Large : PosterHeight.Default)};
   border-radius: ${Size.Smallest};
   overflow: hidden;
+  box-shadow: 0 0 3px rgba(0, 0, 0, 0.5);
+  background: rgba(0, 0, 0, 0.5);
 
-  border: ${props => (props.large ? 0 : `1px solid ${Color.FillSecondary}`)};
   display: flex;
   align-items: center;
   justify-content: center;
@@ -25,22 +26,36 @@ export const Container = styled.div<ContainerProps>`
   }
 `;
 
-export const IconButton = styled.button`
-  position: absolute;
-  right: ${Size.Smallest};
-  top: ${Size.Smallest};
-  background: transparent;
-  border: none;
-
-  svg {
-    height: ${Size.Default};
-    width: ${Size.Default};
-  }
-`;
-
-export const Poster = styled.img`
+export const Profile = styled.img`
+  margin-top: -5rem;
   width: 100%;
   height: 100%;
   object-fit: cover;
   transition: width 0.2s, height 0.2s;
+`;
+
+export const NameContainer = styled.div`
+  position: absolute;
+  bottom: 0;
+  height: 7.4rem;
+  width: 100%;
+  background: ${Color.Fill};
+  overflow: hidden;
+  padding: ${Size.Smallest};
+`;
+
+export const PersonName = styled.div`
+  font-size: ${Size.Small};
+  color: ${Color.Secondary};
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+`;
+
+export const CharacterName = styled.div`
+  font-size: ${Size.Small};
+  color: ${Color.Text};
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
 `;
