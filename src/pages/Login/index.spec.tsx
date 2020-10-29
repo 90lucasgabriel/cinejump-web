@@ -2,7 +2,7 @@ import React from 'react';
 import { render, fireEvent, waitFor } from '@testing-library/react';
 
 import Route from 'routes/enums';
-import Login from 'screens/Login';
+import Login from 'pages/Login';
 
 const mockedHistoryPush = jest.fn();
 const mockedLogin = jest.fn();

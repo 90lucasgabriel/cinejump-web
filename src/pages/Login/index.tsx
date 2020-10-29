@@ -6,7 +6,7 @@ import * as Yup from 'yup';
 
 import { useAuth } from 'domains/Auth/hooks';
 import Route from 'routes/enums';
-import LoginFormData from 'screens/Login/dtos/LoginFormData';
+import LoginFormData from 'pages/Login/dtos/LoginFormData';
 import getValidationErrors from 'shared/utils/getValidationErrors';
 import { Color } from 'shared/enums';
 
