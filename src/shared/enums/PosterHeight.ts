@@ -1,6 +1,6 @@
 enum PosterHeight {
   Default = '25.3rem',
-  Large = '45.2rem',
+  Large = '55rem',
 }
 
 export default PosterHeight;

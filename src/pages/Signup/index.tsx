@@ -5,18 +5,19 @@ import { FormHandles } from '@unform/core';
 import * as Yup from 'yup';
 
 import Route from 'routes/enums';
-import SignupFormData from 'screens/Signup/dtos/SignupFormData';
+import SignupFormData from 'pages/Signup/dtos/SignupFormData';
 import getValidationErrors from 'shared/utils/getValidationErrors';
 import api from 'services/api';
 
 import { Color } from 'shared/enums';
-import { ReactComponent as Logo } from 'assets/logo.svg';
-import Input from 'components/Input';
-import Button from 'components/Button';
+import { ColumnLayout } from 'components/Layout';
+import { Input, Button } from 'components';
+import { Footer, Header } from 'containers';
 import {
-  RowLayout,
+  HeaderContainer,
+  Container,
+  RowContainer,
   SignupContainer,
-  LogoContainer,
   SignupHeader,
   SignupForm,
   ErrorMessage,
@@ -69,44 +70,49 @@ const Signup: React.FC = () => {
   );
 
   return (
-    <RowLayout>
-      <SignupContainer>
-        <LogoContainer>
-          <Logo fill={Color.Primary} />
-        </LogoContainer>
-        <SignupForm ref={formRef} onSubmit={handleSubmit}>
-          <SignupHeader>Criar Conta</SignupHeader>
+    <ColumnLayout>
+      <HeaderContainer>
+        <Header background={Color.Transparent} color={Color.Primary} />
+      </HeaderContainer>
+      <Container>
+        <RowContainer>
+          <SignupContainer>
+            <SignupForm ref={formRef} onSubmit={handleSubmit}>
+              <SignupHeader>Criar Conta</SignupHeader>
 
-          <Input name="name" icon={FiUser} placeholder="Nome" />
-          <Input name="email" icon={FiMail} placeholder="E-mail" />
-          <Input
-            name="password"
-            icon={FiLock}
-            type="password"
-            placeholder="Senha"
-          />
-          <ErrorMessage>{error}</ErrorMessage>
-          <Button type="submit" loading={signupLoading}>
-            CADASTRAR
-          </Button>
-        </SignupForm>
-      </SignupContainer>
+              <Input name="name" icon={FiUser} placeholder="Nome" />
+              <Input name="email" icon={FiMail} placeholder="E-mail" />
+              <Input
+                name="password"
+                icon={FiLock}
+                type="password"
+                placeholder="Senha"
+              />
+              <ErrorMessage>{error}</ErrorMessage>
+              <Button type="submit" loading={signupLoading}>
+                CADASTRAR
+              </Button>
+            </SignupForm>
+          </SignupContainer>
 
-      <LoginContainer>
-        <LoginHeader>Bem-vindo, Jumper!</LoginHeader>
-        <LoginDescription>
-          Para se manter conectado, faça login com suas credenciais.
-        </LoginDescription>
-        <Button
-          type="button"
-          variant="outlined"
-          theme="light"
-          onClick={() => history.push(Route.LOGIN)}
-        >
-          LOGIN
-        </Button>
-      </LoginContainer>
-    </RowLayout>
+          <LoginContainer>
+            <LoginHeader>Bem-vindo, Jumper!</LoginHeader>
+            <LoginDescription>
+              Para se manter conectado, faça login com suas credenciais.
+            </LoginDescription>
+            <Button
+              type="button"
+              variant="outlined"
+              theme="primary"
+              onClick={() => history.push(Route.LOGIN)}
+            >
+              LOGIN
+            </Button>
+          </LoginContainer>
+        </RowContainer>
+      </Container>
+      <Footer />
+    </ColumnLayout>
   );
 };
 
