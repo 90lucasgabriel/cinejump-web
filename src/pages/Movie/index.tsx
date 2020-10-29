@@ -36,7 +36,7 @@ const Movie: React.FC<any> = () => {
     try {
       setIsLoading(true);
       const params = {
-        appendToResponse: 'recommendations,credits',
+        appendToResponse: 'videos,images,recommendations,keywords,credits',
       };
 
       const response = await Details(+id, params);
