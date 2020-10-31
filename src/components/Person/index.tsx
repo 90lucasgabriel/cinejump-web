@@ -20,8 +20,8 @@ const Person: React.FC<Props> = ({ large = false, ...person }) => {
   }, [history, person.id]);
 
   return (
-    <Container large={large}>
-      <Profile src={person.profile} onClick={handleRedirect} />
+    <Container large={large} onClick={handleRedirect}>
+      <Profile src={person.profile} />
       <NameContainer>
         <PersonName>{person.name}</PersonName>
         <CharacterName>{person.character}</CharacterName>

@@ -57,6 +57,7 @@ export const ListContainer = styled.div`
 export const ListContent = styled.div`
   display: inline-flex;
   padding: 0 2px;
+  margin-top: 3px;
 
   @media (max-width: 1280px) {
     margin-left: ${Size.Medium};

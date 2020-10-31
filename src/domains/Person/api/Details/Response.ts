@@ -19,6 +19,6 @@ export default interface Response {
   imdbId: string;
   homepage?: string;
 
-  knownBy?: Movie[];
+  knownFor?: Movie[];
   filmography?: Movie[];
 }

@@ -57,7 +57,9 @@ const parseResponse = (person: RawResponse): Response => {
       id: movie.id,
       title: movie.title,
       favorite: false,
-      character: movie.character,
+      character: movie.character.toUpperCase().includes('SELF')
+        ? ''
+        : movie.character,
       releaseDate: formatDate({
         value: movie.release_date || movie.first_air_date,
       }),
@@ -69,16 +71,16 @@ const parseResponse = (person: RawResponse): Response => {
       name: movie.name,
       mediaType: movie.media_type,
     }))
-    .filter(item => item.originalDate) as Movie[];
+    .filter(item => item.originalDate && item.character.length > 0) as Movie[];
 
-  const knownBy = [...movies].sort((a, b) =>
-    a.popularity < b.popularity ? 1 : -1,
-  );
+  const knownFor = [...movies]
+    .sort((a, b) => (a.popularity < b.popularity ? 1 : -1))
+    .slice(0, 30);
   const filmography = [...movies].sort((a, b) =>
     Date.parse(a.originalDate) < Date.parse(b.originalDate) ? 1 : -1,
   );
 
-  parsedPerson = { ...parsedPerson, knownBy, filmography };
+  parsedPerson = { ...parsedPerson, knownFor, filmography };
 
   return parsedPerson;
 };

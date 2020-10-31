@@ -30,8 +30,12 @@ const Movie: React.FC<Props> = ({ large = false, ...movie }) => {
   }, [user, UpdateFavorite, movie.id]);
 
   const handleRedirect = useCallback(() => {
+    if (movie.mediaType === 'tv') {
+      return;
+    }
+
     history.push(`${Route.MOVIE}/${movie.id}`);
-  }, [history, movie.id]);
+  }, [history, movie.id, movie.mediaType]);
 
   // Check if movie is in favorite list and change status
   useEffect(() => {

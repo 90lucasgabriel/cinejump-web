@@ -11,6 +11,7 @@ export const Container = styled(DefaultContainer)`
   display: flex;
   align-items: center;
   justify-content: space-between;
+  position: relative;
 `;
 
 export const Link = styled(RouterLink)`
