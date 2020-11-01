@@ -10,7 +10,7 @@ import { Container, IconButton, Poster } from './styles';
 
 import Props from './dtos';
 
-const Movie: React.FC<Props> = ({ large = false, ...movie }) => {
+const Movie: React.FC<Props> = ({ size, ...movie }) => {
   const history = useHistory();
   const { user } = useAuth();
   const { favoriteList = [], UpdateFavorite } = useFavorite();
@@ -53,7 +53,7 @@ const Movie: React.FC<Props> = ({ large = false, ...movie }) => {
   }
 
   return (
-    <Container large={large}>
+    <Container size={size}>
       <IconButton onClick={handleFavorite}>
         <BsHeartFill fill={isFavorite ? Color.Primary : Color.Empty} />
       </IconButton>

@@ -30,7 +30,7 @@ export default createGlobalStyle`
     ${
       process.env.REACT_APP_IS_PRODUCTION === 'false' &&
       css`
-        margin-top: ${Size.Large};
+        /* margin-top: ${Size.Large}; */
       `
     }
   }

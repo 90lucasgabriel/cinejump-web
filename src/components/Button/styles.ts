@@ -60,6 +60,10 @@ export const Container = styled.button<ButtonProps>`
       padding: ${Size.Small};
       border-radius: 50%;
       background: transparent;
+
+      &:hover {
+        background: rgba(0, 0, 0, 0.1);
+      }
     `}
 
   svg {

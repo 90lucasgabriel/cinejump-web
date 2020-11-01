@@ -1,3 +1,3 @@
 export default interface ContainerProps {
-  large?: boolean;
+  size?: 'small' | 'large';
 }

@@ -24,9 +24,15 @@ export const Link = styled(RouterLink)`
 
 export const MenuContainer = styled.div<DefaultProps>`
   display: flex;
+  align-items: center;
+  justify-content: center;
 
   a {
     color: ${props => getColor(props.theme, props.color)};
+  }
+
+  @media (max-width: 715px) {
+    display: none;
   }
 `;
 
@@ -38,12 +44,11 @@ export const LogoContainer = styled.div<DefaultProps>`
   svg {
     fill: ${props => getColor(props.theme, props.color)};
   }
-
-  @media (max-width: 915px) {
-    margin-top: ${Size.Large};
-  }
 `;
 
 export const ActionMenuContainer = styled.div<DefaultProps>`
   display: flex;
+
+  align-items: center;
+  justify-content: center;
 `;
