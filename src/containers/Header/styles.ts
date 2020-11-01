@@ -31,9 +31,9 @@ export const MenuContainer = styled.div<DefaultProps>`
     color: ${props => getColor(props.theme, props.color)};
   }
 
-  @media (max-width: 715px) {
-    display: none;
-  }
+  /* @media (max-width: 715px) { */
+  display: none;
+  /* } */
 `;
 
 export const LogoContainer = styled.div<DefaultProps>`
