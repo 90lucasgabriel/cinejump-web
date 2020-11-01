@@ -95,7 +95,7 @@ const Person: React.FC<any> = () => {
           message="Sem informações de elenco."
         />
       </ContentContainer>
-      <Footer />
+      <Footer theme="secondary" />
     </ColumnLayout>
   );
 };

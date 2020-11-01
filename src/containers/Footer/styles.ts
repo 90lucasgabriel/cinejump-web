@@ -7,14 +7,12 @@ import { getColorByTheme } from 'shared/utils';
 
 export const Container = styled(DefaultContainer)`
   display: flex;
-  flex-direction: row-reverse;
-  flex-wrap: wrap;
+  flex-direction: column-reverse;
   padding: ${Size.Default};
 `;
 
 export const LogoContainer = styled.div<DefaultProps>`
   display: flex;
-  flex: 1 1 440px;
   align-items: center;
   justify-content: center;
 
@@ -22,17 +20,12 @@ export const LogoContainer = styled.div<DefaultProps>`
     fill: ${props =>
       props.color || getColorByTheme(props.theme) || Color.Primary};
   }
-
-  @media (max-width: 915px) {
-    margin-top: ${Size.Large};
-  }
 `;
 
 export const LinksContainer = styled.div<DefaultProps>`
   display: flex;
-  flex-direction: column;
+  flex-direction: row;
   justify-content: center;
-  flex: 1 1 440px;
   font-size: ${Size.Small};
 
   a {
@@ -46,7 +39,8 @@ export const LinksContainer = styled.div<DefaultProps>`
     text-decoration: underline;
   }
 
-  @media (max-width: 915px) {
+  @media (max-width: 715px) {
     text-align: center;
+    flex-direction: column;
   }
 `;

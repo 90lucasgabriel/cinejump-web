@@ -76,6 +76,7 @@ export const ResultsContainer = styled.div`
 
   max-height: 100%;
   overflow-y: auto;
+  border-radius: 0 0 ${Size.Small} ${Size.Small};
 `;
 
 export const LoadingContainer = styled.div`
