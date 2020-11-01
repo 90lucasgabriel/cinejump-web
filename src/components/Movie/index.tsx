@@ -10,7 +10,7 @@ import { Container, IconButton, Poster } from './styles';
 
 import Props from './dtos';
 
-const Movie: React.FC<Props> = ({ large = false, ...movie }) => {
+const Movie: React.FC<Props> = ({ size, ...movie }) => {
   const history = useHistory();
   const { user } = useAuth();
   const { favoriteList = [], UpdateFavorite } = useFavorite();
@@ -30,8 +30,12 @@ const Movie: React.FC<Props> = ({ large = false, ...movie }) => {
   }, [user, UpdateFavorite, movie.id]);
 
   const handleRedirect = useCallback(() => {
+    if (movie.mediaType === 'tv') {
+      return;
+    }
+
     history.push(`${Route.MOVIE}/${movie.id}`);
-  }, [history, movie.id]);
+  }, [history, movie.id, movie.mediaType]);
 
   // Check if movie is in favorite list and change status
   useEffect(() => {
@@ -49,7 +53,7 @@ const Movie: React.FC<Props> = ({ large = false, ...movie }) => {
   }
 
   return (
-    <Container large={large}>
+    <Container size={size}>
       <IconButton onClick={handleFavorite}>
         <BsHeartFill fill={isFavorite ? Color.Primary : Color.Empty} />
       </IconButton>

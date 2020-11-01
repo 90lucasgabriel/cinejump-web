@@ -9,7 +9,7 @@ export const Container = styled.div<ContainerProps>`
   height: ${props => (props.large ? PosterHeight.Large : PosterHeight.Default)};
   border-radius: ${Size.Smallest};
   overflow: hidden;
-  box-shadow: 0 0 3px rgba(0, 0, 0, 0.5);
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
   background: rgba(0, 0, 0, 0.5);
 
   display: flex;

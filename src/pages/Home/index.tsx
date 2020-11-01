@@ -5,7 +5,7 @@ import { useFavorite } from 'domains/Favorites/hooks';
 import { NowPlaying, Popular } from 'domains/Movie/api';
 import MovieResponse from 'domains/Movie/api/Popular/Response';
 
-import { ColumnLayout } from 'components/Layout';
+import { ColumnLayout } from 'components';
 import { Footer, Header, Highlights, MovieList } from 'containers';
 import { HeaderBackground, ContentContainer } from './styles';
 
@@ -55,7 +55,7 @@ const Home: React.FC = () => {
         <Highlights movies={popularList} />
         <MovieList
           title="Populares"
-          data={popularList}
+          data={popularList.slice(3, popularList.length)}
           isLoading={popularList.length === 0}
         />
         <MovieList

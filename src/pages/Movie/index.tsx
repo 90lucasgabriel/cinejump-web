@@ -66,7 +66,7 @@ const Movie: React.FC<any> = () => {
         <Container>
           <MovieContainer>
             <PosterContainer>
-              <Poster {...movie} large />
+              <Poster {...movie} size="large" />
             </PosterContainer>
             <MovieDetailsContainer>
               <TitleContainer>

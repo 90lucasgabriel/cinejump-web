@@ -13,7 +13,7 @@ export const Container = styled.div`
   font-size: ${Size.Small};
 
   position: fixed;
-  top: 0;
+  bottom: 0;
   z-index: 50;
   box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.2);
 `;

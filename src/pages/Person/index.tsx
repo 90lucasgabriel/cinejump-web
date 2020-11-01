@@ -83,7 +83,7 @@ const Person: React.FC<any> = () => {
           title={
             person.gender === 'Feminino' ? 'Conhecida por' : 'Conhecido por'
           }
-          data={person.knownBy || []}
+          data={person.knownFor || []}
           isLoading={isLoading}
           message="Recomendações indisponíveis."
         />
@@ -95,7 +95,7 @@ const Person: React.FC<any> = () => {
           message="Sem informações de elenco."
         />
       </ContentContainer>
-      <Footer />
+      <Footer theme="secondary" />
     </ColumnLayout>
   );
 };
