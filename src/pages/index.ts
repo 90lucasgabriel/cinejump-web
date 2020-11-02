@@ -2,6 +2,7 @@
 export { default as Home } from './Home';
 export { default as Movie } from './Movie';
 export { default as Person } from './Person';
+export { default as Tv } from './Tv';
 
 // Public, but not logged in
 export { default as Login } from './Login';

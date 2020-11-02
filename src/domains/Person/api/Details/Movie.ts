@@ -7,5 +7,4 @@ export default interface Movie extends MovieDetails {
 
   firstAirDate?: string;
   name?: string;
-  mediaType?: string;
 }

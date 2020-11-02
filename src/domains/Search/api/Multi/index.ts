@@ -1,9 +1,10 @@
 import tmdb from 'services/api/tmdb';
 
+import { Type } from 'domains/Favorites/enums';
 import Params from 'domains/Search/api/Multi/Params';
 import RawResponse from 'domains/Search/api/Multi/RawResponse';
 import Response from 'domains/Search/api/Multi/Response';
-import { formatDate, formatTmdbImage } from 'shared/utils';
+import { formatDate, formatTmdbImage, getMediaTypeId } from 'shared/utils';
 
 const Multi = async (params: Params): Promise<Response[]> => {
   const response = await rawPopular(params);
@@ -27,26 +28,30 @@ const parseResponse = (rawResponse: RawResponse[]): Response[] => {
       overview: result.overview,
       genreIds: result.genre_ids,
       id: result.id,
-      originalTitle: result.original_title,
-      title: result.title,
+      originalTitle: result.original_title || result.original_name,
+      title: result.title || result.name,
       popularity: result.popularity,
       voteCount: result.vote_count,
       voteAverage: result.vote_average,
 
-      releaseYear: result.release_date?.substring(0, 4),
-      releaseDate: formatDate({ value: result.release_date }),
+      releaseYear:
+        result.release_date?.substring(0, 4) ||
+        result.first_air_date?.substring(0, 4),
+      releaseDate:
+        formatDate({ value: result.release_date }) ||
+        formatDate({ value: result.first_air_date }),
       poster: formatTmdbImage({ value: result.poster_path }),
       backdrop: formatTmdbImage({ value: result.backdrop_path }),
       favorite: false,
 
-      mediaType: result.media_type,
+      mediaType: getMediaTypeId(result.media_type),
     } as Response;
 
     response = [...response, parsedMovie];
   });
 
   response = [...response]
-    .filter(item => item.mediaType === 'movie')
+    .filter(item => item.mediaType === Type.MOVIE || item.mediaType === Type.TV)
     .sort((a, b) => (a.popularity < b.popularity ? 1 : -1));
 
   return response;

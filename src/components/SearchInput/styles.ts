@@ -8,7 +8,7 @@ export const Container = styled.div`
 `;
 
 export const Input = styled.input`
-  font-size: ${Size.Large};
+  font-size: ${Size.Medium};
   border: 0;
   width: 100%;
   text-align: center;

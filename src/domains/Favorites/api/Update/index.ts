@@ -1,11 +1,14 @@
 import api from 'services/api';
 
+import { getByType } from 'domains/Favorites/helpers';
 import RawResponse from 'domains/Favorites/api/Update/RawResponse';
 import Response from 'domains/Favorites/api/Update/Response';
-import { Details } from 'domains/Movie/api';
 
-const Update = async (movieId: number): Promise<Response | null> => {
-  const response = await rawFavorites(movieId);
+const Update = async (
+  entityId: number,
+  typeId: number,
+): Promise<Response | null> => {
+  const response = await rawFavorites(entityId, typeId);
 
   if (!response) {
     return null;
@@ -15,13 +18,15 @@ const Update = async (movieId: number): Promise<Response | null> => {
 };
 
 export const rawFavorites = async (
-  movieId: number,
+  entityId: number,
+  typeId: number,
 ): Promise<RawResponse | null> => {
   const response = await api.post('/favorites', {
-    movie_id: movieId.toString(),
+    entity_id: entityId.toString(),
+    type_id: typeId.toString(),
   });
 
-  if (!response.data.movie_id) {
+  if (!response.data.entity_id) {
     return null;
   }
 
@@ -29,12 +34,13 @@ export const rawFavorites = async (
 };
 
 const parseResponse = async (rawResponse: RawResponse): Promise<Response> => {
-  const details = await Details(rawResponse.movie_id);
+  const details = await getByType(rawResponse);
   const response = {
     ...details,
     favoriteId: rawResponse.id,
     userId: rawResponse.user_id,
-    movieId: rawResponse.movie_id,
+    entityId: rawResponse.entity_id,
+    typeId: rawResponse.type_id,
   };
 
   return response;

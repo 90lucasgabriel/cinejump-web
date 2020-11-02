@@ -2,6 +2,7 @@ import React, { useCallback, useEffect, useState } from 'react';
 import { useHistory } from 'react-router-dom';
 import { BsHeartFill } from 'react-icons/bs';
 
+import { Type } from 'domains/Favorites/enums';
 import { useAuth } from 'domains/Auth/hooks';
 import { useFavorite } from 'domains/Favorites/hooks';
 import Route from 'routes/enums';
@@ -23,14 +24,16 @@ const Movie: React.FC<Props> = ({ size, ...movie }) => {
         return;
       }
 
-      await UpdateFavorite(movie.id);
+      await UpdateFavorite(movie.id, movie.mediaType);
     } catch (error) {
       console.log('handleFavorite -> error', error);
     }
-  }, [user, UpdateFavorite, movie.id]);
+  }, [user, UpdateFavorite, movie.id, movie.mediaType]);
 
   const handleRedirect = useCallback(() => {
-    if (movie.mediaType === 'tv') {
+    if (movie.mediaType === Type.TV) {
+      history.push(`${Route.TV}/${movie.id}`);
+
       return;
     }
 
@@ -39,14 +42,16 @@ const Movie: React.FC<Props> = ({ size, ...movie }) => {
 
   // Check if movie is in favorite list and change status
   useEffect(() => {
+    // console.log('movie', movie);
     if (user) {
       const response = favoriteList.find(
-        favorite => +favorite.movieId === +movie.id,
+        favorite =>
+          favorite.entityId === movie.id && favorite.typeId === movie.mediaType,
       );
 
       setIsFavorite(!!response);
     }
-  }, [user, favoriteList, movie.id]);
+  }, [user, favoriteList, movie.id, movie.mediaType]);
 
   if (!movie.poster && !movie.backdrop) {
     return null;

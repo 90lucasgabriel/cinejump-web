@@ -1,18 +1,22 @@
 import tmdb from 'services/api/tmdb';
 
+import { formatDate, formatTmdbImage } from 'shared/utils';
+
+import { Type } from 'domains/Favorites/enums';
+import Params from 'domains/Movie/api/Popular/Params';
 import RawResponse from 'domains/Movie/api/Popular/RawResponse';
 import Response from 'domains/Movie/api/Popular/Response';
-import formatDate from 'shared/utils/formatDate';
-import formatTmdbImage from 'shared/utils/formatTmdbImage';
 
-const Popular = async (): Promise<Response[]> => {
-  const response = await rawPopular();
+const Popular = async (params?: Params): Promise<Response[]> => {
+  const response = await rawPopular(params);
 
   return parseResponse(response);
 };
 
-export const rawPopular = async (): Promise<RawResponse[]> => {
-  const response = await tmdb.get('/movie/popular');
+export const rawPopular = async (params?: Params): Promise<RawResponse[]> => {
+  const response = await tmdb.get('/movie/popular', {
+    params: { page: params?.page },
+  });
 
   return response.data.results;
 };
@@ -35,6 +39,7 @@ const parseResponse = (rawResponse: RawResponse[]): Response[] => {
       poster: formatTmdbImage({ value: movie.poster_path }),
       backdrop: formatTmdbImage({ value: movie.backdrop_path }),
       favorite: false,
+      mediaType: Type.MOVIE,
     } as Response;
 
     response = [...response, parsedMovie];

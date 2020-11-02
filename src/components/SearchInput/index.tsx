@@ -9,7 +9,7 @@ const SearchInput: React.FC<InputHTMLAttributes<HTMLInputElement>> = ({
     <Container>
       <Input
         type="text"
-        placeholder="Digite o nome de um filme"
+        placeholder="Pesquise por filmes ou séries"
         autoFocus
         {...rest}
       />
