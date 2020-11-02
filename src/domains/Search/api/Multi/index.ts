@@ -28,14 +28,18 @@ const parseResponse = (rawResponse: RawResponse[]): Response[] => {
       overview: result.overview,
       genreIds: result.genre_ids,
       id: result.id,
-      originalTitle: result.original_title,
-      title: result.title,
+      originalTitle: result.original_title || result.original_name,
+      title: result.title || result.name,
       popularity: result.popularity,
       voteCount: result.vote_count,
       voteAverage: result.vote_average,
 
-      releaseYear: result.release_date?.substring(0, 4),
-      releaseDate: formatDate({ value: result.release_date }),
+      releaseYear:
+        result.release_date?.substring(0, 4) ||
+        result.first_air_date?.substring(0, 4),
+      releaseDate:
+        formatDate({ value: result.release_date }) ||
+        formatDate({ value: result.first_air_date }),
       poster: formatTmdbImage({ value: result.poster_path }),
       backdrop: formatTmdbImage({ value: result.backdrop_path }),
       favorite: false,
@@ -47,7 +51,7 @@ const parseResponse = (rawResponse: RawResponse[]): Response[] => {
   });
 
   response = [...response]
-    .filter(item => item.mediaType === Type.MOVIE)
+    .filter(item => item.mediaType === Type.MOVIE || item.mediaType === Type.TV)
     .sort((a, b) => (a.popularity < b.popularity ? 1 : -1));
 
   return response;

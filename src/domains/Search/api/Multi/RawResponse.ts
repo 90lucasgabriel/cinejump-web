@@ -4,12 +4,9 @@ import RawMovie from 'domains/Person/api/Details/RawMovie';
 export default interface RawResponse {
   poster_path?: string;
   overview: string;
-  release_date: string;
   genre_ids: number[];
   id: number;
-  original_title: string;
   original_language: string;
-  title: string;
   backdrop_path?: string;
   popularity: number;
   vote_count: number;
@@ -17,4 +14,10 @@ export default interface RawResponse {
   vote_average: number;
 
   media_type: string;
+  release_date?: string;
+  original_title?: string;
+  title?: string;
+  first_air_date?: string;
+  original_name?: string;
+  name?: string;
 }
