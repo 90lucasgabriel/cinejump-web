@@ -7,10 +7,10 @@ import Params from 'domains/Tv/api/Details/Params';
 import RawResponse from 'domains/Tv/api/Details/RawResponse';
 import Response from 'domains/Tv/api/Details/Response';
 import Recommendations from 'domains/Tv/api/Recommendations/Response';
-// import Credits from 'domains/Tv/api/Credits/Response';
+import Credits from 'domains/Tv/api/Credits/Response';
 
-// import Crew from 'domains/Tv/api/Credits/dtos/Crew';
-// import Cast from 'domains/Tv/api/Credits/dtos/Cast';
+import Crew from 'domains/Tv/api/Credits/dtos/Crew';
+import Cast from 'domains/Tv/api/Credits/dtos/Cast';
 
 const Details = async (tvId: number, params?: Params): Promise<Response> => {
   const response = await rawPopular(tvId, params);
@@ -62,30 +62,30 @@ const parseResponse = (tv: RawResponse): Response => {
     mediaType: Type.TV,
   })) as Recommendations[];
 
-  // const cast = tv.credits?.cast.slice(0, 15).map(person => ({
-  //   order: person.order,
-  //   id: person.id,
-  //   name: person.name,
-  //   character: person.character,
-  //   castId: person.cast_id,
-  //   creditId: person.credit_id,
-  //   gender: person.gender,
-  //   profile: formatTmdbImage({ value: person.profile_path }),
-  // })) as Cast[];
+  const cast = tv.credits?.cast.slice(0, 15).map(person => ({
+    order: person.order,
+    id: person.id,
+    name: person.name,
+    character: person.character,
+    castId: person.cast_id,
+    creditId: person.credit_id,
+    gender: person.gender,
+    profile: formatTmdbImage({ value: person.profile_path }),
+  })) as Cast[];
 
-  // const crew = tv.credits?.crew.map(person => ({
-  //   id: person.id,
-  //   name: person.name,
-  //   job: person.job,
-  //   department: person.department,
-  //   creditId: person.credit_id,
-  //   gender: person.gender,
-  //   profile: formatTmdbImage({ value: person.profile_path }),
-  // })) as Crew[];
+  const crew = tv.credits?.crew.map(person => ({
+    id: person.id,
+    name: person.name,
+    job: person.job,
+    department: person.department,
+    creditId: person.credit_id,
+    gender: person.gender,
+    profile: formatTmdbImage({ value: person.profile_path }),
+  })) as Crew[];
 
-  // const credits = { cast, crew } as Credits;
+  const credits = { cast, crew } as Credits;
 
-  parsedMovie = { ...parsedMovie, recommendations };
+  parsedMovie = { ...parsedMovie, recommendations, credits };
 
   return parsedMovie;
 };

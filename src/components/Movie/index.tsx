@@ -32,6 +32,8 @@ const Movie: React.FC<Props> = ({ size, ...movie }) => {
 
   const handleRedirect = useCallback(() => {
     if (movie.mediaType === Type.TV) {
+      history.push(`${Route.TV}/${movie.id}`);
+
       return;
     }
 

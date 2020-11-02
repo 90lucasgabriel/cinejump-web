@@ -56,7 +56,7 @@ const Home: React.FC = () => {
         <Highlights movies={popularList} />
         <MovieList
           title="Populares"
-          data={popularList}
+          data={popularList.slice(3, popularList.length)}
           isLoading={popularList.length === 0}
         />
         <MovieList
