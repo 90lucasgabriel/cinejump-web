@@ -18,7 +18,6 @@ import {
   TitleContainer,
   Title,
   Subtitle,
-  Tagline,
   OverviewContainer,
   OverviewTitle,
   Overview,
