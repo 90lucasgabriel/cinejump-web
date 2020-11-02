@@ -2,6 +2,7 @@ import React, { useCallback, useEffect, useState } from 'react';
 import { useHistory } from 'react-router-dom';
 import { BsHeartFill } from 'react-icons/bs';
 
+import { Type } from 'domains/Favorites/enums';
 import { useAuth } from 'domains/Auth/hooks';
 import { useFavorite } from 'domains/Favorites/hooks';
 import Route from 'routes/enums';
@@ -23,7 +24,7 @@ const Movie: React.FC<Props> = ({ size, ...movie }) => {
         return;
       }
 
-      await UpdateFavorite(movie.id);
+      await UpdateFavorite(movie.id, Type.MOVIE);
     } catch (error) {
       console.log('handleFavorite -> error', error);
     }
@@ -41,7 +42,7 @@ const Movie: React.FC<Props> = ({ size, ...movie }) => {
   useEffect(() => {
     if (user) {
       const response = favoriteList.find(
-        favorite => +favorite.movieId === +movie.id,
+        favorite => favorite.entityId === movie.id,
       );
 
       setIsFavorite(!!response);

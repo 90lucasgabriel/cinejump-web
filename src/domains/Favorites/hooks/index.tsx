@@ -26,13 +26,17 @@ const FavoriteProvider: React.FC = ({ children }) => {
   }, []);
 
   const UpdateFavorite = useCallback(
-    async (movieId: number): Promise<UpdateResponse | null> => {
-      const response = await UpdateFavoriteApi(movieId);
+    async (
+      entityId: number,
+      typeId: number,
+    ): Promise<UpdateResponse | null> => {
+      const response = await UpdateFavoriteApi(entityId, typeId);
 
       // Remove favorite
       if (!response) {
         const updatedFavoriteList = favoriteList.filter(
-          favorite => +favorite.movieId !== +movieId,
+          favorite =>
+            !(favorite.entityId === entityId && favorite.typeId === typeId),
         );
         setFavoriteList(updatedFavoriteList);
 

@@ -1,8 +1,8 @@
 import api from 'services/api';
 
+import { getByType } from 'domains/Favorites/helpers';
 import RawResponse from 'domains/Favorites/api/List/RawResponse';
 import Response from 'domains/Favorites/api/List/Response';
-import { Details } from 'domains/Movie/api';
 
 const Favorites = async (): Promise<Response[]> => {
   const response = await rawFavorites();
@@ -21,14 +21,15 @@ const parseResponse = async (
 ): Promise<Response[]> => {
   const response = rawResponse.map(async (favorite: RawResponse) => {
     // Get favorites details from TMDB API and merge
-    const details = await Details(favorite.movie_id);
+    const details = await getByType(favorite);
 
     // Merge API and TMDB results
     return {
       ...details,
       favoriteId: favorite.id,
       userId: favorite.user_id,
-      movieId: +favorite.movie_id,
+      entityId: favorite.entity_id,
+      typeId: favorite.type_id,
     };
   });
 

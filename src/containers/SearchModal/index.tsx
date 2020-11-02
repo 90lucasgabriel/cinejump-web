@@ -1,7 +1,6 @@
 import React, { useCallback, useMemo, useState } from 'react';
 import { debounce } from 'lodash';
 
-// import { debounce } from 'shared/utils';
 import { Multi } from 'domains/Search/api';
 
 import { ReactComponent as Loading } from 'assets/loading.svg';
@@ -20,7 +19,7 @@ import {
   EmptyLabel,
 } from './styles';
 
-const SearchModal: React.FC<any> = ({ onClose, isShow, children }) => {
+const SearchModal: React.FC<any> = ({ onClose, isShow }) => {
   const minLength = useMemo(() => 3, []);
   const wait = useMemo(() => 750, []);
   const [data, setData] = useState([] as any);
