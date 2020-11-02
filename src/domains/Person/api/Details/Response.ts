@@ -21,4 +21,5 @@ export default interface Response {
 
   knownFor?: Movie[];
   filmography?: Movie[];
+  mediaType: number;
 }

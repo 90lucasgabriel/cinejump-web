@@ -16,13 +16,12 @@ export default interface Response {
   genresNames: string;
   homepage?: string;
   id: number;
-  originalTitle: string;
   title: string;
+  originalTitle: string;
   popularity: number;
   runtime: string;
   voteCount: number;
   voteAverage: number;
-  tagline: string;
   favorite: boolean;
 
   recommendations?: Recommendations[];

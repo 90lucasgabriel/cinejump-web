@@ -1,10 +1,11 @@
 import tmdb from 'services/api/tmdb';
 
+import { formatDate, formatTmdbImage } from 'shared/utils';
+
+import { Type } from 'domains/Favorites/enums';
 import Params from 'domains/Movie/api/NowPlaying/Params';
 import RawResponse from 'domains/Movie/api/NowPlaying/RawResponse';
 import Response from 'domains/Movie/api/NowPlaying/Response';
-import formatDate from 'shared/utils/formatDate';
-import formatTmdbImage from 'shared/utils/formatTmdbImage';
 
 const NowPlaying = async (params?: Params): Promise<Response[]> => {
   const response = await rawNowPlaying(params);
@@ -40,6 +41,7 @@ const parseResponse = (rawResponse: RawResponse[]): Response[] => {
       poster: formatTmdbImage({ value: movie.poster_path }),
       backdrop: formatTmdbImage({ value: movie.backdrop_path }),
       favorite: false,
+      mediaType: Type.MOVIE,
     } as Response;
 
     response = [...response, parsedMovie];

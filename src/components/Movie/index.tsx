@@ -24,14 +24,14 @@ const Movie: React.FC<Props> = ({ size, ...movie }) => {
         return;
       }
 
-      await UpdateFavorite(movie.id, Type.MOVIE);
+      await UpdateFavorite(movie.id, movie.mediaType);
     } catch (error) {
       console.log('handleFavorite -> error', error);
     }
-  }, [user, UpdateFavorite, movie.id]);
+  }, [user, UpdateFavorite, movie.id, movie.mediaType]);
 
   const handleRedirect = useCallback(() => {
-    if (movie.mediaType === 'tv') {
+    if (movie.mediaType === Type.TV) {
       return;
     }
 
@@ -40,14 +40,16 @@ const Movie: React.FC<Props> = ({ size, ...movie }) => {
 
   // Check if movie is in favorite list and change status
   useEffect(() => {
+    // console.log('movie', movie);
     if (user) {
       const response = favoriteList.find(
-        favorite => favorite.entityId === movie.id,
+        favorite =>
+          favorite.entityId === movie.id && favorite.typeId === movie.mediaType,
       );
 
       setIsFavorite(!!response);
     }
-  }, [user, favoriteList, movie.id]);
+  }, [user, favoriteList, movie.id, movie.mediaType]);
 
   if (!movie.poster && !movie.backdrop) {
     return null;

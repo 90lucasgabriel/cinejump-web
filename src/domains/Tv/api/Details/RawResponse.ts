@@ -3,9 +3,8 @@ import Credits from 'domains/Movie/api/Credits/RawResponse';
 
 export default interface RawResponse {
   poster_path?: string;
-  budget: number;
   overview: string;
-  release_date: string;
+  first_air_date: string;
   genres: [
     {
       id: number;
@@ -14,16 +13,14 @@ export default interface RawResponse {
   ];
   homepage?: string;
   id: number;
-  original_title: string;
   original_language: string;
-  title: string;
+  original_name: string;
+  name: string;
   backdrop_path?: string;
   popularity: number;
-  runtime: number;
+  episode_run_time: number;
   vote_count: number;
-  video: boolean;
   vote_average: number;
-  tagline: string;
   recommendations?: {
     results: Recommendations[];
   };

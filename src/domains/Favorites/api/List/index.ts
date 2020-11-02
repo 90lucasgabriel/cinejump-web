@@ -20,17 +20,25 @@ const parseResponse = async (
   rawResponse: RawResponse[],
 ): Promise<Response[]> => {
   const response = rawResponse.map(async (favorite: RawResponse) => {
-    // Get favorites details from TMDB API and merge
-    const details = await getByType(favorite);
+    try {
+      // Get favorites details from TMDB API and merge
+      const details = await getByType(favorite);
 
-    // Merge API and TMDB results
-    return {
-      ...details,
-      favoriteId: favorite.id,
-      userId: favorite.user_id,
-      entityId: favorite.entity_id,
-      typeId: favorite.type_id,
-    };
+      if (!details) {
+        throw new Error('Media not found.');
+      }
+
+      // Merge API and TMDB results
+      return {
+        ...details,
+        favoriteId: favorite.id,
+        userId: favorite.user_id,
+        entityId: favorite.entity_id,
+        typeId: favorite.type_id,
+      };
+    } catch (error) {
+      console.log('error', error);
+    }
   });
 
   // Resolve async requests and promises

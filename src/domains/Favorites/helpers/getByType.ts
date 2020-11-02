@@ -1,16 +1,20 @@
 import { Type } from 'domains/Favorites/enums';
-import { Details } from 'domains/Movie/api';
+import { Details as MovieDetails } from 'domains/Movie/api';
+import { Details as TvDetails } from 'domains/Tv/api';
+import { Details as PersonDetails } from 'domains/Person/api';
 
 const getByType = async (favorite: any): Promise<any> => {
+  if (favorite.type_id === Type.MOVIE) {
+    return MovieDetails(favorite.entity_id);
+  }
+
   if (favorite.type_id === Type.TV) {
-    return Details(favorite.entity_id);
+    return TvDetails(favorite.entity_id);
   }
 
   if (favorite.type_id === Type.PERSON) {
-    return Details(favorite.entity_id);
+    return PersonDetails(favorite.entity_id);
   }
-
-  return Details(favorite.entity_id);
 };
 
 export default getByType;

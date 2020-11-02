@@ -5,7 +5,7 @@ import RawResponse from 'domains/Person/api/Details/RawResponse';
 import Response from 'domains/Person/api/Details/Response';
 import Movie from 'domains/Person/api/Details/Movie';
 // import Credits from 'domains/Person/api/Credits/Response';
-import { formatDate, formatTmdbImage } from 'shared/utils';
+import { formatDate, formatTmdbImage, getMediaTypeId } from 'shared/utils';
 // import Crew from 'domains/Person/api/Credits/dtos/Crew';
 // import Cast from 'domains/Person/api/Credits/dtos/Cast';
 // import { arrayToString } from 'shared/utils';
@@ -69,7 +69,7 @@ const parseResponse = (person: RawResponse): Response => {
         (movie.first_air_date && movie.first_air_date.substring(0, 4)),
       popularity: movie.popularity,
       name: movie.name,
-      mediaType: movie.media_type,
+      mediaType: getMediaTypeId(movie.media_type),
     }))
     .filter(item => item.originalDate && item.character.length > 0) as Movie[];
 

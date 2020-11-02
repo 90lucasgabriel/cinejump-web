@@ -8,6 +8,7 @@ import MovieResponse from 'domains/Movie/api/Popular/Response';
 import { ColumnLayout } from 'components';
 import { Footer, Header, Highlights, MovieList } from 'containers';
 import { HeaderBackground, ContentContainer } from './styles';
+import { Type } from 'domains/Favorites/enums';
 
 const Home: React.FC = () => {
   const [popularList, setPopularList] = useState([] as MovieResponse[]);
@@ -18,14 +19,14 @@ const Home: React.FC = () => {
   const { Favorites, favoriteList } = useFavorite();
 
   const getNowPlaying = useCallback(async () => {
-    const response = await NowPlaying();
+    const response = await NowPlaying({ page: 1 });
     setNowPlayingList(response);
 
     return response;
   }, []);
 
   const getPopular = useCallback(async () => {
-    const response = await Popular();
+    const response = await Popular({ page: 1 });
     setPopularList(response);
 
     return response;
@@ -55,7 +56,7 @@ const Home: React.FC = () => {
         <Highlights movies={popularList} />
         <MovieList
           title="Populares"
-          data={popularList.slice(3, popularList.length)}
+          data={popularList}
           isLoading={popularList.length === 0}
         />
         <MovieList
@@ -67,7 +68,9 @@ const Home: React.FC = () => {
         {user && (
           <MovieList
             title="Favoritos"
-            data={favoriteList}
+            data={favoriteList.filter(
+              item => item.typeId === Type.MOVIE || item.typeId === Type.TV,
+            )}
             isLoading={isFavoriteLoading}
             message="Você ainda não possui favoritos."
           />

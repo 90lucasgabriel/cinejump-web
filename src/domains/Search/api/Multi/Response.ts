@@ -16,5 +16,5 @@ export default interface Response {
   voteAverage: number;
   favorite: boolean;
 
-  mediaType: string;
+  mediaType: number;
 }
