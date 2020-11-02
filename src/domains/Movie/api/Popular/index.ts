@@ -3,7 +3,7 @@ import tmdb from 'services/api/tmdb';
 import { formatDate, formatTmdbImage } from 'shared/utils';
 
 import { Type } from 'domains/Favorites/enums';
-import Params from 'domains/Movie/api/NowPlaying/Params';
+import Params from 'domains/Movie/api/Popular/Params';
 import RawResponse from 'domains/Movie/api/Popular/RawResponse';
 import Response from 'domains/Movie/api/Popular/Response';
 

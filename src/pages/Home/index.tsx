@@ -3,16 +3,19 @@ import React, { useCallback, useEffect, useState } from 'react';
 import { useAuth } from 'domains/Auth/hooks';
 import { useFavorite } from 'domains/Favorites/hooks';
 import { NowPlaying, Popular } from 'domains/Movie/api';
+import { Popular as TvPopular } from 'domains/Tv/api';
 import MovieResponse from 'domains/Movie/api/Popular/Response';
+import TvPopularResponse from 'domains/Tv/api/Popular/Response';
+import { Type } from 'domains/Favorites/enums';
 
 import { ColumnLayout } from 'components';
 import { Footer, Header, Highlights, MovieList } from 'containers';
 import { HeaderBackground, ContentContainer } from './styles';
-import { Type } from 'domains/Favorites/enums';
 
 const Home: React.FC = () => {
   const [popularList, setPopularList] = useState([] as MovieResponse[]);
   const [nowPlayingList, setNowPlayingList] = useState([] as MovieResponse[]);
+  const [tvPopularList, setTvPopularList] = useState([] as TvPopularResponse[]);
   const [isFavoriteLoading, setIsFavoriteLoading] = useState(true);
 
   const { user } = useAuth();
@@ -32,6 +35,13 @@ const Home: React.FC = () => {
     return response;
   }, []);
 
+  const getTvPopular = useCallback(async () => {
+    const response = await TvPopular({ page: 1 });
+    setTvPopularList(response);
+
+    return response;
+  }, []);
+
   const getFavorites = useCallback(async () => {
     setIsFavoriteLoading(true);
     const response = await Favorites();
@@ -43,11 +53,12 @@ const Home: React.FC = () => {
   useEffect(() => {
     getNowPlaying();
     getPopular();
+    getTvPopular();
 
     if (user) {
       getFavorites();
     }
-  }, [user, getNowPlaying, getPopular, getFavorites]);
+  }, [user, getNowPlaying, getPopular, getTvPopular, getFavorites]);
 
   return (
     <ColumnLayout>
@@ -63,6 +74,12 @@ const Home: React.FC = () => {
           title="Lançamentos"
           data={nowPlayingList}
           isLoading={nowPlayingList.length === 0}
+        />
+        <MovieList
+          title="Séries Populares"
+          data={tvPopularList}
+          isLoading={tvPopularList.length === 0}
+          theme="light"
         />
 
         {user && (
