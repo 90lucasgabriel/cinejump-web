@@ -5,6 +5,8 @@ import Params from 'pages/Person/dtos/Params';
 import PersonDetails from 'domains/Person/api/Details/Response';
 import { Color } from 'shared/enums';
 import { Details } from 'domains/Person/api';
+import { useAuth } from 'domains/Auth/hooks';
+import { useFavorite } from 'domains/Favorites/hooks';
 
 import { ColumnLayout, Container, Profile } from 'components';
 import { Header, MovieList, Footer, Filmography } from 'containers';
@@ -26,6 +28,9 @@ const Person: React.FC<any> = () => {
   const { id } = useParams<Params>();
   const [person, setMovie] = useState({} as PersonDetails);
   const [isLoading, setIsLoading] = useState(false);
+
+  const { user } = useAuth();
+  const { Favorites, favoriteList } = useFavorite();
 
   const getPerson = useCallback(async () => {
     try {
@@ -49,6 +54,14 @@ const Person: React.FC<any> = () => {
     window.scrollTo(0, 0);
     getPerson();
   }, [getPerson]);
+
+  useEffect(() => {
+    if (user) {
+      if (favoriteList?.length === 0) {
+        Favorites();
+      }
+    }
+  }, []); // eslint-disable-line
 
   return (
     <ColumnLayout>
@@ -83,7 +96,7 @@ const Person: React.FC<any> = () => {
           title={
             person.gender === 'Feminino' ? 'Conhecida por' : 'Conhecido por'
           }
-          data={person.knownBy || []}
+          data={person.knownFor || []}
           isLoading={isLoading}
           message="Recomendações indisponíveis."
         />
@@ -95,7 +108,7 @@ const Person: React.FC<any> = () => {
           message="Sem informações de elenco."
         />
       </ContentContainer>
-      <Footer />
+      <Footer theme="secondary" />
     </ColumnLayout>
   );
 };

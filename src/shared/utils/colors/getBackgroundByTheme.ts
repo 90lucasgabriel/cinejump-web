@@ -1,8 +1,12 @@
 import { Color } from 'shared/enums';
 
 const getBackgroundByTheme = (theme?: string): Color | null => {
-  if (!theme || theme === 'light') {
+  if (!theme) {
     return Color.Fill;
+  }
+
+  if (theme === 'light') {
+    return Color.FillSecondary;
   }
 
   if (theme === 'primary') {

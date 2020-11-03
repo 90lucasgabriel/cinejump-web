@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { useHistory } from 'react-router-dom';
 
 import DefaultProps from 'shared/dtos';
@@ -9,7 +9,8 @@ import { ReactComponent as Logo } from 'assets/logo.svg';
 
 import Route from 'routes/enums';
 import { Wrapper } from 'components/Layout';
-import Button from 'components/Button';
+import { Button } from 'components';
+import { SearchModal } from 'containers';
 import {
   Container,
   MenuContainer,
@@ -24,6 +25,7 @@ const Header: React.FC<DefaultProps> = ({
   color,
 }) => {
   const history = useHistory();
+  const [isSearch, setIsSearch] = useState(false);
 
   return (
     <Wrapper theme={theme} background={background} color={color}>
@@ -40,7 +42,12 @@ const Header: React.FC<DefaultProps> = ({
         </LogoContainer>
 
         <ActionMenuContainer theme={theme}>
-          <Button variant="icon" theme={theme} color={color}>
+          <Button
+            variant="icon"
+            theme={theme}
+            color={color}
+            onClick={() => setIsSearch(true)}
+          >
             <FiSearch />
           </Button>
           <Button
@@ -53,6 +60,8 @@ const Header: React.FC<DefaultProps> = ({
           </Button>
         </ActionMenuContainer>
       </Container>
+
+      <SearchModal isShow={isSearch} onClose={() => setIsSearch(false)} />
     </Wrapper>
   );
 };

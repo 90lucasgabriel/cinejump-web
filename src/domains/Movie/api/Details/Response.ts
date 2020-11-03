@@ -28,4 +28,6 @@ export default interface Response {
   recommendations?: Recommendations[];
   credits?: Credits;
   directorName?: string;
+
+  mediaType: number;
 }

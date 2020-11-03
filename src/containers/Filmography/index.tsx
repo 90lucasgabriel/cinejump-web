@@ -2,6 +2,7 @@ import React, { useCallback } from 'react';
 import { useHistory } from 'react-router-dom';
 
 import Route from 'routes/enums';
+import { Type } from 'domains/Favorites/enums';
 
 import { ReactComponent as Loading } from 'assets/loading.svg';
 import { Wrapper } from 'components/Layout';
@@ -33,9 +34,13 @@ const Filmography: React.FC<Props> = ({
 
   const handleRedirect = useCallback(
     (movie: any) => {
-      if (movie.mediaType === 'movie') {
-        history.push(`${Route.MOVIE}/${movie.id}`);
+      if (movie.mediaType === Type.TV) {
+        history.push(`${Route.TV}/${movie.id}`);
+
+        return;
       }
+
+      history.push(`${Route.MOVIE}/${movie.id}`);
     },
     [history],
   );

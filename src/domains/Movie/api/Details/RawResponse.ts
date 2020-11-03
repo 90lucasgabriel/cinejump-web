@@ -28,4 +28,5 @@ export default interface RawResponse {
     results: Recommendations[];
   };
   credits?: Credits;
+  mediaType: string;
 }

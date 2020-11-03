@@ -11,8 +11,8 @@ const App: React.FC = () => {
     <>
       <Router>
         <AppProvider>
-          <EnvironmentLabel />
           <Routes />
+          <EnvironmentLabel />
         </AppProvider>
 
         <GlobalStyle />

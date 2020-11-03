@@ -11,6 +11,7 @@ export const Container = styled(DefaultContainer)`
   display: flex;
   align-items: center;
   justify-content: space-between;
+  position: relative;
 `;
 
 export const Link = styled(RouterLink)`
@@ -23,10 +24,16 @@ export const Link = styled(RouterLink)`
 
 export const MenuContainer = styled.div<DefaultProps>`
   display: flex;
+  align-items: center;
+  justify-content: center;
 
   a {
     color: ${props => getColor(props.theme, props.color)};
   }
+
+  /* @media (max-width: 715px) { */
+  display: none;
+  /* } */
 `;
 
 export const LogoContainer = styled.div<DefaultProps>`
@@ -37,12 +44,11 @@ export const LogoContainer = styled.div<DefaultProps>`
   svg {
     fill: ${props => getColor(props.theme, props.color)};
   }
-
-  @media (max-width: 915px) {
-    margin-top: ${Size.Large};
-  }
 `;
 
 export const ActionMenuContainer = styled.div<DefaultProps>`
   display: flex;
+
+  align-items: center;
+  justify-content: center;
 `;

@@ -7,5 +7,8 @@ export default interface ContextData {
   favoriteList: ListResponse[];
   setFavoriteList: Dispatch<SetStateAction<ListResponse[]>>;
   Favorites(): Promise<ListResponse[]>;
-  UpdateFavorite(movieId: number): Promise<UpdateResponse | null>;
+  UpdateFavorite(
+    entityId: number,
+    typeId: number,
+  ): Promise<UpdateResponse | null>;
 }

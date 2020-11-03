@@ -5,4 +5,5 @@ export { default as getBackground } from './colors/getBackground';
 export { default as getBackgroundByTheme } from './colors/getBackgroundByTheme';
 export { default as getColor } from './colors/getColor';
 export { default as getColorByTheme } from './colors/getColorByTheme';
+export { default as getMediaTypeId } from './getMediaTypeId';
 export { default as getValidationErrors } from './getValidationErrors';

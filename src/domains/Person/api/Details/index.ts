@@ -5,7 +5,7 @@ import RawResponse from 'domains/Person/api/Details/RawResponse';
 import Response from 'domains/Person/api/Details/Response';
 import Movie from 'domains/Person/api/Details/Movie';
 // import Credits from 'domains/Person/api/Credits/Response';
-import { formatDate, formatTmdbImage } from 'shared/utils';
+import { formatDate, formatTmdbImage, getMediaTypeId } from 'shared/utils';
 // import Crew from 'domains/Person/api/Credits/dtos/Crew';
 // import Cast from 'domains/Person/api/Credits/dtos/Cast';
 // import { arrayToString } from 'shared/utils';
@@ -57,7 +57,9 @@ const parseResponse = (person: RawResponse): Response => {
       id: movie.id,
       title: movie.title,
       favorite: false,
-      character: movie.character,
+      character: movie.character.toUpperCase().includes('SELF')
+        ? ''
+        : movie.character,
       releaseDate: formatDate({
         value: movie.release_date || movie.first_air_date,
       }),
@@ -67,18 +69,18 @@ const parseResponse = (person: RawResponse): Response => {
         (movie.first_air_date && movie.first_air_date.substring(0, 4)),
       popularity: movie.popularity,
       name: movie.name,
-      mediaType: movie.media_type,
+      mediaType: getMediaTypeId(movie.media_type),
     }))
-    .filter(item => item.originalDate) as Movie[];
+    .filter(item => item.originalDate && item.character.length > 0) as Movie[];
 
-  const knownBy = [...movies].sort((a, b) =>
-    a.popularity < b.popularity ? 1 : -1,
-  );
+  const knownFor = [...movies]
+    .sort((a, b) => (a.popularity < b.popularity ? 1 : -1))
+    .slice(0, 30);
   const filmography = [...movies].sort((a, b) =>
     Date.parse(a.originalDate) < Date.parse(b.originalDate) ? 1 : -1,
   );
 
-  parsedPerson = { ...parsedPerson, knownBy, filmography };
+  parsedPerson = { ...parsedPerson, knownFor, filmography };
 
   return parsedPerson;
 };

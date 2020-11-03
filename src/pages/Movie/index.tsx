@@ -5,6 +5,8 @@ import Params from 'pages/Movie/dtos/Params';
 import MovieDetails from 'domains/Movie/api/Details/Response';
 import { Color } from 'shared/enums';
 import { Details } from 'domains/Movie/api';
+import { useAuth } from 'domains/Auth/hooks';
+import { useFavorite } from 'domains/Favorites/hooks';
 
 import { ColumnLayout, Container, Movie as Poster } from 'components';
 import { Header, PersonList, MovieList, Footer } from 'containers';
@@ -32,6 +34,9 @@ const Movie: React.FC<any> = () => {
   const [movie, setMovie] = useState({} as MovieDetails);
   const [isLoading, setIsLoading] = useState(false);
 
+  const { user } = useAuth();
+  const { Favorites, favoriteList } = useFavorite();
+
   const getMovie = useCallback(async () => {
     try {
       setIsLoading(true);
@@ -55,6 +60,14 @@ const Movie: React.FC<any> = () => {
     getMovie();
   }, [getMovie]);
 
+  useEffect(() => {
+    if (user) {
+      if (favoriteList?.length === 0) {
+        Favorites();
+      }
+    }
+  }, []); // eslint-disable-line
+
   return (
     <ColumnLayout>
       <Header background={Color.Transparent} color={Color.Fill} />
@@ -66,7 +79,7 @@ const Movie: React.FC<any> = () => {
         <Container>
           <MovieContainer>
             <PosterContainer>
-              <Poster {...movie} large />
+              <Poster {...movie} size="large" />
             </PosterContainer>
             <MovieDetailsContainer>
               <TitleContainer>
