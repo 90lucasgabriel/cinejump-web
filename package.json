@@ -1,7 +1,7 @@
 {
   "name": "cinejump",
-  "version": "1.3.0",
-  "devVersion": "1.4.0",
+  "version": "1.4.0",
+  "devVersion": "1.5.0",
   "private": true,
   "dependencies": {
     "@storybook/react": "^6.0.21",
