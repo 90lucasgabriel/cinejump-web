@@ -1,6 +1,6 @@
 import tmdb from 'services/api/tmdb';
 
-import { Type } from 'domains/Favorites/enums';
+import { EntityType } from 'shared/utils/enums';
 import Params from 'domains/Search/api/Multi/Params';
 import RawResponse from 'domains/Search/api/Multi/RawResponse';
 import Response from 'domains/Search/api/Multi/Response';
@@ -51,7 +51,10 @@ const parseResponse = (rawResponse: RawResponse[]): Response[] => {
   });
 
   response = [...response]
-    .filter(item => item.mediaType === Type.MOVIE || item.mediaType === Type.TV)
+    .filter(
+      item =>
+        item.mediaType === EntityType.MOVIE || item.mediaType === EntityType.TV,
+    )
     .sort((a, b) => (a.popularity < b.popularity ? 1 : -1));
 
   return response;

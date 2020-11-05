@@ -1,4 +1,4 @@
-enum Type {
+enum EntityType {
   MOVIE = 1,
   TV = 2,
   PERSON = 3,
@@ -8,4 +8,4 @@ enum Type {
   KEYWORD = 7,
 }
 
-export default Type;
+export default EntityType;

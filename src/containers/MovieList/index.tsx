@@ -3,7 +3,7 @@ import React from 'react';
 import { ReactComponent as Loading } from 'assets/loading.svg';
 
 import { Wrapper } from 'components/Layout';
-import Movie from 'components/Movie';
+import Movie from 'components/EntityImage';
 import {
   Container,
   Title,

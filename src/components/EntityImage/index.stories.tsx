@@ -1,13 +1,13 @@
 import React from 'react';
 import { Story, Meta } from '@storybook/react';
 
-import Props from 'components/Movie/dtos';
-import Movie from 'components/Movie';
+import Props from 'components/EntityImage/dtos';
+import EntityImage from 'components/EntityImage';
 
 // Config and Controls
 export default {
-  title: 'Components/Movie',
-  component: Movie,
+  title: 'Components/EntityImage',
+  component: EntityImage,
   argTypes: {
     favorite: { control: 'boolean' },
     poster: { control: 'text' },
@@ -23,7 +23,7 @@ export default {
 
 // Component
 const Template: Story<Props> = args => {
-  return <Movie {...args} />;
+  return <EntityImage {...args} />;
 };
 
 // Stories

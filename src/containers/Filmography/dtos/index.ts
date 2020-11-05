@@ -1,5 +1,5 @@
 import DefaultProps from 'shared/dtos';
-import MovieProps from 'components/Movie/dtos';
+import MovieProps from 'components/EntityImage/dtos';
 import FavoriteProps from 'domains/Favorites/api/List/Response';
 import { Color } from 'shared/enums';
 

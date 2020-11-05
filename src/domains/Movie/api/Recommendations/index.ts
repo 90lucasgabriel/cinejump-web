@@ -2,7 +2,7 @@ import tmdb from 'services/api/tmdb';
 
 import { formatDate, formatTmdbImage } from 'shared/utils';
 
-import { Type } from 'domains/Favorites/enums';
+import { EntityType } from 'shared/utils/enums';
 import RawResponse from 'domains/Movie/api/Recommendations/RawResponse';
 import Response from 'domains/Movie/api/Recommendations/Response';
 
@@ -36,7 +36,7 @@ const parseResponse = (rawResponse: RawResponse[]): Response[] => {
       poster: formatTmdbImage({ value: movie.poster_path }),
       backdrop: formatTmdbImage({ value: movie.backdrop_path }),
       favorite: false,
-      mediaType: Type.MOVIE,
+      mediaType: EntityType.MOVIE,
     } as Response;
 
     response = [...response, parsedMovie];

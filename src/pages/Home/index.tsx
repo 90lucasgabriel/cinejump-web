@@ -1,12 +1,12 @@
 import React, { useCallback, useEffect, useState } from 'react';
 
+import { EntityType } from 'shared/utils/enums';
 import { useAuth } from 'domains/Auth/hooks';
 import { useFavorite } from 'domains/Favorites/hooks';
 import { NowPlaying, Popular } from 'domains/Movie/api';
 import { Popular as TvPopular } from 'domains/Tv/api';
 import MovieResponse from 'domains/Movie/api/Popular/Response';
 import TvPopularResponse from 'domains/Tv/api/Popular/Response';
-import { Type } from 'domains/Favorites/enums';
 
 import { ColumnLayout } from 'components';
 import { Footer, Header, Highlights, MovieList } from 'containers';
@@ -86,7 +86,9 @@ const Home: React.FC = () => {
           <MovieList
             title="Favoritos"
             data={favoriteList.filter(
-              item => item.typeId === Type.MOVIE || item.typeId === Type.TV,
+              item =>
+                item.typeId === EntityType.MOVIE ||
+                item.typeId === EntityType.TV,
             )}
             isLoading={isFavoriteLoading}
             message="Você ainda não possui favoritos."

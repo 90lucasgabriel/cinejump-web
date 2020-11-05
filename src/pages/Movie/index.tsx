@@ -8,7 +8,7 @@ import { Details } from 'domains/Movie/api';
 import { useAuth } from 'domains/Auth/hooks';
 import { useFavorite } from 'domains/Favorites/hooks';
 
-import { ColumnLayout, Container, Movie as Poster } from 'components';
+import { ColumnLayout, Container, EntityImage } from 'components';
 import { Header, PersonList, MovieList, Footer } from 'containers';
 import {
   ContentContainer,
@@ -79,7 +79,7 @@ const Movie: React.FC<any> = () => {
         <Container>
           <MovieContainer>
             <PosterContainer>
-              <Poster {...movie} size="large" />
+              <EntityImage {...movie} size="large" />
             </PosterContainer>
             <MovieDetailsContainer>
               <TitleContainer>

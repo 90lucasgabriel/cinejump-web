@@ -2,7 +2,7 @@ import tmdb from 'services/api/tmdb';
 
 import { formatDate, formatTmdbImage } from 'shared/utils';
 
-import { Type } from 'domains/Favorites/enums';
+import { EntityType } from 'shared/utils/enums';
 import Params from 'domains/Tv/api/Popular/Params';
 import RawResponse from 'domains/Tv/api/Popular/RawResponse';
 import Response from 'domains/Tv/api/Popular/Response';
@@ -38,7 +38,7 @@ const parseResponse = (rawResponse: RawResponse[]): Response[] => {
       poster: formatTmdbImage({ value: tv.poster_path }),
       backdrop: formatTmdbImage({ value: tv.backdrop_path }),
       favorite: false,
-      mediaType: Type.TV,
+      mediaType: EntityType.TV,
     } as Response;
 
     response = [...response, parsedMovie];

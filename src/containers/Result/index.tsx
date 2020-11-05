@@ -1,11 +1,10 @@
 import React, { useCallback } from 'react';
 import { useHistory } from 'react-router-dom';
 
-import Route from 'routes/enums';
+import { getEntityRoute } from 'shared/utils';
 import Props from 'containers/Result/dtos';
-import { Type } from 'domains/Favorites/enums';
 
-import { Movie } from 'components';
+import { EntityImage } from 'components';
 import {
   Container,
   ImageContainer,
@@ -19,19 +18,14 @@ const Result: React.FC<Props> = ({ data }) => {
   const history = useHistory();
 
   const handleRedirect = useCallback(() => {
-    if (data.mediaType === Type.TV) {
-      history.push(`${Route.TV}/${data.id}`);
-
-      return;
-    }
-
-    history.push(`${Route.MOVIE}/${data.id}`);
+    const entityRoute = getEntityRoute(data.mediaType);
+    history.push(`${entityRoute}/${data.id}`);
   }, [history, data.id, data.mediaType]);
 
   return (
     <Container>
       <ImageContainer>
-        <Movie {...data} size="small" />
+        <EntityImage {...data} size="small" />
       </ImageContainer>
       <DetailsContainer onClick={handleRedirect}>
         <Title>{data.title}</Title>

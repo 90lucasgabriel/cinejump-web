@@ -2,20 +2,19 @@ import React, { useCallback, useEffect, useState } from 'react';
 import { useHistory } from 'react-router-dom';
 import { BsHeartFill } from 'react-icons/bs';
 
-import { Type } from 'domains/Favorites/enums';
+import { getEntityRoute } from 'shared/utils';
 import { useAuth } from 'domains/Auth/hooks';
 import { useFavorite } from 'domains/Favorites/hooks';
-import Route from 'routes/enums';
 import { Color } from 'shared/enums';
 import { Container, IconButton, Poster } from './styles';
 
 import Props from './dtos';
 
-const Movie: React.FC<Props> = ({ size, ...movie }) => {
+const EntityImage: React.FC<Props> = ({ size, ...entity }) => {
   const history = useHistory();
   const { user } = useAuth();
   const { favoriteList = [], UpdateFavorite } = useFavorite();
-  const [isFavorite, setIsFavorite] = useState(movie.favorite);
+  const [isFavorite, setIsFavorite] = useState(entity.favorite);
 
   const handleFavorite = useCallback(async () => {
     try {
@@ -24,36 +23,32 @@ const Movie: React.FC<Props> = ({ size, ...movie }) => {
         return;
       }
 
-      await UpdateFavorite(movie.id, movie.mediaType);
+      await UpdateFavorite(entity.id, entity.mediaType);
     } catch (error) {
       console.log('handleFavorite -> error', error);
     }
-  }, [user, UpdateFavorite, movie.id, movie.mediaType]);
+  }, [user, UpdateFavorite, entity.id, entity.mediaType]);
 
   const handleRedirect = useCallback(() => {
-    if (movie.mediaType === Type.TV) {
-      history.push(`${Route.TV}/${movie.id}`);
+    const entityRoute = getEntityRoute(entity.mediaType);
+    history.push(`${entityRoute}/${entity.id}`);
+  }, [history, entity.id, entity.mediaType]);
 
-      return;
-    }
-
-    history.push(`${Route.MOVIE}/${movie.id}`);
-  }, [history, movie.id, movie.mediaType]);
-
-  // Check if movie is in favorite list and change status
+  // Check if entity is in favorite list and change status
   useEffect(() => {
-    // console.log('movie', movie);
+    // console.log('entity', entity);
     if (user) {
       const response = favoriteList.find(
         favorite =>
-          favorite.entityId === movie.id && favorite.typeId === movie.mediaType,
+          favorite.entityId === entity.id &&
+          favorite.typeId === entity.mediaType,
       );
 
       setIsFavorite(!!response);
     }
-  }, [user, favoriteList, movie.id, movie.mediaType]);
+  }, [user, favoriteList, entity.id, entity.mediaType]);
 
-  if (!movie.poster && !movie.backdrop) {
+  if (!entity.poster && !entity.backdrop) {
     return null;
   }
 
@@ -62,9 +57,9 @@ const Movie: React.FC<Props> = ({ size, ...movie }) => {
       <IconButton onClick={handleFavorite}>
         <BsHeartFill fill={isFavorite ? Color.Primary : Color.Empty} />
       </IconButton>
-      <Poster src={movie.poster || movie.backdrop} onClick={handleRedirect} />
+      <Poster src={entity.poster || entity.backdrop} onClick={handleRedirect} />
     </Container>
   );
 };
 
-export default Movie;
+export default EntityImage;
