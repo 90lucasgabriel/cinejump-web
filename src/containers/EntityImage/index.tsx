@@ -20,7 +20,9 @@ import Props from './dtos';
 
 const EntityImage: React.FC<Props> = ({
   size,
+  showShadow,
   hideFavoriteButton,
+  disabled,
   showInfo,
   hideSubtitle,
   ...entity
@@ -44,13 +46,14 @@ const EntityImage: React.FC<Props> = ({
   }, [user, UpdateFavorite, entity.id, entity.mediaType]);
 
   const handleRedirect = useCallback(() => {
-    const entityRoute = getEntityRoute(entity.mediaType);
-    history.push(`${entityRoute}/${entity.id}`);
-  }, [history, entity.id, entity.mediaType]);
+    if (!disabled) {
+      const entityRoute = getEntityRoute(entity.mediaType);
+      history.push(`${entityRoute}/${entity.id}`);
+    }
+  }, [disabled, history, entity.id, entity.mediaType]);
 
   // Check if entity is in favorite list and change status
   useEffect(() => {
-    // console.log('entity', entity);
     if (user) {
       const response = favoriteList.find(
         favorite =>
@@ -67,13 +70,18 @@ const EntityImage: React.FC<Props> = ({
   }
 
   return (
-    <Container>
+    <Container showShadow={showShadow}>
       {!hideFavoriteButton && (
         <IconButton onClick={handleFavorite}>
           <BsHeartFill fill={isFavorite ? Color.Primary : Color.Empty} />
         </IconButton>
       )}
-      <EntityContainer size={size} showInfo={showInfo} onClick={handleRedirect}>
+      <EntityContainer
+        size={size}
+        showInfo={showInfo}
+        disabled={disabled}
+        onClick={handleRedirect}
+      >
         <FeaturedImage src={entity.featuredImage || entity.backdrop} />
 
         {showInfo && (

@@ -3,8 +3,15 @@ import styled, { css } from 'styled-components';
 import { Color, PosterHeight, PosterWidth, Size } from 'shared/enums';
 import ContainerProps from './dtos/ContainerProps';
 
-export const Container = styled.div`
+export const Container = styled.div<ContainerProps>`
   position: relative;
+  border-radius: ${Size.Smallest};
+
+  ${props =>
+    props.showShadow &&
+    css`
+      box-shadow: 0 0 5px rgba(0, 0, 0, 0.5);
+    `}
 `;
 
 export const EntityContainer = styled.div<ContainerProps>`
@@ -43,14 +50,19 @@ export const EntityContainer = styled.div<ContainerProps>`
       background: rgba(0, 0, 0, 0.5);
     `}
 
-  &:hover {
-    cursor: pointer;
 
-    img {
-      width: 110%;
-      height: 110%;
-    }
-  }
+  ${props =>
+    !props.disabled &&
+    css`
+      &:hover {
+        cursor: pointer;
+
+        img {
+          width: 110%;
+          height: 110%;
+        }
+      }
+    `}
 `;
 
 export const IconButton = styled.button`

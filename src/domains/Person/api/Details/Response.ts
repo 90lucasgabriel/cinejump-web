@@ -4,7 +4,6 @@ import Movie from 'domains/Person/api/Details/Movie';
 export default interface Response {
   id: number;
   name: string;
-  profile?: string;
 
   placeOfBirth?: string;
   biography: string;
@@ -21,5 +20,11 @@ export default interface Response {
 
   knownFor?: Movie[];
   filmography?: Movie[];
+
+  favorite: boolean;
   mediaType: number;
+  featuredImage?: string;
+  title: string;
+  subtitle?: string;
+  releaseYear?: string;
 }

@@ -44,11 +44,7 @@ export const PersonContainer = styled.div`
   }
 `;
 
-export const ProfileContainer = styled.div`
-  & > div {
-    box-shadow: 0 0 5px rgba(0, 0, 0, 0.5);
-  }
-`;
+export const ProfileContainer = styled.div``;
 
 export const PersonDetailsContainer = styled.div`
   display: flex;

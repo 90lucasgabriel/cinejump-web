@@ -24,7 +24,9 @@ const EntityImageList: React.FC<Props> = ({
   isLoading = false,
   loaderColor,
   message = 'Não há resultados.',
+  showShadow,
   hideFavoriteButton,
+  disabled,
   showInfo,
   hideSubtitle,
 }) => {
@@ -49,7 +51,9 @@ const EntityImageList: React.FC<Props> = ({
               {data.map(entity => (
                 <EntityImage
                   key={entity.id}
+                  showShadow={showShadow}
                   hideFavoriteButton={hideFavoriteButton}
+                  disabled={disabled}
                   showInfo={showInfo}
                   hideSubtitle={hideSubtitle}
                   {...entity}

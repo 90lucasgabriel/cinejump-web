@@ -15,8 +15,8 @@ const FavoriteProvider: React.FC = ({ children }) => {
 
   const Favorites = useCallback(async (): Promise<ListResponse[]> => {
     const response = await FavoritesApi();
-    const updatedResponse = response.map(movie => ({
-      ...movie,
+    const updatedResponse = response.map(entity => ({
+      ...entity,
       favorite: true,
     }));
 

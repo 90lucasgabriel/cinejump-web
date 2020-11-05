@@ -6,6 +6,7 @@ import Response from 'domains/Person/api/Details/Response';
 import Movie from 'domains/Person/api/Details/Movie';
 // import Credits from 'domains/Person/api/Credits/Response';
 import { formatDate, formatTmdbImage, getMediaTypeId } from 'shared/utils';
+import { EntityType } from 'shared/enums';
 // import Crew from 'domains/Person/api/Credits/dtos/Crew';
 // import Cast from 'domains/Person/api/Credits/dtos/Cast';
 // import { arrayToString } from 'shared/utils';
@@ -45,40 +46,63 @@ const parseResponse = (person: RawResponse): Response => {
     imdbId: person.imdb_id,
     homepage: person.homepage,
 
-    profile: formatTmdbImage({ value: person.profile_path }),
     birthday: formatDate({ value: person.birthday }),
     deathday: formatDate({ value: person.deathday }),
+
+    featuredImage: formatTmdbImage({ value: person.profile_path }),
+    releaseYear: person.birthday?.substring(0, 4),
+    subtitle: formatDate({ value: person.birthday }),
+    title: person.name,
+    favorite: false,
+    mediaType: EntityType.PERSON,
   } as Response;
 
-  const movies = person.combined_credits?.cast
-    .map(movie => ({
-      poster: formatTmdbImage({ value: movie.poster_path }),
-      backdrop: formatTmdbImage({ value: movie.poster_path }),
-      id: movie.id,
-      title: movie.title,
-      favorite: false,
-      character: movie.character.toUpperCase().includes('SELF')
+  const combinedProductions = person.combined_credits?.cast
+    .map(production => ({
+      poster: formatTmdbImage({ value: production.poster_path }),
+      backdrop: formatTmdbImage({ value: production.poster_path }),
+      id: production.id,
+      character: production.character.toUpperCase().includes('SELF')
         ? ''
-        : movie.character,
+        : production.character,
       releaseDate: formatDate({
-        value: movie.release_date || movie.first_air_date,
+        value: production.release_date || production.first_air_date,
       }),
-      originalDate: movie.release_date || movie.first_air_date,
+      originalDate: production.release_date || production.first_air_date,
       year:
-        (movie.release_date && movie.release_date.substring(0, 4)) ||
-        (movie.first_air_date && movie.first_air_date.substring(0, 4)),
-      popularity: movie.popularity,
-      name: movie.name,
-      mediaType: getMediaTypeId(movie.media_type),
+        (production.release_date && production.release_date.substring(0, 4)) ||
+        (production.first_air_date &&
+          production.first_air_date.substring(0, 4)),
+      popularity: production.popularity,
+      name: production.name,
+
+      featuredImage: formatTmdbImage({
+        value: production.poster_path || production.first_air_date,
+      }),
+      releaseYear:
+        (production.release_date && production.release_date.substring(0, 4)) ||
+        (production.first_air_date &&
+          production.first_air_date.substring(0, 4)),
+      subtitle:
+        (production.release_date && production.release_date.substring(0, 4)) ||
+        (production.first_air_date &&
+          production.first_air_date.substring(0, 4)),
+      title: production.title || production.name,
+      favorite: false,
+      mediaType: getMediaTypeId(production.media_type),
     }))
     .filter(item => item.originalDate && item.character.length > 0) as Movie[];
 
-  const knownFor = [...movies]
-    .sort((a, b) => (a.popularity < b.popularity ? 1 : -1))
-    .slice(0, 30);
-  const filmography = [...movies].sort((a, b) =>
-    Date.parse(a.originalDate) < Date.parse(b.originalDate) ? 1 : -1,
-  );
+  const knownFor =
+    combinedProductions &&
+    [...combinedProductions]
+      ?.sort((a, b) => (a.popularity < b.popularity ? 1 : -1))
+      .slice(0, 30);
+  const filmography =
+    combinedProductions &&
+    [...combinedProductions]?.sort((a, b) =>
+      Date.parse(a.originalDate) < Date.parse(b.originalDate) ? 1 : -1,
+    );
 
   parsedPerson = { ...parsedPerson, knownFor, filmography };
 

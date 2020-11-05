@@ -9,7 +9,13 @@ import { useAuth } from 'domains/Auth/hooks';
 import { useFavorite } from 'domains/Favorites/hooks';
 
 import { ColumnLayout, Container, Profile } from 'components';
-import { Header, EntityImageList, Footer, Filmography } from 'containers';
+import {
+  Header,
+  EntityImageList,
+  Footer,
+  Filmography,
+  EntityImage,
+} from 'containers';
 import {
   ContentContainer,
   PersonContainer,
@@ -72,7 +78,7 @@ const Person: React.FC<any> = () => {
         <Container>
           <PersonContainer>
             <ProfileContainer>
-              <Profile {...person} large />
+              <EntityImage {...person} size="large" showShadow disabled />
             </ProfileContainer>
             <PersonDetailsContainer>
               <TitleContainer>
@@ -81,7 +87,6 @@ const Person: React.FC<any> = () => {
                   {person.birthday} | {person.gender} | {person.placeOfBirth}
                 </Subtitle>
               </TitleContainer>
-              {/* {person.tagline && <Tagline>{`"${person.tagline}"`}</Tagline>} */}
               <OverviewContainer>
                 <OverviewTitle>Biografia</OverviewTitle>
                 <Overview>
