@@ -111,11 +111,12 @@ const Movie: React.FC<any> = () => {
           </MovieContainer>
         </Container>
 
-        <PersonList
+        <EntityImageList
           title="Elenco"
           data={movie.credits?.cast || []}
           isLoading={isLoading}
           message="Sem informações de elenco."
+          showInfo
         />
 
         <EntityImageList

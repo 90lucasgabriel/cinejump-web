@@ -81,6 +81,12 @@ const parseResponse = (movie: RawResponse): Response => {
     creditId: person.credit_id,
     gender: person.gender,
     profile: formatTmdbImage({ value: person.profile_path }),
+
+    featuredImage: formatTmdbImage({ value: person.profile_path }),
+    subtitle: person.character,
+    title: person.name,
+    favorite: false,
+    mediaType: EntityType.PERSON,
   })) as Cast[];
 
   const crew = movie.credits?.crew.map(person => ({
@@ -91,6 +97,12 @@ const parseResponse = (movie: RawResponse): Response => {
     creditId: person.credit_id,
     gender: person.gender,
     profile: formatTmdbImage({ value: person.profile_path }),
+
+    featuredImage: formatTmdbImage({ value: person.profile_path }),
+    subtitle: person.job,
+    title: person.name,
+    favorite: false,
+    mediaType: EntityType.PERSON,
   })) as Crew[];
 
   const credits = { cast, crew } as Credits;

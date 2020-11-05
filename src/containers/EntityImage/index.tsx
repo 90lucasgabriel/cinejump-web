@@ -82,7 +82,10 @@ const EntityImage: React.FC<Props> = ({
         disabled={disabled}
         onClick={handleRedirect}
       >
-        <FeaturedImage src={entity.featuredImage || entity.backdrop} />
+        <FeaturedImage
+          src={entity.featuredImage || entity.backdrop}
+          showInfo={showInfo}
+        />
 
         {showInfo && (
           <InfoContainer hideSubtitle={hideSubtitle}>

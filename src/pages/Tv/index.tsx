@@ -109,11 +109,12 @@ const Tv: React.FC<any> = () => {
           </MovieContainer>
         </Container>
 
-        <PersonList
+        <EntityImageList
           title="Elenco"
           data={tv.credits?.cast || []}
           isLoading={isLoading}
           message="Sem informações de elenco."
+          showInfo
         />
 
         <EntityImageList

@@ -78,11 +78,17 @@ export const IconButton = styled.button`
   }
 `;
 
-export const FeaturedImage = styled.img`
+export const FeaturedImage = styled.img<ContainerProps>`
   width: 100%;
   height: 100%;
   object-fit: cover;
   transition: width 0.2s, height 0.2s;
+
+  ${props =>
+    props.showInfo &&
+    css`
+      margin-top: -${Size.Largest};
+    `}
 `;
 
 export const InfoContainer = styled.div<ContainerProps>`
