@@ -1,12 +1,12 @@
 import React from 'react';
 import { Story, Meta } from '@storybook/react';
 
-import Props from 'components/EntityImage/dtos';
-import EntityImage from 'components/EntityImage';
+import Props from 'containers/EntityImage/dtos';
+import { EntityImage } from 'containers';
 
 // Config and Controls
 export default {
-  title: 'Components/EntityImage',
+  title: 'Containers/EntityImage',
   component: EntityImage,
   argTypes: {
     favorite: { control: 'boolean' },

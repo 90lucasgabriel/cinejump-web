@@ -8,8 +8,8 @@ import { Details } from 'domains/Tv/api';
 import { useAuth } from 'domains/Auth/hooks';
 import { useFavorite } from 'domains/Favorites/hooks';
 
-import { ColumnLayout, Container, EntityImage } from 'components';
-import { Header, PersonList, MovieList, Footer } from 'containers';
+import { ColumnLayout, Container } from 'components';
+import { Header, EntityImage, PersonList, MovieList, Footer } from 'containers';
 import {
   ContentContainer,
   MovieContainer,

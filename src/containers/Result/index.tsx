@@ -4,7 +4,7 @@ import { useHistory } from 'react-router-dom';
 import { getEntityRoute } from 'shared/utils';
 import Props from 'containers/Result/dtos';
 
-import { EntityImage } from 'components';
+import { EntityImage } from 'containers';
 import {
   Container,
   ImageContainer,

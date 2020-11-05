@@ -2,7 +2,7 @@ import React from 'react';
 import { render, fireEvent, waitFor, act } from '@testing-library/react';
 
 import { Color, EntityType } from 'shared/enums';
-import EntityImage from 'components/EntityImage';
+import EntityImage from 'containers/EntityImage';
 
 const mockedUpdateFavorite = jest.fn();
 const mockedHistoryPush = jest.fn();

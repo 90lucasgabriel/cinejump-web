@@ -3,7 +3,7 @@ import React from 'react';
 import { ReactComponent as Loading } from 'assets/loading.svg';
 
 import { Wrapper } from 'components/Layout';
-import Movie from 'components/EntityImage';
+import { EntityImage } from 'containers';
 import {
   Container,
   Title,
@@ -43,8 +43,8 @@ const MovieList: React.FC<Props> = ({
         {!isLoading && data.length > 0 && (
           <ListContainer>
             <ListContent>
-              {data.map(movie => (
-                <Movie key={movie.id} {...movie} />
+              {data.map(entity => (
+                <EntityImage key={entity.id} {...entity} />
               ))}
             </ListContent>
           </ListContainer>
