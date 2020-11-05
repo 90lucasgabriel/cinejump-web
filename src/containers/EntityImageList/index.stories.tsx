@@ -1,13 +1,13 @@
 import React from 'react';
 import { Story, Meta } from '@storybook/react';
 
-import Props from 'containers/MovieList/dtos';
-import MovieList from 'containers/MovieList';
+import Props from 'containers/EntityImageList/dtos';
+import EntityImageList from 'containers/EntityImageList';
 
 // Config and Controls
 export default {
-  title: 'Containers/MovieList',
-  component: MovieList,
+  title: 'Containers/EntityImageList',
+  component: EntityImageList,
   argTypes: {
     data: { control: 'object' },
     title: { control: 'text' },
@@ -95,7 +95,7 @@ export default {
 
 // Component
 const Template: Story<Props> = args => {
-  return <MovieList {...args} />;
+  return <EntityImageList {...args} />;
 };
 
 // Stories

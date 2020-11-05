@@ -15,7 +15,7 @@ import {
 
 import Props from './dtos';
 
-const MovieList: React.FC<Props> = ({
+const EntityImageList: React.FC<Props> = ({
   theme,
   background,
   color,
@@ -58,4 +58,4 @@ const MovieList: React.FC<Props> = ({
   );
 };
 
-export default MovieList;
+export default EntityImageList;

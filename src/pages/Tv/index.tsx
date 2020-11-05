@@ -9,7 +9,13 @@ import { useAuth } from 'domains/Auth/hooks';
 import { useFavorite } from 'domains/Favorites/hooks';
 
 import { ColumnLayout, Container } from 'components';
-import { Header, EntityImage, PersonList, MovieList, Footer } from 'containers';
+import {
+  Header,
+  EntityImage,
+  PersonList,
+  EntityImageList,
+  Footer,
+} from 'containers';
 import {
   ContentContainer,
   MovieContainer,
@@ -110,7 +116,7 @@ const Tv: React.FC<any> = () => {
           message="Sem informações de elenco."
         />
 
-        <MovieList
+        <EntityImageList
           title="Recomendações"
           data={tv.recommendations || []}
           isLoading={isLoading}

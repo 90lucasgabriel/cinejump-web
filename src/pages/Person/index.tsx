@@ -9,7 +9,7 @@ import { useAuth } from 'domains/Auth/hooks';
 import { useFavorite } from 'domains/Favorites/hooks';
 
 import { ColumnLayout, Container, Profile } from 'components';
-import { Header, MovieList, Footer, Filmography } from 'containers';
+import { Header, EntityImageList, Footer, Filmography } from 'containers';
 import {
   ContentContainer,
   PersonContainer,
@@ -92,7 +92,7 @@ const Person: React.FC<any> = () => {
           </PersonContainer>
         </Container>
 
-        <MovieList
+        <EntityImageList
           title={
             person.gender === 'Feminino' ? 'Conhecida por' : 'Conhecido por'
           }
