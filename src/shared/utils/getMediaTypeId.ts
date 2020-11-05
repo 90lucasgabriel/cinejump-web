@@ -1,4 +1,4 @@
-import { EntityType } from 'shared/utils/enums';
+import { EntityType } from 'shared/enums';
 
 const getMediaTypeId = (mediaType?: string): number | undefined => {
   if (mediaType === 'tv') {

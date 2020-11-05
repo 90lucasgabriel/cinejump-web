@@ -1,6 +1,6 @@
 import React, { useCallback, useEffect, useState } from 'react';
 
-import { EntityType } from 'shared/utils/enums';
+import { EntityType } from 'shared/enums';
 import { useAuth } from 'domains/Auth/hooks';
 import { useFavorite } from 'domains/Favorites/hooks';
 import { NowPlaying, Popular } from 'domains/Movie/api';

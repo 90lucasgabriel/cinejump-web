@@ -1,4 +1,4 @@
-import { EntityType } from 'shared/utils/enums';
+import { EntityType } from 'shared/enums';
 import { Details as MovieDetails } from 'domains/Movie/api';
 import { Details as TvDetails } from 'domains/Tv/api';
 import { Details as PersonDetails } from 'domains/Person/api';

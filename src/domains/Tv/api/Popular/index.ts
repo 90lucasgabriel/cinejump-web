@@ -2,7 +2,7 @@ import tmdb from 'services/api/tmdb';
 
 import { formatDate, formatTmdbImage } from 'shared/utils';
 
-import { EntityType } from 'shared/utils/enums';
+import { EntityType } from 'shared/enums';
 import Params from 'domains/Tv/api/Popular/Params';
 import RawResponse from 'domains/Tv/api/Popular/RawResponse';
 import Response from 'domains/Tv/api/Popular/Response';

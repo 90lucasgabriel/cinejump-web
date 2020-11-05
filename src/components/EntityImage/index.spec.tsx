@@ -1,8 +1,8 @@
 import React from 'react';
 import { render, fireEvent, waitFor, act } from '@testing-library/react';
 
-import { Color } from 'shared/enums';
-import Movie from 'components/EntityImage';
+import { Color, EntityType } from 'shared/enums';
+import EntityImage from 'components/EntityImage';
 
 const mockedUpdateFavorite = jest.fn();
 const mockedHistoryPush = jest.fn();
@@ -15,11 +15,16 @@ jest.mock('react-router-dom', () => {
   };
 });
 
-describe('Movie Component', () => {
+describe('EntityImage Component', () => {
   it('should render a movie with poster.', () => {
     // Arrange
     const { container, getByRole } = render(
-      <Movie id={1234} favorite={false} poster="image.jpg" />,
+      <EntityImage
+        id={1234}
+        favorite={false}
+        poster="image.jpg"
+        mediaType={EntityType.MOVIE}
+      />,
     );
 
     // Act
@@ -33,7 +38,12 @@ describe('Movie Component', () => {
   it('should render a movie with backdrop.', () => {
     // Arrange
     const { container, getByRole } = render(
-      <Movie id={1234} favorite={false} backdrop="image.jpg" />,
+      <EntityImage
+        id={1234}
+        favorite={false}
+        backdrop="image.jpg"
+        mediaType={EntityType.MOVIE}
+      />,
     );
 
     // Act
@@ -46,7 +56,9 @@ describe('Movie Component', () => {
 
   it('should not render a movie when poster and backdrop are null.', () => {
     // Arrange and Act
-    const { container } = render(<Movie id={1234} favorite={false} />);
+    const { container } = render(
+      <EntityImage id={1234} favorite={false} mediaType={EntityType.MOVIE} />,
+    );
 
     // Assert
     expect(container).toBeEmptyDOMElement();
@@ -57,7 +69,12 @@ describe('Movie Component', () => {
     // Arrange
     const handleRedirect = jest.fn();
     const { getByRole } = render(
-      <Movie id={1234} favorite={false} poster="image.jpg" />,
+      <EntityImage
+        id={1234}
+        favorite={false}
+        poster="image.jpg"
+        mediaType={EntityType.MOVIE}
+      />,
     );
 
     // Act
@@ -92,7 +109,12 @@ describe('Movie Component', () => {
     });
 
     const { getByRole } = render(
-      <Movie id={1234} favorite={false} poster="image.jpg" />,
+      <EntityImage
+        id={1234}
+        favorite={false}
+        poster="image.jpg"
+        mediaType={EntityType.MOVIE}
+      />,
     );
 
     // Act
@@ -125,7 +147,12 @@ describe('Movie Component', () => {
     });
 
     const { getByRole } = render(
-      <Movie id={1234} favorite={false} poster="image.jpg" />,
+      <EntityImage
+        id={1234}
+        favorite={false}
+        poster="image.jpg"
+        mediaType={EntityType.MOVIE}
+      />,
     );
 
     // Act
@@ -158,7 +185,12 @@ describe('Movie Component', () => {
     });
 
     const { getByRole } = render(
-      <Movie id={1234} favorite={false} poster="image.jpg" />,
+      <EntityImage
+        id={1234}
+        favorite={false}
+        poster="image.jpg"
+        mediaType={EntityType.MOVIE}
+      />,
     );
 
     // Act

@@ -1,6 +1,6 @@
 import tmdb from 'services/api/tmdb';
 
-import { EntityType } from 'shared/utils/enums';
+import { EntityType } from 'shared/enums';
 import Params from 'domains/Search/api/Multi/Params';
 import RawResponse from 'domains/Search/api/Multi/RawResponse';
 import Response from 'domains/Search/api/Multi/Response';

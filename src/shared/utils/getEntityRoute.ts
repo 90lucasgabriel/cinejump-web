@@ -1,5 +1,5 @@
 import Route from 'routes/enums';
-import { EntityType } from 'shared/utils/enums';
+import { EntityType } from 'shared/enums';
 
 const getEntityRoute = (mediaTypeId?: number): string | undefined => {
   if (mediaTypeId === EntityType.TV) {
