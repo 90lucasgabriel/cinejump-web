@@ -2,7 +2,6 @@ import Recommendations from 'domains/Movie/api/Recommendations/Response';
 import Credits from 'domains/Movie/api/Credits/Response';
 
 export default interface Response {
-  poster?: string;
   backdrop?: string;
   budget: number;
   overview: string;
@@ -16,17 +15,20 @@ export default interface Response {
   genresNames: string;
   homepage?: string;
   id: number;
-  title: string;
   originalTitle: string;
   popularity: number;
   runtime: string;
   voteCount: number;
   voteAverage: number;
-  favorite: boolean;
 
   recommendations?: Recommendations[];
   credits?: Credits;
   directorName?: string;
 
+  favorite: boolean;
   mediaType: number;
+  featuredImage?: string;
+  title: string;
+  subtitle?: string;
+  releaseYear?: string;
 }

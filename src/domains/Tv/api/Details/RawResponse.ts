@@ -1,5 +1,5 @@
-import Recommendations from 'domains/Movie/api/Recommendations/RawResponse';
-import Credits from 'domains/Movie/api/Credits/RawResponse';
+import Recommendations from 'domains/Tv/api/Recommendations/RawResponse';
+import Credits from 'domains/Tv/api/Credits/RawResponse';
 
 export default interface RawResponse {
   poster_path?: string;

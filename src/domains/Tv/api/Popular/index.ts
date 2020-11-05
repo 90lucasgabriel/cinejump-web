@@ -35,9 +35,13 @@ const parseResponse = (rawResponse: RawResponse[]): Response[] => {
       voteCount: tv.vote_count,
 
       releaseDate: formatDate({ value: tv.first_air_date }),
-      poster: formatTmdbImage({ value: tv.poster_path }),
       backdrop: formatTmdbImage({ value: tv.backdrop_path }),
+
+      featuredImage: formatTmdbImage({ value: tv.poster_path }),
+      releaseYear: tv.first_air_date?.substring(0, 4),
+      subtitle: tv.first_air_date?.substring(0, 4),
       favorite: false,
+      title: tv.name,
       mediaType: EntityType.TV,
     } as Response;
 

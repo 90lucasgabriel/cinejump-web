@@ -1,10 +1,12 @@
 export default interface Response {
-  poster?: string;
   backdrop?: string;
   id: number;
-  title: string;
   favorite: boolean;
   mediaType: number;
+  featuredImage?: string;
+  title: string;
+  subtitle?: string;
+  releaseYear?: string;
   // overview: string;
   // releaseDate: string;
   // genresIds: number[];

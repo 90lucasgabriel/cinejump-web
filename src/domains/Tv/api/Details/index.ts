@@ -36,7 +36,6 @@ const parseResponse = (tv: RawResponse): Response => {
     genresNames: arrayToString(tv.genres, 'name'),
     id: tv.id,
     originalTitle: tv.original_name,
-    title: tv.name,
     popularity: tv.popularity,
     voteCount: tv.vote_count,
     voteAverage: tv.vote_average,
@@ -47,17 +46,24 @@ const parseResponse = (tv: RawResponse): Response => {
     )?.name,
 
     releaseDate: formatDate({ value: tv.first_air_date }),
-    poster: formatTmdbImage({ value: tv.poster_path }),
     backdrop: formatTmdbImage({ value: tv.backdrop_path }),
+
+    featuredImage: formatTmdbImage({ value: tv.poster_path }),
+    releaseYear: tv.first_air_date?.substring(0, 4),
+    subtitle: tv.first_air_date?.substring(0, 4),
+    title: tv.name,
     favorite: false,
     mediaType: EntityType.TV,
   } as Response;
 
   const recommendations = tv.recommendations?.results.map(recommendation => ({
-    poster: formatTmdbImage({ value: recommendation.poster_path }),
     backdrop: formatTmdbImage({ value: recommendation.poster_path }),
     id: recommendation.id,
-    title: recommendation.title,
+
+    featuredImage: formatTmdbImage({ value: recommendation.poster_path }),
+    releaseYear: recommendation.first_air_date?.substring(0, 4),
+    subtitle: recommendation.first_air_date?.substring(0, 4),
+    title: recommendation.name,
     favorite: false,
     mediaType: EntityType.TV,
   })) as Recommendations[];

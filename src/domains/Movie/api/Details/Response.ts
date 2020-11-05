@@ -17,17 +17,20 @@ export default interface Response {
   homepage?: string;
   id: number;
   originalTitle: string;
-  title: string;
   popularity: number;
   runtime: string;
   voteCount: number;
   voteAverage: number;
   tagline: string;
-  favorite: boolean;
 
   recommendations?: Recommendations[];
   credits?: Credits;
   directorName?: string;
 
+  favorite: boolean;
   mediaType: number;
+  featuredImage?: string;
+  title: string;
+  subtitle?: string;
+  releaseYear?: string;
 }

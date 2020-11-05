@@ -2,8 +2,9 @@ import DefaultProps from 'shared/dtos';
 // import MovieProps from 'containers/EntityImage/dtos';
 // import FavoriteProps from 'domains/Favorites/api/List/Response';
 import { Color } from 'shared/enums';
+import ContainerProps from 'containers/EntityImage/dtos/ContainerProps';
 
-export default interface Props extends DefaultProps {
+export default interface Props extends DefaultProps, ContainerProps {
   title?: string;
   data: any[];
   isLoading?: boolean;

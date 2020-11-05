@@ -37,7 +37,6 @@ const parseResponse = (movie: RawResponse): Response => {
     genresNames: arrayToString(movie.genres, 'name'),
     id: movie.id,
     originalTitle: movie.original_title,
-    title: movie.title,
     popularity: movie.popularity,
     voteCount: movie.vote_count,
     voteAverage: movie.vote_average,
@@ -49,17 +48,24 @@ const parseResponse = (movie: RawResponse): Response => {
     )?.name,
 
     releaseDate: formatDate({ value: movie.release_date }),
-    poster: formatTmdbImage({ value: movie.poster_path }),
     backdrop: formatTmdbImage({ value: movie.backdrop_path }),
+
+    featuredImage: formatTmdbImage({ value: movie.poster_path }),
+    releaseYear: movie.release_date?.substring(0, 4),
+    subtitle: movie.release_date?.substring(0, 4),
+    title: movie.title,
     favorite: false,
     mediaType: EntityType.MOVIE,
   } as Response;
 
   const recommendations = movie.recommendations?.results.map(
     recommendation => ({
-      poster: formatTmdbImage({ value: recommendation.poster_path }),
       backdrop: formatTmdbImage({ value: recommendation.poster_path }),
       id: recommendation.id,
+
+      featuredImage: formatTmdbImage({ value: recommendation.poster_path }),
+      releaseYear: recommendation.release_date?.substring(0, 4),
+      subtitle: recommendation.release_date?.substring(0, 4),
       title: recommendation.title,
       favorite: false,
       mediaType: EntityType.MOVIE,

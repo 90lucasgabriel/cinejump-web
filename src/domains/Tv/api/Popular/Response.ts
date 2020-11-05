@@ -1,5 +1,4 @@
 export default interface Response {
-  poster?: string;
   backdrop?: string;
   overview: string;
   releaseDate: string;
@@ -9,6 +8,11 @@ export default interface Response {
   name: string;
   popularity: number;
   voteCount: number;
+
   favorite: boolean;
   mediaType: number;
+  featuredImage?: string;
+  title: string;
+  subtitle?: string;
+  releaseYear?: string;
 }

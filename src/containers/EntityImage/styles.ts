@@ -3,14 +3,20 @@ import styled, { css } from 'styled-components';
 import { Color, PosterHeight, PosterWidth, Size } from 'shared/enums';
 import ContainerProps from './dtos/ContainerProps';
 
-export const Container = styled.div<ContainerProps>`
+export const Container = styled.div`
   position: relative;
+`;
+
+export const EntityContainer = styled.div<ContainerProps>`
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
   border-radius: ${Size.Smallest};
   overflow: hidden;
 
   width: ${PosterWidth.Default};
   height: ${PosterHeight.Default};
-  border: 1px solid ${Color.FillSecondary};
 
   ${props =>
     props?.size === 'small' &&
@@ -28,9 +34,14 @@ export const Container = styled.div<ContainerProps>`
       border: 0;
     `}
 
-  display: flex;
-  align-items: center;
-  justify-content: center;
+
+  ${props =>
+    props.showInfo &&
+    css`
+      overflow: hidden;
+      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+      background: rgba(0, 0, 0, 0.5);
+    `}
 
   &:hover {
     cursor: pointer;
@@ -55,9 +66,44 @@ export const IconButton = styled.button`
   }
 `;
 
-export const Poster = styled.img`
+export const FeaturedImage = styled.img`
   width: 100%;
   height: 100%;
   object-fit: cover;
   transition: width 0.2s, height 0.2s;
+`;
+
+export const InfoContainer = styled.div<ContainerProps>`
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  line-height: ${Size.Default};
+  background: ${Color.Fill};
+  overflow: hidden;
+  padding: ${Size.Smallest};
+  border-radius: 0 0 ${Size.Smallest} ${Size.Smallest};
+  height: ${props => (props.hideSubtitle ? '5.4rem' : '7rem')};
+`;
+
+export const InfoTitle = styled.p<ContainerProps>`
+  font-size: ${Size.Small};
+  color: ${Color.Secondary};
+
+  ${props =>
+    props.hideSubtitle === false &&
+    css`
+      display: -webkit-box;
+      -webkit-line-clamp: 2;
+      -webkit-box-orient: vertical;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    `}
+`;
+
+export const InfoSubtitle = styled.p`
+  font-size: ${Size.Small};
+  color: ${Color.Text};
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
 `;

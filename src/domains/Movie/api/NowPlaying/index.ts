@@ -32,14 +32,16 @@ const parseResponse = (rawResponse: RawResponse[]): Response[] => {
       genreIds: movie.genre_ids,
       id: movie.id,
       originalTitle: movie.original_title,
-      title: movie.title,
       popularity: movie.popularity,
       voteCount: movie.vote_count,
       voteAverage: movie.vote_average,
-
       releaseDate: formatDate({ value: movie.release_date }),
-      poster: formatTmdbImage({ value: movie.poster_path }),
       backdrop: formatTmdbImage({ value: movie.backdrop_path }),
+
+      featuredImage: formatTmdbImage({ value: movie.poster_path }),
+      releaseYear: movie.release_date?.substring(0, 4),
+      subtitle: movie.release_date?.substring(0, 4),
+      title: movie.title,
       favorite: false,
       mediaType: EntityType.MOVIE,
     } as Response;

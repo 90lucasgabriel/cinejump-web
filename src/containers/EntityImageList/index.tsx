@@ -24,6 +24,9 @@ const EntityImageList: React.FC<Props> = ({
   isLoading = false,
   loaderColor,
   message = 'Não há resultados.',
+  hideFavoriteButton,
+  showInfo,
+  hideSubtitle,
 }) => {
   return (
     <Wrapper theme={theme} background={background} color={color}>
@@ -44,7 +47,13 @@ const EntityImageList: React.FC<Props> = ({
           <ListContainer>
             <ListContent>
               {data.map(entity => (
-                <EntityImage key={entity.id} {...entity} />
+                <EntityImage
+                  key={entity.id}
+                  hideFavoriteButton={hideFavoriteButton}
+                  showInfo={showInfo}
+                  hideSubtitle={hideSubtitle}
+                  {...entity}
+                />
               ))}
             </ListContent>
           </ListContainer>
