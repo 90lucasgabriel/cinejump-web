@@ -1,12 +1,12 @@
 import React from 'react';
 
-import Props from 'containers/ResultList/dtos';
+import Props from 'containers/EntitySummaryList/dtos';
 
 import { ReactComponent as Loading } from 'assets/loading.svg';
-import { Result } from 'containers';
+import { EntitySummary } from 'containers';
 import { Container } from './styles';
 
-const ResultList: React.FC<Props> = ({
+const EntitySummaryList: React.FC<Props> = ({
   data = [],
   isLoading = false,
   theme,
@@ -23,10 +23,10 @@ const ResultList: React.FC<Props> = ({
   return (
     <Container>
       {data.map((result: any) => {
-        return <Result data={result} key={data.id} />;
+        return <EntitySummary data={result} key={data.id} />;
       })}
     </Container>
   );
 };
 
-export default ResultList;
+export default EntitySummaryList;

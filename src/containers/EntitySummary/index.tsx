@@ -2,7 +2,7 @@ import React, { useCallback } from 'react';
 import { useHistory } from 'react-router-dom';
 
 import { getEntityRoute } from 'shared/utils';
-import Props from 'containers/Result/dtos';
+import Props from 'containers/EntitySummary/dtos';
 
 import { EntityImage } from 'containers';
 import {
@@ -14,7 +14,7 @@ import {
   Description,
 } from './styles';
 
-const Result: React.FC<Props> = ({ data }) => {
+const EntitySummary: React.FC<Props> = ({ data }) => {
   const history = useHistory();
 
   const handleRedirect = useCallback(() => {
@@ -36,4 +36,4 @@ const Result: React.FC<Props> = ({ data }) => {
   );
 };
 
-export default Result;
+export default EntitySummary;

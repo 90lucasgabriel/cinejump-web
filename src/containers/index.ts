@@ -1,9 +1,9 @@
 export { default as EntityImage } from './EntityImage';
 export { default as EntityImageList } from './EntityImageList';
+export { default as EntitySummary } from './EntitySummary';
+export { default as EntitySummaryList } from './EntitySummaryList';
 export { default as Filmography } from './Filmography';
 export { default as Footer } from './Footer';
 export { default as Header } from './Header';
 export { default as Highlights } from './Highlights';
-export { default as Result } from './Result';
-export { default as ResultList } from './ResultList';
 export { default as SearchModal } from './SearchModal';
