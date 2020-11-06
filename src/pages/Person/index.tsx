@@ -78,7 +78,13 @@ const Person: React.FC<any> = () => {
         <Container>
           <PersonContainer>
             <ProfileContainer>
-              <EntityImage {...person} size="large" showShadow disabled />
+              <EntityImage
+                {...person}
+                size="large"
+                showShadow
+                disabled
+                showEmpty
+              />
             </ProfileContainer>
             <PersonDetailsContainer>
               <TitleContainer>

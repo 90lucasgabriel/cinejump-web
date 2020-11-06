@@ -25,12 +25,12 @@ const EntitySummary: React.FC<Props> = ({ data }) => {
   return (
     <Container>
       <ImageContainer>
-        <EntityImage {...data} size="small" />
+        <EntityImage {...data} size="small" showEmpty />
       </ImageContainer>
       <DetailsContainer onClick={handleRedirect}>
-        <Title>{data.title}</Title>
-        <Subtitle>{data.releaseYear}</Subtitle>
-        <Description>{data.overview}</Description>
+        <Title mediaType={data.mediaType}>{data.title}</Title>
+        <Subtitle>{data.subtitle}</Subtitle>
+        <Description>{data.description}</Description>
       </DetailsContainer>
     </Container>
   );

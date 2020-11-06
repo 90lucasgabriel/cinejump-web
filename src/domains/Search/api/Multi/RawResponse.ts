@@ -20,4 +20,7 @@ export default interface RawResponse {
   first_air_date?: string;
   original_name?: string;
   name?: string;
+  birthday?: string;
+  profile_path?: string;
+  known_for?: any[];
 }

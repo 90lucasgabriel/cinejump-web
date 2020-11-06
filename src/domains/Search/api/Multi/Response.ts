@@ -6,15 +6,18 @@ export default interface Response {
   backdrop?: string;
   overview: string;
   releaseDate: string;
-  releaseYear: string;
   genreIds: number[];
   id: number;
   originalTitle: string;
-  title: string;
   popularity: number;
   voteCount: number;
   voteAverage: number;
-  favorite: boolean;
 
+  favorite: boolean;
   mediaType: number;
+  featuredImage?: string;
+  title: string;
+  subtitle?: string;
+  releaseYear?: string;
+  description?: string;
 }

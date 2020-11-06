@@ -5,4 +5,5 @@ export default interface ContainerProps {
   showInfo?: boolean;
   hideSubtitle?: boolean;
   disabled?: boolean;
+  showEmpty?: boolean;
 }

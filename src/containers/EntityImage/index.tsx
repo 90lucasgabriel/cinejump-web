@@ -25,6 +25,7 @@ const EntityImage: React.FC<Props> = ({
   disabled,
   showInfo,
   hideSubtitle,
+  showEmpty,
   ...entity
 }) => {
   const history = useHistory();
@@ -65,12 +66,12 @@ const EntityImage: React.FC<Props> = ({
     }
   }, [user, favoriteList, entity.id, entity.mediaType]);
 
-  if (!entity.featuredImage && !entity.backdrop) {
+  if (!entity.featuredImage && !entity.backdrop && !showEmpty) {
     return null;
   }
 
   return (
-    <Container showShadow={showShadow}>
+    <Container showShadow={showShadow} size={size}>
       {!hideFavoriteButton && (
         <IconButton onClick={handleFavorite}>
           <BsHeartFill fill={isFavorite ? Color.Primary : Color.Empty} />

@@ -1,8 +1,7 @@
 import styled from 'styled-components';
 
-import DefaultProps from 'shared/dtos';
-import { Color, Size } from 'shared/enums';
-import { getColor } from 'shared/utils';
+import ContainerProps from 'containers/EntitySummary/dtos/ContainerProps';
+import { Color, EntityType, Size } from 'shared/enums';
 
 export const Container = styled.div`
   display: flex;
@@ -26,9 +25,11 @@ export const DetailsContainer = styled.div`
   margin-left: ${Size.Medium};
 `;
 
-export const Title = styled.h3<DefaultProps>`
+export const Title = styled.h3<ContainerProps>`
   margin-bottom: ${Size.Smallest};
-  color: ${props => getColor(props.theme, props.color)};
+
+  color: ${props =>
+    props.mediaType === EntityType.PERSON ? Color.Secondary : Color.Primary};
 `;
 
 export const Subtitle = styled.p`

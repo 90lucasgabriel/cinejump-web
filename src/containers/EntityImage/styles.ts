@@ -6,11 +6,12 @@ import ContainerProps from './dtos/ContainerProps';
 export const Container = styled.div<ContainerProps>`
   position: relative;
   border-radius: ${Size.Smallest};
+  background: ${Color.FillSecondary};
 
   ${props =>
     props.showShadow &&
     css`
-      box-shadow: 0 0 5px rgba(0, 0, 0, 0.5);
+      box-shadow: 0 2px 6px rgba(0, 0, 0, 0.5);
     `}
 `;
 
@@ -30,7 +31,7 @@ export const EntityContainer = styled.div<ContainerProps>`
     css`
       width: ${PosterWidth.Small};
       height: ${PosterHeight.Small};
-      border: 1px solid ${Color.FillSecondary};
+      border: 0;
     `}
 
   ${props =>
@@ -47,7 +48,6 @@ export const EntityContainer = styled.div<ContainerProps>`
     css`
       overflow: hidden;
       box-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
-      background: rgba(0, 0, 0, 0.5);
     `}
 
 
@@ -83,6 +83,8 @@ export const FeaturedImage = styled.img<ContainerProps>`
   height: 100%;
   object-fit: cover;
   transition: width 0.2s, height 0.2s;
+  border: 0;
+  outline
 
   ${props =>
     props.showInfo &&
