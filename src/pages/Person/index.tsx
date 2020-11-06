@@ -8,7 +8,7 @@ import { Details } from 'domains/Person/api';
 import { useAuth } from 'domains/Auth/hooks';
 import { useFavorite } from 'domains/Favorites/hooks';
 
-import { ColumnLayout, Container, Profile } from 'components';
+import { ColumnLayout, Container } from 'components';
 import {
   Header,
   EntityImageList,
@@ -32,7 +32,7 @@ import {
 
 const Person: React.FC<any> = () => {
   const { id } = useParams<Params>();
-  const [person, setMovie] = useState({} as PersonDetails);
+  const [person, setPerson] = useState({} as PersonDetails);
   const [isLoading, setIsLoading] = useState(false);
 
   const { user } = useAuth();
@@ -47,7 +47,7 @@ const Person: React.FC<any> = () => {
 
       const response = await Details(+id, params);
 
-      setMovie(response);
+      setPerson(response);
       return response;
     } catch (error) {
       console.log('getPerson -> error', error);

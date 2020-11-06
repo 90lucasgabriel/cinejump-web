@@ -9,13 +9,7 @@ import { useAuth } from 'domains/Auth/hooks';
 import { useFavorite } from 'domains/Favorites/hooks';
 
 import { ColumnLayout, Container } from 'components';
-import {
-  Header,
-  EntityImage,
-  PersonList,
-  EntityImageList,
-  Footer,
-} from 'containers';
+import { Header, EntityImage, EntityImageList, Footer } from 'containers';
 import {
   ContentContainer,
   MovieContainer,

@@ -4,7 +4,6 @@ export { default as Filmography } from './Filmography';
 export { default as Footer } from './Footer';
 export { default as Header } from './Header';
 export { default as Highlights } from './Highlights';
-export { default as PersonList } from './PersonList';
 export { default as Result } from './Result';
 export { default as ResultList } from './ResultList';
 export { default as SearchModal } from './SearchModal';
