@@ -2,7 +2,7 @@ import styled, { css } from 'styled-components';
 import { shade } from 'polished';
 
 import DefaultProps from 'shared/dtos';
-import { getBackground, getColor } from 'shared/utils';
+import { getBackground, getColor } from 'shared/helpers';
 import { Color, Size } from 'shared/enums';
 
 interface ButtonProps extends DefaultProps {

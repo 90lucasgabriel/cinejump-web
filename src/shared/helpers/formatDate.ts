@@ -1,4 +1,4 @@
-import FormatDate from 'shared/utils/types/FormatDate';
+import FormatDate from 'shared/helpers/types/FormatDate';
 
 const formatDate = ({ value }: FormatDate): string => {
   if (!value) {

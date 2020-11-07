@@ -1,6 +1,6 @@
 import tmdb from 'services/api/tmdb';
 
-import { formatDate, formatTmdbImage } from 'shared/utils';
+import { formatDate, formatTmdbImage } from 'shared/helpers';
 
 import { EntityType } from 'shared/enums';
 import RawResponse from 'domains/Movie/api/Recommendations/types/RawResponse';

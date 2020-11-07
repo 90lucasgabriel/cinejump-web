@@ -1,7 +1,7 @@
 import React, { useCallback, useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
 
-import Params from 'pages/Person/dtos/Params';
+import Params from 'pages/Person/types/Params';
 import PersonDetails from 'domains/Person/api/Details/types/Response';
 import { Color } from 'shared/enums';
 import { Details } from 'domains/Person/api';

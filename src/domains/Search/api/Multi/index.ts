@@ -1,7 +1,7 @@
 import tmdb from 'services/api/tmdb';
 
 import { EntityType } from 'shared/enums';
-import { getMediaTypeId } from 'shared/utils';
+import { getMediaTypeId } from 'shared/helpers';
 import {
   getBackdrop,
   getDescription,
@@ -11,7 +11,7 @@ import {
   getReleaseYear,
   getSubtitle,
   getTitle,
-} from 'shared/utils/Entity';
+} from 'shared/helpers/Entity';
 
 import Params from 'domains/Search/api/Multi/types/Params';
 import RawResponse from 'domains/Search/api/Multi/types/RawResponse';

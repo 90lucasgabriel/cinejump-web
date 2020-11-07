@@ -2,7 +2,7 @@ import React, { useCallback, useEffect, useState } from 'react';
 import { useHistory } from 'react-router-dom';
 import { BsHeartFill } from 'react-icons/bs';
 
-import { getEntityRoute } from 'shared/utils';
+import { getEntityRoute } from 'shared/helpers';
 import { useAuth } from 'domains/Auth/hooks';
 import { useFavorite } from 'domains/Favorites/hooks';
 import { Color } from 'shared/enums';

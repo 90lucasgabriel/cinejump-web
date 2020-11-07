@@ -2,7 +2,7 @@ import styled from 'styled-components';
 
 import DefaultProps from 'shared/dtos';
 import { Color, Size } from 'shared/enums';
-import { getColor, getBackground } from 'shared/utils';
+import { getColor, getBackground } from 'shared/helpers';
 
 export const Container = styled.div`
   display: flex;

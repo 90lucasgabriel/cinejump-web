@@ -1,5 +1,5 @@
 import { Color } from 'shared/enums';
-import { getColorByTheme } from 'shared/utils';
+import { getColorByTheme } from 'shared/helpers';
 
 const getColor = (
   theme?: string,

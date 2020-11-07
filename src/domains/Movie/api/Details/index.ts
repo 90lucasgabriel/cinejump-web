@@ -1,6 +1,6 @@
 import tmdb from 'services/api/tmdb';
 
-import { arrayToString } from 'shared/utils';
+import { arrayToString } from 'shared/helpers';
 import {
   getBackdrop,
   getFeaturedImage,
@@ -8,7 +8,7 @@ import {
   getReleaseYear,
   getSubtitle,
   getTitle,
-} from 'shared/utils/Entity';
+} from 'shared/helpers/Entity';
 
 import { EntityType } from 'shared/enums';
 import Params from 'domains/Movie/api/Details/types/Params';

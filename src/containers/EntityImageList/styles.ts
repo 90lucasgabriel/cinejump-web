@@ -3,7 +3,7 @@ import styled from 'styled-components';
 import DefaultProps from 'shared/dtos';
 import { Container as DefaultContainer } from 'components/Layout';
 import { Color, PosterHeight, Size } from 'shared/enums';
-import { getColor } from 'shared/utils';
+import { getColor } from 'shared/helpers';
 
 interface LoadingProps {
   loaderColor?: string;
