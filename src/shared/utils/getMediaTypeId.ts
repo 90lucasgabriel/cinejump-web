@@ -1,16 +1,16 @@
-import { Type } from 'domains/Favorites/enums';
+import { EntityType } from 'shared/enums';
 
 const getMediaTypeId = (mediaType?: string): number | undefined => {
   if (mediaType === 'tv') {
-    return Type.TV;
+    return EntityType.TV;
   }
 
   if (mediaType === 'movie') {
-    return Type.MOVIE;
+    return EntityType.MOVIE;
   }
 
   if (mediaType === 'person') {
-    return Type.PERSON;
+    return EntityType.PERSON;
   }
 };
 

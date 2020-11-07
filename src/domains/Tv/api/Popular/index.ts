@@ -1,11 +1,17 @@
 import tmdb from 'services/api/tmdb';
 
-import { formatDate, formatTmdbImage } from 'shared/utils';
+import {
+  getBackdrop,
+  getFeaturedImage,
+  getReleaseDate,
+  getReleaseYear,
+  getTitle,
+} from 'shared/utils/Entity';
 
-import { Type } from 'domains/Favorites/enums';
-import Params from 'domains/Tv/api/Popular/Params';
-import RawResponse from 'domains/Tv/api/Popular/RawResponse';
-import Response from 'domains/Tv/api/Popular/Response';
+import { EntityType } from 'shared/enums';
+import Params from 'domains/Tv/api/Popular/types/Params';
+import RawResponse from 'domains/Tv/api/Popular/types/RawResponse';
+import Response from 'domains/Tv/api/Popular/types/Response';
 
 const Popular = async (params?: Params): Promise<Response[]> => {
   const response = await rawPopular(params);
@@ -34,11 +40,15 @@ const parseResponse = (rawResponse: RawResponse[]): Response[] => {
       popularity: tv.popularity,
       voteCount: tv.vote_count,
 
-      releaseDate: formatDate({ value: tv.first_air_date }),
-      poster: formatTmdbImage({ value: tv.poster_path }),
-      backdrop: formatTmdbImage({ value: tv.backdrop_path }),
+      releaseDate: getReleaseDate(tv),
+      backdrop: getBackdrop(tv),
+
+      featuredImage: getFeaturedImage(tv),
+      releaseYear: getReleaseYear(tv),
+      subtitle: getReleaseYear(tv),
+      title: getTitle(tv),
       favorite: false,
-      mediaType: Type.TV,
+      mediaType: EntityType.TV,
     } as Response;
 
     response = [...response, parsedMovie];

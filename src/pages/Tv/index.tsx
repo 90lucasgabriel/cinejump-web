@@ -2,14 +2,14 @@ import React, { useCallback, useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
 
 import Params from 'pages/Tv/dtos/Params';
-import MovieDetails from 'domains/Tv/api/Details/Response';
+import MovieDetails from 'domains/Tv/api/Details/types/Response';
 import { Color } from 'shared/enums';
 import { Details } from 'domains/Tv/api';
 import { useAuth } from 'domains/Auth/hooks';
 import { useFavorite } from 'domains/Favorites/hooks';
 
-import { ColumnLayout, Container, Movie as Poster } from 'components';
-import { Header, PersonList, MovieList, Footer } from 'containers';
+import { ColumnLayout, Container } from 'components';
+import { Header, EntityImage, EntityImageList, Footer } from 'containers';
 import {
   ContentContainer,
   MovieContainer,
@@ -30,7 +30,7 @@ import {
 
 const Tv: React.FC<any> = () => {
   const { id } = useParams<Params>();
-  const [movie, setMovie] = useState({} as MovieDetails);
+  const [tv, setMovie] = useState({} as MovieDetails);
   const [isLoading, setIsLoading] = useState(false);
 
   const { user } = useAuth();
@@ -71,48 +71,49 @@ const Tv: React.FC<any> = () => {
     <ColumnLayout>
       <Header background={Color.Transparent} color={Color.Fill} />
       <HeaderBackground>
-        <img src={movie.backdrop} alt="backdrop" />
+        <img src={tv.backdrop} alt="backdrop" />
       </HeaderBackground>
 
       <ContentContainer>
         <Container>
           <MovieContainer>
             <PosterContainer>
-              <Poster {...movie} size="large" />
+              <EntityImage {...tv} size="large" showShadow disabled showEmpty />
             </PosterContainer>
             <MovieDetailsContainer>
               <TitleContainer>
-                <Title>{movie.title}</Title>
+                <Title>{tv.title}</Title>
                 <Subtitle>
-                  {movie.releaseDate} | {movie.genresNames} | {movie.runtime}
+                  {tv.releaseDate} | {tv.genresNames} | {tv.runtime}
                 </Subtitle>
               </TitleContainer>
               <OverviewContainer>
                 <OverviewTitle>Sinopse</OverviewTitle>
-                <Overview>{movie.overview}</Overview>
+                <Overview>{tv.overview}</Overview>
               </OverviewContainer>
               <VoteAverage>
                 <VoteAverageTitle>Votação do público:</VoteAverageTitle>{' '}
-                {movie.voteAverage}
+                {tv.voteAverage}
               </VoteAverage>
               <Director>
                 <DirectorTitle>Diretor: </DirectorTitle>
-                {movie.directorName}
+                {tv.directorName}
               </Director>
             </MovieDetailsContainer>
           </MovieContainer>
         </Container>
 
-        <PersonList
+        <EntityImageList
           title="Elenco"
-          data={movie.credits?.cast || []}
+          data={tv.credits?.cast || []}
           isLoading={isLoading}
           message="Sem informações de elenco."
+          showInfo
         />
 
-        <MovieList
+        <EntityImageList
           title="Recomendações"
-          data={movie.recommendations || []}
+          data={tv.recommendations || []}
           isLoading={isLoading}
           message="Recomendações indisponíveis."
         />

@@ -3,7 +3,7 @@ import { FiAlertTriangle } from 'react-icons/fi';
 import { useField } from '@unform/core';
 
 import { Color } from 'shared/enums';
-import Props from './dtos';
+import Props from './types';
 import { Container, Error } from './styles';
 
 const Input: React.FC<Props> = ({

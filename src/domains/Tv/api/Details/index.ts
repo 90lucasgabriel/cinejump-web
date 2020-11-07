@@ -1,16 +1,24 @@
 import tmdb from 'services/api/tmdb';
 
-import { arrayToString, formatTmdbImage, formatDate } from 'shared/utils';
+import { arrayToString } from 'shared/utils';
+import {
+  getBackdrop,
+  getFeaturedImage,
+  getReleaseDate,
+  getReleaseYear,
+  getSubtitle,
+  getTitle,
+} from 'shared/utils/Entity';
 
-import { Type } from 'domains/Favorites/enums';
-import Params from 'domains/Tv/api/Details/Params';
-import RawResponse from 'domains/Tv/api/Details/RawResponse';
-import Response from 'domains/Tv/api/Details/Response';
-import Recommendations from 'domains/Tv/api/Recommendations/Response';
-import Credits from 'domains/Tv/api/Credits/Response';
+import { EntityType } from 'shared/enums';
+import Params from 'domains/Tv/api/Details/types/Params';
+import RawResponse from 'domains/Tv/api/Details/types/RawResponse';
+import Response from 'domains/Tv/api/Details/types/Response';
+import Recommendations from 'domains/Tv/api/Recommendations/types/Response';
+import Credits from 'domains/Tv/api/Credits/types/Response';
 
-import Crew from 'domains/Tv/api/Credits/dtos/Crew';
-import Cast from 'domains/Tv/api/Credits/dtos/Cast';
+import Crew from 'domains/Tv/api/Credits/types/Crew';
+import Cast from 'domains/Tv/api/Credits/types/Cast';
 
 const Details = async (tvId: number, params?: Params): Promise<Response> => {
   const response = await rawPopular(tvId, params);
@@ -36,7 +44,6 @@ const parseResponse = (tv: RawResponse): Response => {
     genresNames: arrayToString(tv.genres, 'name'),
     id: tv.id,
     originalTitle: tv.original_name,
-    title: tv.name,
     popularity: tv.popularity,
     voteCount: tv.vote_count,
     voteAverage: tv.vote_average,
@@ -46,20 +53,27 @@ const parseResponse = (tv: RawResponse): Response => {
       person => person.job.toUpperCase() === 'DIRECTOR',
     )?.name,
 
-    releaseDate: formatDate({ value: tv.first_air_date }),
-    poster: formatTmdbImage({ value: tv.poster_path }),
-    backdrop: formatTmdbImage({ value: tv.backdrop_path }),
+    releaseDate: getReleaseDate(tv),
+    backdrop: getBackdrop(tv),
+
+    featuredImage: getFeaturedImage(tv),
+    releaseYear: getReleaseYear(tv),
+    subtitle: getReleaseDate(tv),
+    title: getTitle(tv),
     favorite: false,
-    mediaType: Type.TV,
+    mediaType: EntityType.TV,
   } as Response;
 
   const recommendations = tv.recommendations?.results.map(recommendation => ({
-    poster: formatTmdbImage({ value: recommendation.poster_path }),
-    backdrop: formatTmdbImage({ value: recommendation.poster_path }),
+    backdrop: getBackdrop(recommendation),
     id: recommendation.id,
-    title: recommendation.title,
+
+    featuredImage: getFeaturedImage(recommendation),
+    releaseYear: getReleaseYear(recommendation),
+    subtitle: getSubtitle(recommendation),
+    title: getTitle(recommendation),
     favorite: false,
-    mediaType: Type.TV,
+    mediaType: EntityType.TV,
   })) as Recommendations[];
 
   const cast = tv.credits?.cast.slice(0, 15).map(person => ({
@@ -70,7 +84,13 @@ const parseResponse = (tv: RawResponse): Response => {
     castId: person.cast_id,
     creditId: person.credit_id,
     gender: person.gender,
-    profile: formatTmdbImage({ value: person.profile_path }),
+    profile: getFeaturedImage(person),
+
+    featuredImage: getFeaturedImage(person),
+    subtitle: person.character,
+    title: person.name,
+    favorite: false,
+    mediaType: EntityType.PERSON,
   })) as Cast[];
 
   const crew = tv.credits?.crew.map(person => ({
@@ -80,7 +100,13 @@ const parseResponse = (tv: RawResponse): Response => {
     department: person.department,
     creditId: person.credit_id,
     gender: person.gender,
-    profile: formatTmdbImage({ value: person.profile_path }),
+    profile: getFeaturedImage(person),
+
+    featuredImage: getFeaturedImage(person),
+    subtitle: person.job,
+    title: person.name,
+    favorite: false,
+    mediaType: EntityType.PERSON,
   })) as Crew[];
 
   const credits = { cast, crew } as Credits;

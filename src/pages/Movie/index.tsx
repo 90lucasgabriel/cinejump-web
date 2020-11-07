@@ -2,14 +2,14 @@ import React, { useCallback, useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
 
 import Params from 'pages/Movie/dtos/Params';
-import MovieDetails from 'domains/Movie/api/Details/Response';
+import MovieDetails from 'domains/Movie/api/Details/types/Response';
 import { Color } from 'shared/enums';
 import { Details } from 'domains/Movie/api';
 import { useAuth } from 'domains/Auth/hooks';
 import { useFavorite } from 'domains/Favorites/hooks';
 
-import { ColumnLayout, Container, Movie as Poster } from 'components';
-import { Header, PersonList, MovieList, Footer } from 'containers';
+import { ColumnLayout, Container } from 'components';
+import { Header, EntityImage, EntityImageList, Footer } from 'containers';
 import {
   ContentContainer,
   MovieContainer,
@@ -79,7 +79,13 @@ const Movie: React.FC<any> = () => {
         <Container>
           <MovieContainer>
             <PosterContainer>
-              <Poster {...movie} size="large" />
+              <EntityImage
+                {...movie}
+                size="large"
+                showShadow
+                disabled
+                showEmpty
+              />
             </PosterContainer>
             <MovieDetailsContainer>
               <TitleContainer>
@@ -105,14 +111,15 @@ const Movie: React.FC<any> = () => {
           </MovieContainer>
         </Container>
 
-        <PersonList
+        <EntityImageList
           title="Elenco"
           data={movie.credits?.cast || []}
           isLoading={isLoading}
           message="Sem informações de elenco."
+          showInfo
         />
 
-        <MovieList
+        <EntityImageList
           title="Recomendações"
           data={movie.recommendations || []}
           isLoading={isLoading}

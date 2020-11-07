@@ -4,7 +4,7 @@ import { Color, Size } from 'shared/enums';
 export const Container = styled.div`
   display: flex;
   flex: 1;
-  padding: ${Size.Default};
+  padding: ${Size.Default} 0;
 `;
 
 export const Input = styled.input`

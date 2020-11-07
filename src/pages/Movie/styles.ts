@@ -43,13 +43,7 @@ export const MovieContainer = styled.div`
   }
 `;
 
-export const PosterContainer = styled.div`
-  /* display: flex;
-  flex: 1; */
-  & > div {
-    box-shadow: 0 0 5px rgba(0, 0, 0, 0.5);
-  }
-`;
+export const PosterContainer = styled.div``;
 
 export const MovieDetailsContainer = styled.div`
   display: flex;

@@ -2,7 +2,7 @@ import React from 'react';
 
 import { ReactComponent as Loading } from 'assets/loading.svg';
 import { Color } from 'shared/enums';
-import Props from './dtos';
+import Props from './types';
 import { Container } from './styles';
 
 const Button: React.FC<Props> = ({

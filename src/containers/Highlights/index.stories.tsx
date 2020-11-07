@@ -1,7 +1,7 @@
 import React from 'react';
 import { Story, Meta } from '@storybook/react';
 
-import Props from 'containers/Highlights/dtos';
+import Props from 'containers/Highlights/types';
 import Highlights from 'containers/Highlights';
 
 // Config and Controls

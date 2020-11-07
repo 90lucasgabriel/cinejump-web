@@ -1,8 +1,8 @@
 import api from 'services/api';
 
 import { getByType } from 'domains/Favorites/helpers';
-import RawResponse from 'domains/Favorites/api/Update/RawResponse';
-import Response from 'domains/Favorites/api/Update/Response';
+import RawResponse from 'domains/Favorites/api/Update/types/RawResponse';
+import Response from 'domains/Favorites/api/Update/types/Response';
 
 const Update = async (
   entityId: number,

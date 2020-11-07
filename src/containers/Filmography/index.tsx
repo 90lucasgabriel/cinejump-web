@@ -1,8 +1,7 @@
 import React, { useCallback } from 'react';
 import { useHistory } from 'react-router-dom';
 
-import Route from 'routes/enums';
-import { Type } from 'domains/Favorites/enums';
+import { getEntityRoute } from 'shared/utils';
 
 import { ReactComponent as Loading } from 'assets/loading.svg';
 import { Wrapper } from 'components/Layout';
@@ -18,7 +17,7 @@ import {
   MessageContainer,
 } from './styles';
 
-import Props from './dtos';
+import Props from './types';
 
 const Filmography: React.FC<Props> = ({
   theme,
@@ -33,14 +32,9 @@ const Filmography: React.FC<Props> = ({
   const history = useHistory();
 
   const handleRedirect = useCallback(
-    (movie: any) => {
-      if (movie.mediaType === Type.TV) {
-        history.push(`${Route.TV}/${movie.id}`);
-
-        return;
-      }
-
-      history.push(`${Route.MOVIE}/${movie.id}`);
+    (entity: any) => {
+      const entityRoute = getEntityRoute(entity.mediaType);
+      history.push(`${entityRoute}/${entity.id}`);
     },
     [history],
   );
@@ -62,15 +56,15 @@ const Filmography: React.FC<Props> = ({
 
         {!isLoading && data.length > 0 && (
           <ListContainer>
-            {data.map(movie => (
+            {data.map(entity => (
               <ItemContainer
-                key={movie.id}
-                onClick={() => handleRedirect(movie)}
+                key={entity.id}
+                onClick={() => handleRedirect(entity)}
               >
-                <YearLabel>{movie.year} - </YearLabel>
-                <MovieName>{movie.title || movie.name}</MovieName>
+                <YearLabel>{entity.year} - </YearLabel>
+                <MovieName>{entity.title || entity.name}</MovieName>
                 <CharacterName>
-                  {movie.character && ` como ${movie.character}`}
+                  {entity.character && ` como ${entity.character}`}
                 </CharacterName>
               </ItemContainer>
             ))}

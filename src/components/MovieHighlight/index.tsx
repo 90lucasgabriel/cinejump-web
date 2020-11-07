@@ -2,7 +2,7 @@ import React, { useCallback } from 'react';
 import { useHistory } from 'react-router-dom';
 
 import Route from 'routes/enums';
-import Props from './dtos';
+import Props from './types';
 import { Container, Backdrop, Caption, Title, Overview } from './styles';
 
 const MovieHighlight: React.FC<Props> = ({ showOverview = true, ...movie }) => {
