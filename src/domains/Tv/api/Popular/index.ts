@@ -1,6 +1,12 @@
 import tmdb from 'services/api/tmdb';
 
-import { formatDate, formatTmdbImage } from 'shared/utils';
+import {
+  getBackdrop,
+  getFeaturedImage,
+  getReleaseDate,
+  getReleaseYear,
+  getTitle,
+} from 'shared/utils/Entity';
 
 import { EntityType } from 'shared/enums';
 import Params from 'domains/Tv/api/Popular/Params';
@@ -34,14 +40,14 @@ const parseResponse = (rawResponse: RawResponse[]): Response[] => {
       popularity: tv.popularity,
       voteCount: tv.vote_count,
 
-      releaseDate: formatDate({ value: tv.first_air_date }),
-      backdrop: formatTmdbImage({ value: tv.backdrop_path }),
+      releaseDate: getReleaseDate(tv),
+      backdrop: getBackdrop(tv),
 
-      featuredImage: formatTmdbImage({ value: tv.poster_path }),
-      releaseYear: tv.first_air_date?.substring(0, 4),
-      subtitle: tv.first_air_date?.substring(0, 4),
+      featuredImage: getFeaturedImage(tv),
+      releaseYear: getReleaseYear(tv),
+      subtitle: getReleaseYear(tv),
+      title: getTitle(tv),
       favorite: false,
-      title: tv.name,
       mediaType: EntityType.TV,
     } as Response;
 

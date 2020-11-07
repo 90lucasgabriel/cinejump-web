@@ -1,15 +1,21 @@
 import tmdb from 'services/api/tmdb';
 
 import { EntityType } from 'shared/enums';
+import { getMediaTypeId } from 'shared/utils';
+import {
+  getBackdrop,
+  getDescription,
+  getFeaturedImage,
+  getOriginalTitle,
+  getReleaseDate,
+  getReleaseYear,
+  getSubtitle,
+  getTitle,
+} from 'shared/utils/Entity';
+
 import Params from 'domains/Search/api/Multi/Params';
 import RawResponse from 'domains/Search/api/Multi/RawResponse';
 import Response from 'domains/Search/api/Multi/Response';
-import {
-  arrayToString,
-  formatDate,
-  formatTmdbImage,
-  getMediaTypeId,
-} from 'shared/utils';
 
 const Multi = async (params: Params): Promise<Response[]> => {
   const response = await rawPopular(params);
@@ -33,38 +39,22 @@ const parseResponse = (rawResponse: RawResponse[]): Response[] => {
       overview: result.overview,
       genreIds: result.genre_ids,
       id: result.id,
-      originalTitle: result.original_title || result.original_name,
+      originalTitle: getOriginalTitle(result),
       popularity: result.popularity,
       voteCount: result.vote_count,
       voteAverage: result.vote_average,
 
-      releaseDate:
-        formatDate({ value: result.release_date }) ||
-        formatDate({ value: result.first_air_date }),
-      poster: formatTmdbImage({ value: result.poster_path }),
-      backdrop: formatTmdbImage({ value: result.backdrop_path }),
+      releaseDate: getReleaseDate(result),
+      poster: getFeaturedImage(result),
+      backdrop: getBackdrop(result),
 
-      featuredImage: formatTmdbImage({
-        value: result.poster_path || result.profile_path,
-      }),
-      releaseYear:
-        (result.release_date && result.release_date.substring(0, 4)) ||
-        (result.first_air_date && result.first_air_date.substring(0, 4)) ||
-        (result.birthday && result.birthday.substring(0, 4)),
-      subtitle:
-        (result.release_date && result.release_date.substring(0, 4)) ||
-        (result.first_air_date && result.first_air_date.substring(0, 4)) ||
-        (result.known_for && 'Conhecido(a) por: '),
-      title: result.title || result.name,
+      featuredImage: getFeaturedImage(result),
+      releaseYear: getReleaseYear(result),
+      subtitle: getSubtitle(result),
+      title: getTitle(result),
       favorite: false,
       mediaType: getMediaTypeId(result.media_type),
-      description:
-        (result.overview && result.overview) ||
-        (result.known_for &&
-          arrayToString(
-            result.known_for.map(item => ({ title: item.title || item.name })),
-            'title',
-          )),
+      description: getDescription(result),
     } as Response;
 
     response = [...response, parsedMovie];

@@ -1,6 +1,14 @@
 import tmdb from 'services/api/tmdb';
 
-import { arrayToString, formatTmdbImage, formatDate } from 'shared/utils';
+import { arrayToString } from 'shared/utils';
+import {
+  getBackdrop,
+  getFeaturedImage,
+  getReleaseDate,
+  getReleaseYear,
+  getSubtitle,
+  getTitle,
+} from 'shared/utils/Entity';
 
 import { EntityType } from 'shared/enums';
 import Params from 'domains/Movie/api/Details/Params';
@@ -47,26 +55,26 @@ const parseResponse = (movie: RawResponse): Response => {
       person => person.job.toUpperCase() === 'DIRECTOR',
     )?.name,
 
-    releaseDate: formatDate({ value: movie.release_date }),
-    backdrop: formatTmdbImage({ value: movie.backdrop_path }),
+    releaseDate: getReleaseDate(movie),
+    backdrop: getBackdrop(movie),
 
-    featuredImage: formatTmdbImage({ value: movie.poster_path }),
-    releaseYear: movie.release_date?.substring(0, 4),
-    subtitle: movie.release_date?.substring(0, 4),
-    title: movie.title,
+    featuredImage: getFeaturedImage(movie),
+    releaseYear: getReleaseYear(movie),
+    subtitle: getReleaseDate(movie),
+    title: getTitle(movie),
     favorite: false,
     mediaType: EntityType.MOVIE,
   } as Response;
 
   const recommendations = movie.recommendations?.results.map(
     recommendation => ({
-      backdrop: formatTmdbImage({ value: recommendation.poster_path }),
+      backdrop: getBackdrop(recommendation),
       id: recommendation.id,
 
-      featuredImage: formatTmdbImage({ value: recommendation.poster_path }),
-      releaseYear: recommendation.release_date?.substring(0, 4),
-      subtitle: recommendation.release_date?.substring(0, 4),
-      title: recommendation.title,
+      featuredImage: getFeaturedImage(recommendation),
+      releaseYear: getReleaseYear(recommendation),
+      subtitle: getSubtitle(recommendation),
+      title: getTitle(recommendation),
       favorite: false,
       mediaType: EntityType.MOVIE,
     }),
@@ -80,11 +88,11 @@ const parseResponse = (movie: RawResponse): Response => {
     castId: person.cast_id,
     creditId: person.credit_id,
     gender: person.gender,
-    profile: formatTmdbImage({ value: person.profile_path }),
+    profile: getFeaturedImage(person),
 
-    featuredImage: formatTmdbImage({ value: person.profile_path }),
+    featuredImage: getFeaturedImage(person),
     subtitle: person.character,
-    title: person.name,
+    title: getTitle(person),
     favorite: false,
     mediaType: EntityType.PERSON,
   })) as Cast[];
@@ -96,9 +104,9 @@ const parseResponse = (movie: RawResponse): Response => {
     department: person.department,
     creditId: person.credit_id,
     gender: person.gender,
-    profile: formatTmdbImage({ value: person.profile_path }),
+    profile: getFeaturedImage(person),
 
-    featuredImage: formatTmdbImage({ value: person.profile_path }),
+    featuredImage: getFeaturedImage(person),
     subtitle: person.job,
     title: person.name,
     favorite: false,

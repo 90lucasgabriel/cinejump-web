@@ -1,0 +1,11 @@
+export { default as getBackdrop } from './getBackdrop';
+export { default as getCharacter } from './getCharacter';
+export { default as getDescription } from './getDescription';
+export { default as getFeaturedImage } from './getFeaturedImage';
+export { default as getGender } from './getGender';
+export { default as getOriginalDate } from './getOriginalDate';
+export { default as getOriginalTitle } from './getOriginalTitle';
+export { default as getReleaseDate } from './getReleaseDate';
+export { default as getReleaseYear } from './getReleaseYear';
+export { default as getSubtitle } from './getSubtitle';
+export { default as getTitle } from './getTitle';

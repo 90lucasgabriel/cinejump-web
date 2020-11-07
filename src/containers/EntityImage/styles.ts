@@ -84,7 +84,6 @@ export const FeaturedImage = styled.img<ContainerProps>`
   object-fit: cover;
   transition: width 0.2s, height 0.2s;
   border: 0;
-  outline
 
   ${props =>
     props.showInfo &&

@@ -1,6 +1,12 @@
 import tmdb from 'services/api/tmdb';
 
-import { formatDate, formatTmdbImage } from 'shared/utils';
+import {
+  getBackdrop,
+  getFeaturedImage,
+  getReleaseDate,
+  getReleaseYear,
+  getTitle,
+} from 'shared/utils/Entity';
 
 import { EntityType } from 'shared/enums';
 import Params from 'domains/Movie/api/NowPlaying/Params';
@@ -35,13 +41,14 @@ const parseResponse = (rawResponse: RawResponse[]): Response[] => {
       popularity: movie.popularity,
       voteCount: movie.vote_count,
       voteAverage: movie.vote_average,
-      releaseDate: formatDate({ value: movie.release_date }),
-      backdrop: formatTmdbImage({ value: movie.backdrop_path }),
 
-      featuredImage: formatTmdbImage({ value: movie.poster_path }),
-      releaseYear: movie.release_date?.substring(0, 4),
-      subtitle: movie.release_date?.substring(0, 4),
-      title: movie.title,
+      releaseDate: getReleaseDate(movie),
+      backdrop: getBackdrop(movie),
+
+      featuredImage: getFeaturedImage(movie),
+      releaseYear: getReleaseYear(movie),
+      subtitle: getReleaseDate(movie),
+      title: getTitle(movie),
       favorite: false,
       mediaType: EntityType.MOVIE,
     } as Response;

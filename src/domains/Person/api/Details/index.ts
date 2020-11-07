@@ -1,15 +1,22 @@
 import tmdb from 'services/api/tmdb';
 
+import { formatDate, getMediaTypeId } from 'shared/utils';
+import { EntityType } from 'shared/enums';
+import {
+  getCharacter,
+  getFeaturedImage,
+  getGender,
+  getOriginalDate,
+  getReleaseDate,
+  getReleaseYear,
+  getSubtitle,
+  getTitle,
+} from 'shared/utils/Entity';
+
 import Params from 'domains/Person/api/Details/Params';
 import RawResponse from 'domains/Person/api/Details/RawResponse';
 import Response from 'domains/Person/api/Details/Response';
 import Movie from 'domains/Person/api/Details/Movie';
-// import Credits from 'domains/Person/api/Credits/Response';
-import { formatDate, formatTmdbImage, getMediaTypeId } from 'shared/utils';
-import { EntityType } from 'shared/enums';
-// import Crew from 'domains/Person/api/Credits/dtos/Crew';
-// import Cast from 'domains/Person/api/Credits/dtos/Cast';
-// import { arrayToString } from 'shared/utils';
 
 const Details = async (
   personId: number,
@@ -40,18 +47,18 @@ const parseResponse = (person: RawResponse): Response => {
     popularity: person.popularity,
 
     knownForDepartment: person.known_for_department,
-    gender: person.gender === 2 ? 'Masculino' : 'Feminino',
+    gender: getGender(person),
     alsoKnownAs: person.also_known_as,
     adult: person.adult,
     imdbId: person.imdb_id,
     homepage: person.homepage,
 
-    birthday: formatDate({ value: person.birthday }),
+    birthday: getReleaseDate(person),
     deathday: formatDate({ value: person.deathday }),
 
-    featuredImage: formatTmdbImage({ value: person.profile_path }),
+    featuredImage: getFeaturedImage(person),
     releaseYear: person.birthday?.substring(0, 4),
-    subtitle: formatDate({ value: person.birthday }),
+    subtitle: getReleaseDate(person),
     title: person.name,
     favorite: false,
     mediaType: EntityType.PERSON,
@@ -59,35 +66,20 @@ const parseResponse = (person: RawResponse): Response => {
 
   const combinedProductions = person.combined_credits?.cast
     .map(production => ({
-      poster: formatTmdbImage({ value: production.poster_path }),
-      backdrop: formatTmdbImage({ value: production.poster_path }),
+      poster: getFeaturedImage(production),
+      backdrop: getFeaturedImage(production),
       id: production.id,
-      character: production.character.toUpperCase().includes('SELF')
-        ? ''
-        : production.character,
-      releaseDate: formatDate({
-        value: production.release_date || production.first_air_date,
-      }),
-      originalDate: production.release_date || production.first_air_date,
-      year:
-        (production.release_date && production.release_date.substring(0, 4)) ||
-        (production.first_air_date &&
-          production.first_air_date.substring(0, 4)),
+      character: getCharacter(production),
+      releaseDate: getReleaseDate(production),
+      originalDate: getOriginalDate(production),
+      year: getReleaseYear(production),
       popularity: production.popularity,
       name: production.name,
 
-      featuredImage: formatTmdbImage({
-        value: production.poster_path || production.first_air_date,
-      }),
-      releaseYear:
-        (production.release_date && production.release_date.substring(0, 4)) ||
-        (production.first_air_date &&
-          production.first_air_date.substring(0, 4)),
-      subtitle:
-        (production.release_date && production.release_date.substring(0, 4)) ||
-        (production.first_air_date &&
-          production.first_air_date.substring(0, 4)),
-      title: production.title || production.name,
+      featuredImage: getFeaturedImage(production),
+      releaseYear: getReleaseYear(production),
+      subtitle: getSubtitle(production),
+      title: getTitle(production),
       favorite: false,
       mediaType: getMediaTypeId(production.media_type),
     }))
