@@ -4,6 +4,7 @@ export default interface Movie extends MovieDetails {
   character: string;
   year?: string;
   originalDate: string;
+  episodeCount?: number;
 
   firstAirDate?: string;
   name?: string;
