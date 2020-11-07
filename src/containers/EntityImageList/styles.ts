@@ -1,7 +1,7 @@
 import styled from 'styled-components';
 
 import DefaultProps from 'shared/dtos';
-import { Container as DefaultContainer } from 'components/Layout';
+import { Container as DefaultContainer, Button } from 'components';
 import { Color, PosterHeight, Size } from 'shared/enums';
 import { getColor } from 'shared/helpers';
 
@@ -10,9 +10,17 @@ interface LoadingProps {
 }
 
 export const Container = styled(DefaultContainer)`
+  position: relative;
   padding: ${Size.Medium} 0;
   display: flex;
   flex-direction: column;
+
+  &:hover {
+    button {
+      opacity: 1;
+      pointer-events: auto;
+    }
+  }
 `;
 
 export const Title = styled.h2<DefaultProps>`
@@ -46,10 +54,7 @@ export const ListContainer = styled.div`
   -webkit-overflow-scrolling: touch;
   scroll-behavior: smooth;
 
-  -ms-overflow-style: none;
-  scrollbar-width: 10px;
   &::-webkit-scrollbar {
-    /* visibility: visible; */
     display: none;
   }
 `;
@@ -81,6 +86,46 @@ export const ListContent = styled.div`
 
     @media (max-width: 1280px) {
       margin-right: ${Size.Default};
+    }
+  }
+`;
+
+export const PreviousButton = styled(Button)`
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.3s, background 0.3s;
+
+  position: absolute;
+  z-index: 5;
+  top: 48%;
+  left: ${Size.Smallest};
+  background: ${Color.Fill};
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.5);
+
+  &:hover {
+    background: ${Color.Primary};
+    svg {
+      stroke: ${Color.Fill};
+    }
+  }
+`;
+
+export const NextButton = styled(Button)`
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.3s, background 0.3s;
+
+  position: absolute;
+  z-index: 5;
+  top: 48%;
+  right: ${Size.Smallest};
+  background: ${Color.Fill};
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.5);
+
+  &:hover {
+    background: ${Color.Primary};
+    svg {
+      stroke: ${Color.Fill};
     }
   }
 `;
