@@ -20,6 +20,7 @@ export const ImageContainer = styled.div``;
 
 export const DetailsContainer = styled.div`
   display: flex;
+  flex: 1;
   flex-direction: column;
 
   margin-left: ${Size.Medium};

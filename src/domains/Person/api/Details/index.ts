@@ -75,6 +75,7 @@ const parseResponse = (person: RawResponse): Response => {
       year: getReleaseYear(production),
       popularity: production.popularity,
       name: production.name,
+      episodeCount: production.episode_count,
 
       featuredImage: getFeaturedImage(production),
       releaseYear: getReleaseYear(production),

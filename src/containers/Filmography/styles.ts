@@ -40,6 +40,7 @@ export const LoadingContainer = styled.div<LoadingProps>`
 export const ListContainer = styled.div`
   display: flex;
   flex-direction: column;
+  transition: 0.3s height;
 `;
 
 export const ItemContainer = styled.div`
@@ -68,6 +69,22 @@ export const MovieName = styled.span`
 `;
 
 export const CharacterName = styled.span``;
+
+export const EpisodeCount = styled.span`
+  text-decoration: italic;
+  color: ${Color.Placeholder};
+`;
+
+export const More = styled.div`
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: ${Size.Default};
+
+  &:hover {
+    cursor: pointer;
+  }
+`;
 
 export const MessageContainer = styled.div`
   display: flex;

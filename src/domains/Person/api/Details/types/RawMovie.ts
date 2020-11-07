@@ -4,6 +4,7 @@ export default interface RawMovie extends RawMovieDetails {
   character: string;
   year?: string;
   originalDate: string;
+  episode_count: number;
 
   first_air_date?: string;
   name?: string;
