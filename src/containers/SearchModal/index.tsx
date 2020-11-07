@@ -34,19 +34,21 @@ const SearchModal: React.FC<any> = ({ onClose }) => {
 
   const handleSearch = useCallback(
     async (value: string) => {
-      setKeyword(value);
+      if (value !== keyword) {
+        setKeyword(value);
 
-      if (value.length >= minLength) {
-        setIsLoading(true);
-        const params = { query: value };
-        delayedRequest(params);
+        if (value.length >= minLength) {
+          setIsLoading(true);
+          const params = { query: value };
+          delayedRequest(params);
 
-        return;
+          return;
+        }
+
+        setData([] as any);
       }
-
-      setData([] as any);
     },
-    [minLength, delayedRequest],
+    [keyword, minLength, delayedRequest],
   );
 
   return (
