@@ -1,15 +1,21 @@
 import React, { useCallback, useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
 
-import Params from 'pages/Person/dtos/Params';
-import PersonDetails from 'domains/Person/api/Details/Response';
+import Params from 'pages/Person/types/Params';
+import PersonDetails from 'domains/Person/api/Details/types/Response';
 import { Color } from 'shared/enums';
 import { Details } from 'domains/Person/api';
 import { useAuth } from 'domains/Auth/hooks';
 import { useFavorite } from 'domains/Favorites/hooks';
 
-import { ColumnLayout, Container, Profile } from 'components';
-import { Header, MovieList, Footer, Filmography } from 'containers';
+import { ColumnLayout, Container } from 'components';
+import {
+  Header,
+  EntityImageList,
+  Footer,
+  Filmography,
+  EntityImage,
+} from 'containers';
 import {
   ContentContainer,
   PersonContainer,
@@ -26,7 +32,7 @@ import {
 
 const Person: React.FC<any> = () => {
   const { id } = useParams<Params>();
-  const [person, setMovie] = useState({} as PersonDetails);
+  const [person, setPerson] = useState({} as PersonDetails);
   const [isLoading, setIsLoading] = useState(false);
 
   const { user } = useAuth();
@@ -41,7 +47,7 @@ const Person: React.FC<any> = () => {
 
       const response = await Details(+id, params);
 
-      setMovie(response);
+      setPerson(response);
       return response;
     } catch (error) {
       console.log('getPerson -> error', error);
@@ -72,7 +78,13 @@ const Person: React.FC<any> = () => {
         <Container>
           <PersonContainer>
             <ProfileContainer>
-              <Profile {...person} large />
+              <EntityImage
+                {...person}
+                size="large"
+                showShadow
+                disabled
+                showEmpty
+              />
             </ProfileContainer>
             <PersonDetailsContainer>
               <TitleContainer>
@@ -81,7 +93,6 @@ const Person: React.FC<any> = () => {
                   {person.birthday} | {person.gender} | {person.placeOfBirth}
                 </Subtitle>
               </TitleContainer>
-              {/* {person.tagline && <Tagline>{`"${person.tagline}"`}</Tagline>} */}
               <OverviewContainer>
                 <OverviewTitle>Biografia</OverviewTitle>
                 <Overview>
@@ -92,7 +103,7 @@ const Person: React.FC<any> = () => {
           </PersonContainer>
         </Container>
 
-        <MovieList
+        <EntityImageList
           title={
             person.gender === 'Feminino' ? 'Conhecida por' : 'Conhecido por'
           }

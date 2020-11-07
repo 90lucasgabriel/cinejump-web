@@ -2,7 +2,7 @@ import React from 'react';
 import { Story, Meta } from '@storybook/react';
 import { FaRegUserCircle } from 'react-icons/fa';
 
-import Props from 'components/Button/dtos';
+import Props from 'components/Button/types';
 import Button from 'components/Button';
 
 // Config and Controls

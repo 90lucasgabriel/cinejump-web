@@ -1,11 +1,17 @@
 import tmdb from 'services/api/tmdb';
 
-import { formatDate, formatTmdbImage } from 'shared/utils';
+import {
+  getBackdrop,
+  getFeaturedImage,
+  getReleaseDate,
+  getReleaseYear,
+  getTitle,
+} from 'shared/helpers/Entity';
 
-import { Type } from 'domains/Favorites/enums';
-import Params from 'domains/Movie/api/NowPlaying/Params';
-import RawResponse from 'domains/Movie/api/NowPlaying/RawResponse';
-import Response from 'domains/Movie/api/NowPlaying/Response';
+import { EntityType } from 'shared/enums';
+import Params from 'domains/Movie/api/NowPlaying/types/Params';
+import RawResponse from 'domains/Movie/api/NowPlaying/types/RawResponse';
+import Response from 'domains/Movie/api/NowPlaying/types/Response';
 
 const NowPlaying = async (params?: Params): Promise<Response[]> => {
   const response = await rawNowPlaying(params);
@@ -32,16 +38,19 @@ const parseResponse = (rawResponse: RawResponse[]): Response[] => {
       genreIds: movie.genre_ids,
       id: movie.id,
       originalTitle: movie.original_title,
-      title: movie.title,
       popularity: movie.popularity,
       voteCount: movie.vote_count,
       voteAverage: movie.vote_average,
 
-      releaseDate: formatDate({ value: movie.release_date }),
-      poster: formatTmdbImage({ value: movie.poster_path }),
-      backdrop: formatTmdbImage({ value: movie.backdrop_path }),
+      releaseDate: getReleaseDate(movie),
+      backdrop: getBackdrop(movie),
+
+      featuredImage: getFeaturedImage(movie),
+      releaseYear: getReleaseYear(movie),
+      subtitle: getReleaseDate(movie),
+      title: getTitle(movie),
       favorite: false,
-      mediaType: Type.MOVIE,
+      mediaType: EntityType.MOVIE,
     } as Response;
 
     response = [...response, parsedMovie];

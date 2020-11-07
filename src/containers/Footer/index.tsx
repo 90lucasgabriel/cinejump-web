@@ -26,11 +26,12 @@ const Footer: React.FC<DefaultProps> = ({
           <a href="https://github.com/90lucasgabriel">
             Desenvolvido por Lucas Gabriel
           </a>
-          <a href="/">Proposta do projeto</a>
+          <a href="https://github.com/90lucasgabriel/cinejump-web">
+            Sobre o projeto
+          </a>
           <a href="https://www.figma.com/file/um4dcEJCOlEvB6kCe9KCOD/Cinejump">
             Protótipo no Figma
           </a>
-          <a href="/">Apresentação ao Comitê</a>
           <a href="https://github.com/90lucasgabriel/cinejump-web/wiki">
             Documentação
           </a>

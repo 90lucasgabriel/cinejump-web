@@ -1,12 +1,12 @@
 import React, { createContext, useCallback, useContext, useState } from 'react';
 
-import ListResponse from 'domains/Favorites/api/List/Response';
-import UpdateResponse from 'domains/Favorites/api/Update/Response';
+import ListResponse from 'domains/Favorites/api/List/types/Response';
+import UpdateResponse from 'domains/Favorites/api/Update/types/Response';
 import {
   Favorites as FavoritesApi,
   UpdateFavorite as UpdateFavoriteApi,
 } from 'domains/Favorites/api';
-import ContextData from '../dtos/ContextData';
+import ContextData from '../types/ContextData';
 
 const FavoriteContext = createContext<ContextData>({} as ContextData);
 
@@ -15,8 +15,8 @@ const FavoriteProvider: React.FC = ({ children }) => {
 
   const Favorites = useCallback(async (): Promise<ListResponse[]> => {
     const response = await FavoritesApi();
-    const updatedResponse = response.map(movie => ({
-      ...movie,
+    const updatedResponse = response.map(entity => ({
+      ...entity,
       favorite: true,
     }));
 

@@ -1,8 +1,8 @@
 import React, { createContext, useContext } from 'react';
 
-import Environment from 'domains/Environment/dtos/Environment';
+import Environment from 'domains/Environment/types/Environment';
 import { Environment as EnvironmentEnum } from 'domains/Environment/enums/Environment';
-import ContextData from '../dtos/ContextData';
+import ContextData from '../types/ContextData';
 
 const EnvironmentContext = createContext<ContextData>({} as ContextData);
 

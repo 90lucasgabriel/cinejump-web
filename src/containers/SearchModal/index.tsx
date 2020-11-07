@@ -6,7 +6,7 @@ import { Multi } from 'domains/Search/api';
 import { ReactComponent as Loading } from 'assets/loading.svg';
 import { ReactComponent as Empty } from 'assets/empty.svg';
 import { SearchInput } from 'components';
-import { ResultList } from 'containers';
+import { EntitySummaryList } from 'containers';
 import {
   Container,
   Backdrop,
@@ -77,7 +77,7 @@ const SearchModal: React.FC<any> = ({ onClose, isShow }) => {
               )}
 
               {!isLoading && data?.length > 0 && (
-                <ResultList data={data} isLoading={isLoading} />
+                <EntitySummaryList data={data} isLoading={isLoading} />
               )}
 
               {!isLoading && data?.length === 0 && (

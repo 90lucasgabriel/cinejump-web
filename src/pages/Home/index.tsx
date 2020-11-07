@@ -1,15 +1,15 @@
 import React, { useCallback, useEffect, useState } from 'react';
 
+import { EntityType } from 'shared/enums';
 import { useAuth } from 'domains/Auth/hooks';
 import { useFavorite } from 'domains/Favorites/hooks';
 import { NowPlaying, Popular } from 'domains/Movie/api';
 import { Popular as TvPopular } from 'domains/Tv/api';
-import MovieResponse from 'domains/Movie/api/Popular/Response';
-import TvPopularResponse from 'domains/Tv/api/Popular/Response';
-import { Type } from 'domains/Favorites/enums';
+import MovieResponse from 'domains/Movie/api/Popular/types/Response';
+import TvPopularResponse from 'domains/Tv/api/Popular/types/Response';
 
 import { ColumnLayout } from 'components';
-import { Footer, Header, Highlights, MovieList } from 'containers';
+import { Footer, Header, Highlights, EntityImageList } from 'containers';
 import { HeaderBackground, ContentContainer } from './styles';
 
 const Home: React.FC = () => {
@@ -65,17 +65,17 @@ const Home: React.FC = () => {
       <Header />
       <ContentContainer>
         <Highlights movies={popularList} />
-        <MovieList
+        <EntityImageList
           title="Populares"
           data={popularList.slice(3, popularList.length)}
           isLoading={popularList.length === 0}
         />
-        <MovieList
+        <EntityImageList
           title="Lançamentos"
           data={nowPlayingList}
           isLoading={nowPlayingList.length === 0}
         />
-        <MovieList
+        <EntityImageList
           title="Séries Populares"
           data={tvPopularList}
           isLoading={tvPopularList.length === 0}
@@ -83,10 +83,12 @@ const Home: React.FC = () => {
         />
 
         {user && (
-          <MovieList
+          <EntityImageList
             title="Favoritos"
             data={favoriteList.filter(
-              item => item.typeId === Type.MOVIE || item.typeId === Type.TV,
+              item =>
+                item.typeId === EntityType.MOVIE ||
+                item.typeId === EntityType.TV,
             )}
             isLoading={isFavoriteLoading}
             message="Você ainda não possui favoritos."

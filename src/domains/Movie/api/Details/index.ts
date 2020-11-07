@@ -1,16 +1,24 @@
 import tmdb from 'services/api/tmdb';
 
-import { arrayToString, formatTmdbImage, formatDate } from 'shared/utils';
+import { arrayToString } from 'shared/helpers';
+import {
+  getBackdrop,
+  getFeaturedImage,
+  getReleaseDate,
+  getReleaseYear,
+  getSubtitle,
+  getTitle,
+} from 'shared/helpers/Entity';
 
-import { Type } from 'domains/Favorites/enums';
-import Params from 'domains/Movie/api/Details/Params';
-import RawResponse from 'domains/Movie/api/Details/RawResponse';
-import Response from 'domains/Movie/api/Details/Response';
-import Recommendations from 'domains/Movie/api/Recommendations/Response';
-import Credits from 'domains/Movie/api/Credits/Response';
+import { EntityType } from 'shared/enums';
+import Params from 'domains/Movie/api/Details/types/Params';
+import RawResponse from 'domains/Movie/api/Details/types/RawResponse';
+import Response from 'domains/Movie/api/Details/types/Response';
+import Recommendations from 'domains/Movie/api/Recommendations/types/Response';
+import Credits from 'domains/Movie/api/Credits/types/Response';
 
-import Crew from 'domains/Movie/api/Credits/dtos/Crew';
-import Cast from 'domains/Movie/api/Credits/dtos/Cast';
+import Crew from 'domains/Movie/api/Credits/types/Crew';
+import Cast from 'domains/Movie/api/Credits/types/Cast';
 
 const Details = async (movieId: number, params?: Params): Promise<Response> => {
   const response = await rawPopular(movieId, params);
@@ -37,7 +45,6 @@ const parseResponse = (movie: RawResponse): Response => {
     genresNames: arrayToString(movie.genres, 'name'),
     id: movie.id,
     originalTitle: movie.original_title,
-    title: movie.title,
     popularity: movie.popularity,
     voteCount: movie.vote_count,
     voteAverage: movie.vote_average,
@@ -48,21 +55,28 @@ const parseResponse = (movie: RawResponse): Response => {
       person => person.job.toUpperCase() === 'DIRECTOR',
     )?.name,
 
-    releaseDate: formatDate({ value: movie.release_date }),
-    poster: formatTmdbImage({ value: movie.poster_path }),
-    backdrop: formatTmdbImage({ value: movie.backdrop_path }),
+    releaseDate: getReleaseDate(movie),
+    backdrop: getBackdrop(movie),
+
+    featuredImage: getFeaturedImage(movie),
+    releaseYear: getReleaseYear(movie),
+    subtitle: getReleaseDate(movie),
+    title: getTitle(movie),
     favorite: false,
-    mediaType: Type.MOVIE,
+    mediaType: EntityType.MOVIE,
   } as Response;
 
   const recommendations = movie.recommendations?.results.map(
     recommendation => ({
-      poster: formatTmdbImage({ value: recommendation.poster_path }),
-      backdrop: formatTmdbImage({ value: recommendation.poster_path }),
+      backdrop: getBackdrop(recommendation),
       id: recommendation.id,
-      title: recommendation.title,
+
+      featuredImage: getFeaturedImage(recommendation),
+      releaseYear: getReleaseYear(recommendation),
+      subtitle: getSubtitle(recommendation),
+      title: getTitle(recommendation),
       favorite: false,
-      mediaType: Type.MOVIE,
+      mediaType: EntityType.MOVIE,
     }),
   ) as Recommendations[];
 
@@ -74,7 +88,13 @@ const parseResponse = (movie: RawResponse): Response => {
     castId: person.cast_id,
     creditId: person.credit_id,
     gender: person.gender,
-    profile: formatTmdbImage({ value: person.profile_path }),
+    profile: getFeaturedImage(person),
+
+    featuredImage: getFeaturedImage(person),
+    subtitle: person.character,
+    title: getTitle(person),
+    favorite: false,
+    mediaType: EntityType.PERSON,
   })) as Cast[];
 
   const crew = movie.credits?.crew.map(person => ({
@@ -84,7 +104,13 @@ const parseResponse = (movie: RawResponse): Response => {
     department: person.department,
     creditId: person.credit_id,
     gender: person.gender,
-    profile: formatTmdbImage({ value: person.profile_path }),
+    profile: getFeaturedImage(person),
+
+    featuredImage: getFeaturedImage(person),
+    subtitle: person.job,
+    title: person.name,
+    favorite: false,
+    mediaType: EntityType.PERSON,
   })) as Crew[];
 
   const credits = { cast, crew } as Credits;
