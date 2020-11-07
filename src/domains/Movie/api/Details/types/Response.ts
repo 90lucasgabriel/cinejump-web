@@ -1,5 +1,5 @@
-import Recommendations from 'domains/Movie/api/Recommendations/Response';
-import Credits from 'domains/Movie/api/Credits/Response';
+import Recommendations from 'domains/Movie/api/Recommendations/types/Response';
+import Credits from 'domains/Movie/api/Credits/types/Response';
 
 export default interface Response {
   poster?: string;

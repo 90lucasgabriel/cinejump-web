@@ -1,4 +1,4 @@
-import Environment from 'domains/Environment/dtos/Environment';
+import Environment from 'domains/Environment/types/Environment';
 
 export default interface ContextData {
   isProduction: boolean;

@@ -13,10 +13,10 @@ import {
   getTitle,
 } from 'shared/utils/Entity';
 
-import Params from 'domains/Person/api/Details/Params';
-import RawResponse from 'domains/Person/api/Details/RawResponse';
-import Response from 'domains/Person/api/Details/Response';
-import Movie from 'domains/Person/api/Details/Movie';
+import Params from 'domains/Person/api/Details/types/Params';
+import RawResponse from 'domains/Person/api/Details/types/RawResponse';
+import Response from 'domains/Person/api/Details/types/Response';
+import Movie from 'domains/Person/api/Details/types/Movie';
 
 const Details = async (
   personId: number,

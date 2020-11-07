@@ -1,7 +1,7 @@
 import { Dispatch, SetStateAction } from 'react';
 
-import ListResponse from 'domains/Favorites/api/List/Response';
-import UpdateResponse from 'domains/Favorites/api/Update/Response';
+import ListResponse from 'domains/Favorites/api/List/types/Response';
+import UpdateResponse from 'domains/Favorites/api/Update/types/Response';
 
 export default interface ContextData {
   favoriteList: ListResponse[];

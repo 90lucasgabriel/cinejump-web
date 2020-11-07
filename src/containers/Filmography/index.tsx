@@ -17,7 +17,7 @@ import {
   MessageContainer,
 } from './styles';
 
-import Props from './dtos';
+import Props from './types';
 
 const Filmography: React.FC<Props> = ({
   theme,

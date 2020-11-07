@@ -1,5 +1,5 @@
 // import Recommendations from 'domains/Movie/api/Recommendations/RawResponse';
-import RawMovie from 'domains/Person/api/Details/RawMovie';
+import RawMovie from 'domains/Person/api/Details/types/RawMovie';
 
 export default interface RawResponse {
   id: number;

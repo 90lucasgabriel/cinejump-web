@@ -9,9 +9,9 @@ import {
 } from 'shared/utils/Entity';
 
 import { EntityType } from 'shared/enums';
-import Params from 'domains/Tv/api/Popular/Params';
-import RawResponse from 'domains/Tv/api/Popular/RawResponse';
-import Response from 'domains/Tv/api/Popular/Response';
+import Params from 'domains/Tv/api/Popular/types/Params';
+import RawResponse from 'domains/Tv/api/Popular/types/RawResponse';
+import Response from 'domains/Tv/api/Popular/types/Response';
 
 const Popular = async (params?: Params): Promise<Response[]> => {
   const response = await rawPopular(params);

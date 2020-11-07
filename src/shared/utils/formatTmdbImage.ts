@@ -1,4 +1,4 @@
-import FormatTmdbImage from 'shared/utils/dtos/FormatTmdbImage';
+import FormatTmdbImage from 'shared/utils/types/FormatTmdbImage';
 import TmdbImageSize from 'shared/utils/enums/TmdbImageSize';
 
 const formatTmdbImage = ({

@@ -1,5 +1,5 @@
-import MovieResponse from 'domains/Movie/api/Details/Response';
-import PersonResponse from 'domains/Person/api/Details/Response';
+import MovieResponse from 'domains/Movie/api/Details/types/Response';
+import PersonResponse from 'domains/Person/api/Details/types/Response';
 
 export default interface Response
   extends Omit<MovieResponse, 'id'>,

@@ -2,7 +2,7 @@ import React, { useCallback, useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
 
 import Params from 'pages/Movie/dtos/Params';
-import MovieDetails from 'domains/Movie/api/Details/Response';
+import MovieDetails from 'domains/Movie/api/Details/types/Response';
 import { Color } from 'shared/enums';
 import { Details } from 'domains/Movie/api';
 import { useAuth } from 'domains/Auth/hooks';

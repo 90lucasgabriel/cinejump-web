@@ -3,8 +3,8 @@ import tmdb from 'services/api/tmdb';
 import { formatDate, formatTmdbImage } from 'shared/utils';
 
 import { EntityType } from 'shared/enums';
-import RawResponse from 'domains/Movie/api/Recommendations/RawResponse';
-import Response from 'domains/Movie/api/Recommendations/Response';
+import RawResponse from 'domains/Movie/api/Recommendations/types/RawResponse';
+import Response from 'domains/Movie/api/Recommendations/types/Response';
 
 const Recommendations = async (movieId: number): Promise<Response[]> => {
   const response = await rawPopular(movieId);

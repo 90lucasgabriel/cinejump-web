@@ -1,6 +1,6 @@
-import RawResponse from 'domains/Auth/api/PostAuth/RawResponse';
-import Response from 'domains/Auth/api/PostAuth/Response';
-import LoginCredentials from 'domains/Auth/dtos/LoginCredentials';
+import RawResponse from 'domains/Auth/api/PostAuth/types/RawResponse';
+import Response from 'domains/Auth/api/PostAuth/types/Response';
+import LoginCredentials from 'domains/Auth/types/LoginCredentials';
 import api from 'services/api';
 
 export const postRawAuth = async ({

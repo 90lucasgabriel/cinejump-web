@@ -2,7 +2,7 @@ import React, { useCallback } from 'react';
 import { useHistory } from 'react-router-dom';
 
 import { getEntityRoute } from 'shared/utils';
-import Props from 'containers/EntitySummary/dtos';
+import Props from 'containers/EntitySummary/types';
 
 import { EntityImage } from 'containers';
 import {

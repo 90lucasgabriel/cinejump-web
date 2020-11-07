@@ -9,9 +9,9 @@ import {
 } from 'shared/utils/Entity';
 
 import { EntityType } from 'shared/enums';
-import Params from 'domains/Movie/api/NowPlaying/Params';
-import RawResponse from 'domains/Movie/api/NowPlaying/RawResponse';
-import Response from 'domains/Movie/api/NowPlaying/Response';
+import Params from 'domains/Movie/api/NowPlaying/types/Params';
+import RawResponse from 'domains/Movie/api/NowPlaying/types/RawResponse';
+import Response from 'domains/Movie/api/NowPlaying/types/Response';
 
 const NowPlaying = async (params?: Params): Promise<Response[]> => {
   const response = await rawNowPlaying(params);

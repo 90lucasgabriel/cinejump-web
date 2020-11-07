@@ -1,7 +1,7 @@
 import React from 'react';
 import { Story, Meta } from '@storybook/react';
 
-import Props from 'components/MovieHighlight/dtos';
+import Props from 'components/MovieHighlight/types';
 import MovieHighlight from 'components/MovieHighlight';
 
 // Config and Controls

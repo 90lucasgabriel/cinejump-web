@@ -1,7 +1,7 @@
 import React from 'react';
 import { Story, Meta } from '@storybook/react';
 
-import Props from 'containers/EntityImage/dtos';
+import Props from 'containers/EntityImage/types';
 import { EntityImage } from 'containers';
 
 // Config and Controls

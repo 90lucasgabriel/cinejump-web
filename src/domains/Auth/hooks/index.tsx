@@ -2,8 +2,8 @@ import React, { createContext, useCallback, useContext, useState } from 'react';
 import api from 'services/api';
 
 import { postRawAuth } from 'domains/Auth/api/PostAuth';
-import ContextData from '../dtos/ContextData';
-import AuthState from '../dtos/AuthState';
+import ContextData from '../types/ContextData';
+import AuthState from '../types/AuthState';
 
 const AuthContext = createContext<ContextData>({} as ContextData);
 

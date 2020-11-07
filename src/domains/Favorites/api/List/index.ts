@@ -1,8 +1,8 @@
 import api from 'services/api';
 
 import { getByType } from 'domains/Favorites/helpers';
-import RawResponse from 'domains/Favorites/api/List/RawResponse';
-import Response from 'domains/Favorites/api/List/Response';
+import RawResponse from 'domains/Favorites/api/List/types/RawResponse';
+import Response from 'domains/Favorites/api/List/types/Response';
 
 const Favorites = async (): Promise<Response[]> => {
   const response = await rawFavorites();

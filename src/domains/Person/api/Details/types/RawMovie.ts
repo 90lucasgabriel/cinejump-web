@@ -1,4 +1,4 @@
-import RawMovieDetails from 'domains/Movie/api/Details/RawResponse';
+import RawMovieDetails from 'domains/Movie/api/Details/types/RawResponse';
 
 export default interface RawMovie extends RawMovieDetails {
   character: string;

@@ -16,7 +16,7 @@ import {
   InfoSubtitle,
 } from './styles';
 
-import Props from './dtos';
+import Props from './types';
 
 const EntityImage: React.FC<Props> = ({
   size,

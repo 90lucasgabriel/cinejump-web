@@ -13,7 +13,7 @@ import {
   MessageContainer,
 } from './styles';
 
-import Props from './dtos';
+import Props from './types';
 
 const EntityImageList: React.FC<Props> = ({
   theme,

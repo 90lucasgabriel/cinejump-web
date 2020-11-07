@@ -1,5 +1,5 @@
 // import Recommendations from 'domains/Movie/api/Recommendations/Response';
-import Movie from 'domains/Person/api/Details/Movie';
+import Movie from 'domains/Person/api/Details/types/Movie';
 
 export default interface Response {
   id: number;

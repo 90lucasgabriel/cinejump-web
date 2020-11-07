@@ -11,14 +11,14 @@ import {
 } from 'shared/utils/Entity';
 
 import { EntityType } from 'shared/enums';
-import Params from 'domains/Tv/api/Details/Params';
-import RawResponse from 'domains/Tv/api/Details/RawResponse';
-import Response from 'domains/Tv/api/Details/Response';
-import Recommendations from 'domains/Tv/api/Recommendations/Response';
-import Credits from 'domains/Tv/api/Credits/Response';
+import Params from 'domains/Tv/api/Details/types/Params';
+import RawResponse from 'domains/Tv/api/Details/types/RawResponse';
+import Response from 'domains/Tv/api/Details/types/Response';
+import Recommendations from 'domains/Tv/api/Recommendations/types/Response';
+import Credits from 'domains/Tv/api/Credits/types/Response';
 
-import Crew from 'domains/Tv/api/Credits/dtos/Crew';
-import Cast from 'domains/Tv/api/Credits/dtos/Cast';
+import Crew from 'domains/Tv/api/Credits/types/Crew';
+import Cast from 'domains/Tv/api/Credits/types/Cast';
 
 const Details = async (tvId: number, params?: Params): Promise<Response> => {
   const response = await rawPopular(tvId, params);

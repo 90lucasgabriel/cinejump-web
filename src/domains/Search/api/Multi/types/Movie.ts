@@ -1,4 +1,4 @@
-import MovieDetails from 'domains/Movie/api/Details/Response';
+import MovieDetails from 'domains/Movie/api/Details/types/Response';
 
 export default interface Movie extends MovieDetails {
   character: string;

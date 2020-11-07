@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 
-import ContainerProps from 'containers/EntitySummary/dtos/ContainerProps';
+import ContainerProps from 'containers/EntitySummary/types/ContainerProps';
 import { Color, EntityType, Size } from 'shared/enums';
 
 export const Container = styled.div`

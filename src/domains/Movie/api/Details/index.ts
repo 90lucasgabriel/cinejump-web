@@ -11,14 +11,14 @@ import {
 } from 'shared/utils/Entity';
 
 import { EntityType } from 'shared/enums';
-import Params from 'domains/Movie/api/Details/Params';
-import RawResponse from 'domains/Movie/api/Details/RawResponse';
-import Response from 'domains/Movie/api/Details/Response';
-import Recommendations from 'domains/Movie/api/Recommendations/Response';
-import Credits from 'domains/Movie/api/Credits/Response';
+import Params from 'domains/Movie/api/Details/types/Params';
+import RawResponse from 'domains/Movie/api/Details/types/RawResponse';
+import Response from 'domains/Movie/api/Details/types/Response';
+import Recommendations from 'domains/Movie/api/Recommendations/types/Response';
+import Credits from 'domains/Movie/api/Credits/types/Response';
 
-import Crew from 'domains/Movie/api/Credits/dtos/Crew';
-import Cast from 'domains/Movie/api/Credits/dtos/Cast';
+import Crew from 'domains/Movie/api/Credits/types/Crew';
+import Cast from 'domains/Movie/api/Credits/types/Cast';
 
 const Details = async (movieId: number, params?: Params): Promise<Response> => {
   const response = await rawPopular(movieId, params);

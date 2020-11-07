@@ -5,8 +5,8 @@ import { useAuth } from 'domains/Auth/hooks';
 import { useFavorite } from 'domains/Favorites/hooks';
 import { NowPlaying, Popular } from 'domains/Movie/api';
 import { Popular as TvPopular } from 'domains/Tv/api';
-import MovieResponse from 'domains/Movie/api/Popular/Response';
-import TvPopularResponse from 'domains/Tv/api/Popular/Response';
+import MovieResponse from 'domains/Movie/api/Popular/types/Response';
+import TvPopularResponse from 'domains/Tv/api/Popular/types/Response';
 
 import { ColumnLayout } from 'components';
 import { Footer, Header, Highlights, EntityImageList } from 'containers';

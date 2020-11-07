@@ -13,9 +13,9 @@ import {
   getTitle,
 } from 'shared/utils/Entity';
 
-import Params from 'domains/Search/api/Multi/Params';
-import RawResponse from 'domains/Search/api/Multi/RawResponse';
-import Response from 'domains/Search/api/Multi/Response';
+import Params from 'domains/Search/api/Multi/types/Params';
+import RawResponse from 'domains/Search/api/Multi/types/RawResponse';
+import Response from 'domains/Search/api/Multi/types/Response';
 
 const Multi = async (params: Params): Promise<Response[]> => {
   const response = await rawPopular(params);

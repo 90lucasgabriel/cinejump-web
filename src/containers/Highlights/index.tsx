@@ -4,7 +4,7 @@ import { Wrapper } from 'components/Layout';
 import { MovieHighlight } from 'components';
 import { Container, MajorContainer, MinorContainer } from './styles';
 
-import Props from './dtos';
+import Props from './types';
 
 const Highlights: React.FC<Props> = ({ theme, background, color, movies }) => {
   if (!movies || movies.length === 0) {

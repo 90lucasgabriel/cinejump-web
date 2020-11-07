@@ -9,9 +9,9 @@ import {
 } from 'shared/utils/Entity';
 
 import { EntityType } from 'shared/enums';
-import Params from 'domains/Movie/api/Popular/Params';
-import RawResponse from 'domains/Movie/api/Popular/RawResponse';
-import Response from 'domains/Movie/api/Popular/Response';
+import Params from 'domains/Movie/api/Popular/types/Params';
+import RawResponse from 'domains/Movie/api/Popular/types/RawResponse';
+import Response from 'domains/Movie/api/Popular/types/Response';
 
 const Popular = async (params?: Params): Promise<Response[]> => {
   const response = await rawPopular(params);

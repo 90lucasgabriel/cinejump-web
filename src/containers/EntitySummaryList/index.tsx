@@ -1,6 +1,6 @@
 import React from 'react';
 
-import Props from 'containers/EntitySummaryList/dtos';
+import Props from 'containers/EntitySummaryList/types';
 
 import { ReactComponent as Loading } from 'assets/loading.svg';
 import { EntitySummary } from 'containers';
