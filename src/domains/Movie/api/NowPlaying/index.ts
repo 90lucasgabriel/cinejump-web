@@ -6,7 +6,7 @@ import {
   getReleaseDate,
   getReleaseYear,
   getTitle,
-} from 'shared/utils/Entity';
+} from 'shared/helpers/Entity';
 
 import { EntityType } from 'shared/enums';
 import Params from 'domains/Movie/api/NowPlaying/types/Params';

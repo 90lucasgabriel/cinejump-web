@@ -3,7 +3,7 @@ import styled from 'styled-components';
 import DefaultProps from 'shared/dtos';
 import { Color, Size } from 'shared/enums';
 import { Container as DefaultContainer } from 'components/Layout';
-import { getColorByTheme } from 'shared/utils';
+import { getColorByTheme } from 'shared/helpers';
 
 export const Container = styled(DefaultContainer)`
   display: flex;

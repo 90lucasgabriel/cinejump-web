@@ -1,4 +1,4 @@
-import { formatDate } from 'shared/utils';
+import { formatDate } from 'shared/helpers';
 
 const getReleaseDate = (value: any): string => {
   return formatDate({

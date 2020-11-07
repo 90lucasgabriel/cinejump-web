@@ -1,6 +1,6 @@
 import tmdb from 'services/api/tmdb';
 
-import { formatDate, getMediaTypeId } from 'shared/utils';
+import { formatDate, getMediaTypeId } from 'shared/helpers';
 import { EntityType } from 'shared/enums';
 import {
   getCharacter,
@@ -11,7 +11,7 @@ import {
   getReleaseYear,
   getSubtitle,
   getTitle,
-} from 'shared/utils/Entity';
+} from 'shared/helpers/Entity';
 
 import Params from 'domains/Person/api/Details/types/Params';
 import RawResponse from 'domains/Person/api/Details/types/RawResponse';

@@ -1,4 +1,4 @@
-import { formatTmdbImage } from 'shared/utils';
+import { formatTmdbImage } from 'shared/helpers';
 
 const getFeaturedImage = (value: any): string | null => {
   return formatTmdbImage({

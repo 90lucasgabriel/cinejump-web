@@ -1,7 +1,7 @@
 import React, { useCallback, useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
 
-import Params from 'pages/Tv/dtos/Params';
+import Params from 'pages/Tv/types/Params';
 import MovieDetails from 'domains/Tv/api/Details/types/Response';
 import { Color } from 'shared/enums';
 import { Details } from 'domains/Tv/api';

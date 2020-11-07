@@ -1,5 +1,5 @@
-import FormatTmdbImage from 'shared/utils/types/FormatTmdbImage';
-import TmdbImageSize from 'shared/utils/enums/TmdbImageSize';
+import FormatTmdbImage from 'shared/helpers/types/FormatTmdbImage';
+import TmdbImageSize from 'shared/helpers/enums/TmdbImageSize';
 
 const formatTmdbImage = ({
   value,

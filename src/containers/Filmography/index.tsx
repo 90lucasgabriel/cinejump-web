@@ -1,7 +1,7 @@
 import React, { useCallback } from 'react';
 import { useHistory } from 'react-router-dom';
 
-import { getEntityRoute } from 'shared/utils';
+import { getEntityRoute } from 'shared/helpers';
 
 import { ReactComponent as Loading } from 'assets/loading.svg';
 import { Wrapper } from 'components/Layout';

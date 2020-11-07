@@ -1,4 +1,4 @@
-import { arrayToString } from 'shared/utils';
+import { arrayToString } from 'shared/helpers';
 
 const getDescription = (value: any): string | null => {
   return (
