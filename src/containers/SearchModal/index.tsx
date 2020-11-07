@@ -9,9 +9,6 @@ import { SearchInput } from 'components';
 import { EntitySummaryList } from 'containers';
 import {
   Container,
-  Backdrop,
-  ModalContainer,
-  Modal,
   ResultsContainer,
   LoadingContainer,
   EmptyContainer,
@@ -19,18 +16,12 @@ import {
   EmptyLabel,
 } from './styles';
 
-const SearchModal: React.FC<any> = ({ onClose, isShow }) => {
+const SearchModal: React.FC<any> = ({ onClose }) => {
   const minLength = useMemo(() => 3, []);
   const wait = useMemo(() => 750, []);
   const [data, setData] = useState([] as any);
   const [keyword, setKeyword] = useState('');
   const [isLoading, setIsLoading] = useState(false);
-
-  const handleClose = useCallback(() => {
-    setKeyword('');
-    setData([] as any);
-    onClose();
-  }, [onClose]);
 
   const delayedRequest = useCallback(
     debounce(async (params: any) => {
@@ -58,40 +49,31 @@ const SearchModal: React.FC<any> = ({ onClose, isShow }) => {
     [minLength, delayedRequest],
   );
 
-  if (!isShow) {
-    return null;
-  }
-
   return (
     <Container>
-      <Backdrop onClick={handleClose} />
-      <ModalContainer>
-        <Modal>
-          <SearchInput onKeyUp={(e: any) => handleSearch(e.target.value)} />
-          {keyword.length >= minLength && (
-            <ResultsContainer onClick={handleClose}>
-              {isLoading && (
-                <LoadingContainer>
-                  <Loading />
-                </LoadingContainer>
-              )}
-
-              {!isLoading && data?.length > 0 && (
-                <EntitySummaryList data={data} isLoading={isLoading} />
-              )}
-
-              {!isLoading && data?.length === 0 && (
-                <EmptyContainer>
-                  <EmptyImage>
-                    <Empty />
-                  </EmptyImage>
-                  <EmptyLabel>Ops... Nenhum resultado encontrado.</EmptyLabel>
-                </EmptyContainer>
-              )}
-            </ResultsContainer>
+      <SearchInput onKeyUp={(e: any) => handleSearch(e.target.value)} />
+      {keyword.length >= minLength && (
+        <ResultsContainer>
+          {isLoading && (
+            <LoadingContainer>
+              <Loading />
+            </LoadingContainer>
           )}
-        </Modal>
-      </ModalContainer>
+
+          {!isLoading && data?.length > 0 && (
+            <EntitySummaryList data={data} isLoading={isLoading} />
+          )}
+
+          {!isLoading && data?.length === 0 && (
+            <EmptyContainer>
+              <EmptyImage>
+                <Empty />
+              </EmptyImage>
+              <EmptyLabel>Ops... Nenhum resultado encontrado.</EmptyLabel>
+            </EmptyContainer>
+          )}
+        </ResultsContainer>
+      )}
     </Container>
   );
 };

@@ -1,3 +1,5 @@
+export { default as GlobalComponents } from './GlobalComponents';
+
 export { default as EntityImage } from './EntityImage';
 export { default as EntityImageList } from './EntityImageList';
 export { default as EntitySummary } from './EntitySummary';

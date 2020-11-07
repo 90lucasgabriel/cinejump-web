@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useCallback } from 'react';
 import { useHistory } from 'react-router-dom';
 
 import DefaultProps from 'shared/dtos';
@@ -7,10 +7,11 @@ import { FaRegUserCircle } from 'react-icons/fa';
 import { FiSearch } from 'react-icons/fi';
 import { ReactComponent as Logo } from 'assets/logo.svg';
 
+import { useModal } from 'components/Modal/hooks';
+import { SearchModal } from 'containers';
 import Route from 'routes/enums';
 import { Wrapper } from 'components/Layout';
 import { Button } from 'components';
-import { SearchModal } from 'containers';
 import {
   Container,
   MenuContainer,
@@ -25,7 +26,13 @@ const Header: React.FC<DefaultProps> = ({
   color,
 }) => {
   const history = useHistory();
-  const [isSearch, setIsSearch] = useState(false);
+  const { setModalContent } = useModal();
+
+  const handleSearch = useCallback(() => {
+    setModalContent({
+      value: <SearchModal />,
+    });
+  }, [setModalContent]);
 
   return (
     <Wrapper theme={theme} background={background} color={color}>
@@ -46,7 +53,8 @@ const Header: React.FC<DefaultProps> = ({
             variant="icon"
             theme={theme}
             color={color}
-            onClick={() => setIsSearch(true)}
+            // onClick={() => setIsSearch(true)}
+            onClick={handleSearch}
           >
             <FiSearch />
           </Button>
@@ -61,7 +69,7 @@ const Header: React.FC<DefaultProps> = ({
         </ActionMenuContainer>
       </Container>
 
-      <SearchModal isShow={isSearch} onClose={() => setIsSearch(false)} />
+      {/* <SearchModal isShow={isSearch} onClose={() => setIsSearch(false)} /> */}
     </Wrapper>
   );
 };
