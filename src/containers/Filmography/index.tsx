@@ -85,7 +85,7 @@ const Filmography: React.FC<Props> = ({
               ))}
             </ListContainer>
 
-            {parsedData !== data && (
+            {parsedData?.length < data?.length && (
               <More onClick={handleMore}>
                 <Button theme="light" background={Color.Transparent}>
                   Ver Mais
