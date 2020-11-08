@@ -15,10 +15,12 @@ export const Container = styled(DefaultContainer)`
   display: flex;
   flex-direction: column;
 
-  &:hover {
-    button {
-      opacity: 1;
-      pointer-events: auto;
+  @media (min-width: 715px) {
+    &:hover {
+      button {
+        opacity: 1;
+        pointer-events: auto;
+      }
     }
   }
 `;
