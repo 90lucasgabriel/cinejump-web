@@ -1,7 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 
-import DefaultProps from 'shared/dtos';
+import DefaultProps from 'shared/types';
 
 import { ReactComponent as Logo } from 'assets/logo.svg';
 import RouteEnum from 'routes/enums';

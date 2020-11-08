@@ -15,6 +15,7 @@ import {
   Footer,
   Filmography,
   EntityImage,
+  EntityDetailsLoading,
 } from 'containers';
 import {
   ContentContainer,
@@ -84,22 +85,28 @@ const Person: React.FC<any> = () => {
                 showShadow
                 disabled
                 showEmpty
+                isLoading={isLoading}
               />
             </ProfileContainer>
-            <PersonDetailsContainer>
-              <TitleContainer>
-                <Title>{person.name}</Title>
-                <Subtitle>
-                  {person.birthday} | {person.gender} | {person.placeOfBirth}
-                </Subtitle>
-              </TitleContainer>
-              <OverviewContainer>
-                <OverviewTitle>Biografia</OverviewTitle>
-                <Overview>
-                  {person.biography ? person.biography : 'Sem informações.'}
-                </Overview>
-              </OverviewContainer>
-            </PersonDetailsContainer>
+
+            {isLoading && <EntityDetailsLoading />}
+
+            {!isLoading && (
+              <PersonDetailsContainer>
+                <TitleContainer>
+                  <Title>{person.name}</Title>
+                  <Subtitle>
+                    {person.birthday} | {person.gender} | {person.placeOfBirth}
+                  </Subtitle>
+                </TitleContainer>
+                <OverviewContainer>
+                  <OverviewTitle>Biografia</OverviewTitle>
+                  <Overview>
+                    {person.biography ? person.biography : 'Sem informações.'}
+                  </Overview>
+                </OverviewContainer>
+              </PersonDetailsContainer>
+            )}
           </PersonContainer>
         </Container>
 

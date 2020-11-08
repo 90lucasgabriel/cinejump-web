@@ -1,19 +1,21 @@
-import React, { useCallback } from 'react';
+import React, { useCallback, useEffect, useState } from 'react';
 import { useHistory } from 'react-router-dom';
 
 import { getEntityRoute } from 'shared/helpers';
+import { Color } from 'shared/enums';
 
-import { ReactComponent as Loading } from 'assets/loading.svg';
-import { Wrapper } from 'components/Layout';
+import { Wrapper, Button } from 'components';
+import { FilmographyLoading } from 'containers';
 import {
   Container,
   Title,
-  LoadingContainer,
   ListContainer,
   ItemContainer,
   YearLabel,
   MovieName,
   CharacterName,
+  EpisodeCount,
+  More,
   MessageContainer,
 } from './styles';
 
@@ -26,10 +28,11 @@ const Filmography: React.FC<Props> = ({
   title,
   data,
   isLoading = false,
-  loaderColor,
   message = 'Não há resultados.',
 }) => {
   const history = useHistory();
+  const maxItems = 7;
+  const [parsedData, setParsedData] = useState([] as any);
 
   const handleRedirect = useCallback(
     (entity: any) => {
@@ -38,6 +41,14 @@ const Filmography: React.FC<Props> = ({
     },
     [history],
   );
+
+  const handleMore = useCallback(() => {
+    setParsedData(data);
+  }, [setParsedData, data]);
+
+  useEffect(() => {
+    setParsedData([...data]?.splice(0, maxItems));
+  }, [data]);
 
   return (
     <Wrapper theme={theme} background={background} color={color}>
@@ -48,27 +59,40 @@ const Filmography: React.FC<Props> = ({
           </Title>
         )}
 
-        {isLoading && (
-          <LoadingContainer theme={theme} loaderColor={loaderColor}>
-            <Loading />
-          </LoadingContainer>
-        )}
+        {isLoading && <FilmographyLoading />}
 
         {!isLoading && data.length > 0 && (
-          <ListContainer>
-            {data.map(entity => (
-              <ItemContainer
-                key={entity.id}
-                onClick={() => handleRedirect(entity)}
-              >
-                <YearLabel>{entity.year} - </YearLabel>
-                <MovieName>{entity.title || entity.name}</MovieName>
-                <CharacterName>
-                  {entity.character && ` como ${entity.character}`}
-                </CharacterName>
-              </ItemContainer>
-            ))}
-          </ListContainer>
+          <>
+            <ListContainer>
+              {parsedData.map((entity: any) => (
+                <ItemContainer
+                  key={entity.id}
+                  onClick={() => handleRedirect(entity)}
+                >
+                  <YearLabel>{entity.year} - </YearLabel>
+                  <MovieName>{entity.title || entity.name}</MovieName>
+                  <CharacterName>
+                    {entity.character && ` como ${entity.character}`}
+                  </CharacterName>
+                  {entity.episodeCount && (
+                    <EpisodeCount>
+                      {entity.episodeCount > 1
+                        ? ` (${entity.episodeCount} episódios)`
+                        : ` (${entity.episodeCount} episódio)`}
+                    </EpisodeCount>
+                  )}
+                </ItemContainer>
+              ))}
+            </ListContainer>
+
+            {parsedData?.length < data?.length && (
+              <More onClick={handleMore}>
+                <Button theme="light" background={Color.Transparent}>
+                  Ver Mais
+                </Button>
+              </More>
+            )}
+          </>
         )}
 
         {!isLoading && data.length === 0 && (

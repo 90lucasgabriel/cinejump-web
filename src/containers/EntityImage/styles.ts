@@ -6,7 +6,7 @@ import ContainerProps from './types/ContainerProps';
 export const Container = styled.div<ContainerProps>`
   position: relative;
   border-radius: ${Size.Smallest};
-  background: ${Color.FillSecondary};
+  background: rgba(0, 0, 0, 0.1);
 
   ${props =>
     props.showShadow &&

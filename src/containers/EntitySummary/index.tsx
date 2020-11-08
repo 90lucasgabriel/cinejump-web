@@ -4,6 +4,7 @@ import { useHistory } from 'react-router-dom';
 import { getEntityRoute } from 'shared/helpers';
 import Props from 'containers/EntitySummary/types';
 
+import { useModal } from 'components/Modal/hooks';
 import { EntityImage } from 'containers';
 import {
   Container,
@@ -14,18 +15,20 @@ import {
   Description,
 } from './styles';
 
-const EntitySummary: React.FC<Props> = ({ data }) => {
+const EntitySummary: React.FC<Props> = ({ data, size }) => {
   const history = useHistory();
+  const { successCloseModal } = useModal();
 
   const handleRedirect = useCallback(() => {
     const entityRoute = getEntityRoute(data.mediaType);
     history.push(`${entityRoute}/${data.id}`);
-  }, [history, data.id, data.mediaType]);
+    successCloseModal();
+  }, [history, data.id, data.mediaType, successCloseModal]);
 
   return (
     <Container>
       <ImageContainer>
-        <EntityImage {...data} size="small" showEmpty />
+        <EntityImage {...data} size={size} showEmpty />
       </ImageContainer>
       <DetailsContainer onClick={handleRedirect}>
         <Title mediaType={data.mediaType}>{data.title}</Title>
