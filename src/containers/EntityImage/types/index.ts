@@ -9,4 +9,6 @@ export default interface MovieProps extends ContainerProps {
   featuredImage?: string;
   title?: string;
   subtitle?: string;
+
+  isLoading?: boolean;
 }

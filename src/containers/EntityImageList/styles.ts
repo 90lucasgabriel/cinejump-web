@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 
-import DefaultProps from 'shared/dtos';
+import DefaultProps from 'shared/types';
 import { Container as DefaultContainer, Button } from 'components';
 import { Color, PosterHeight, Size } from 'shared/enums';
 import { getColor } from 'shared/helpers';
@@ -15,10 +15,12 @@ export const Container = styled(DefaultContainer)`
   display: flex;
   flex-direction: column;
 
-  &:hover {
-    button {
-      opacity: 1;
-      pointer-events: auto;
+  @media (min-width: 715px) {
+    &:hover {
+      button {
+        opacity: 1;
+        pointer-events: auto;
+      }
     }
   }
 `;

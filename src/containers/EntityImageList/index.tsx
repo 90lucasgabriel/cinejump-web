@@ -1,14 +1,12 @@
 import React, { useCallback, createRef, useState } from 'react';
 
-import { ReactComponent as Loading } from 'assets/loading.svg';
 import { FiChevronLeft, FiChevronRight } from 'react-icons/fi';
 
 import { Wrapper } from 'components';
-import { EntityImage } from 'containers';
+import { EntityImage, EntityImageListLoading } from 'containers';
 import {
   Container,
   Title,
-  LoadingContainer,
   ListContainer,
   ListContent,
   PreviousButton,
@@ -25,7 +23,6 @@ const EntityImageList: React.FC<Props> = ({
   title,
   data,
   isLoading = false,
-  loaderColor,
   message = 'Não há resultados.',
   showShadow,
   hideFavoriteButton,
@@ -84,9 +81,14 @@ const EntityImageList: React.FC<Props> = ({
         )}
 
         {isLoading && (
-          <LoadingContainer theme={theme} loaderColor={loaderColor}>
-            <Loading />
-          </LoadingContainer>
+          <EntityImageListLoading
+            showShadow={showShadow}
+            showInfo={showInfo}
+            hideSubtitle={hideSubtitle}
+            theme={theme}
+            background={background}
+            color={color}
+          />
         )}
 
         {!isLoading && data.length > 0 && (

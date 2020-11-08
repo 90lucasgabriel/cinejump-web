@@ -1,4 +1,6 @@
-export default interface ContainerProps {
+import DefaultProps from 'shared/types';
+
+export default interface ContainerProps extends DefaultProps {
   size?: 'small' | 'large';
   showShadow?: boolean;
   hideFavoriteButton?: boolean;

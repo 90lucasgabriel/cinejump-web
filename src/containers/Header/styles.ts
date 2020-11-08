@@ -1,7 +1,7 @@
 import styled from 'styled-components';
 import { Link as RouterLink } from 'react-router-dom';
 
-import DefaultProps from 'shared/dtos';
+import DefaultProps from 'shared/types';
 import { getColor } from 'shared/helpers';
 import { Container as DefaultContainer } from 'components/Layout';
 import { Color, Size } from 'shared/enums';

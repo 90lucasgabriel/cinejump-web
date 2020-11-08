@@ -15,7 +15,7 @@ import {
   Description,
 } from './styles';
 
-const EntitySummary: React.FC<Props> = ({ data }) => {
+const EntitySummary: React.FC<Props> = ({ data, size }) => {
   const history = useHistory();
   const { successCloseModal } = useModal();
 
@@ -28,7 +28,7 @@ const EntitySummary: React.FC<Props> = ({ data }) => {
   return (
     <Container>
       <ImageContainer>
-        <EntityImage {...data} size="small" showEmpty />
+        <EntityImage {...data} size={size} showEmpty />
       </ImageContainer>
       <DetailsContainer onClick={handleRedirect}>
         <Title mediaType={data.mediaType}>{data.title}</Title>

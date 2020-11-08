@@ -1,7 +1,7 @@
 import React, { useCallback } from 'react';
 import { useHistory } from 'react-router-dom';
 
-import DefaultProps from 'shared/dtos';
+import DefaultProps from 'shared/types';
 
 import { FaRegUserCircle } from 'react-icons/fa';
 import { FiSearch } from 'react-icons/fi';

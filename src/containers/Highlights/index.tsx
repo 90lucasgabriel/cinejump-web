@@ -2,11 +2,22 @@ import React from 'react';
 
 import { Wrapper } from 'components/Layout';
 import { MovieHighlight } from 'components';
+import { HighlightsLoading } from 'containers';
 import { Container, MajorContainer, MinorContainer } from './styles';
 
 import Props from './types';
 
-const Highlights: React.FC<Props> = ({ theme, background, color, movies }) => {
+const Highlights: React.FC<Props> = ({
+  theme,
+  background,
+  color,
+  movies,
+  isLoading,
+}) => {
+  if (isLoading) {
+    return <HighlightsLoading />;
+  }
+
   if (!movies || movies.length === 0) {
     return null;
   }

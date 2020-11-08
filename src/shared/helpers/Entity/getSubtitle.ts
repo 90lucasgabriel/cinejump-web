@@ -4,7 +4,7 @@ const getSubtitle = (value: any): string | null => {
     value.first_air_date?.substring(0, 4) ||
     (value.known_for && value.gender === 2
       ? 'Conhecido por: '
-      : 'Conhecida por')
+      : 'Conhecida por:')
   );
 };
 

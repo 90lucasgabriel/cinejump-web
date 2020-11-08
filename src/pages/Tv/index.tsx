@@ -9,7 +9,13 @@ import { useAuth } from 'domains/Auth/hooks';
 import { useFavorite } from 'domains/Favorites/hooks';
 
 import { ColumnLayout, Container } from 'components';
-import { Header, EntityImage, EntityImageList, Footer } from 'containers';
+import {
+  Header,
+  EntityImage,
+  EntityImageList,
+  Footer,
+  EntityDetailsLoading,
+} from 'containers';
 import {
   ContentContainer,
   MovieContainer,
@@ -71,35 +77,47 @@ const Tv: React.FC<any> = () => {
     <ColumnLayout>
       <Header background={Color.Transparent} color={Color.Fill} />
       <HeaderBackground>
-        <img src={tv.backdrop} alt="backdrop" />
+        ${isLoading && <img src={tv.backdrop} alt="backdrop" />}
       </HeaderBackground>
 
       <ContentContainer>
         <Container>
           <MovieContainer>
             <PosterContainer>
-              <EntityImage {...tv} size="large" showShadow disabled showEmpty />
+              <EntityImage
+                {...tv}
+                size="large"
+                showShadow
+                disabled
+                showEmpty
+                isLoading={isLoading}
+              />
             </PosterContainer>
-            <MovieDetailsContainer>
-              <TitleContainer>
-                <Title>{tv.title}</Title>
-                <Subtitle>
-                  {tv.releaseDate} | {tv.genresNames} | {tv.runtime}
-                </Subtitle>
-              </TitleContainer>
-              <OverviewContainer>
-                <OverviewTitle>Sinopse</OverviewTitle>
-                <Overview>{tv.overview}</Overview>
-              </OverviewContainer>
-              <VoteAverage>
-                <VoteAverageTitle>Votação do público:</VoteAverageTitle>{' '}
-                {tv.voteAverage}
-              </VoteAverage>
-              <Director>
-                <DirectorTitle>Diretor: </DirectorTitle>
-                {tv.directorName}
-              </Director>
-            </MovieDetailsContainer>
+
+            {isLoading && <EntityDetailsLoading />}
+
+            {!isLoading && (
+              <MovieDetailsContainer>
+                <TitleContainer>
+                  <Title>{tv.title}</Title>
+                  <Subtitle>
+                    {tv.releaseDate} | {tv.genresNames} | {tv.runtime}
+                  </Subtitle>
+                </TitleContainer>
+                <OverviewContainer>
+                  <OverviewTitle>Sinopse</OverviewTitle>
+                  <Overview>{tv.overview}</Overview>
+                </OverviewContainer>
+                <VoteAverage>
+                  <VoteAverageTitle>Votação do público:</VoteAverageTitle>{' '}
+                  {tv.voteAverage}
+                </VoteAverage>
+                <Director>
+                  <DirectorTitle>Diretor: </DirectorTitle>
+                  {tv.directorName}
+                </Director>
+              </MovieDetailsContainer>
+            )}
           </MovieContainer>
         </Container>
 
