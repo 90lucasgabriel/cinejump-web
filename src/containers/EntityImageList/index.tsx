@@ -7,7 +7,6 @@ import { EntityImage, EntityImageListLoading } from 'containers';
 import {
   Container,
   Title,
-  LoadingContainer,
   ListContainer,
   ListContent,
   PreviousButton,

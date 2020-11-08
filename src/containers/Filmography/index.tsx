@@ -4,12 +4,11 @@ import { useHistory } from 'react-router-dom';
 import { getEntityRoute } from 'shared/helpers';
 import { Color } from 'shared/enums';
 
-import { ReactComponent as Loading } from 'assets/loading.svg';
 import { Wrapper, Button } from 'components';
+import { FilmographyLoading } from 'containers';
 import {
   Container,
   Title,
-  LoadingContainer,
   ListContainer,
   ItemContainer,
   YearLabel,
@@ -29,11 +28,10 @@ const Filmography: React.FC<Props> = ({
   title,
   data,
   isLoading = false,
-  loaderColor,
   message = 'Não há resultados.',
 }) => {
   const history = useHistory();
-  const maxItems = 10;
+  const maxItems = 7;
   const [parsedData, setParsedData] = useState([] as any);
 
   const handleRedirect = useCallback(
@@ -61,11 +59,7 @@ const Filmography: React.FC<Props> = ({
           </Title>
         )}
 
-        {isLoading && (
-          <LoadingContainer theme={theme} loaderColor={loaderColor}>
-            <Loading />
-          </LoadingContainer>
-        )}
+        {isLoading && <FilmographyLoading />}
 
         {!isLoading && data.length > 0 && (
           <>

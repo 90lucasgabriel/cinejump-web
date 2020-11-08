@@ -1,10 +1,8 @@
-import styled, { css } from 'styled-components';
+import styled from 'styled-components';
 
-import DefaultProps from 'shared/types';
 import { Color } from 'shared/enums';
-import { getBackground, getColor } from 'shared/helpers';
+import { getBackground } from 'shared/helpers';
 import {
-  LoadingContainer as LoadingContainerDefault,
   ListContainer as ListContainerDefault,
   ListContent as ListContentDefault,
 } from 'containers/EntityImageList/styles';
