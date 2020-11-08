@@ -78,7 +78,14 @@ const Tv: React.FC<any> = () => {
         <Container>
           <MovieContainer>
             <PosterContainer>
-              <EntityImage {...tv} size="large" showShadow disabled showEmpty />
+              <EntityImage
+                {...tv}
+                size="large"
+                showShadow
+                disabled
+                showEmpty
+                isLoading={isLoading}
+              />
             </PosterContainer>
             <MovieDetailsContainer>
               <TitleContainer>

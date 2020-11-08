@@ -6,6 +6,8 @@ import { getEntityRoute } from 'shared/helpers';
 import { useAuth } from 'domains/Auth/hooks';
 import { useFavorite } from 'domains/Favorites/hooks';
 import { Color } from 'shared/enums';
+
+import { EntityImageLoading } from 'containers';
 import {
   Container,
   EntityContainer,
@@ -26,6 +28,7 @@ const EntityImage: React.FC<Props> = ({
   showInfo,
   hideSubtitle,
   showEmpty,
+  isLoading,
   ...entity
 }) => {
   const history = useHistory();
@@ -68,6 +71,17 @@ const EntityImage: React.FC<Props> = ({
 
   if (!entity.featuredImage && !entity.backdrop && !showEmpty) {
     return null;
+  }
+
+  if (isLoading) {
+    return (
+      <EntityImageLoading
+        showShadow={showShadow}
+        size={size}
+        showInfo={showInfo}
+        hideSubtitle={hideSubtitle}
+      />
+    );
   }
 
   return (

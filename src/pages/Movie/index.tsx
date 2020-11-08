@@ -85,6 +85,7 @@ const Movie: React.FC<any> = () => {
                 showShadow
                 disabled
                 showEmpty
+                isLoading={isLoading}
               />
             </PosterContainer>
             <MovieDetailsContainer>

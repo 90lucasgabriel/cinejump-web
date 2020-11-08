@@ -84,6 +84,7 @@ const Person: React.FC<any> = () => {
                 showShadow
                 disabled
                 showEmpty
+                isLoading={isLoading}
               />
             </ProfileContainer>
             <PersonDetailsContainer>
