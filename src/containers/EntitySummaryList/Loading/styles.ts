@@ -2,12 +2,9 @@ import styled from 'styled-components';
 
 import { Color } from 'shared/enums';
 import { getBackground } from 'shared/helpers';
-import {
-  ListContainer as ListContainerDefault,
-  ListContent as ListContentDefault,
-} from 'containers/EntityImageList/styles';
+import { Container as ContainerDefault } from 'containers/EntitySummaryList/styles';
 
-export const ListContainer = styled<any>(ListContainerDefault)`
+export const Container = styled<any>(ContainerDefault)`
   position: relative;
   overflow-x: hidden;
 
@@ -19,7 +16,7 @@ export const ListContainer = styled<any>(ListContainerDefault)`
     z-index: 10;
 
     background: linear-gradient(
-      to right,
+      to bottom,
       ${Color.Transparent} 0%,
       ${Color.Transparent} 40%,
       ${props => getBackground(props.theme, props.background, Color.Fill)} 90%,
@@ -27,4 +24,3 @@ export const ListContainer = styled<any>(ListContainerDefault)`
     );
   }
 `;
-export const ListContent = styled(ListContentDefault)``;

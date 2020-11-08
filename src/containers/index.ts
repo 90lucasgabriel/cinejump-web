@@ -9,7 +9,10 @@ export { default as EntityImageList } from './EntityImageList';
 export { default as EntityImageListLoading } from './EntityImageList/Loading';
 
 export { default as EntitySummary } from './EntitySummary';
+export { default as EntitySummaryLoading } from './EntitySummary/Loading';
+
 export { default as EntitySummaryList } from './EntitySummaryList';
+export { default as EntitySummaryListLoading } from './EntitySummaryList/Loading';
 
 export { default as Filmography } from './Filmography';
 export { default as FilmographyLoading } from './Filmography/Loading';
