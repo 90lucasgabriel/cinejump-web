@@ -10,6 +10,8 @@ export const Container = styled.div`
   overflow: hidden;
   border-radius: ${Size.Small};
 
+  background: ${Color.FillSecondary};
+
   &:hover {
     cursor: pointer;
 

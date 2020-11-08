@@ -64,7 +64,7 @@ const Home: React.FC = () => {
     <ColumnLayout>
       <Header />
       <ContentContainer>
-        <Highlights movies={popularList} />
+        <Highlights movies={popularList} isLoading={popularList.length === 0} />
         <EntityImageList
           title="Populares"
           data={popularList.slice(3, popularList.length)}

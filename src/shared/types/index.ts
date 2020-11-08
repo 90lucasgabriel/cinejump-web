@@ -4,4 +4,5 @@ export default interface Props {
   theme?: 'primary' | 'secondary' | 'light';
   background?: Color;
   color?: Color | string;
+  isLoading?: boolean;
 }

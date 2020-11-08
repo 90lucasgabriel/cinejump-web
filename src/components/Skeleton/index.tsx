@@ -4,10 +4,10 @@ export const Skeleton = styled.div`
   background-image: linear-gradient(
     -90deg,
     #e3e3e3 0%,
-    #f8f8f8 50%,
+    #f9f9f9 50%,
     #e3e3e3 100%
   );
-  opacity: 0.7;
+
   background-size: 400% 400%;
   animation: shimmer 1.2s ease-in-out infinite;
   @keyframes shimmer {
