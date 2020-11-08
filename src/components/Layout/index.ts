@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 
-import DefaultProps from 'shared/dtos';
+import DefaultProps from 'shared/types';
 import { getBackground, getColor } from 'shared/helpers';
 
 const BasicLayout = styled.div<DefaultProps>`

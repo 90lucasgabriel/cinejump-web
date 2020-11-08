@@ -1,4 +1,4 @@
-import DefaultProps from 'shared/dtos';
+import DefaultProps from 'shared/types';
 
 export default interface ResultProps extends DefaultProps {
   data: any;

@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 
-import DefaultProps from 'shared/dtos';
+import DefaultProps from 'shared/types';
 import { Container as DefaultContainer } from 'components/Layout';
 import { Color, PosterHeight, Size } from 'shared/enums';
 import { getColor } from 'shared/helpers';

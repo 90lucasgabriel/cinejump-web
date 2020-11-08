@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 
-import DefaultProps from 'shared/dtos';
+import DefaultProps from 'shared/types';
 import { Color, Size } from 'shared/enums';
 import { Container as DefaultContainer } from 'components/Layout';
 import { getColorByTheme } from 'shared/helpers';
