@@ -1,5 +1,7 @@
 export { default as GlobalComponents } from './GlobalComponents';
 
+export { default as EntityDetailsLoading } from './EntityDetails/Loading';
+
 export { default as EntityImage } from './EntityImage';
 export { default as EntityImageLoading } from './EntityImage/Loading';
 

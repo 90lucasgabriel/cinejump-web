@@ -9,7 +9,13 @@ import { useAuth } from 'domains/Auth/hooks';
 import { useFavorite } from 'domains/Favorites/hooks';
 
 import { ColumnLayout, Container } from 'components';
-import { Header, EntityImage, EntityImageList, Footer } from 'containers';
+import {
+  Header,
+  EntityImage,
+  EntityDetailsLoading,
+  EntityImageList,
+  Footer,
+} from 'containers';
 import {
   ContentContainer,
   MovieContainer,
@@ -72,7 +78,7 @@ const Movie: React.FC<any> = () => {
     <ColumnLayout>
       <Header background={Color.Transparent} color={Color.Fill} />
       <HeaderBackground>
-        <img src={movie.backdrop} alt="backdrop" />
+        {!isLoading && <img src={movie.backdrop} alt="backdrop" />}
       </HeaderBackground>
 
       <ContentContainer>
@@ -88,27 +94,32 @@ const Movie: React.FC<any> = () => {
                 isLoading={isLoading}
               />
             </PosterContainer>
-            <MovieDetailsContainer>
-              <TitleContainer>
-                <Title>{movie.title}</Title>
-                <Subtitle>
-                  {movie.releaseDate} | {movie.genresNames} | {movie.runtime}
-                </Subtitle>
-              </TitleContainer>
-              {movie.tagline && <Tagline>{`"${movie.tagline}"`}</Tagline>}
-              <OverviewContainer>
-                <OverviewTitle>Sinopse</OverviewTitle>
-                <Overview>{movie.overview}</Overview>
-              </OverviewContainer>
-              <VoteAverage>
-                <VoteAverageTitle>Votação do público:</VoteAverageTitle>{' '}
-                {movie.voteAverage}
-              </VoteAverage>
-              <Director>
-                <DirectorTitle>Diretor: </DirectorTitle>
-                {movie.directorName}
-              </Director>
-            </MovieDetailsContainer>
+
+            {isLoading && <EntityDetailsLoading />}
+
+            {!isLoading && (
+              <MovieDetailsContainer>
+                <TitleContainer>
+                  <Title>{movie.title}</Title>
+                  <Subtitle>
+                    {movie.releaseDate} | {movie.genresNames} | {movie.runtime}
+                  </Subtitle>
+                </TitleContainer>
+                {movie.tagline && <Tagline>{`"${movie.tagline}"`}</Tagline>}
+                <OverviewContainer>
+                  <OverviewTitle>Sinopse</OverviewTitle>
+                  <Overview>{movie.overview}</Overview>
+                </OverviewContainer>
+                <VoteAverage>
+                  <VoteAverageTitle>Votação do público:</VoteAverageTitle>{' '}
+                  {movie.voteAverage}
+                </VoteAverage>
+                <Director>
+                  <DirectorTitle>Diretor: </DirectorTitle>
+                  {movie.directorName}
+                </Director>
+              </MovieDetailsContainer>
+            )}
           </MovieContainer>
         </Container>
 
