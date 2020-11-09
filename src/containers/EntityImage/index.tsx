@@ -4,6 +4,7 @@ import { BsHeartFill } from 'react-icons/bs';
 
 import { getEntityRoute } from 'shared/helpers';
 import { useAuth } from 'domains/Auth/hooks';
+import { useModal } from 'components/Modal/hooks';
 import { useFavorite } from 'domains/Favorites/hooks';
 import { Color } from 'shared/enums';
 
@@ -32,7 +33,9 @@ const EntityImage: React.FC<Props> = ({
   ...entity
 }) => {
   const history = useHistory();
+  const { successCloseModal } = useModal();
   const { user } = useAuth();
+
   const { favoriteList = [], UpdateFavorite } = useFavorite();
   const [isFavorite, setIsFavorite] = useState(entity.favorite);
 
@@ -53,6 +56,7 @@ const EntityImage: React.FC<Props> = ({
     if (!disabled) {
       const entityRoute = getEntityRoute(entity.mediaType);
       history.push(`${entityRoute}/${entity.id}`);
+      successCloseModal();
     }
   }, [disabled, history, entity.id, entity.mediaType]);
 

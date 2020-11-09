@@ -2,7 +2,7 @@ import React, { useCallback, useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
 
 import Params from 'pages/Tv/types/Params';
-import MovieDetails from 'domains/Tv/api/Details/types/Response';
+import TvDetails from 'domains/Tv/api/Details/types/Response';
 import { Color } from 'shared/enums';
 import { Details } from 'domains/Tv/api';
 import { useAuth } from 'domains/Auth/hooks';
@@ -18,9 +18,9 @@ import {
 } from 'containers';
 import {
   ContentContainer,
-  MovieContainer,
+  TvContainer,
   PosterContainer,
-  MovieDetailsContainer,
+  TvDetailsContainer,
   TitleContainer,
   Title,
   Subtitle,
@@ -36,13 +36,13 @@ import {
 
 const Tv: React.FC<any> = () => {
   const { id } = useParams<Params>();
-  const [tv, setMovie] = useState({} as MovieDetails);
+  const [tv, setTv] = useState({} as TvDetails);
   const [isLoading, setIsLoading] = useState(false);
 
   const { user } = useAuth();
   const { Favorites, favoriteList } = useFavorite();
 
-  const getMovie = useCallback(async () => {
+  const getTv = useCallback(async () => {
     try {
       setIsLoading(true);
       const params = {
@@ -51,10 +51,10 @@ const Tv: React.FC<any> = () => {
 
       const response = await Details(+id, params);
 
-      setMovie(response);
+      setTv(response);
       return response;
     } catch (error) {
-      console.log('getMovie -> error', error);
+      console.log('getTv -> error', error);
     } finally {
       setIsLoading(false);
     }
@@ -62,8 +62,8 @@ const Tv: React.FC<any> = () => {
 
   useEffect(() => {
     window.scrollTo(0, 0);
-    getMovie();
-  }, [getMovie]);
+    getTv();
+  }, [getTv]);
 
   useEffect(() => {
     if (user) {
@@ -82,7 +82,7 @@ const Tv: React.FC<any> = () => {
 
       <ContentContainer>
         <Container>
-          <MovieContainer>
+          <TvContainer>
             <PosterContainer>
               <EntityImage
                 {...tv}
@@ -97,7 +97,7 @@ const Tv: React.FC<any> = () => {
             {isLoading && <EntityDetailsLoading />}
 
             {!isLoading && (
-              <MovieDetailsContainer>
+              <TvDetailsContainer>
                 <TitleContainer>
                   <Title>{tv.title}</Title>
                   <Subtitle>
@@ -116,9 +116,9 @@ const Tv: React.FC<any> = () => {
                   <DirectorTitle>Diretor: </DirectorTitle>
                   {tv.directorName}
                 </Director>
-              </MovieDetailsContainer>
+              </TvDetailsContainer>
             )}
-          </MovieContainer>
+          </TvContainer>
         </Container>
 
         <EntityImageList

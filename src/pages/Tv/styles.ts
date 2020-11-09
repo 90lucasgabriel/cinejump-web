@@ -27,7 +27,7 @@ export const ContentContainer = styled.div`
   line-height: 2.8rem;
 `;
 
-export const MovieContainer = styled.div`
+export const TvContainer = styled.div`
   color: ${Color.Fill};
   display: flex;
   justify-content: center;
@@ -45,14 +45,13 @@ export const MovieContainer = styled.div`
 
 export const PosterContainer = styled.div``;
 
-export const MovieDetailsContainer = styled.div`
+export const TvDetailsContainer = styled.div`
   display: flex;
   flex: 1;
   flex-direction: column;
-  justify-content: space-between;
   color: ${Color.Text};
   margin-top: ${Size.Large};
-  /* padding: ${Size.Medium}; */
+  width: 100%;
 
   @media (min-width: 715px) {
     height: 50rem;

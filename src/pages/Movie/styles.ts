@@ -49,10 +49,9 @@ export const MovieDetailsContainer = styled.div`
   display: flex;
   flex: 1;
   flex-direction: column;
-  justify-content: space-between;
   color: ${Color.Text};
   margin-top: ${Size.Large};
-  /* padding: ${Size.Medium}; */
+  width: 100%;
 
   @media (min-width: 715px) {
     height: 50rem;
