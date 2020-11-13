@@ -1,6 +1,7 @@
-import styled from 'styled-components';
+import styled, { css } from 'styled-components';
 
 import { Color, Size } from 'shared/enums';
+import StyleProps from 'components/Modal/types/StyleProps';
 
 export const Container = styled.div`
   display: flex;
@@ -11,9 +12,9 @@ export const Container = styled.div`
   left: 0;
   z-index: 10;
 
-  * {
+  /* * {
     box-sizing: border-box;
-  }
+  } */
 `;
 
 export const Backdrop = styled.div`
@@ -21,26 +22,44 @@ export const Backdrop = styled.div`
   background-color: rgba(0, 0, 0, 0.4);
 `;
 
-export const ModalContainer = styled.div`
-  position: fixed;
-  width: 1280px;
-  min-height: 100px;
-  max-height: calc(min(700px, 100%) - 100px - ${Size.Medium});
+export const ModalContainer = styled.div<StyleProps>`
+  position: absolute;
 
   top: 100px;
-  right: 0;
-  left: 0;
-  margin-right: auto;
-  margin-left: auto;
+  left: 50%;
+  transform: translateX(-50%);
+
+
   z-index: 15;
 
   display: flex;
   flex-direction: column;
   align-items: center;
 
-  @media (max-width: 1280px) {
+  max-height: 100%;
+  overflow: hidden;
+
+  /* height: 100%; */
+
+  ${props =>
+    props.center &&
+    css`
+      top: 50% !important;
+      transform: translate(-50%, -50%);
+    `}
+
+  ${props =>
+    props.height &&
+    css`
+      height: ${props.height};
+    `}
+
+
+
+
+  /* @media (max-width: 1280px) {
     width: calc(100% - ${Size.Medium} * 2);
-  }
+  } */
 
   @media (max-width: 715px) {
     /* top: 0;
@@ -48,26 +67,25 @@ export const ModalContainer = styled.div`
     width: 100%;
     height: 100%; */
   }
+
+
 `;
 
 export const ModalContent = styled.div`
   display: flex;
   flex-direction: column;
-  width: 100%;
-  min-height: 100px;
-  max-height: calc(min(700px, 100%) - 100px - ${Size.Medium});
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.4);
 
-  /* padding: ${Size.Small}; */
   background-color: ${Color.Fill};
   border-radius: ${Size.Small};
 
-  @media (max-width: 715px) {
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-  }
+  top: 0;
+  left: 0;
+  /* width: 100%; */
+  /* height: 100%; */
+
+  max-height: 100%;
+  overflow: hidden;
 `;
 
 export const CloseContainer = styled.div`
@@ -85,8 +103,12 @@ export const CloseButton = styled.img`
 
 export const ContentContainer = styled.div`
   display: flex;
-  flex: 1;
-  width: 100%;
+  align-items: center;
+  justify-content: center;
+  /* flex: 1; */
+  /* width: 100%; */
   overflow: auto;
-  padding: 10px;
+
+  max-height: 100%;
+  overflow: hidden;
 `;

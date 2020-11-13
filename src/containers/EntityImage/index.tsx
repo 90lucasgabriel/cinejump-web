@@ -8,6 +8,7 @@ import { useModal } from 'components/Modal/hooks';
 import { useFavorite } from 'domains/Favorites/hooks';
 import { Color } from 'shared/enums';
 
+import { Media } from 'components';
 import { EntityImageLoading } from 'containers';
 import {
   Container,
@@ -17,6 +18,7 @@ import {
   InfoContainer,
   InfoTitle,
   InfoSubtitle,
+  MediaContainer,
 } from './styles';
 
 import Props from './types';
@@ -33,7 +35,7 @@ const EntityImage: React.FC<Props> = ({
   ...entity
 }) => {
   const history = useHistory();
-  const { successCloseModal } = useModal();
+  const { setModalContent, successCloseModal } = useModal();
   const { user } = useAuth();
 
   const { favoriteList = [], UpdateFavorite } = useFavorite();
@@ -58,7 +60,7 @@ const EntityImage: React.FC<Props> = ({
       history.push(`${entityRoute}/${entity.id}`);
       successCloseModal();
     }
-  }, [disabled, history, entity.id, entity.mediaType]);
+  }, [disabled, history, entity.id, entity.mediaType, successCloseModal]);
 
   // Check if entity is in favorite list and change status
   useEffect(() => {

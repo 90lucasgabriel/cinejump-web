@@ -4,12 +4,12 @@ import { useModal } from 'components/Modal/hooks';
 import { EnvironmentLabel, Modal } from 'components';
 
 const GlobalComponents: React.FC = () => {
-  const { modalContent } = useModal();
+  const { modalContent, modalProps } = useModal();
 
   return (
     <>
       <EnvironmentLabel />
-      <Modal>{modalContent}</Modal>
+      <Modal {...modalProps}>{modalContent}</Modal>
     </>
   );
 };

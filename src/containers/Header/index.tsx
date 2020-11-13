@@ -31,6 +31,7 @@ const Header: React.FC<DefaultProps> = ({
   const handleSearch = useCallback(() => {
     setModalContent({
       value: <SearchModal />,
+      props: { hideCloseButton: true },
     });
   }, [setModalContent]);
 
