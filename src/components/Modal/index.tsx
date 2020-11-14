@@ -1,7 +1,7 @@
-import React, { useCallback } from 'react';
+import React, { useCallback, useEffect } from 'react';
+import { useLocation } from 'react-router-dom';
 
 import { useModal } from 'components/Modal/hooks';
-import ModalProps from 'components/Modal/types/ModalProps';
 import StyleProps from 'components/Modal/types/StyleProps';
 import { GrClose as CloseIcon } from 'react-icons/gr';
 import Button from 'components/Button';
@@ -28,6 +28,7 @@ const Modal: React.FC<StyleProps> = ({
   shadow,
 }) => {
   const { modalContent, dismissModal } = useModal();
+  const location = useLocation();
 
   const handleDismiss = useCallback(() => {
     if (onClose) {
@@ -37,6 +38,10 @@ const Modal: React.FC<StyleProps> = ({
 
     dismissModal();
   }, [dismissModal, onClose]);
+
+  useEffect(() => {
+    handleDismiss();
+  }, [location]); // eslint-disable-line
 
   if (!modalContent && !children && !show) {
     return null;

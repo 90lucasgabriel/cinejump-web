@@ -24,13 +24,14 @@ import {
   TitleContainer,
   Title,
   Subtitle,
+  Tagline,
   OverviewContainer,
   OverviewTitle,
   Overview,
   VoteAverage,
   VoteAverageTitle,
-  Director,
-  DirectorTitle,
+  Creator,
+  CreatorTitle,
   HeaderBackground,
 } from './styles';
 
@@ -104,6 +105,7 @@ const Tv: React.FC<any> = () => {
                     {tv.releaseDate} | {tv.genresNames} | {tv.runtime}
                   </Subtitle>
                 </TitleContainer>
+                {tv.tagline && <Tagline>{`"${tv.tagline}"`}</Tagline>}
                 <OverviewContainer>
                   <OverviewTitle>Sinopse</OverviewTitle>
                   <Overview>{tv.overview}</Overview>
@@ -112,10 +114,10 @@ const Tv: React.FC<any> = () => {
                   <VoteAverageTitle>Votação do público:</VoteAverageTitle>{' '}
                   {tv.voteAverage}
                 </VoteAverage>
-                <Director>
-                  <DirectorTitle>Diretor: </DirectorTitle>
-                  {tv.directorName}
-                </Director>
+                <Creator>
+                  <CreatorTitle>Criador: </CreatorTitle>
+                  {tv.creatorName}
+                </Creator>
               </TvDetailsContainer>
             )}
           </TvContainer>

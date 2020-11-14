@@ -109,10 +109,10 @@ export const VoteAverageTitle = styled.span`
   font-weight: 500;
 `;
 
-export const Director = styled.div`
+export const Creator = styled.div`
   margin-bottom: ${Size.Smallest};
 `;
 
-export const DirectorTitle = styled.span`
+export const CreatorTitle = styled.span`
   font-weight: 500;
 `;

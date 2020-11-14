@@ -17,9 +17,11 @@ export default interface Response {
   id: number;
   originalTitle: string;
   popularity: number;
+  tagline: string;
   runtime: string;
   voteCount: number;
   voteAverage: number;
+  creatorName: string;
 
   recommendations?: Recommendations[];
   credits?: Credits;
