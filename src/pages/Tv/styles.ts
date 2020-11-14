@@ -27,7 +27,7 @@ export const ContentContainer = styled.div`
   line-height: 2.8rem;
 `;
 
-export const MovieContainer = styled.div`
+export const TvContainer = styled.div`
   color: ${Color.Fill};
   display: flex;
   justify-content: center;
@@ -45,14 +45,14 @@ export const MovieContainer = styled.div`
 
 export const PosterContainer = styled.div``;
 
-export const MovieDetailsContainer = styled.div`
+export const TvDetailsContainer = styled.div`
   display: flex;
   flex: 1;
   flex-direction: column;
-  justify-content: space-between;
   color: ${Color.Text};
   margin-top: ${Size.Large};
-  /* padding: ${Size.Medium}; */
+  width: 100%;
+  justify-content: space-between;
 
   @media (min-width: 715px) {
     height: 50rem;
@@ -109,10 +109,10 @@ export const VoteAverageTitle = styled.span`
   font-weight: 500;
 `;
 
-export const Director = styled.div`
+export const Creator = styled.div`
   margin-bottom: ${Size.Smallest};
 `;
 
-export const DirectorTitle = styled.span`
+export const CreatorTitle = styled.span`
   font-weight: 500;
 `;

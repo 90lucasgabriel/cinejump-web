@@ -29,6 +29,7 @@ const EntityImageList: React.FC<Props> = ({
   disabled,
   showInfo,
   hideSubtitle,
+  showModal,
 }) => {
   const itemsContainer = createRef<HTMLDivElement>();
   const [showPreviousButton, setShowPreviousButton] = useState(false);
@@ -112,6 +113,7 @@ const EntityImageList: React.FC<Props> = ({
                     disabled={disabled}
                     showInfo={showInfo}
                     hideSubtitle={hideSubtitle}
+                    showModal={showModal}
                     {...entity}
                   />
                 ))}

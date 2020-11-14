@@ -5,6 +5,11 @@ export const Container = styled.div`
   display: flex;
   flex-direction: column;
   flex: 1;
+  padding: ${Size.Small};
+
+  width: min(1280px, calc(100vw - ${Size.Medium} * 2));
+  min-height: 100px;
+  max-height: calc(min(700px, 100%) - 100px - ${Size.Medium});
 `;
 
 export const ResultsContainer = styled.div`
@@ -12,9 +17,9 @@ export const ResultsContainer = styled.div`
   flex-direction: column;
   border-top: 1px solid ${Color.Placeholder};
 
-  max-height: 100%;
   overflow-y: auto;
   border-radius: 0 0 ${Size.Small} ${Size.Small};
+  max-height: min(600px, 60vh);
 `;
 
 export const LoadingContainer = styled.div`

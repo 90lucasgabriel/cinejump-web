@@ -1,6 +1,8 @@
-import React, { useCallback } from 'react';
+import React, { useCallback, useEffect } from 'react';
+import { useLocation } from 'react-router-dom';
 
 import { useModal } from 'components/Modal/hooks';
+import StyleProps from 'components/Modal/types/StyleProps';
 import { GrClose as CloseIcon } from 'react-icons/gr';
 import Button from 'components/Button';
 import {
@@ -12,13 +14,21 @@ import {
   ContentContainer,
 } from './styles';
 
-const Modal: React.FC<any> = ({
+const Modal: React.FC<StyleProps> = ({
   onClose,
   show,
-  hideCloseButton = true,
+  hideCloseButton,
   children,
+  fullscreen,
+  borderRadius,
+  background,
+  center,
+  height,
+  width,
+  shadow,
 }) => {
   const { modalContent, dismissModal } = useModal();
+  const location = useLocation();
 
   const handleDismiss = useCallback(() => {
     if (onClose) {
@@ -29,6 +39,10 @@ const Modal: React.FC<any> = ({
     dismissModal();
   }, [dismissModal, onClose]);
 
+  useEffect(() => {
+    handleDismiss();
+  }, [location]); // eslint-disable-line
+
   if (!modalContent && !children && !show) {
     return null;
   }
@@ -36,7 +50,7 @@ const Modal: React.FC<any> = ({
   return (
     <Container>
       <Backdrop onClick={handleDismiss} />
-      <ModalContainer>
+      <ModalContainer center={center} height={height}>
         <ModalContent>
           {!hideCloseButton && (
             <CloseContainer>

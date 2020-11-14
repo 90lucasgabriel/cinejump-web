@@ -31,7 +31,10 @@ export const rawPopular = async (
   params?: Params,
 ): Promise<RawResponse> => {
   const response = await tmdb.get(`/tv/${tvId}`, {
-    params: { append_to_response: params?.appendToResponse },
+    params: {
+      append_to_response: params?.appendToResponse,
+      include_image_language: params?.includeImageLanguage || 'pt,en,null',
+    },
   });
 
   return response.data;
@@ -47,11 +50,10 @@ const parseResponse = (tv: RawResponse): Response => {
     popularity: tv.popularity,
     voteCount: tv.vote_count,
     voteAverage: tv.vote_average,
+    tagline: tv.tagline,
     runtime: `${tv.episode_run_time} min`,
 
-    directorName: tv.credits?.crew.find(
-      person => person.job.toUpperCase() === 'DIRECTOR',
-    )?.name,
+    creatorName: tv.created_by[0]?.name,
 
     releaseDate: getReleaseDate(tv),
     backdrop: getBackdrop(tv),

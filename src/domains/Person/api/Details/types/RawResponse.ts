@@ -20,5 +20,16 @@ export default interface RawResponse {
   imdb_id: string;
   homepage?: string;
 
+  images?: {
+    profiles: Array<{
+      aspect_ratio: number;
+      file_path: string;
+      height: number;
+      vote_average: number;
+      vote_count: number;
+      width: number;
+    }>;
+  };
+
   combined_credits?: { cast: RawMovie[] };
 }

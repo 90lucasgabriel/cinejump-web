@@ -119,6 +119,16 @@ const Person: React.FC<any> = () => {
           message="Recomendações indisponíveis."
         />
 
+        {person?.images && (
+          <EntityImageList
+            title="Fotos"
+            data={person.images || []}
+            isLoading={isLoading}
+            hideFavoriteButton
+            showModal
+          />
+        )}
+
         <Filmography
           title="Filmografia"
           data={person.filmography || []}

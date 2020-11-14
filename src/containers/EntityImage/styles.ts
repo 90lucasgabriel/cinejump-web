@@ -126,3 +126,16 @@ export const InfoSubtitle = styled.p`
   overflow: hidden;
   text-overflow: ellipsis;
 `;
+
+export const MediaContainer = styled.div`
+  width: min(90vw, 60vh);
+  display: flex;
+
+  align-items: flex-start;
+  justify-content: center;
+`;
+
+export const Media = styled.img`
+  height: 100%;
+  width: 100%;
+`;

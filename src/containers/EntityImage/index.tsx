@@ -4,9 +4,11 @@ import { BsHeartFill } from 'react-icons/bs';
 
 import { getEntityRoute } from 'shared/helpers';
 import { useAuth } from 'domains/Auth/hooks';
+import { useModal } from 'components/Modal/hooks';
 import { useFavorite } from 'domains/Favorites/hooks';
 import { Color } from 'shared/enums';
 
+import { Media } from 'components';
 import { EntityImageLoading } from 'containers';
 import {
   Container,
@@ -16,6 +18,7 @@ import {
   InfoContainer,
   InfoTitle,
   InfoSubtitle,
+  MediaContainer,
 } from './styles';
 
 import Props from './types';
@@ -29,10 +32,13 @@ const EntityImage: React.FC<Props> = ({
   hideSubtitle,
   showEmpty,
   isLoading,
+  showModal,
   ...entity
 }) => {
   const history = useHistory();
+  const { setModalContent, successCloseModal } = useModal();
   const { user } = useAuth();
+
   const { favoriteList = [], UpdateFavorite } = useFavorite();
   const [isFavorite, setIsFavorite] = useState(entity.favorite);
 
@@ -53,8 +59,29 @@ const EntityImage: React.FC<Props> = ({
     if (!disabled) {
       const entityRoute = getEntityRoute(entity.mediaType);
       history.push(`${entityRoute}/${entity.id}`);
+      successCloseModal();
     }
-  }, [disabled, history, entity.id, entity.mediaType]);
+  }, [disabled, history, entity.id, entity.mediaType, successCloseModal]);
+
+  const handleShowModal = useCallback(() => {
+    setModalContent({
+      value: (
+        <MediaContainer>
+          <Media src={entity.featuredImage || ''} height={25.3} width={16.5} />
+        </MediaContainer>
+      ),
+      props: { hideCloseButton: true, center: true },
+    });
+  }, [entity.featuredImage, setModalContent]);
+
+  const handleClick = useCallback(() => {
+    if (showModal) {
+      handleShowModal();
+      return;
+    }
+
+    handleRedirect();
+  }, [showModal, handleShowModal, handleRedirect]);
 
   // Check if entity is in favorite list and change status
   useEffect(() => {
@@ -95,7 +122,7 @@ const EntityImage: React.FC<Props> = ({
         size={size}
         showInfo={showInfo}
         disabled={disabled}
-        onClick={handleRedirect}
+        onClick={handleClick}
       >
         <FeaturedImage
           src={entity.featuredImage || entity.backdrop}
