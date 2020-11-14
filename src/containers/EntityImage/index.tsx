@@ -32,6 +32,7 @@ const EntityImage: React.FC<Props> = ({
   hideSubtitle,
   showEmpty,
   isLoading,
+  showModal,
   ...entity
 }) => {
   const history = useHistory();
@@ -61,6 +62,26 @@ const EntityImage: React.FC<Props> = ({
       successCloseModal();
     }
   }, [disabled, history, entity.id, entity.mediaType, successCloseModal]);
+
+  const handleShowModal = useCallback(() => {
+    setModalContent({
+      value: (
+        <MediaContainer>
+          <Media src={entity.featuredImage || ''} height={25.3} width={16.5} />
+        </MediaContainer>
+      ),
+      props: { hideCloseButton: true, center: true },
+    });
+  }, [entity.featuredImage, setModalContent]);
+
+  const handleClick = useCallback(() => {
+    if (showModal) {
+      handleShowModal();
+      return;
+    }
+
+    handleRedirect();
+  }, [showModal, handleShowModal, handleRedirect]);
 
   // Check if entity is in favorite list and change status
   useEffect(() => {
@@ -101,7 +122,7 @@ const EntityImage: React.FC<Props> = ({
         size={size}
         showInfo={showInfo}
         disabled={disabled}
-        onClick={handleRedirect}
+        onClick={handleClick}
       >
         <FeaturedImage
           src={entity.featuredImage || entity.backdrop}

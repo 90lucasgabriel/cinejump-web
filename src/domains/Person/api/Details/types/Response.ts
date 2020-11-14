@@ -21,6 +21,15 @@ export default interface Response {
   knownFor?: Movie[];
   filmography?: Movie[];
 
+  images?: Array<{
+    aspectRatio: number;
+    featuredImage?: string;
+    height: number;
+    voteAverage: number;
+    voteCount: number;
+    width: number;
+  }>;
+
   favorite: boolean;
   mediaType: number;
   featuredImage?: string;

@@ -52,6 +52,7 @@ export const MovieDetailsContainer = styled.div`
   color: ${Color.Text};
   margin-top: ${Size.Large};
   width: 100%;
+  justify-content: space-between;
 
   @media (min-width: 715px) {
     height: 50rem;
