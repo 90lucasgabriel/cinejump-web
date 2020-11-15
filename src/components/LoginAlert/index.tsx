@@ -3,10 +3,12 @@ import { useHistory } from 'react-router-dom';
 
 import Route from 'routes/enums';
 
+import { ReactComponent as HeartImage } from 'assets/heart.svg';
 import { useModal } from 'components/Modal/hooks';
 import { Button } from 'components';
 import {
   Container,
+  ImageContainer,
   MessageContainer,
   Message,
   ButtonsContainer,
@@ -22,6 +24,9 @@ const LoginAlert: React.FC<any> = () => {
 
   return (
     <Container>
+      <ImageContainer>
+        <HeartImage />
+      </ImageContainer>
       <MessageContainer>
         <Message>Entre com sua conta para adicionar aos favoritos.</Message>
       </MessageContainer>

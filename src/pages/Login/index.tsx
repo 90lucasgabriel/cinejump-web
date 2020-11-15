@@ -72,7 +72,7 @@ const Login: React.FC = () => {
   return (
     <ColumnLayout>
       <HeaderContainer>
-        <Header background={Color.Transparent} color={Color.Primary} />
+        <Header background={Color.Transparent} color={Color.Secondary} />
       </HeaderContainer>
       <Container>
         <RowContainer>
@@ -88,7 +88,7 @@ const Login: React.FC = () => {
                 placeholder="Senha"
               />
               <ErrorMessage data-testid="errorMessage">{error}</ErrorMessage>
-              <Button type="submit" loading={loginLoading}>
+              <Button type="submit" loading={loginLoading} theme="secondary">
                 ENTRAR
               </Button>
             </LoginForm>
@@ -102,7 +102,7 @@ const Login: React.FC = () => {
             <Button
               type="button"
               variant="outlined"
-              theme="primary"
+              theme="secondary"
               onClick={() => history.push(Route.SIGNUP)}
             >
               CRIAR CONTA
@@ -110,7 +110,7 @@ const Login: React.FC = () => {
           </SignupContainer>
         </RowContainer>
       </Container>
-      <Footer />
+      <Footer theme="secondary" />
     </ColumnLayout>
   );
 };

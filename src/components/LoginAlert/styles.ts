@@ -9,9 +9,19 @@ export const Container = styled.div`
   width: min(550px, calc(100vw - 5rem));
 `;
 
+export const ImageContainer = styled.div`
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  svg {
+    width: min(300px, 100%);
+    height: auto;
+  }
+`;
+
 export const MessageContainer = styled.div`
-  padding: ${Size.Default};
-  padding-top: 0;
+  padding: ${Size.Large} ${Size.Default};
   text-align: center;
 `;
 
