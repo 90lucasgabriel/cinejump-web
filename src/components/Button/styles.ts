@@ -50,6 +50,22 @@ export const Container = styled.button<ButtonProps>`
       }
     `}
 
+  ${props =>
+    props.variant === 'basic' &&
+    css`
+      border: 0;
+      color: ${getBackground(props.theme, props.color, Color.Fill)};
+      background: transparent;
+
+      &:hover {
+        background-color: ${`${getBackground(
+          props.theme,
+          props.color,
+          Color.Fill,
+        )}15`};
+      }
+    `}
+
 
 
   ${props =>

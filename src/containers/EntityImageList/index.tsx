@@ -1,4 +1,5 @@
 import React, { useCallback, createRef, useState } from 'react';
+import { AnimatePresence } from 'framer-motion';
 
 import { FiChevronLeft, FiChevronRight } from 'react-icons/fi';
 
@@ -9,6 +10,7 @@ import {
   Title,
   ListContainer,
   ListContent,
+  EntityImageContainer,
   PreviousButton,
   NextButton,
   MessageContainer,
@@ -73,65 +75,68 @@ const EntityImageList: React.FC<Props> = ({
   }, [itemsContainer, checkButtons]);
 
   return (
-    <Wrapper theme={theme} background={background} color={color}>
-      <Container>
-        {title && (
-          <Title theme={theme} color={color}>
-            {title}
-          </Title>
-        )}
+    <AnimatePresence>
+      <Wrapper theme={theme} background={background} color={color}>
+        <Container>
+          {title && (
+            <Title theme={theme} color={color}>
+              {title}
+            </Title>
+          )}
 
-        {isLoading && (
-          <EntityImageListLoading
-            showShadow={showShadow}
-            showInfo={showInfo}
-            hideSubtitle={hideSubtitle}
-            theme={theme}
-            background={background}
-            color={color}
-          />
-        )}
+          {isLoading && (
+            <EntityImageListLoading
+              showShadow={showShadow}
+              showInfo={showInfo}
+              hideSubtitle={hideSubtitle}
+              theme={theme}
+              background={background}
+              color={color}
+            />
+          )}
 
-        {!isLoading && data.length > 0 && (
-          <>
-            {showPreviousButton && (
-              <PreviousButton
-                variant="icon"
-                theme="light"
-                onClick={handlePrevious}
-              >
-                <FiChevronLeft />
-              </PreviousButton>
-            )}
-            <ListContainer ref={itemsContainer}>
-              <ListContent>
-                {data.map(entity => (
-                  <EntityImage
-                    key={entity.id}
-                    showShadow={showShadow}
-                    hideFavoriteButton={hideFavoriteButton}
-                    disabled={disabled}
-                    showInfo={showInfo}
-                    hideSubtitle={hideSubtitle}
-                    showModal={showModal}
-                    {...entity}
-                  />
-                ))}
-              </ListContent>
-            </ListContainer>
-            {showNextButton && (
-              <NextButton variant="icon" theme="light" onClick={handleNext}>
-                <FiChevronRight />
-              </NextButton>
-            )}
-          </>
-        )}
+          {!isLoading && data.length > 0 && (
+            <>
+              {showPreviousButton && (
+                <PreviousButton
+                  variant="icon"
+                  theme="light"
+                  onClick={handlePrevious}
+                >
+                  <FiChevronLeft />
+                </PreviousButton>
+              )}
+              <ListContainer ref={itemsContainer}>
+                <ListContent>
+                  {data.map(entity => (
+                    <EntityImageContainer key={entity.id}>
+                      <EntityImage
+                        showShadow={showShadow}
+                        hideFavoriteButton={hideFavoriteButton}
+                        disabled={disabled}
+                        showInfo={showInfo}
+                        hideSubtitle={hideSubtitle}
+                        showModal={showModal}
+                        {...entity}
+                      />
+                    </EntityImageContainer>
+                  ))}
+                </ListContent>
+              </ListContainer>
+              {showNextButton && (
+                <NextButton variant="icon" theme="light" onClick={handleNext}>
+                  <FiChevronRight />
+                </NextButton>
+              )}
+            </>
+          )}
 
-        {!isLoading && data.length === 0 && (
-          <MessageContainer>{message}</MessageContainer>
-        )}
-      </Container>
-    </Wrapper>
+          {!isLoading && data.length === 0 && (
+            <MessageContainer>{message}</MessageContainer>
+          )}
+        </Container>
+      </Wrapper>
+    </AnimatePresence>
   );
 };
 

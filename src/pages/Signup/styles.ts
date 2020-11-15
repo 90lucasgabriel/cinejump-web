@@ -53,12 +53,12 @@ export const SignupHeader = styled.h1`
   margin-bottom: ${Size.Large};
   font-size: ${Size.Large};
   font-weight: 400;
-  color: ${Color.Primary};
+  color: ${Color.Secondary};
 `;
 
 export const ErrorMessage = styled.p`
   margin: ${Size.Default} 0;
-  color: ${Color.Primary};
+  color: ${Color.Secondary};
   font-size: ${Size.Small};
 `;
 
@@ -81,12 +81,12 @@ export const LoginHeader = styled.h1`
   margin-bottom: ${Size.Large};
   font-size: ${Size.Large};
   font-weight: 400;
-  color: ${Color.Primary};
+  color: ${Color.Secondary};
 `;
 
 export const LoginDescription = styled.p`
   margin-bottom: ${Size.Large};
   font-size: ${Size.Default};
   font-weight: 100;
-  color: ${Color.Primary};
+  color: ${Color.Secondary};
 `;

@@ -1,5 +1,6 @@
 import React, { useCallback, useEffect } from 'react';
 import { useLocation } from 'react-router-dom';
+import { AnimatePresence } from 'framer-motion';
 
 import { useModal } from 'components/Modal/hooks';
 import StyleProps from 'components/Modal/types/StyleProps';
@@ -43,27 +44,27 @@ const Modal: React.FC<StyleProps> = ({
     handleDismiss();
   }, [location]); // eslint-disable-line
 
-  if (!modalContent && !children && !show) {
-    return null;
-  }
-
   return (
-    <Container>
-      <Backdrop onClick={handleDismiss} />
-      <ModalContainer center={center} height={height}>
-        <ModalContent>
-          {!hideCloseButton && (
-            <CloseContainer>
-              <Button variant="icon" onClick={handleDismiss}>
-                <CloseIcon />
-              </Button>
-            </CloseContainer>
-          )}
+    <AnimatePresence>
+      {(modalContent || children || show) && (
+        <Container>
+          <Backdrop onClick={handleDismiss} />
+          <ModalContainer center={center} height={height}>
+            <ModalContent>
+              {!hideCloseButton && (
+                <CloseContainer>
+                  <Button variant="icon" onClick={handleDismiss}>
+                    <CloseIcon />
+                  </Button>
+                </CloseContainer>
+              )}
 
-          <ContentContainer>{modalContent || children}</ContentContainer>
-        </ModalContent>
-      </ModalContainer>
-    </Container>
+              <ContentContainer>{modalContent || children}</ContentContainer>
+            </ModalContent>
+          </ModalContainer>
+        </Container>
+      )}
+    </AnimatePresence>
   );
 };
 

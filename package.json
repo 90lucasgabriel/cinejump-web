@@ -14,6 +14,7 @@
     "chai": "^4.2.0",
     "enzyme": "^3.11.0",
     "enzyme-adapter-react-16": "^1.15.5",
+    "framer-motion": "^2.9.4",
     "lodash": "^4.17.20",
     "polished": "^3.6.5",
     "react": "^16.13.1",

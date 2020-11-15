@@ -1,4 +1,5 @@
 import styled from 'styled-components';
+import { motion } from 'framer-motion';
 
 import DefaultProps from 'shared/types';
 import { Container as DefaultContainer } from 'components/Layout';
@@ -43,7 +44,11 @@ export const ListContainer = styled.div`
   transition: 0.3s height;
 `;
 
-export const ItemContainer = styled.div`
+export const ItemContainer = styled(motion.div).attrs(() => ({
+  initial: { opacity: 0 },
+  animate: { opacity: 1 },
+  exit: { opacity: 0 },
+}))`
   font-size: ${Size.Default};
   color: ${Color.Text};
   padding: ${Size.Medium} 0;

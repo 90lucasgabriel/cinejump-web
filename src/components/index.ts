@@ -7,6 +7,7 @@ export { default as AspectRatioLoading } from './AspectRatio/Loading';
 export { default as Button } from './Button';
 export { default as EnvironmentLabel } from './EnvironmentLabel';
 export { default as Input } from './Input';
+export { default as LoginAlert } from './LoginAlert';
 export { default as Media } from './Media';
 export { default as Modal } from './Modal';
 
