@@ -74,7 +74,9 @@ export const ModalContainer = styled.div<StyleProps>`
 export const ModalContent = styled.div`
   display: flex;
   flex-direction: column;
-  box-shadow: 0 0 10px rgba(0, 0, 0, 0.4);
+  box-shadow: 0 4px 10px 1px rgba(0, 0, 0, 0.3);
+  margin: 10px;
+  margin-top: 0;
 
   background-color: ${Color.Fill};
   border-radius: ${Size.Small};
