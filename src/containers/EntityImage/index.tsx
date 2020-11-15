@@ -53,7 +53,7 @@ const EntityImage: React.FC<Props> = ({
     } catch (error) {
       console.log('handleFavorite -> error', error);
     }
-  }, [user, UpdateFavorite, entity.id, entity.mediaType]);
+  }, [user, setModalContent, UpdateFavorite, entity.id, entity.mediaType]);
 
   const handleRedirect = useCallback(() => {
     if (!disabled) {

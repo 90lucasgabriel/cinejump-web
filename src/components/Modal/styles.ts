@@ -1,4 +1,5 @@
 import styled, { css } from 'styled-components';
+import { motion } from 'framer-motion';
 
 import { Color, Size } from 'shared/enums';
 import StyleProps from 'components/Modal/types/StyleProps';
@@ -17,18 +18,25 @@ export const Container = styled.div`
   } */
 `;
 
-export const Backdrop = styled.div`
+export const Backdrop = styled(motion.div).attrs(() => ({
+  initial: { opacity: 0 },
+  animate: { opacity: 1 },
+  exit: { opacity: 0 },
+}))`
   flex: 1;
   background-color: rgba(0, 0, 0, 0.4);
 `;
 
-export const ModalContainer = styled.div<StyleProps>`
+export const ModalContainer = styled(motion.div).attrs((props: any) => ({
+  initial: { y: '-60%', x: '-50%', opacity: 0 },
+  animate: { y: props?.center ? '-50%' : 0, x: '-50%', opacity: 1 },
+  exit: { y: '-60%', x: '-50%', opacity: 0 },
+}))<StyleProps>`
   position: absolute;
 
   top: 100px;
   left: 50%;
   transform: translateX(-50%);
-
 
   z-index: 15;
 
@@ -39,12 +47,10 @@ export const ModalContainer = styled.div<StyleProps>`
   max-height: 100%;
   overflow: hidden;
 
-  /* height: 100%; */
-
   ${props =>
     props.center &&
     css`
-      top: 50% !important;
+      top: 50%;
       transform: translate(-50%, -50%);
     `}
 
@@ -53,22 +59,6 @@ export const ModalContainer = styled.div<StyleProps>`
     css`
       height: ${props.height};
     `}
-
-
-
-
-  /* @media (max-width: 1280px) {
-    width: calc(100% - ${Size.Medium} * 2);
-  } */
-
-  @media (max-width: 715px) {
-    /* top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%; */
-  }
-
-
 `;
 
 export const ModalContent = styled.div`
