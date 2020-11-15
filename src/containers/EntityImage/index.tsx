@@ -8,7 +8,7 @@ import { useModal } from 'components/Modal/hooks';
 import { useFavorite } from 'domains/Favorites/hooks';
 import { Color } from 'shared/enums';
 
-import { Media } from 'components';
+import { LoginAlert, Media } from 'components';
 import { EntityImageLoading } from 'containers';
 import {
   Container,
@@ -45,7 +45,7 @@ const EntityImage: React.FC<Props> = ({
   const handleFavorite = useCallback(async () => {
     try {
       if (!user) {
-        alert('Entre com sua conta para adicionar aos favoritos.');
+        setModalContent({ value: <LoginAlert /> });
         return;
       }
 
