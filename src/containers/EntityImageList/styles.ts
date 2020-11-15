@@ -1,4 +1,5 @@
 import styled from 'styled-components';
+import { motion } from 'framer-motion';
 
 import DefaultProps from 'shared/types';
 import { Container as DefaultContainer, Button } from 'components';
@@ -61,7 +62,9 @@ export const ListContainer = styled.div`
   }
 `;
 
-export const ListContent = styled.div`
+export const ListContent = styled(motion.div).attrs(() => ({
+  // layout: true,
+}))`
   display: inline-flex;
   padding: 0 2px;
   margin-top: 2px;
@@ -91,6 +94,12 @@ export const ListContent = styled.div`
     }
   }
 `;
+
+export const EntityImageContainer = styled(motion.div).attrs(() => ({
+  initial: { x: 20, opacity: 0 },
+  animate: { x: 0, opacity: 1 },
+  exit: { x: -20, opacity: 0 },
+}))``;
 
 export const PreviousButton = styled(Button)`
   opacity: 0;

@@ -1,5 +1,6 @@
 import React, { useCallback, useEffect, useState } from 'react';
 import { useHistory } from 'react-router-dom';
+import { AnimatePresence } from 'framer-motion';
 import { BsHeartFill } from 'react-icons/bs';
 
 import { getEntityRoute } from 'shared/helpers';
@@ -96,10 +97,6 @@ const EntityImage: React.FC<Props> = ({
     }
   }, [user, favoriteList, entity.id, entity.mediaType]);
 
-  if (!entity.featuredImage && !entity.backdrop && !showEmpty) {
-    return null;
-  }
-
   if (isLoading) {
     return (
       <EntityImageLoading
@@ -112,31 +109,39 @@ const EntityImage: React.FC<Props> = ({
   }
 
   return (
-    <Container showShadow={showShadow} size={size}>
-      {!hideFavoriteButton && (
-        <IconButton onClick={handleFavorite}>
-          <BsHeartFill fill={isFavorite ? Color.Primary : Color.Empty} />
-        </IconButton>
-      )}
-      <EntityContainer
-        size={size}
-        showInfo={showInfo}
-        disabled={disabled}
-        onClick={handleClick}
-      >
-        <FeaturedImage
-          src={entity.featuredImage || entity.backdrop}
-          showInfo={showInfo}
-        />
+    <AnimatePresence>
+      {(entity.featuredImage || entity.backdrop || showEmpty) && (
+        <Container showShadow={showShadow} size={size}>
+          {!hideFavoriteButton && (
+            <IconButton onClick={handleFavorite}>
+              <BsHeartFill fill={isFavorite ? Color.Primary : Color.Empty} />
+            </IconButton>
+          )}
+          <EntityContainer
+            size={size}
+            showInfo={showInfo}
+            disabled={disabled}
+            onClick={handleClick}
+          >
+            <FeaturedImage
+              src={entity.featuredImage || entity.backdrop}
+              showInfo={showInfo}
+            />
 
-        {showInfo && (
-          <InfoContainer hideSubtitle={hideSubtitle}>
-            <InfoTitle hideSubtitle={hideSubtitle}>{entity.title}</InfoTitle>
-            {!hideSubtitle && <InfoSubtitle>{entity?.subtitle}</InfoSubtitle>}
-          </InfoContainer>
-        )}
-      </EntityContainer>
-    </Container>
+            {showInfo && (
+              <InfoContainer hideSubtitle={hideSubtitle}>
+                <InfoTitle hideSubtitle={hideSubtitle}>
+                  {entity.title}
+                </InfoTitle>
+                {!hideSubtitle && (
+                  <InfoSubtitle>{entity?.subtitle}</InfoSubtitle>
+                )}
+              </InfoContainer>
+            )}
+          </EntityContainer>
+        </Container>
+      )}
+    </AnimatePresence>
   );
 };
 

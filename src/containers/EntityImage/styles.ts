@@ -75,6 +75,8 @@ export const IconButton = styled.button`
   svg {
     height: ${Size.Default};
     width: ${Size.Default};
+
+    transition: fill 0.3s;
   }
 `;
 
