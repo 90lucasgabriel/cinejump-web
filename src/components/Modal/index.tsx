@@ -1,6 +1,6 @@
 import React, { useCallback, useEffect } from 'react';
 import { useLocation } from 'react-router-dom';
-import { motion, AnimatePresence } from 'framer-motion';
+import { AnimatePresence } from 'framer-motion';
 
 import { useModal } from 'components/Modal/hooks';
 import StyleProps from 'components/Modal/types/StyleProps';

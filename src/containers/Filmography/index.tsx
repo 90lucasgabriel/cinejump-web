@@ -1,5 +1,6 @@
 import React, { useCallback, useEffect, useState } from 'react';
 import { useHistory } from 'react-router-dom';
+import { AnimatePresence } from 'framer-motion';
 
 import { getEntityRoute } from 'shared/helpers';
 import { Color } from 'shared/enums';
@@ -51,55 +52,57 @@ const Filmography: React.FC<Props> = ({
   }, [data]);
 
   return (
-    <Wrapper theme={theme} background={background} color={color}>
-      <Container>
-        {title && (
-          <Title theme={theme} color={color}>
-            {title}
-          </Title>
-        )}
+    <AnimatePresence>
+      <Wrapper theme={theme} background={background} color={color}>
+        <Container>
+          {title && (
+            <Title theme={theme} color={color}>
+              {title}
+            </Title>
+          )}
 
-        {isLoading && <FilmographyLoading />}
+          {isLoading && <FilmographyLoading />}
 
-        {!isLoading && data.length > 0 && (
-          <>
-            <ListContainer>
-              {parsedData.map((entity: any) => (
-                <ItemContainer
-                  key={entity.id}
-                  onClick={() => handleRedirect(entity)}
-                >
-                  <YearLabel>{entity.year} - </YearLabel>
-                  <MovieName>{entity.title || entity.name}</MovieName>
-                  <CharacterName>
-                    {entity.character && ` como ${entity.character}`}
-                  </CharacterName>
-                  {entity.episodeCount && (
-                    <EpisodeCount>
-                      {entity.episodeCount > 1
-                        ? ` (${entity.episodeCount} episódios)`
-                        : ` (${entity.episodeCount} episódio)`}
-                    </EpisodeCount>
-                  )}
-                </ItemContainer>
-              ))}
-            </ListContainer>
+          {!isLoading && data.length > 0 && (
+            <>
+              <ListContainer>
+                {parsedData.map((entity: any) => (
+                  <ItemContainer
+                    key={entity.id}
+                    onClick={() => handleRedirect(entity)}
+                  >
+                    <YearLabel>{entity.year} - </YearLabel>
+                    <MovieName>{entity.title || entity.name}</MovieName>
+                    <CharacterName>
+                      {entity.character && ` como ${entity.character}`}
+                    </CharacterName>
+                    {entity.episodeCount && (
+                      <EpisodeCount>
+                        {entity.episodeCount > 1
+                          ? ` (${entity.episodeCount} episódios)`
+                          : ` (${entity.episodeCount} episódio)`}
+                      </EpisodeCount>
+                    )}
+                  </ItemContainer>
+                ))}
+              </ListContainer>
 
-            {parsedData?.length < data?.length && (
-              <More onClick={handleMore}>
-                <Button theme="light" background={Color.Transparent}>
-                  Ver Mais
-                </Button>
-              </More>
-            )}
-          </>
-        )}
+              {parsedData?.length < data?.length && (
+                <More onClick={handleMore}>
+                  <Button theme="light" background={Color.Transparent}>
+                    Ver Mais
+                  </Button>
+                </More>
+              )}
+            </>
+          )}
 
-        {!isLoading && data.length === 0 && (
-          <MessageContainer>{message}</MessageContainer>
-        )}
-      </Container>
-    </Wrapper>
+          {!isLoading && data.length === 0 && (
+            <MessageContainer>{message}</MessageContainer>
+          )}
+        </Container>
+      </Wrapper>
+    </AnimatePresence>
   );
 };
 
