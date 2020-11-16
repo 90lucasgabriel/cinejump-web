@@ -31,7 +31,10 @@ export const rawPopular = async (
   params?: Params,
 ): Promise<RawResponse> => {
   const response = await tmdb.get(`/movie/${movieId}`, {
-    params: { append_to_response: params?.appendToResponse },
+    params: {
+      append_to_response: params?.appendToResponse,
+      include_image_language: params?.includeImageLanguage || 'pt,en,null',
+    },
   });
 
   return response.data;

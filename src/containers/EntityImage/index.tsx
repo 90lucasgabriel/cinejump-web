@@ -1,12 +1,15 @@
 import React, { useCallback, useEffect, useState } from 'react';
 import { useHistory } from 'react-router-dom';
+import { AnimatePresence } from 'framer-motion';
 import { BsHeartFill } from 'react-icons/bs';
 
 import { getEntityRoute } from 'shared/helpers';
 import { useAuth } from 'domains/Auth/hooks';
+import { useModal } from 'components/Modal/hooks';
 import { useFavorite } from 'domains/Favorites/hooks';
 import { Color } from 'shared/enums';
 
+import { LoginAlert, Media } from 'components';
 import { EntityImageLoading } from 'containers';
 import {
   Container,
@@ -16,6 +19,7 @@ import {
   InfoContainer,
   InfoTitle,
   InfoSubtitle,
+  MediaContainer,
 } from './styles';
 
 import Props from './types';
@@ -29,17 +33,20 @@ const EntityImage: React.FC<Props> = ({
   hideSubtitle,
   showEmpty,
   isLoading,
+  showModal,
   ...entity
 }) => {
   const history = useHistory();
+  const { setModalContent, successCloseModal } = useModal();
   const { user } = useAuth();
+
   const { favoriteList = [], UpdateFavorite } = useFavorite();
   const [isFavorite, setIsFavorite] = useState(entity.favorite);
 
   const handleFavorite = useCallback(async () => {
     try {
       if (!user) {
-        alert('Entre com sua conta para adicionar aos favoritos.');
+        setModalContent({ value: <LoginAlert /> });
         return;
       }
 
@@ -47,14 +54,35 @@ const EntityImage: React.FC<Props> = ({
     } catch (error) {
       console.log('handleFavorite -> error', error);
     }
-  }, [user, UpdateFavorite, entity.id, entity.mediaType]);
+  }, [user, setModalContent, UpdateFavorite, entity.id, entity.mediaType]);
 
   const handleRedirect = useCallback(() => {
     if (!disabled) {
       const entityRoute = getEntityRoute(entity.mediaType);
       history.push(`${entityRoute}/${entity.id}`);
+      successCloseModal();
     }
-  }, [disabled, history, entity.id, entity.mediaType]);
+  }, [disabled, history, entity.id, entity.mediaType, successCloseModal]);
+
+  const handleShowModal = useCallback(() => {
+    setModalContent({
+      value: (
+        <MediaContainer>
+          <Media src={entity.featuredImage || ''} height={25.3} width={16.5} />
+        </MediaContainer>
+      ),
+      props: { hideCloseButton: true, center: true },
+    });
+  }, [entity.featuredImage, setModalContent]);
+
+  const handleClick = useCallback(() => {
+    if (showModal) {
+      handleShowModal();
+      return;
+    }
+
+    handleRedirect();
+  }, [showModal, handleShowModal, handleRedirect]);
 
   // Check if entity is in favorite list and change status
   useEffect(() => {
@@ -69,10 +97,6 @@ const EntityImage: React.FC<Props> = ({
     }
   }, [user, favoriteList, entity.id, entity.mediaType]);
 
-  if (!entity.featuredImage && !entity.backdrop && !showEmpty) {
-    return null;
-  }
-
   if (isLoading) {
     return (
       <EntityImageLoading
@@ -85,31 +109,39 @@ const EntityImage: React.FC<Props> = ({
   }
 
   return (
-    <Container showShadow={showShadow} size={size}>
-      {!hideFavoriteButton && (
-        <IconButton onClick={handleFavorite}>
-          <BsHeartFill fill={isFavorite ? Color.Primary : Color.Empty} />
-        </IconButton>
-      )}
-      <EntityContainer
-        size={size}
-        showInfo={showInfo}
-        disabled={disabled}
-        onClick={handleRedirect}
-      >
-        <FeaturedImage
-          src={entity.featuredImage || entity.backdrop}
-          showInfo={showInfo}
-        />
+    <AnimatePresence>
+      {(entity.featuredImage || entity.backdrop || showEmpty) && (
+        <Container showShadow={showShadow} size={size}>
+          {!hideFavoriteButton && (
+            <IconButton onClick={handleFavorite}>
+              <BsHeartFill fill={isFavorite ? Color.Primary : Color.Empty} />
+            </IconButton>
+          )}
+          <EntityContainer
+            size={size}
+            showInfo={showInfo}
+            disabled={disabled}
+            onClick={handleClick}
+          >
+            <FeaturedImage
+              src={entity.featuredImage || entity.backdrop}
+              showInfo={showInfo}
+            />
 
-        {showInfo && (
-          <InfoContainer hideSubtitle={hideSubtitle}>
-            <InfoTitle hideSubtitle={hideSubtitle}>{entity.title}</InfoTitle>
-            {!hideSubtitle && <InfoSubtitle>{entity?.subtitle}</InfoSubtitle>}
-          </InfoContainer>
-        )}
-      </EntityContainer>
-    </Container>
+            {showInfo && (
+              <InfoContainer hideSubtitle={hideSubtitle}>
+                <InfoTitle hideSubtitle={hideSubtitle}>
+                  {entity.title}
+                </InfoTitle>
+                {!hideSubtitle && (
+                  <InfoSubtitle>{entity?.subtitle}</InfoSubtitle>
+                )}
+              </InfoContainer>
+            )}
+          </EntityContainer>
+        </Container>
+      )}
+    </AnimatePresence>
   );
 };
 

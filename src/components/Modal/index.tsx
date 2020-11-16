@@ -1,6 +1,9 @@
-import React, { useCallback } from 'react';
+import React, { useCallback, useEffect } from 'react';
+import { useLocation } from 'react-router-dom';
+import { AnimatePresence } from 'framer-motion';
 
 import { useModal } from 'components/Modal/hooks';
+import StyleProps from 'components/Modal/types/StyleProps';
 import { GrClose as CloseIcon } from 'react-icons/gr';
 import Button from 'components/Button';
 import {
@@ -12,13 +15,21 @@ import {
   ContentContainer,
 } from './styles';
 
-const Modal: React.FC<any> = ({
+const Modal: React.FC<StyleProps> = ({
   onClose,
   show,
-  hideCloseButton = true,
+  hideCloseButton,
   children,
+  fullscreen,
+  borderRadius,
+  background,
+  center,
+  height,
+  width,
+  shadow,
 }) => {
   const { modalContent, dismissModal } = useModal();
+  const location = useLocation();
 
   const handleDismiss = useCallback(() => {
     if (onClose) {
@@ -29,27 +40,31 @@ const Modal: React.FC<any> = ({
     dismissModal();
   }, [dismissModal, onClose]);
 
-  if (!modalContent && !children && !show) {
-    return null;
-  }
+  useEffect(() => {
+    handleDismiss();
+  }, [location]); // eslint-disable-line
 
   return (
-    <Container>
-      <Backdrop onClick={handleDismiss} />
-      <ModalContainer>
-        <ModalContent>
-          {!hideCloseButton && (
-            <CloseContainer>
-              <Button variant="icon" onClick={handleDismiss}>
-                <CloseIcon />
-              </Button>
-            </CloseContainer>
-          )}
+    <AnimatePresence>
+      {(modalContent || children || show) && (
+        <Container>
+          <Backdrop onClick={handleDismiss} />
+          <ModalContainer center={center} height={height}>
+            <ModalContent>
+              {!hideCloseButton && (
+                <CloseContainer>
+                  <Button variant="icon" onClick={handleDismiss}>
+                    <CloseIcon />
+                  </Button>
+                </CloseContainer>
+              )}
 
-          <ContentContainer>{modalContent || children}</ContentContainer>
-        </ModalContent>
-      </ModalContainer>
-    </Container>
+              <ContentContainer>{modalContent || children}</ContentContainer>
+            </ModalContent>
+          </ModalContainer>
+        </Container>
+      )}
+    </AnimatePresence>
   );
 };
 

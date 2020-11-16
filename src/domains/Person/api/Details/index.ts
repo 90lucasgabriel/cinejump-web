@@ -97,7 +97,16 @@ const parseResponse = (person: RawResponse): Response => {
       Date.parse(a.originalDate) < Date.parse(b.originalDate) ? 1 : -1,
     );
 
-  parsedPerson = { ...parsedPerson, knownFor, filmography };
+  const images = person.images?.profiles.map(image => ({
+    aspectRatio: image.aspect_ratio,
+    featuredImage: getFeaturedImage(image) || undefined,
+    height: image.height,
+    voteAverage: image.vote_average,
+    voteCount: image.vote_count,
+    width: image.width,
+  }));
+
+  parsedPerson = { ...parsedPerson, knownFor, filmography, images };
 
   return parsedPerson;
 };

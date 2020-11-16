@@ -75,6 +75,8 @@ export const IconButton = styled.button`
   svg {
     height: ${Size.Default};
     width: ${Size.Default};
+
+    transition: fill 0.3s;
   }
 `;
 
@@ -125,4 +127,17 @@ export const InfoSubtitle = styled.p`
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
+`;
+
+export const MediaContainer = styled.div`
+  width: min(90vw, 60vh);
+  display: flex;
+
+  align-items: flex-start;
+  justify-content: center;
+`;
+
+export const Media = styled.img`
+  height: 100%;
+  width: 100%;
 `;

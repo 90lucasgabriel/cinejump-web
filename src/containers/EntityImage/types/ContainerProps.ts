@@ -8,4 +8,5 @@ export default interface ContainerProps extends DefaultProps {
   hideSubtitle?: boolean;
   disabled?: boolean;
   showEmpty?: boolean;
+  showModal?: boolean;
 }

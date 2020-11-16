@@ -18,9 +18,12 @@ export default interface RawResponse {
   name: string;
   backdrop_path?: string;
   popularity: number;
+  tagline: string;
   episode_run_time: number;
   vote_count: number;
   vote_average: number;
+  created_by: any[];
+
   recommendations?: {
     results: Recommendations[];
   };

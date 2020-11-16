@@ -31,6 +31,7 @@ const Header: React.FC<DefaultProps> = ({
   const handleSearch = useCallback(() => {
     setModalContent({
       value: <SearchModal />,
+      props: { hideCloseButton: true },
     });
   }, [setModalContent]);
 
@@ -53,7 +54,6 @@ const Header: React.FC<DefaultProps> = ({
             variant="icon"
             theme={theme}
             color={color}
-            // onClick={() => setIsSearch(true)}
             onClick={handleSearch}
           >
             <FiSearch />
@@ -68,8 +68,6 @@ const Header: React.FC<DefaultProps> = ({
           </Button>
         </ActionMenuContainer>
       </Container>
-
-      {/* <SearchModal isShow={isSearch} onClose={() => setIsSearch(false)} /> */}
     </Wrapper>
   );
 };

@@ -6,7 +6,8 @@ import React, {
   useState,
 } from 'react';
 
-import ModalContent from 'components/Modal/types/ModalContent';
+import StyleProps from 'components/Modal/types/StyleProps';
+import ModalContent from 'components/Modal/types/ModalProps';
 import ContextData from './types/ContextData';
 // import Modal from './dtos';
 
@@ -14,27 +15,34 @@ const ModalContext = createContext<ContextData>({} as ContextData);
 
 const ModalProvider: React.FC = ({ children }) => {
   const [data, setData] = useState(null as any);
+  const [propsData, setPropsData] = useState({} as StyleProps);
   const [callbackFunction, setCallbackFunction] = useState(null as any);
   const [isCallback, setIsCallback] = useState(false);
 
-  const setModalContent = useCallback(({ value, callback }: ModalContent) => {
-    setData(value);
+  const setModalContent = useCallback(
+    ({ value, callback, props }: ModalContent) => {
+      setData(value);
+      setPropsData(props || ({} as StyleProps));
 
-    if (callback) {
-      setCallbackFunction(() => callback);
-    }
-  }, []);
+      if (callback) {
+        setCallbackFunction(() => callback);
+      }
+    },
+    [],
+  );
 
   // Dismiss modal and run callback
   const successCloseModal = useCallback(() => {
     setIsCallback(true);
     setData(null as any);
+    setPropsData({} as StyleProps);
   }, []);
 
   // Dismiss modal without callback
   const dismissModal = useCallback(() => {
     setIsCallback(false);
     setData(null as any);
+    setPropsData({} as StyleProps);
   }, []);
 
   // Run callback when close modal and reset state
@@ -54,6 +62,7 @@ const ModalProvider: React.FC = ({ children }) => {
     <ModalContext.Provider
       value={{
         modalContent: data,
+        modalProps: propsData,
         setModalContent,
         successCloseModal,
         dismissModal,
