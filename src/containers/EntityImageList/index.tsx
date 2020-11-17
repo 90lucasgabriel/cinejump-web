@@ -1,4 +1,4 @@
-import React, { useCallback, createRef, useState } from 'react';
+import React, { useCallback, createRef, useState, useMemo } from 'react';
 import { AnimatePresence } from 'framer-motion';
 
 import { FiChevronLeft, FiChevronRight } from 'react-icons/fi';
@@ -37,6 +37,10 @@ const EntityImageList: React.FC<Props> = ({
   const [showPreviousButton, setShowPreviousButton] = useState(false);
   const [showNextButton, setShowNextButton] = useState(true);
 
+  const parsedData = useMemo(() => {
+    return data.filter(item => item.featuredImage || item.backdrop);
+  }, [data]);
+
   const checkButtons = useCallback(
     (isNext: boolean) => {
       const itemsContainerDOM = itemsContainer.current as HTMLDivElement;
@@ -61,20 +65,20 @@ const EntityImageList: React.FC<Props> = ({
   // Prev navigate button
   const handlePrevious = useCallback(() => {
     const itemsContainerDOM = itemsContainer.current as HTMLDivElement;
-    const itemWidth = itemsContainerDOM?.scrollWidth / data.length;
+    const itemWidth = itemsContainerDOM?.scrollWidth / parsedData.length;
     itemsContainerDOM.scrollBy(-itemWidth, 0);
 
     checkButtons(false);
-  }, [itemsContainer, data.length, checkButtons]);
+  }, [itemsContainer, parsedData.length, checkButtons]);
 
   // Next navigate button
   const handleNext = useCallback(() => {
     const itemsContainerDOM = itemsContainer.current as HTMLDivElement;
-    const itemWidth = itemsContainerDOM?.scrollWidth / data.length;
+    const itemWidth = itemsContainerDOM?.scrollWidth / parsedData.length;
     itemsContainerDOM.scrollBy(itemWidth, 0);
 
     checkButtons(true);
-  }, [itemsContainer, data.length, checkButtons]);
+  }, [itemsContainer, parsedData.length, checkButtons]);
 
   return (
     <AnimatePresence>
@@ -97,7 +101,7 @@ const EntityImageList: React.FC<Props> = ({
             />
           )}
 
-          {!isLoading && data.length > 0 && (
+          {!isLoading && parsedData.length > 0 && (
             <>
               {showPreviousButton && (
                 <PreviousButton
@@ -110,7 +114,7 @@ const EntityImageList: React.FC<Props> = ({
               )}
               <ListContainer ref={itemsContainer}>
                 <ListContent>
-                  {data.map(entity => (
+                  {parsedData.map(entity => (
                     <EntityImageContainer key={entity.id}>
                       <EntityImage
                         showShadow={showShadow}
@@ -133,7 +137,7 @@ const EntityImageList: React.FC<Props> = ({
             </>
           )}
 
-          {!isLoading && data.length === 0 && (
+          {!isLoading && parsedData.length === 0 && (
             <MessageContainer>{message}</MessageContainer>
           )}
         </Container>
