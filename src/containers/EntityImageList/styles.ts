@@ -57,6 +57,7 @@ export const ListContainer = styled.div`
   -webkit-overflow-scrolling: touch;
   scroll-behavior: smooth;
 
+  scrollbar-width: none;
   &::-webkit-scrollbar {
     display: none;
   }

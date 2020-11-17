@@ -23,6 +23,7 @@ const ModalProvider: React.FC = ({ children }) => {
     ({ value, callback, props }: ModalContent) => {
       setData(value);
       setPropsData(props || ({} as StyleProps));
+      document.body.style.overflow = 'hidden';
 
       if (callback) {
         setCallbackFunction(() => callback);
@@ -36,6 +37,7 @@ const ModalProvider: React.FC = ({ children }) => {
     setIsCallback(true);
     setData(null as any);
     setPropsData({} as StyleProps);
+    document.body.style.overflow = 'auto';
   }, []);
 
   // Dismiss modal without callback
@@ -43,6 +45,7 @@ const ModalProvider: React.FC = ({ children }) => {
     setIsCallback(false);
     setData(null as any);
     setPropsData({} as StyleProps);
+    document.body.style.overflow = 'auto';
   }, []);
 
   // Run callback when close modal and reset state

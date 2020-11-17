@@ -49,7 +49,7 @@ describe('Button Component', () => {
 
     // Assert
     expect(containerElement).toHaveStyle(`border-color: ${Color.Secondary}`);
-    expect(containerElement).toHaveStyle('background: transparent');
+    expect(containerElement).toHaveStyle(`background: ${Color.Transparent}`);
   });
 
   it('should render an icon button', async () => {
@@ -61,7 +61,7 @@ describe('Button Component', () => {
 
     // Assert
     expect(containerElement).toHaveStyle('border-radius: 50%');
-    expect(containerElement).toHaveStyle('background: transparent');
+    expect(containerElement).toHaveStyle(`background: ${Color.Transparent}`);
     expect(containerElement).toHaveStyle('width: auto');
     expect(containerElement).toHaveStyle('height: auto');
   });

@@ -69,7 +69,7 @@ export const IconButton = styled.button`
   position: absolute;
   right: ${Size.Smallest};
   top: ${Size.Smallest};
-  background: transparent;
+  background: ${Color.Transparent};
   border: none;
 
   svg {

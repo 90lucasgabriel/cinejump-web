@@ -2,8 +2,8 @@ import styled from 'styled-components';
 import { Color, Size } from 'shared/enums';
 
 export const Container = styled.div`
-  display: flex;
-  flex-direction: column;
+  /* display: flex;
+  flex-direction: column; */
   width: 100%;
 `;
 
