@@ -44,7 +44,7 @@ export const Container = styled.div<ContainerProps>`
     `}
 
   input {
-    background: transparent;
+    background: ${Color.Transparent};
     flex: 1;
     border: 0;
     font-size: ${Size.Default};

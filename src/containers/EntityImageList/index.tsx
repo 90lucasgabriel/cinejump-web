@@ -61,18 +61,20 @@ const EntityImageList: React.FC<Props> = ({
   // Prev navigate button
   const handlePrevious = useCallback(() => {
     const itemsContainerDOM = itemsContainer.current as HTMLDivElement;
-    itemsContainerDOM.scrollBy(-1, 0);
+    const itemWidth = itemsContainerDOM?.scrollWidth / data.length;
+    itemsContainerDOM.scrollBy(-itemWidth, 0);
 
     checkButtons(false);
-  }, [itemsContainer, checkButtons]);
+  }, [itemsContainer, data.length, checkButtons]);
 
   // Next navigate button
   const handleNext = useCallback(() => {
     const itemsContainerDOM = itemsContainer.current as HTMLDivElement;
-    itemsContainerDOM.scrollBy(1, 0);
+    const itemWidth = itemsContainerDOM?.scrollWidth / data.length;
+    itemsContainerDOM.scrollBy(itemWidth, 0);
 
     checkButtons(true);
-  }, [itemsContainer, checkButtons]);
+  }, [itemsContainer, data.length, checkButtons]);
 
   return (
     <AnimatePresence>
