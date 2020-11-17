@@ -1,5 +1,6 @@
 import Recommendations from 'domains/Movie/api/Recommendations/types/RawResponse';
 import Credits from 'domains/Movie/api/Credits/types/RawResponse';
+import RawImage from 'shared/types/Image/RawImage';
 
 export default interface RawResponse {
   poster_path?: string;
@@ -24,8 +25,13 @@ export default interface RawResponse {
   video: boolean;
   vote_average: number;
   tagline: string;
+
   recommendations?: {
     results: Recommendations[];
+  };
+  images?: {
+    posters: RawImage[];
+    backdrops: RawImage[];
   };
   credits?: Credits;
   mediaType: string;

@@ -1,5 +1,6 @@
 import Recommendations from 'domains/Movie/api/Recommendations/types/Response';
 import Credits from 'domains/Movie/api/Credits/types/Response';
+import Images from 'shared/types/Images';
 
 export default interface Response {
   poster?: string;
@@ -24,6 +25,7 @@ export default interface Response {
   tagline: string;
 
   recommendations?: Recommendations[];
+  images?: Images;
   credits?: Credits;
   directorName?: string;
 

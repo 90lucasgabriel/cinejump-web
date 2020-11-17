@@ -52,6 +52,11 @@ export const Container = styled.div<ContainerProps>`
     &::placeholder {
       color: ${Color.Text};
     }
+
+    &:-webkit-autofill {
+      box-shadow: 0 0 0 30px ${Color.FillSecondary} inset;
+      -webkit-text-fill-color: ${Color.Text};
+    }
   }
 
   svg {

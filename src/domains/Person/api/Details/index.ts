@@ -17,6 +17,7 @@ import Params from 'domains/Person/api/Details/types/Params';
 import RawResponse from 'domains/Person/api/Details/types/RawResponse';
 import Response from 'domains/Person/api/Details/types/Response';
 import Movie from 'domains/Person/api/Details/types/Movie';
+import Image from 'shared/types/Image';
 
 const Details = async (
   personId: number,
@@ -97,14 +98,16 @@ const parseResponse = (person: RawResponse): Response => {
       Date.parse(a.originalDate) < Date.parse(b.originalDate) ? 1 : -1,
     );
 
-  const images = person.images?.profiles.map(image => ({
-    aspectRatio: image.aspect_ratio,
-    featuredImage: getFeaturedImage(image) || undefined,
-    height: image.height,
-    voteAverage: image.vote_average,
-    voteCount: image.vote_count,
-    width: image.width,
-  }));
+  const images = {
+    profiles: person.images?.profiles.map(profile => ({
+      aspectRatio: profile.aspect_ratio,
+      height: profile.height,
+      width: profile.width,
+      voteAverage: profile.vote_average,
+      voteCount: profile.vote_count,
+      featuredImage: getFeaturedImage(profile),
+    })) as Image[],
+  };
 
   parsedPerson = { ...parsedPerson, knownFor, filmography, images };
 

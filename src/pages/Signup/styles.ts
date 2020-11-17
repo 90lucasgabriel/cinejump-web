@@ -58,7 +58,7 @@ export const SignupHeader = styled.h1`
 
 export const ErrorMessage = styled.p`
   margin: ${Size.Default} 0;
-  color: ${Color.Secondary};
+  color: ${Color.Error};
   font-size: ${Size.Small};
 `;
 

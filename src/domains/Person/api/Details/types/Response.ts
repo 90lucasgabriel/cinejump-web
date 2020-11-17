@@ -1,5 +1,6 @@
 // import Recommendations from 'domains/Movie/api/Recommendations/Response';
 import Movie from 'domains/Person/api/Details/types/Movie';
+import Images from 'shared/types/Images';
 
 export default interface Response {
   id: number;
@@ -21,14 +22,7 @@ export default interface Response {
   knownFor?: Movie[];
   filmography?: Movie[];
 
-  images?: Array<{
-    aspectRatio: number;
-    featuredImage?: string;
-    height: number;
-    voteAverage: number;
-    voteCount: number;
-    width: number;
-  }>;
+  images?: Images;
 
   favorite: boolean;
   mediaType: number;

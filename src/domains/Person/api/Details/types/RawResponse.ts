@@ -1,5 +1,6 @@
 // import Recommendations from 'domains/Movie/api/Recommendations/RawResponse';
 import RawMovie from 'domains/Person/api/Details/types/RawMovie';
+import RawImage from 'shared/types/Image/RawImage';
 
 export default interface RawResponse {
   id: number;
@@ -21,14 +22,7 @@ export default interface RawResponse {
   homepage?: string;
 
   images?: {
-    profiles: Array<{
-      aspect_ratio: number;
-      file_path: string;
-      height: number;
-      vote_average: number;
-      vote_count: number;
-      width: number;
-    }>;
+    profiles: RawImage[];
   };
 
   combined_credits?: { cast: RawMovie[] };
