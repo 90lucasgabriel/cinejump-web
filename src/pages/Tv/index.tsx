@@ -78,7 +78,7 @@ const Tv: React.FC<any> = () => {
     <ColumnLayout>
       <Header background={Color.Transparent} color={Color.Fill} />
       <HeaderBackground>
-        ${isLoading && <img src={tv.backdrop} alt="backdrop" />}
+        {!isLoading && <img src={tv.backdrop} alt="backdrop" />}
       </HeaderBackground>
 
       <ContentContainer>

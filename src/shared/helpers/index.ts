@@ -8,3 +8,4 @@ export { default as getColorByTheme } from './colors/getColorByTheme';
 export { default as getEntityRoute } from './getEntityRoute';
 export { default as getMediaTypeId } from './getMediaTypeId';
 export { default as getValidationErrors } from './getValidationErrors';
+export { default as randomInteger } from './randomInteger';
