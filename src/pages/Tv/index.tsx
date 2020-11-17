@@ -78,7 +78,7 @@ const Tv: React.FC<any> = () => {
     <ColumnLayout>
       <Header background={Color.Transparent} color={Color.Fill} />
       <HeaderBackground>
-        ${isLoading && <img src={tv.backdrop} alt="backdrop" />}
+        {!isLoading && <img src={tv.backdrop} alt="backdrop" />}
       </HeaderBackground>
 
       <ContentContainer>
@@ -102,7 +102,8 @@ const Tv: React.FC<any> = () => {
                 <TitleContainer>
                   <Title>{tv.title}</Title>
                   <Subtitle>
-                    {tv.releaseDate} | {tv.genresNames} | {tv.runtime}
+                    {tv.releaseDate} | {tv.genresNames} |{' '}
+                    {tv.seasonsDescription} | {tv.runtime}
                   </Subtitle>
                 </TitleContainer>
                 {tv.tagline && <Tagline>{`"${tv.tagline}"`}</Tagline>}

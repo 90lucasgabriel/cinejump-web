@@ -122,7 +122,7 @@ const Person: React.FC<any> = () => {
         {person?.images && (
           <EntityImageList
             title="Fotos"
-            data={person.images || []}
+            data={person.images?.profiles || []}
             isLoading={isLoading}
             hideFavoriteButton
             showModal

@@ -1,6 +1,6 @@
 import tmdb from 'services/api/tmdb';
 
-import { arrayToString } from 'shared/helpers';
+import { arrayToString, randomInteger } from 'shared/helpers';
 import {
   getBackdrop,
   getFeaturedImage,
@@ -19,6 +19,7 @@ import Credits from 'domains/Movie/api/Credits/types/Response';
 
 import Crew from 'domains/Movie/api/Credits/types/Crew';
 import Cast from 'domains/Movie/api/Credits/types/Cast';
+import Image from 'shared/types/Image';
 
 const Details = async (movieId: number, params?: Params): Promise<Response> => {
   const response = await rawPopular(movieId, params);
@@ -41,33 +42,25 @@ export const rawPopular = async (
 };
 
 const parseResponse = (movie: RawResponse): Response => {
-  let parsedMovie = {
-    overview: movie.overview,
-    budget: movie.budget,
-    genres: movie.genres,
-    genresNames: arrayToString(movie.genres, 'name'),
-    id: movie.id,
-    originalTitle: movie.original_title,
-    popularity: movie.popularity,
-    voteCount: movie.vote_count,
-    voteAverage: movie.vote_average,
-    runtime: `${movie.runtime} min`,
-    tagline: movie.tagline,
+  const posters = movie.images?.posters.map(poster => ({
+    aspectRatio: poster.aspect_ratio,
+    height: poster.height,
+    width: poster.width,
+    voteAverage: poster.vote_average,
+    voteCount: poster.vote_count,
+    featuredImage: getFeaturedImage(poster),
+  })) as Image[];
 
-    directorName: movie.credits?.crew.find(
-      person => person.job.toUpperCase() === 'DIRECTOR',
-    )?.name,
+  const backdrops = movie.images?.backdrops.map(backdrop => ({
+    aspectRatio: backdrop.aspect_ratio,
+    height: backdrop.height,
+    width: backdrop.width,
+    voteAverage: backdrop.vote_average,
+    voteCount: backdrop.vote_count,
+    featuredImage: getFeaturedImage(backdrop),
+  })) as Image[];
 
-    releaseDate: getReleaseDate(movie),
-    backdrop: getBackdrop(movie),
-
-    featuredImage: getFeaturedImage(movie),
-    releaseYear: getReleaseYear(movie),
-    subtitle: getReleaseDate(movie),
-    title: getTitle(movie),
-    favorite: false,
-    mediaType: EntityType.MOVIE,
-  } as Response;
+  const images = { posters, backdrops };
 
   const recommendations = movie.recommendations?.results.map(
     recommendation => ({
@@ -118,7 +111,37 @@ const parseResponse = (movie: RawResponse): Response => {
 
   const credits = { cast, crew } as Credits;
 
-  parsedMovie = { ...parsedMovie, recommendations, credits };
+  let parsedMovie = {
+    overview: movie.overview,
+    budget: movie.budget,
+    genres: movie.genres,
+    genresNames: arrayToString(movie.genres, 'name'),
+    id: movie.id,
+    originalTitle: movie.original_title,
+    popularity: movie.popularity,
+    voteCount: movie.vote_count,
+    voteAverage: movie.vote_average,
+    runtime: `${movie.runtime} min`,
+    tagline: movie.tagline,
+
+    directorName: movie.credits?.crew.find(
+      person => person.job.toUpperCase() === 'DIRECTOR',
+    )?.name,
+
+    releaseDate: getReleaseDate(movie),
+    backdrop:
+      backdrops[randomInteger(0, backdrops.length - 1)]?.featuredImage ||
+      getBackdrop(movie),
+
+    featuredImage: getFeaturedImage(movie),
+    releaseYear: getReleaseYear(movie),
+    subtitle: getReleaseDate(movie),
+    title: getTitle(movie),
+    favorite: false,
+    mediaType: EntityType.MOVIE,
+  } as Response;
+
+  parsedMovie = { ...parsedMovie, recommendations, credits, images };
 
   return parsedMovie;
 };
