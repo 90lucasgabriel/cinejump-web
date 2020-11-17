@@ -7,7 +7,7 @@ enum Color {
   Placeholder = '#ccc',
   Error = '#c53030',
   Empty = '#0f0f0f',
-  Transparent = 'transparent',
+  Transparent = 'rgba(255,255,255,0.001)',
 }
 
 export default Color;

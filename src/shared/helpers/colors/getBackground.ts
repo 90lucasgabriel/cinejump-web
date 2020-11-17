@@ -6,7 +6,9 @@ const getBackground = (
   color?: string,
   defaultColor?: Color | string,
 ): Color | string => {
-  return color || getBackgroundByTheme(theme) || defaultColor || 'transparent';
+  return (
+    color || getBackgroundByTheme(theme) || defaultColor || Color.Transparent
+  );
 };
 
 export default getBackground;

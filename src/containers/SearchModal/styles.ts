@@ -9,7 +9,6 @@ export const Container = styled.div`
 
   width: min(1280px, calc(100vw - ${Size.Medium} * 2));
   min-height: 100px;
-  max-height: calc(min(700px, 100%) - 100px - ${Size.Medium});
 `;
 
 export const ResultsContainer = styled.div`

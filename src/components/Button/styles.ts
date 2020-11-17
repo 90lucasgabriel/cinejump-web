@@ -39,7 +39,7 @@ export const Container = styled.button<ButtonProps>`
     css`
       border: 1px solid ${getBackground(props.theme, props.color, Color.Fill)};
       color: ${getBackground(props.theme, props.color, Color.Fill)};
-      background: transparent;
+      background: ${Color.Transparent};
 
       &:hover {
         background-color: ${`${getBackground(
@@ -55,7 +55,7 @@ export const Container = styled.button<ButtonProps>`
     css`
       border: 0;
       color: ${getBackground(props.theme, props.color, Color.Fill)};
-      background: transparent;
+      background: ${Color.Transparent};
 
       &:hover {
         background-color: ${`${getBackground(
@@ -75,7 +75,7 @@ export const Container = styled.button<ButtonProps>`
       height: auto;
       padding: ${Size.Small};
       border-radius: 50%;
-      background: transparent;
+      background: ${Color.Transparent};
 
       &:hover {
         background: rgba(0, 0, 0, 0.1);
