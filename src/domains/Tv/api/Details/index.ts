@@ -121,6 +121,18 @@ const parseResponse = (tv: RawResponse): Response => {
     tagline: tv.tagline,
     runtime: `${tv.episode_run_time} min`,
 
+    seasonsCount: tv.number_of_seasons,
+    seasonsDescription:
+      tv.number_of_seasons > 1
+        ? `${tv.number_of_seasons} temporadas`
+        : `${tv.number_of_seasons} temporada`,
+
+    episodesCount: tv.number_of_episodes,
+    episodesDescription:
+      tv.number_of_episodes > 1
+        ? `${tv.number_of_episodes} episódios`
+        : `${tv.number_of_episodes} episódio`,
+
     creatorName: tv.created_by[0]?.name,
 
     releaseDate: getReleaseDate(tv),

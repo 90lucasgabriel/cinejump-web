@@ -102,7 +102,8 @@ const Tv: React.FC<any> = () => {
                 <TitleContainer>
                   <Title>{tv.title}</Title>
                   <Subtitle>
-                    {tv.releaseDate} | {tv.genresNames} | {tv.runtime}
+                    {tv.releaseDate} | {tv.genresNames} |{' '}
+                    {tv.seasonsDescription} | {tv.runtime}
                   </Subtitle>
                 </TitleContainer>
                 {tv.tagline && <Tagline>{`"${tv.tagline}"`}</Tagline>}

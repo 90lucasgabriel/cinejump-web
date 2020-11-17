@@ -24,6 +24,11 @@ export default interface Response {
   voteAverage: number;
   creatorName: string;
 
+  seasonsCount: number;
+  seasonsDescription: string;
+  episodesCount: number;
+  episodesDescription: string;
+
   recommendations?: Recommendations[];
   images?: Images;
   credits?: Credits;

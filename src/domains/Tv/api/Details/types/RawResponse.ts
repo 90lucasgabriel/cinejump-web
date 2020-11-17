@@ -24,6 +24,8 @@ export default interface RawResponse {
   vote_count: number;
   vote_average: number;
   created_by: any[];
+  number_of_seasons: number;
+  number_of_episodes: number;
 
   credits?: Credits;
   recommendations?: {
