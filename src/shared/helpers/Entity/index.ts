@@ -5,6 +5,7 @@ export { default as getFeaturedImage } from './getFeaturedImage';
 export { default as getGender } from './getGender';
 export { default as getOriginalDate } from './getOriginalDate';
 export { default as getOriginalTitle } from './getOriginalTitle';
+export { default as getRandomBackdrop } from './getRandomBackdrop';
 export { default as getReleaseDate } from './getReleaseDate';
 export { default as getReleaseYear } from './getReleaseYear';
 export { default as getSubtitle } from './getSubtitle';
