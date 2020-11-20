@@ -1,9 +1,10 @@
 import tmdb from 'services/api/tmdb';
 
-import { arrayToString, randomInteger } from 'shared/helpers';
+import { arrayToString } from 'shared/helpers';
 import {
   getBackdrop,
   getFeaturedImage,
+  getRandomBackdrop,
   getReleaseDate,
   getReleaseYear,
   getSubtitle,
@@ -129,9 +130,7 @@ const parseResponse = (movie: RawResponse): Response => {
     )?.name,
 
     releaseDate: getReleaseDate(movie),
-    backdrop:
-      backdrops[randomInteger(0, backdrops.length - 1)]?.featuredImage ||
-      getBackdrop(movie),
+    backdrop: getRandomBackdrop(backdrops) || getBackdrop(movie),
 
     featuredImage: getFeaturedImage(movie),
     releaseYear: getReleaseYear(movie),
